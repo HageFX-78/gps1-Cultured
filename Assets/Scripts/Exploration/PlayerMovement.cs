@@ -4,15 +4,62 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public float moveSpeed = 3f;
+    public float sprintSpeed = 6f;
+    private float speed;
 
+    public float sprintGauge = 100;
+    private float sprintMax;
+    public float sprintLossRate = 20;
+    public float sprintGainRate = 10;
+    public bool fatigue = false;
 
-    void Start()
+    public Rigidbody2D rb;
+    
+    Vector2 movement;
+
+    private void Start()
     {
-        
+        sprintMax = sprintGauge;
     }
-
     void Update()
     {
-        
+        float x = Input.GetAxisRaw("Horizontal");
+        float y = Input.GetAxisRaw("Vertical");
+        movement = new Vector2(x, y).normalized;
+        if(Input.GetKey(KeyCode.LeftShift) && !fatigue)
+        {
+            if (x != 0 || y != 0)
+            {
+                if (sprintGauge > 0)
+                {
+                    speed = sprintSpeed;
+                    sprintGauge -= sprintLossRate * Time.deltaTime;
+                }
+                else
+                {
+                    speed = moveSpeed;
+                    fatigue = true;
+                }
+            }
+        }
+        else
+        {
+            speed = moveSpeed;
+            if (sprintGauge < sprintMax)
+            {
+                sprintGauge += sprintGainRate * Time.deltaTime;
+            }
+        }
+
+        if (sprintGauge > 50)
+        {
+            fatigue = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
     }
 }
