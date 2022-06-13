@@ -9,6 +9,9 @@ public class BattleStateManager : MonoBehaviour
     public PlayerTurnState pTurn = new PlayerTurnState();
     public EnemyTurnState eTurn = new EnemyTurnState();
 
+    public bool inBattle = false;
+    public int turnNum = 0;
+    public int maxTurn = 11; //Includes player + enemy turn
     void Start()
     {
         currentState = battleless;
@@ -17,12 +20,21 @@ public class BattleStateManager : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this);
+        turnTest();
     }
 
     public void SwitchState(BattleBaseState state)
     {
         currentState = state;
         state.EnterState(this);
+    }
+
+    void turnTest()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            inBattle = !inBattle;
+        }
     }
 
 }
