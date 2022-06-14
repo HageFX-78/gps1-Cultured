@@ -10,6 +10,9 @@ public class TriggerDialogue : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        manager.startConversation(convoFile);
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            manager.startConversation(convoFile);
+        }
     }
 }

@@ -482,6 +482,22 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 8661872287092588537, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
+    - target: {fileID: -8964708302009912036, guid: dd2b8ddbf5ca348468fa964213f730b5, type: 3}
+      propertyPath: chaseSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8964708302009912036, guid: dd2b8ddbf5ca348468fa964213f730b5, type: 3}
+      propertyPath: patrolRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8964708302009912036, guid: dd2b8ddbf5ca348468fa964213f730b5, type: 3}
+      propertyPath: patrolSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8964708302009912036, guid: dd2b8ddbf5ca348468fa964213f730b5, type: 3}
+      propertyPath: patrolTimer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3515374282897236501, guid: dd2b8ddbf5ca348468fa964213f730b5, type: 3}
       propertyPath: m_Name
       value: Enemy Test (2)
@@ -492,11 +508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3515374282897236503, guid: dd2b8ddbf5ca348468fa964213f730b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.55
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 3515374282897236503, guid: dd2b8ddbf5ca348468fa964213f730b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7
+      value: -0.00000023841858
       objectReference: {fileID: 0}
     - target: {fileID: 3515374282897236503, guid: dd2b8ddbf5ca348468fa964213f730b5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -858,6 +874,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7575511799239501695, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
+      propertyPath: moveSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575511799239501695, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
+      propertyPath: sprintSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575511799239501695, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
+      propertyPath: sprintLossRate
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8661872287092588537, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_RootOrder
       value: 1
