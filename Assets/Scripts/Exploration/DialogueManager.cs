@@ -64,20 +64,12 @@ public class DialogueManager : MonoBehaviour
     }
     IEnumerator endDialogueCooldown()//Cooldown so player cant spam and immediately skip through entire conversation
     {
-        float cooldownTime = switchDialogueCooldown;
-        float splitTime = switchDialogueCooldown / coolDownSplitPortion;
-        while (true)
+        while (dialogueCooldown)
         {
-            if (cooldownTime > 0)
-            {
-                cooldownTime -= splitTime;
-                yield return new WaitForSecondsRealtime(splitTime);
-            }
-            else
-            {
-                dialogueCooldown = false;
-                yield break;
-            }
+            
+            yield return new WaitForSecondsRealtime(switchDialogueCooldown);
+            dialogueCooldown = false;
+
         }
     }
     IEnumerator typeDialogue(string content)//Display character 1 by 1, visual effect
