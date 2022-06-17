@@ -11,7 +11,7 @@ public class SanityManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && sanity != 0)
         {
             Debug.Log("Ouchies!");
-            sanity -= 10;
+            sanity -= 20;
             Debug.Log("Health Remaining: " + sanity);
         }
         if (sanity <= 0)
@@ -19,4 +19,5 @@ public class SanityManager : MonoBehaviour
             Debug.Log("Game Over Loser");
         }
     }
+
 }

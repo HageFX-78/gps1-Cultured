@@ -101,7 +101,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision) //if player is out of range, remove player from lsit, change to patrol state
+    private void OnTriggerExit2D(Collider2D collision) //if player is out of range, remove player from list, change to patrol state
     {
         if (collision.gameObject.CompareTag("Player"))
         {

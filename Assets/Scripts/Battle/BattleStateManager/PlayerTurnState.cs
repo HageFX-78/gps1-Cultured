@@ -11,6 +11,7 @@ public class PlayerTurnState : BattleBaseState
         battle.turnNum++;
         Debug.Log("Turn : " + Mathf.RoundToInt(battle.turnNum / 1.8f));
     }
+
     public override void UpdateState(BattleStateManager battle)
     {
         

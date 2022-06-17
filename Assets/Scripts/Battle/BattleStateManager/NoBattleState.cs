@@ -11,6 +11,7 @@ public class NoBattleState : BattleBaseState
     {
         battle.turnNum = 0;
     }
+
     public override void UpdateState(BattleStateManager battle)
     {
         if (battle.inBattle)
