@@ -5079,6 +5079,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &2006295996 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8661872287092588537, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
+  m_PrefabInstance: {fileID: 1655415174}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2027331487
 GameObject:
   m_ObjectHideFlags: 0
@@ -5397,6 +5402,7 @@ GameObject:
   - component: {fileID: 2088838418}
   - component: {fileID: 2088838417}
   - component: {fileID: 2088838420}
+  - component: {fileID: 2088838421}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5503,6 +5509,20 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &2088838421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088838416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea6f67319f5c84f994552ff816f025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPlayer: {fileID: 2006295996}
+  isCutScene: 0
 --- !u!1 &2106502380
 GameObject:
   m_ObjectHideFlags: 0

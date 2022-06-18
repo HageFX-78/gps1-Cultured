@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
         movement = new Vector2(x, y).normalized;
+
         if(Input.GetKey(KeyCode.LeftShift) && !fatigue)
         {
             if (x != 0 || y != 0)
