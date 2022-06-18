@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyTurnState : BattleBaseState
 {
     BattleStateManager battle;
-    public float timer = 3f;
+    public float timer = 1f;
     public override void EnterState(BattleStateManager battle)
     {
 
@@ -25,7 +25,7 @@ public class EnemyTurnState : BattleBaseState
         {
             Debug.Log("Enemy choice");
             battle.SwitchState(battle.pTurn);
-            timer = 3f;
+            timer = 1f;
         }
 
     }

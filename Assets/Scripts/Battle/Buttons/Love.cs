@@ -5,10 +5,10 @@ using UnityEngine.UI;
 using TMPro;
 using System.IO;
 
-public class Acceptance : MonoBehaviour
+public class Love : MonoBehaviour
 {
-    public Button AcceptanceButton;
-    string[] acceptance;
+    public Button LoveButton;
+    string[] love;
     string myFilePath, fileName;
     public string txtName;
     public TMPro.TextMeshProUGUI tmp;
@@ -17,10 +17,10 @@ public class Acceptance : MonoBehaviour
     void Start()
     {
         fileName = txtName + ".txt";
-        myFilePath = Application.dataPath + "/" + "Scripts" + "/" +"Battle" + "/" + "BattleDialogue" + "/" + fileName;
+        myFilePath = Application.dataPath + "/" + "Scripts" + "/" + "Battle" + "/" + "BattleDialogue" + "/" + fileName;
         ReadFromTheFile();
-        Button btn = AcceptanceButton.GetComponent<Button>();
-        tmp.text = acceptance[Random.Range(0, acceptance.Length)]; 
+        Button btn = LoveButton.GetComponent<Button>();
+        tmp.text = love[Random.Range(0, love.Length)];
         btn.onClick.AddListener(onClick);
     }
 
@@ -28,16 +28,16 @@ public class Acceptance : MonoBehaviour
     {
         if (battle.turnNum % 2 != 0)
         {
-            Debug.Log("Acceptance GO!!!");
+            Debug.Log("Love GO!!!");
             Debug.Log(tmp.text);
             battle.turnNum++;
-        }      
+        }
     }
 
     public void ReadFromTheFile()
     {
-        acceptance = File.ReadAllLines(myFilePath);
-        System.Array.Sort(acceptance);
+        love = File.ReadAllLines(myFilePath);
+        System.Array.Sort(love);
+
     }
-    
 }

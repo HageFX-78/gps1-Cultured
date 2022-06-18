@@ -10,6 +10,7 @@ public class BattleStateManager : MonoBehaviour
     public EnemyTurnState eTurn = new EnemyTurnState();
 
     public bool inBattle = false;
+    public bool nxtTurn = false;
     public int turnNum = 0;
     public int maxTurn = 11; //Includes player + enemy turn
     void Start()
