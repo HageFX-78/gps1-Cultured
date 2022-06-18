@@ -14,7 +14,7 @@ public class EnemyTurnState : BattleBaseState
     {
         if (battle.turnNum == battle.maxTurn)
         {
-            battle.inBattle = false;
+          //  battle.inBattle = false;
             battle.SwitchState(battle.battleless);
         }
         else if (timer > 0)
