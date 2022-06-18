@@ -136,10 +136,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92da3049de4ca644f97d264b5054732c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  sprintSpeed: 6
+  moveSpeed: 2.5
+  sprintSpeed: 5
   sprintGauge: 100
-  sprintLossRate: 20
+  sprintLossRate: 30
   sprintGainRate: 10
   fatigue: 0
   rb: {fileID: -4633987559434726319}
