@@ -6,20 +6,21 @@ using TMPro;
 using System.IO;
 public class Rationality : MonoBehaviour
 {
+
+    public PDialogueLists dialogueList;
     public Button RationalityButton;
-    string[] rationality;
-    string myFilePath, fileName;
-    public string txtName;
+
     public TMPro.TextMeshProUGUI tmp;
     public BattleStateManager battle;
+    private int prevNum = -1;
+    private int diaNum = -1;
+
 
     void Start()
     {
-        fileName = txtName + ".txt";
-        myFilePath = Application.dataPath + "/" + "Scripts" + "/" + "Battle" + "/" + "BattleDialogue" + "/" + fileName;
         ReadFromTheFile();
         Button btn = RationalityButton.GetComponent<Button>();
-        tmp.text = rationality[Random.Range(0, rationality.Length)];
+
         btn.onClick.AddListener(onClick);
     }
 
@@ -27,16 +28,22 @@ public class Rationality : MonoBehaviour
     {
         if (battle.turnNum % 2 != 0)
         {
-            Debug.Log("Rationality GO!!!");
+            // Debug.Log("Ration GO!!!");
             Debug.Log(tmp.text);
+            ReadFromTheFile();
             battle.turnNum++;
         }
     }
 
     public void ReadFromTheFile()
     {
-        rationality = File.ReadAllLines(myFilePath);
-        System.Array.Sort(rationality);
+        while (diaNum == prevNum || dialogueList.dialLists[diaNum].emotions != 4)
+        {
+            diaNum = Random.Range(0, dialogueList.dialLists.Count);
+        }
+        prevNum = diaNum;
+        tmp.text = dialogueList.dialLists[diaNum].dialogues;
 
     }
+
 }

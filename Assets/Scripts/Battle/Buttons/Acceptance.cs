@@ -7,20 +7,20 @@ using System.IO;
 
 public class Acceptance : MonoBehaviour
 {
+    public PDialogueLists dialogueList;
     public Button AcceptanceButton;
-    string[] acceptance;
-    string myFilePath, fileName;
-    public string txtName;
+
     public TMPro.TextMeshProUGUI tmp;
     public BattleStateManager battle;
+    private int prevNum = -1;
+    private int diaNum = -1;
+
 
     void Start()
     {
-        fileName = txtName + ".txt";
-        myFilePath = Application.dataPath + "/" + "Scripts" + "/" +"Battle" + "/" + "BattleDialogue" + "/" + fileName;
         ReadFromTheFile();
         Button btn = AcceptanceButton.GetComponent<Button>();
-        tmp.text = acceptance[Random.Range(0, acceptance.Length)]; 
+
         btn.onClick.AddListener(onClick);
     }
 
@@ -28,16 +28,22 @@ public class Acceptance : MonoBehaviour
     {
         if (battle.turnNum % 2 != 0)
         {
-            Debug.Log("Acceptance GO!!!");
+           // Debug.Log("Acceptance GO!!!");
             Debug.Log(tmp.text);
+            ReadFromTheFile();
             battle.turnNum++;
         }      
     }
 
     public void ReadFromTheFile()
     {
-        acceptance = File.ReadAllLines(myFilePath);
-        System.Array.Sort(acceptance);
+        while (diaNum == prevNum || dialogueList.dialLists[diaNum].emotions != 1)
+        {
+            diaNum = Random.Range(0, dialogueList.dialLists.Count);
+        }
+        prevNum = diaNum;
+        tmp.text = dialogueList.dialLists[diaNum].dialogues;
+        
     }
     
 }

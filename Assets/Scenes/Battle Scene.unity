@@ -544,8 +544,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed5a012067010b4897b4bf3583acef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueList: {fileID: 1002726741}
   RationalityButton: {fileID: 758398731}
-  txtName: PlayerRationality
   tmp: {fileID: 1185709340}
   battle: {fileID: 671386015}
 --- !u!1 &816062261
@@ -601,8 +601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aab5d3081742ea4193788a3d1c3eb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueList: {fileID: 1002726741}
   LoveButton: {fileID: 816062264}
-  txtName: PlayerLove
   tmp: {fileID: 1305726421}
   battle: {fileID: 671386015}
 --- !u!114 &816062264
@@ -822,10 +822,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6798a5ef8fa7ee4b907bd7181f1730f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueList: {fileID: 1002726741}
   AcceptanceButton: {fileID: 917608319}
-  txtName: PlayerAcceptance
   tmp: {fileID: 1657812860}
   battle: {fileID: 671386015}
+--- !u!1 &1002726740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1002726742}
+  - component: {fileID: 1002726741}
+  m_Layer: 0
+  m_Name: List
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1002726741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002726740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61c5ed0a787ee0439e16cc907f3b58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battle: {fileID: 671386015}
+  rationality: []
+  love: []
+  hope: []
+  acceptance: []
+  txtName: 
+--- !u!4 &1002726742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002726740}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 513.3336, y: 204.5389, z: -1.4590912}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1106789228
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,11 +1033,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b41b0fd108fe04eb4fa1d04f419be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueList: {fileID: 1002726741}
   HopeButton: {fileID: 1124495041}
-  txtName: PlayerHope
   tmp: {fileID: 1263533450}
   battle: {fileID: 671386015}
-  arrayNum: 0
 --- !u!114 &1124495041
 MonoBehaviour:
   m_ObjectHideFlags: 0

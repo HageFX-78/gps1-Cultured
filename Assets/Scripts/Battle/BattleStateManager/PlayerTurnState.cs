@@ -6,10 +6,6 @@ using UnityEngine.UI;
 public class PlayerTurnState : BattleBaseState
 {
     BattleStateManager battle;
-    string[] hope;
-    string[] love;
-    string[] rationality;
-
     public override void EnterState(BattleStateManager battle)
     {
         battle.turnNum++;

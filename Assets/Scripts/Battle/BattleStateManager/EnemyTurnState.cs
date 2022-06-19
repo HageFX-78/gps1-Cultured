@@ -23,7 +23,7 @@ public class EnemyTurnState : BattleBaseState
         }
         else
         {
-            Debug.Log("Enemy choice");
+          //  Debug.Log("Enemy choice");
             battle.SwitchState(battle.pTurn);
             timer = 1f;
         }
