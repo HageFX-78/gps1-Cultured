@@ -855,12 +855,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61c5ed0a787ee0439e16cc907f3b58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battle: {fileID: 671386015}
   rationality: []
   love: []
   hope: []
   acceptance: []
-  txtName: 
+  battle: {fileID: 671386015}
 --- !u!4 &1002726742
 Transform:
   m_ObjectHideFlags: 0
@@ -944,8 +943,8 @@ Canvas:
   m_GameObject: {fileID: 1106789228}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 100230451}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
