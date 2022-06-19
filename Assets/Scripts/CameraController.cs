@@ -17,8 +17,6 @@ public class CameraController : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(isCutScene);
-
         if(!isCutScene) //if we are not loading a cutscene (move camera to reveal something on map), track player
         {
             trackPlayer();
