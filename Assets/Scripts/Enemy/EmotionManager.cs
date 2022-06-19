@@ -16,10 +16,10 @@ public class EmotionManager : MonoBehaviour
 
     private void Awake()
     {
-        /*int temp = Random.Range(0, 5);
-        emotion.currentType = EmotionList[temp];*/
+        int temp = Random.Range(0, 5);
+        emotion.currentType = EmotionList[temp];
 
-        emotion.currentType = "Delusional";
+        /*emotion.currentType = "Delusional";*/
         gameObject.name = emotion.currentType;
     }
 
@@ -28,7 +28,8 @@ public class EmotionManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)) // just initialises the dictionary and debug log
         {
             InitialiseType();
-            Debug.Log($"{emotion.currentType}, {emotion.TypeMultiplier["Rationality"]}, {emotion.TypeMultiplier["Love"]}, { emotion.TypeMultiplier["Hope"]}, { emotion.TypeMultiplier["Acceptance"]}");
+            Debug.Log($"{emotion.currentType}, Rationality: {emotion.TypeMultiplier["Rationality"]}, Love: {emotion.TypeMultiplier["Love"]}, " +
+                $" Hope: { emotion.TypeMultiplier["Hope"]}, Acceptance: { emotion.TypeMultiplier["Acceptance"]}");
         }
 
         if(Input.GetKeyDown(KeyCode.K))
@@ -101,7 +102,7 @@ public class EmotionManager : MonoBehaviour
 
     public void CurrentEmotionBar()
     {
-        Debug.Log(currentThreshold);
+        Debug.Log($"Current Emotion bar: {currentThreshold}");
     }
 
 
