@@ -33,7 +33,7 @@ public class EmotionManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.K))
         {
-            TakeDamage(emotion.currentType, 10, "Rationality");
+            TakeDamage(emotion.currentType, 10, "Love");
         }
 
         CurrentEmotionBar();
