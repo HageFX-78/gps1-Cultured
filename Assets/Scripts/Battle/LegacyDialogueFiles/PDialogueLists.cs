@@ -14,12 +14,25 @@ public class PDialogueLists : MonoBehaviour
     public string[] acceptance;
 
     public BattleStateManager battle;
+    public TextAsset pdialoguefile;
     string myFilePath;
     
     public List<PDials> dialLists = new List<PDials>();
 
     private void Start()
     {
+        
+        string[] categorySplit = pdialoguefile.text.Split("~");
+
+        for (int x = 0; x < categorySplit.Length; x++)
+        {
+            string[] temp = categorySplit[x].Split("\n");
+            foreach(string y in temp)
+            {
+                dialLists.Add(new PDials(y, ""));
+            }
+        }
+        /*
         //Acceptance
         myFilePath = Application.dataPath + "/" + "Scripts" + "/" + "Battle" + "/" + "BattleDialogue" + "/" + "PlayerAcceptance.txt";
         acceptance = File.ReadAllLines(myFilePath);
@@ -57,6 +70,8 @@ public class PDialogueLists : MonoBehaviour
         }
 
         Debug.Log(dialLists.Count);
+        //*/
+
 
     }
 }

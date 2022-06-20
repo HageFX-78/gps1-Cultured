@@ -5,9 +5,9 @@ using UnityEngine;
 public class PDials
 {
     public string dialogues;
-    public int emotions;
+    public string emotions;
 
-    public PDials(string newDialogue, int newEmotion)
+    public PDials(string newDialogue, string newEmotion)
     {
         dialogues = newDialogue;
         emotions = newEmotion;

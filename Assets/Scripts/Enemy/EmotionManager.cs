@@ -7,10 +7,10 @@ public class EmotionManager : MonoBehaviour
     public Emotion emotion = new Emotion();
     List<string> EmotionList = new List<string>()
     {
-        "Delusional", "Hatred", "Self Loathing", "Despair", "Righteousness"
+        "Delusional", "Hatred", "Self_Loathing", "Despair", "Righteousness"
     };
 
-    public float maxThreshold;
+    public float minThreshold, maxThreshold;
     public float currentThreshold;
 
 
@@ -21,24 +21,24 @@ public class EmotionManager : MonoBehaviour
 
         /*emotion.currentType = "Delusional";*/
         gameObject.name = emotion.currentType;
+        InitialiseType();
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space)) // just initialises the dictionary and debug log
         {
-            InitialiseType();
+            
             Debug.Log($"{emotion.currentType}, Rationality: {emotion.TypeMultiplier["Rationality"]}, Love: {emotion.TypeMultiplier["Love"]}, " +
                 $" Hope: { emotion.TypeMultiplier["Hope"]}, Acceptance: { emotion.TypeMultiplier["Acceptance"]}");
         }
 
         if(Input.GetKeyDown(KeyCode.K))
         {
-            TakeDamage(emotion.currentType, 10, "Love");
+            TakeDamage(10, "Love");
         }
 
-        CurrentEmotionBar();
-        targetThreshold(currentThreshold, 100.0f);
+        //CurrentEmotionBar();
     }
 
     public void InitialiseType() //checks the enemy current type, and then has the corresponding multipliers
@@ -63,7 +63,7 @@ public class EmotionManager : MonoBehaviour
                 {"Acceptance", 1.5f}
             };
         }
-        else if (emotion.currentType == "Self Loathing")
+        else if (emotion.currentType == "Self_Loathing")
         {
             emotion.TypeMultiplier = new Dictionary<string, float>()
             {
@@ -96,9 +96,10 @@ public class EmotionManager : MonoBehaviour
 
     }
 
-    public void TakeDamage(string enemyType, float baseDamage, string damageType)// not completed
+    public void TakeDamage(float baseDamage, string damageType)// not completed
     {
         currentThreshold -= baseDamage * emotion.TypeMultiplier[damageType];
+        Debug.Log($"current = {currentThreshold}, dmg dealt {baseDamage * emotion.TypeMultiplier[damageType]}");
     }
 
     public void CurrentEmotionBar()
@@ -106,11 +107,15 @@ public class EmotionManager : MonoBehaviour
         Debug.Log($"Current Emotion bar: {currentThreshold}");
     }
 
-    public void checkTargetThreshold(float currentThreshold, float targetThreshold) //not completed
+    public void checkTargetThreshold() //not completed
     {
-        if(targetThreshold == currentThreshold)
+        if(currentThreshold >= minThreshold && currentThreshold <= maxThreshold)
         {
             Debug.Log("Threshold reached");
+        }
+        else
+        {
+            Debug.Log("Failed");
         }
     }
 

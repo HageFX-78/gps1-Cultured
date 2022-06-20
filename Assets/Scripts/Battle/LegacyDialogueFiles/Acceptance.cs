@@ -37,7 +37,7 @@ public class Acceptance : MonoBehaviour
 
     public void ReadFromTheFile()
     {
-        while (diaNum == prevNum || dialogueList.dialLists[diaNum].emotions != 1)
+        while (diaNum == prevNum || dialogueList.dialLists[diaNum].emotions != "")
         {
             diaNum = Random.Range(0, 15);
         }
