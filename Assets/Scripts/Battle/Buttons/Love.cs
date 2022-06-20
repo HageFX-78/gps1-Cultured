@@ -20,7 +20,7 @@ public class Love : MonoBehaviour
     {
         ReadFromTheFile();
         Button btn = LoveButton.GetComponent<Button>();
-
+        Debug.Log("Love" + diaNum);
         btn.onClick.AddListener(onClick);
     }
 
@@ -28,7 +28,7 @@ public class Love : MonoBehaviour
     {
         if (battle.turnNum % 2 != 0)
         {
-            // Debug.Log("Love GO!!!");
+            // Debug.Log("love GO!!!");
             Debug.Log(tmp.text);
             ReadFromTheFile();
             battle.turnNum++;
@@ -37,7 +37,7 @@ public class Love : MonoBehaviour
 
     public void ReadFromTheFile()
     {
-        while (diaNum == prevNum || dialogueList.dialLists[diaNum].emotions != 3)
+        //while (diaNum == prevNum || dialogueList.dialLists[diaNum].emotions != 3)
         {
             diaNum = Random.Range(0, dialogueList.dialLists.Count);
         }
@@ -45,5 +45,4 @@ public class Love : MonoBehaviour
         tmp.text = dialogueList.dialLists[diaNum].dialogues;
 
     }
-
 }

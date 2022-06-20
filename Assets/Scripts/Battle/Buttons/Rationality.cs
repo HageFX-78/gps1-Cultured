@@ -20,15 +20,15 @@ public class Rationality : MonoBehaviour
     {
         ReadFromTheFile();
         Button btn = RationalityButton.GetComponent<Button>();
-
         btn.onClick.AddListener(onClick);
+        Debug.Log("Rationality" + diaNum);
     }
 
     public void onClick()
     {
         if (battle.turnNum % 2 != 0)
         {
-            // Debug.Log("Ration GO!!!");
+            // Debug.Log("Hope GO!!!");
             Debug.Log(tmp.text);
             ReadFromTheFile();
             battle.turnNum++;
@@ -37,10 +37,9 @@ public class Rationality : MonoBehaviour
 
     public void ReadFromTheFile()
     {
-        while (diaNum == prevNum || dialogueList.dialLists[diaNum].emotions != 4)
-        {
+        //while (diaNum == prevNum || dialogueList.dialLists[diaNum].emotions != 4)
             diaNum = Random.Range(0, dialogueList.dialLists.Count);
-        }
+    
         prevNum = diaNum;
         tmp.text = dialogueList.dialLists[diaNum].dialogues;
 

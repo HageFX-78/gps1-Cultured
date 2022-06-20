@@ -20,7 +20,7 @@ public class Acceptance : MonoBehaviour
     {
         ReadFromTheFile();
         Button btn = AcceptanceButton.GetComponent<Button>();
-
+        Debug.Log("Acceptance" + diaNum);
         btn.onClick.AddListener(onClick);
     }
 
@@ -28,22 +28,22 @@ public class Acceptance : MonoBehaviour
     {
         if (battle.turnNum % 2 != 0)
         {
-           // Debug.Log("Acceptance GO!!!");
+            Debug.Log("Acceptance GO!!!");
             Debug.Log(tmp.text);
             ReadFromTheFile();
             battle.turnNum++;
-        }      
+        }
     }
 
     public void ReadFromTheFile()
     {
         while (diaNum == prevNum || dialogueList.dialLists[diaNum].emotions != 1)
         {
-            diaNum = Random.Range(0, dialogueList.dialLists.Count);
+            diaNum = Random.Range(0, 15);
         }
         prevNum = diaNum;
         tmp.text = dialogueList.dialLists[diaNum].dialogues;
-        
+
     }
-    
+
 }

@@ -8,13 +8,9 @@ using System.IO;
 
 public class PDialogueLists : MonoBehaviour
 {
-    [HideInInspector]
     public string[] rationality;
-    [HideInInspector]
     public string[] love;
-    [HideInInspector]
     public string[] hope;
-    [HideInInspector]
     public string[] acceptance;
 
     public BattleStateManager battle;
@@ -60,6 +56,7 @@ public class PDialogueLists : MonoBehaviour
             dialLists.Add(new PDials(rationality[i], 4));
         }
 
+        Debug.Log(dialLists.Count);
 
     }
 }

@@ -20,15 +20,15 @@ public class Hope : MonoBehaviour
     {
         ReadFromTheFile();
         Button btn = HopeButton.GetComponent<Button>();
-
         btn.onClick.AddListener(onClick);
+        Debug.Log("Hope" + diaNum);
     }
 
     public void onClick()
     {
         if (battle.turnNum % 2 != 0)
         {
-            // Debug.Log("Hope GO!!!");
+            Debug.Log("Hope GO!!!");
             Debug.Log(tmp.text);
             ReadFromTheFile();
             battle.turnNum++;
