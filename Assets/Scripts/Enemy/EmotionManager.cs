@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EmotionManager : MonoBehaviour
 {
-    Emotion emotion = new Emotion();
+    public Emotion emotion = new Emotion();
     List<string> EmotionList = new List<string>()
     {
         "Delusional", "Hatred", "Self Loathing", "Despair", "Righteousness"
@@ -38,6 +38,7 @@ public class EmotionManager : MonoBehaviour
         }
 
         CurrentEmotionBar();
+        targetThreshold(currentThreshold, 100.0f);
     }
 
     public void InitialiseType() //checks the enemy current type, and then has the corresponding multipliers
@@ -105,5 +106,12 @@ public class EmotionManager : MonoBehaviour
         Debug.Log($"Current Emotion bar: {currentThreshold}");
     }
 
+    public void targetThreshold(float currentThreshold, float targetThreshold)
+    {
+        if(targetThreshold == currentThreshold)
+        {
+            Debug.Log("Threshold reached");
+        }
+    }
 
 }
