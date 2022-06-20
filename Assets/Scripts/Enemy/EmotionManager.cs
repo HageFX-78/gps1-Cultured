@@ -47,9 +47,9 @@ public class EmotionManager : MonoBehaviour
         {
             emotion.TypeMultiplier = new Dictionary<string, float>()
             {
-                {"Rationality", 1.0f},
-                {"Love", 0.5f},
-                {"Hope", 0.5f},
+                {"Rationality", 1.5f},
+                {"Love", 1.0f},
+                {"Hope", 1.0f},
                 {"Acceptance", -1.0f}
             };
         }
@@ -57,18 +57,18 @@ public class EmotionManager : MonoBehaviour
         {
             emotion.TypeMultiplier = new Dictionary<string, float>()
             {
-                {"Rationality", 0.5f},
+                {"Rationality", 1.0f},
                 {"Love", -1.0f},
-                {"Hope", 0.5f},
-                {"Acceptance", 1.0f}
+                {"Hope", 1.0f},
+                {"Acceptance", 1.5f}
             };
         }
         else if (emotion.currentType == "Self Loathing")
         {
             emotion.TypeMultiplier = new Dictionary<string, float>()
             {
-                {"Rationality", 0.5f},
-                {"Love", 1.0f},
+                {"Rationality", 1.0f},
+                {"Love", 1.5f},
                 {"Hope", -1.0f},
                 {"Acceptance", 1.0f}
             };
@@ -78,25 +78,25 @@ public class EmotionManager : MonoBehaviour
             emotion.TypeMultiplier = new Dictionary<string, float>()
             {
                 {"Rationality", -1.0f},
-                {"Love", 0.5f},
-                {"Hope", 1.0f},
-                {"Acceptance", 0.5f}
+                {"Love", 1.0f},
+                {"Hope", 1.5f},
+                {"Acceptance", 1.0f}
             };
         }
         else if (emotion.currentType == "Righteousness")
         {
             emotion.TypeMultiplier = new Dictionary<string, float>()
             {
-                {"Rationality", 1.0f},
+                {"Rationality", 1.5f},
                 {"Love", -1.0f},
-                {"Hope", 0.5f},
-                {"Acceptance", 0.5f}
+                {"Hope", 1.0f},
+                {"Acceptance", 1.0f}
             };
         }
 
     }
 
-    public void TakeDamage(string enemyType, float baseDamage, string damageType)
+    public void TakeDamage(string enemyType, float baseDamage, string damageType)// not completed
     {
         currentThreshold -= baseDamage * emotion.TypeMultiplier[damageType];
     }
@@ -106,7 +106,7 @@ public class EmotionManager : MonoBehaviour
         Debug.Log($"Current Emotion bar: {currentThreshold}");
     }
 
-    public void targetThreshold(float currentThreshold, float targetThreshold)
+    public void checkTargetThreshold(float currentThreshold, float targetThreshold) //not completed
     {
         if(targetThreshold == currentThreshold)
         {
