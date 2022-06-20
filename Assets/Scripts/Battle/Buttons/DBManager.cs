@@ -33,6 +33,7 @@ public class DBManager : MonoBehaviour
     private void Start()
     {
         //-------------------------Values and reference intialization-----------------------------------
+
         //Reading text file for player dialogue options
         string[] categorySplit = pDialoguefile.text.Split("\n~");
 
@@ -61,6 +62,8 @@ public class DBManager : MonoBehaviour
                 //Debug.Log(y);
             }
         }
+
+
         //Reading text file for enemy dialogues and assign based on type
         string[] enemyTypeSplit = eDialoguefile.text.Split("\n~");
         int indexInEnemyDialogueFile = -1;
@@ -77,6 +80,7 @@ public class DBManager : MonoBehaviour
             //Debug.Log(typeDialogueSplit[x]);
         }
 
+
         //Button listeners and text references
         btnList = new List<Button> {btn1, btn2, btn3, btn4};
         btnTXTList = new List<TextMeshProUGUI> { bText1, bText2, bText3, bText4 };
@@ -86,16 +90,6 @@ public class DBManager : MonoBehaviour
             btnList[x].onClick.AddListener(delegate { clickOption(btnList[indexTemp].gameObject.name); });
             btnTXTList[x] = btnList[x].GetComponentInChildren<TextMeshProUGUI>();
         }
-        /*
-        btn1.onClick.AddListener(delegate { clickOption(btn1.gameObject); });
-        bText1 = btn1.GetComponentInChildren<TextMeshProUGUI>();
-        btn2.onClick.AddListener(delegate { clickOption(btn2.gameObject); });
-        bText2 = btn2.GetComponentInChildren<TextMeshProUGUI>();
-        btn3.onClick.AddListener(delegate { clickOption(btn3.gameObject); });
-        bText3 = btn3.GetComponentInChildren<TextMeshProUGUI>();
-        btn4.onClick.AddListener(delegate { clickOption(btn4.gameObject); });
-        bText4 = btn4.GetComponentInChildren<TextMeshProUGUI>();
-        //*/
         //-------------------------------------------------------------------------------------------------------
 
         //+++++++++++++++++++ Functions to run at start ++++++++++++++++++++++
@@ -114,10 +108,7 @@ public class DBManager : MonoBehaviour
     {
         for(int z=0;z<btnList.Count;z++)
         {
-            int rand = getRandFromList();
-            btnTXTList[z].text = dialLists[rand].dialogues;
-            btnList[z].gameObject.name = $"{dialLists[rand].emotions}_{Random.Range(minBaseDmg, maxBaseDmg)}";//Format of  <emotiontype_DamageValue>
-            dialLists.RemoveAt(rand);
+            switchOutThisOption(z);
         }
         
     }
@@ -131,12 +122,22 @@ public class DBManager : MonoBehaviour
     }
     public void clickOption(string objName)
     {
-        Debug.Log(objName);
+        //Debug.Log(objName);
         int rand = getRandFromList();
-        //Deal dmg call from emotion manager HERE
         string enemyType = objName.Split("_")[0];
         int dmgValue = int.Parse(objName.Split("_")[1]);
+
+
         enemyEmotion.TakeDamage(dmgValue, enemyType);
+        switchOutThisOption(int.Parse(objName.Split("_")[2]));
         //Debug.Log(btnList[index].gameObject.name);
+    }
+    void switchOutThisOption(int btnIndex)//Switch out used dialogue option and take random dialogue option from the pool
+    {
+        int rand = getRandFromList();
+        btnTXTList[btnIndex].text = dialLists[rand].dialogues;
+        btnList[btnIndex].gameObject.name = $"{dialLists[rand].emotions}_{Random.Range(minBaseDmg, maxBaseDmg)}_{btnIndex}";//Format of  <emotiontype_DamageValue_btnReferenceIndex>
+        dialLists.RemoveAt(rand);
+        Debug.Log($"Amount of options in pool left: { dialLists.Count}");
     }
 }

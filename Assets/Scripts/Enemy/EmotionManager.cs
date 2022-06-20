@@ -5,13 +5,15 @@ using UnityEngine;
 public class EmotionManager : MonoBehaviour
 {
     public Emotion emotion = new Emotion();
+    public RectTransform PosBar, NegBar;
     List<string> EmotionList = new List<string>()
     {
         "Delusional", "Hatred", "Self_Loathing", "Despair", "Righteousness"
     };
 
-    public float minThreshold, maxThreshold;
-    public float currentThreshold;
+    public float minDifference, maxDifference, startMinThreshold, startMaxThreshold;//Setting values that should be altered
+    float minThreshold, maxThreshold;
+    float currentThreshold;
 
 
     private void Awake()
@@ -21,7 +23,14 @@ public class EmotionManager : MonoBehaviour
 
         /*emotion.currentType = "Delusional";*/
         gameObject.name = emotion.currentType;
+
+
         InitialiseType();
+        //Safe zone
+        minThreshold = Random.Range(20, 80);
+        maxThreshold = minThreshold + Random.Range(minDifference, maxDifference);
+        currentThreshold = Random.Range(startMinThreshold, startMaxThreshold);
+        updateEmotionBar();
     }
 
     private void Update()
@@ -98,8 +107,10 @@ public class EmotionManager : MonoBehaviour
 
     public void TakeDamage(float baseDamage, string damageType)// not completed
     {
-        currentThreshold -= baseDamage * emotion.TypeMultiplier[damageType];
-        Debug.Log($"current = {currentThreshold}, dmg dealt {baseDamage * emotion.TypeMultiplier[damageType]}");
+        currentThreshold += baseDamage * emotion.TypeMultiplier[damageType];
+        currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
+        updateEmotionBar();
+        //Debug.Log($"current = {currentThreshold}, dmg dealt {baseDamage * emotion.TypeMultiplier[damageType]}");
     }
 
     public void CurrentEmotionBar()
@@ -117,6 +128,11 @@ public class EmotionManager : MonoBehaviour
         {
             Debug.Log("Failed");
         }
+    }
+    public void updateEmotionBar()
+    {
+        PosBar.sizeDelta = new Vector2((currentThreshold/100)*600, 15);
+        NegBar.sizeDelta = new Vector2(((100-currentThreshold)/ 100)*600, 15);
     }
 
 }
