@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BattleStateManager : MonoBehaviour
 {
+    public DBManager dbm;//Reference to Dialogue and Button Manager
     public BattleBaseState currentState;
     public NoBattleState battleless = new NoBattleState();
     public PlayerTurnState pTurn = new PlayerTurnState();
@@ -16,18 +17,18 @@ public class BattleStateManager : MonoBehaviour
     void Start()
     {
         currentState = battleless;
-        currentState.EnterState(this);
+        currentState.EnterState(this, dbm);
     }
     void Update()
     {
-        currentState.UpdateState(this);
+        currentState.UpdateState(this, dbm);
         turnTest();
     }
 
-    public void SwitchState(BattleBaseState state)
+    public void SwitchState(BattleBaseState state, DBManager dialbtn)
     {
         currentState = state;
-        state.EnterState(this);
+        state.EnterState(this, dbm);
     }
 
     void turnTest()

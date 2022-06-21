@@ -8,19 +8,23 @@ public class NoBattleState : BattleBaseState
     float Timer = 3f;
     
 
-    public override void EnterState(BattleStateManager battle)
+    public override void EnterState(BattleStateManager battle, DBManager dialbtn)
     {
         battle.turnNum = 0;
         Timer = 3f;
+        dialbtn.noBattleStateInitialize();
     }
 
-    public override void UpdateState(BattleStateManager battle)
+    public override void UpdateState(BattleStateManager battle, DBManager dialbtn)
     {
-        if (Timer >0f)
+        if (Timer > 0f)
         {
             Timer -= Time.deltaTime;
         }
         else
-            battle.SwitchState(battle.pTurn);
+        {
+            battle.turnNum++;
+            battle.SwitchState(battle.pTurn, dialbtn);
+        }
     }
 }

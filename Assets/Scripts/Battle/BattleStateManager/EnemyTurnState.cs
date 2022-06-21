@@ -5,27 +5,21 @@ using UnityEngine;
 public class EnemyTurnState : BattleBaseState
 {
     BattleStateManager battle;
-    public float timer = 1f;
-    public override void EnterState(BattleStateManager battle)
+    public override void EnterState(BattleStateManager battle, DBManager dialbtn)
     {
-
+        dialbtn.enemyTurnInitialize();
     }
-    public override void UpdateState(BattleStateManager battle)
+    public override void UpdateState(BattleStateManager battle, DBManager dialbtn)
     {
         if (battle.turnNum == battle.maxTurn)
         {
           //  battle.inBattle = false;
-            battle.SwitchState(battle.battleless);
+            battle.SwitchState(battle.battleless, dialbtn);
         }
-        else if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }
-        else
+        else if(battle.turnNum%2!=0)
         {
           //  Debug.Log("Enemy choice");
-            battle.SwitchState(battle.pTurn);
-            timer = 1f;
+            battle.SwitchState(battle.pTurn, dialbtn);
         }
 
     }

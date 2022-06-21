@@ -15,12 +15,14 @@ public class DBManager : MonoBehaviour
     [Header("UI References")]
     public TextAsset pDialoguefile;//Player dialogue options file
     public TextAsset eDialoguefile;//Enemy dialogue options file
-    public TextMeshProUGUI convoText; public TextMeshProUGUI talkerName;
-    public Button btn1; public Button btn2; public Button btn3; public Button btn4;
-    List<Button> btnList;
+    public TextMeshProUGUI convoTextPlayer, convoTextEnemy, talkerName;//Text dialogue box reference
+
+    public Button btn1; public Button btn2; public Button btn3; public Button btn4;    
     TextMeshProUGUI bText1; TextMeshProUGUI bText2; TextMeshProUGUI bText3; TextMeshProUGUI bText4;
+    List<Button> btnList;
     List<TextMeshProUGUI> btnTXTList;
-    public GameObject playerOptionsUI, dialogueUI;
+
+    public GameObject playerOptionsUI, playerDialogueUI, enemyDialogueUI;
 
     [Header("Lists")]
     public List<PDials> dialLists = new List<PDials>();
@@ -29,6 +31,11 @@ public class DBManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private int minBaseDmg;
     [SerializeField] private int maxBaseDmg;
+    [SerializeField] private float typeSpeed;
+    [SerializeField] private float nextDialogueCooldown;
+    bool dialogueCooldown;
+    private IEnumerator typeD; // Type out dialogue coroutine instance reference
+    bool optionsVisible;
 
     private void Start()
     {
@@ -86,7 +93,7 @@ public class DBManager : MonoBehaviour
         btnTXTList = new List<TextMeshProUGUI> { bText1, bText2, bText3, bText4 };
         for (int x = 0; x < btnList.Count; x++)
         {
-            int indexTemp = x;//Weird workaround so it doesnt reference X after loop
+            int indexTemp = x;//Workaround so it doesnt only reference X value after loop
             btnList[x].onClick.AddListener(delegate { clickOption(btnList[indexTemp].gameObject.name); });
             btnTXTList[x] = btnList[x].GetComponentInChildren<TextMeshProUGUI>();
         }
@@ -95,14 +102,25 @@ public class DBManager : MonoBehaviour
         //+++++++++++++++++++ Functions to run at start ++++++++++++++++++++++
 
         shuffleOptionsAtStart();
-
+        
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
 
-    // Update is called once per frame
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Update <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Space) && !dialogueCooldown && !optionsVisible)
+        {
+            nextDialogue();
+        }
+    }
+    //=============================== Internal Functions to be called ================================================
+    public void nextDialogue()
+    {
+        dialogueCooldown = true;
+        StopCoroutine(typeD);      
+        battle.turnNum++;       
+        StartCoroutine(endDialogueCooldown());      
     }
     void shuffleOptionsAtStart()
     {
@@ -116,21 +134,15 @@ public class DBManager : MonoBehaviour
     {
         return Random.Range(0, dialLists.Count);
     }
-    void testCheckDialogueList()
-    {
-        Debug.Log(dialLists.Count);
-    }
     public void clickOption(string objName)
     {
-        //Debug.Log(objName);
         int rand = getRandFromList();
         string enemyType = objName.Split("_")[0];
         int dmgValue = int.Parse(objName.Split("_")[1]);
 
-
         enemyEmotion.TakeDamage(dmgValue, enemyType);
-        switchOutThisOption(int.Parse(objName.Split("_")[2]));
-        //Debug.Log(btnList[index].gameObject.name);
+        playerDialogueBoxShow(int.Parse(objName.Split("_")[2]));
+        switchOutThisOption(int.Parse(objName.Split("_")[2]));       
     }
     void switchOutThisOption(int btnIndex)//Switch out used dialogue option and take random dialogue option from the pool
     {
@@ -138,6 +150,68 @@ public class DBManager : MonoBehaviour
         btnTXTList[btnIndex].text = dialLists[rand].dialogues;
         btnList[btnIndex].gameObject.name = $"{dialLists[rand].emotions}_{Random.Range(minBaseDmg, maxBaseDmg)}_{btnIndex}";//Format of  <emotiontype_DamageValue_btnReferenceIndex>
         dialLists.RemoveAt(rand);
-        Debug.Log($"Amount of options in pool left: { dialLists.Count}");
+    }
+    IEnumerator endDialogueCooldown()//Cooldown so player cant spam and immediately skip through entire conversation
+    {
+        while (dialogueCooldown)
+        {
+
+            yield return new WaitForSecondsRealtime(nextDialogueCooldown);
+            dialogueCooldown = false;
+
+        }
+    }
+    IEnumerator typeDialogue(string content, TextMeshProUGUI txtbox)//Display character 1 by 1, visual effect
+    {
+        txtbox.text = "";
+        foreach (char letter in content)
+        {
+            txtbox.text += letter;
+            yield return new WaitForSecondsRealtime(typeSpeed);
+        }
+    }
+    //=============================== External Functions to be called ================================================
+    public void noBattleStateInitialize()
+    {
+                                         //<---Possibly Start battle screen/animation code here too
+        playerDialogueUI.SetActive(true);
+        playerOptionsUI.SetActive(false);
+        enemyDialogueUI.SetActive(false);
+        optionsVisible = false;
+    }
+    public void playerTurnInitialize()
+    {
+        playerDialogueUI.SetActive(false);
+        playerOptionsUI.SetActive(true);
+        enemyDialogueUI.SetActive(false);
+        optionsVisible = true;
+    }
+    public void playerDialogueBoxShow(int btnIndex)
+    {
+        playerDialogueUI.SetActive(true);
+        playerOptionsUI.SetActive(false);
+        enemyDialogueUI.SetActive(false);
+        optionsVisible = false;
+        typeD = typeDialogue(btnTXTList[btnIndex].text, convoTextPlayer);
+
+        StartCoroutine(typeD);
+    }
+    public void enemyTurnInitialize()
+    {
+        playerDialogueUI.SetActive(false);
+        playerOptionsUI.SetActive(false);
+        enemyDialogueUI.SetActive(true);
+        int lastRef = -1;
+        int randE = Random.Range(0, enemyDialList.Count);
+        while (lastRef==randE)
+        {
+            randE = Random.Range(0, enemyDialList.Count);
+        }
+
+        typeD = typeDialogue(enemyDialList[randE], convoTextEnemy);
+
+        StartCoroutine(typeD);
+        lastRef = randE;
+        //<-------------  Affect emotion bar code here
     }
 }

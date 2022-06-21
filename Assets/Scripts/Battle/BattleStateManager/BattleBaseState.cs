@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BattleBaseState
 {
-    public abstract void EnterState(BattleStateManager battle);
-    public abstract void UpdateState(BattleStateManager battle);
+    public abstract void EnterState(BattleStateManager battle, DBManager dialbtn);
+    public abstract void UpdateState(BattleStateManager battle, DBManager dialbtn);
 
 }
