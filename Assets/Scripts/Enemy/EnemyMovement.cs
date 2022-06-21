@@ -10,8 +10,8 @@ public class EnemyMovement : MonoBehaviour
 
     public Transform target; //player to chase
     [Header("Enemy Characteristics")]
-    [SerializeField] private float enemyRange;
-    [SerializeField] private float patrolRange;
+    [SerializeField] private float enemyDetectRange;
+    [SerializeField] private float patrolMoveRange;
     [SerializeField] private float patrolTimer;
     [SerializeField] private float chaseSpeed;
     private float tempTimer;
@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Awake()
     {
-        gameObject.GetComponent<CircleCollider2D>().radius = enemyRange;
+        gameObject.GetComponent<CircleCollider2D>().radius = enemyDetectRange;
     }
 
     private void Start()
@@ -60,8 +60,8 @@ public class EnemyMovement : MonoBehaviour
         {
             if (!patrolOnCD) //if you are not on CD, set a walkpoint
             {
-                float RandomX = Random.Range(-patrolRange, patrolRange);
-                float RandomY = Random.Range(-patrolRange, patrolRange);
+                float RandomX = Random.Range(-patrolMoveRange, patrolMoveRange);
+                float RandomY = Random.Range(-patrolMoveRange, patrolMoveRange);
 
                 walkPoint = new Vector3(transform.position.x + RandomX, transform.position.y + RandomY, 0.0f);
                 patrolOnCD = true;
@@ -121,6 +121,5 @@ public class EnemyMovement : MonoBehaviour
             chasePlayer = false;
         }
     }
-
 
 }

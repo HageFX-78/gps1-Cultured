@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public EnemyManager enemyManager;
+
+    [Header("Transition References")]
+    public static Vector2 transitionPos;
+    public static int transitionCount = 0;
+    [SerializeField] private float timerToTransition;
+
+
     [Header("Player Characteristics")]
     public float moveSpeed = 3f;
     public float sprintSpeed = 6f;
@@ -23,6 +31,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        //Checks if player has transitioned to battle scene more than once
+        if(transitionCount > 0)
+        {
+            transform.position = transitionPos;
+        }
+
         sprintMax = sprintGauge;
     }
     void Update()
@@ -69,12 +83,31 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //on collision with enemy, set the transitionPos to the collide point, destroy the enemy and load next scene
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            //Debug.Log("Hit Enemy");
-            SceneManager.LoadSceneAsync("Battle Scene");
+            Debug.Log("Hit Enemy");
+            transitionPos = collision.transform.position;
+
+            //currently after collision, set enemy to inactive, add into removed enemy and enemy list
+            collision.gameObject.SetActive(false);
+            EnemyManager.EnemyList.Remove(collision.gameObject.name);
+            EnemyManager.RemovedEnemy.Add(collision.gameObject.name);
+            Debug.Log(collision.gameObject.name);
+
+            StartCoroutine(LoadingBattle());            
         }
     }
 
+    IEnumerator LoadingBattle()
+    {
+        //add to the transition count
+        transitionCount++;
+
+        yield return new WaitForSeconds(timerToTransition);
+        //load scene after timer goes;
+        SceneManager.LoadSceneAsync("Battle Scene");
+
+    }
 
 }

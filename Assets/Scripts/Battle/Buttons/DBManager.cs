@@ -18,7 +18,7 @@ public class DBManager : MonoBehaviour
     public TextAsset eDialoguefile;//Enemy dialogue options file
     public TextMeshProUGUI convoTextPlayer, convoTextEnemy, talkerName;//Text dialogue box reference
 
-    public Button btn1; public Button btn2; public Button btn3; public Button btn4;    
+    public Button btn1; public Button btn2; public Button btn3; public Button btn4;
     TextMeshProUGUI bText1; TextMeshProUGUI bText2; TextMeshProUGUI bText3; TextMeshProUGUI bText4;
     List<Button> btnList;
     List<TextMeshProUGUI> btnTXTList;
@@ -30,6 +30,7 @@ public class DBManager : MonoBehaviour
     public List<string> enemyDialList = new List<string>();
 
     [Header("Settings")]
+    [SerializeField] private float transitionTimer;
     [SerializeField] private int minBaseDmg;
     [SerializeField] private int maxBaseDmg;
     [SerializeField] private int enemySelfHarmMinDmg;
@@ -49,11 +50,11 @@ public class DBManager : MonoBehaviour
 
         for (int x = 0; x < categorySplit.Length; x++)
         {
-            string[] temp = categorySplit[x].Split(new string[] {"\n"}, System.StringSplitOptions.RemoveEmptyEntries);
-            foreach(string y in temp)
+            string[] temp = categorySplit[x].Split(new string[] { "\n" }, System.StringSplitOptions.RemoveEmptyEntries);
+            foreach (string y in temp)
             {
-                string emotionStr="";
-                switch(x)
+                string emotionStr = "";
+                switch (x)
                 {
                     case 0:
                         emotionStr = "Rationality";
@@ -67,7 +68,7 @@ public class DBManager : MonoBehaviour
                     case 3:
                         emotionStr = "Acceptance";
                         break;
-                }                      
+                }
                 dialLists.Add(new PDials(y, emotionStr));
                 //Debug.Log(y);
             }
@@ -84,7 +85,7 @@ public class DBManager : MonoBehaviour
         else if (enemyType == "Despair") { indexInEnemyDialogueFile = 3; }
         else if (enemyType == "Righteousness") { indexInEnemyDialogueFile = 4; }
         string[] typeDialogueSplit = enemyTypeSplit[indexInEnemyDialogueFile].Split("\n");
-        for (int x=0;x<enemyTypeSplit.Length;x++)
+        for (int x = 0; x < enemyTypeSplit.Length; x++)
         {
             enemyDialList.Add(typeDialogueSplit[x]);
             //Debug.Log(typeDialogueSplit[x]);
@@ -92,7 +93,7 @@ public class DBManager : MonoBehaviour
 
 
         //Button listeners and text references
-        btnList = new List<Button> {btn1, btn2, btn3, btn4};
+        btnList = new List<Button> { btn1, btn2, btn3, btn4 };
         btnTXTList = new List<TextMeshProUGUI> { bText1, bText2, bText3, bText4 };
         for (int x = 0; x < btnList.Count; x++)
         {
@@ -121,8 +122,8 @@ public class DBManager : MonoBehaviour
     public void nextDialogue()
     {
         dialogueCooldown = true;
-        StopCoroutine(typeD);  
-        if(battle.turnNum<battle.maxTurn)
+        StopCoroutine(typeD);
+        if (battle.turnNum < battle.maxTurn)
         {
             battle.turnNum++;
             StartCoroutine(endDialogueCooldown());
@@ -130,18 +131,18 @@ public class DBManager : MonoBehaviour
         else
         {
             Debug.Log("Battle Ended");
-            
+
             //Return to MAINSCENE code
         }
         Debug.Log($"Real turn : {battle.turnNum}");
     }
     void shuffleOptionsAtStart()
     {
-        for(int z=0;z<btnList.Count;z++)
+        for (int z = 0; z < btnList.Count; z++)
         {
             switchOutThisOption(z);
         }
-        
+
     }
     int getRandFromList()
     {
@@ -195,10 +196,10 @@ public class DBManager : MonoBehaviour
         enemyDialogueUI.SetActive(false);
         optionsVisible = false;
         talkerName.text = "Info";
-        if (battle.turnNum==battle.maxTurn)
+        if (battle.turnNum == battle.maxTurn)
         {
-            if(enemyEmotion.checkTargetThreshold()==true)
-            {           
+            if (enemyEmotion.checkTargetThreshold() == true)
+            {
                 typeD = typeDialogue("A soul was saved...", convoTextPlayer);
             }
             else
@@ -207,21 +208,19 @@ public class DBManager : MonoBehaviour
             }
 
 
-            SceneManager.LoadSceneAsync("MainScene");
-
-
+            StartCoroutine(LoadBackLevel());
             //End of battle, switch back to main scene
         }
         else
         {
             typeD = typeDialogue("Welcome to hell....", convoTextPlayer);
         }
-        
+
         StartCoroutine(typeD);
     }
     public void playerTurnInitialize()
     {
-       
+
         playerDialogueUI.SetActive(false);
         playerOptionsUI.SetActive(true);
         enemyDialogueUI.SetActive(false);
@@ -245,7 +244,7 @@ public class DBManager : MonoBehaviour
         enemyDialogueUI.SetActive(true);
         int lastRef = -1;
         int randE = Random.Range(0, enemyDialList.Count);
-        while (lastRef==randE)
+        while (lastRef == randE)
         {
             randE = Random.Range(0, enemyDialList.Count);
         }
@@ -253,6 +252,13 @@ public class DBManager : MonoBehaviour
         typeD = typeDialogue(enemyDialList[randE], convoTextEnemy);
         StartCoroutine(typeD);
         lastRef = randE;
-        enemyEmotion.selfHarm(Random.Range(0,20));
+        enemyEmotion.selfHarm(Random.Range(0, 20));
+    }
+
+
+    IEnumerator LoadBackLevel()
+    {
+        yield return new WaitForSeconds(transitionTimer);
+        SceneManager.LoadSceneAsync("MainScene");
     }
 }
