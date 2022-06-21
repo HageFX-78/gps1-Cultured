@@ -5,7 +5,7 @@ using UnityEngine;
 public class EmotionManager : MonoBehaviour
 {
     public Emotion emotion = new Emotion();
-    public RectTransform PosBar, NegBar;
+    public RectTransform PosBar, NegBar, SafeZone;
     List<string> EmotionList = new List<string>()
     {
         "Delusional", "Hatred", "Self_Loathing", "Despair", "Righteousness"
@@ -27,9 +27,13 @@ public class EmotionManager : MonoBehaviour
 
         InitialiseType();
         //Safe zone
+        float addRand = Random.Range(minDifference, maxDifference);
         minThreshold = Random.Range(20, 80);
-        maxThreshold = minThreshold + Random.Range(minDifference, maxDifference);
+        maxThreshold = minThreshold + addRand;
         currentThreshold = Random.Range(startMinThreshold, startMaxThreshold);
+        SafeZone.sizeDelta = new Vector2((addRand / 100) * 600, 15);
+        float safeZoneOffset = minThreshold > 50 ? 300 : -300;
+        SafeZone.anchoredPosition = new Vector2(((minThreshold+(addRand/2))/100)* safeZoneOffset, 310); 
         updateEmotionBar();
     }
 
@@ -38,8 +42,7 @@ public class EmotionManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)) // just initialises the dictionary and debug log
         {
             
-            Debug.Log($"{emotion.currentType}, Rationality: {emotion.TypeMultiplier["Rationality"]}, Love: {emotion.TypeMultiplier["Love"]}, " +
-                $" Hope: { emotion.TypeMultiplier["Hope"]}, Acceptance: { emotion.TypeMultiplier["Acceptance"]}");
+            //Debug.Log($"{emotion.currentType}, Rationality: {emotion.TypeMultiplier["Rationality"]}, Love: {emotion.TypeMultiplier["Love"]}, " +$" Hope: { emotion.TypeMultiplier["Hope"]}, Acceptance: { emotion.TypeMultiplier["Acceptance"]}");
         }
 
         if(Input.GetKeyDown(KeyCode.K))
