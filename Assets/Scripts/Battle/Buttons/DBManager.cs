@@ -40,7 +40,7 @@ public class DBManager : MonoBehaviour
     bool dialogueCooldown;
     private IEnumerator typeD; // Type out dialogue coroutine instance reference
     bool optionsVisible;
-
+    bool lastDialogueOn;
     private void Start()
     {
         //-------------------------Values and reference intialization-----------------------------------
@@ -113,7 +113,7 @@ public class DBManager : MonoBehaviour
     // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Update <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && !dialogueCooldown && !optionsVisible)
+        if (Input.GetKey(KeyCode.Space) && !dialogueCooldown && !optionsVisible && !lastDialogueOn)
         {
             nextDialogue();
         }
@@ -213,7 +213,7 @@ public class DBManager : MonoBehaviour
         }
         else
         {
-            typeD = typeDialogue("Welcome to hell....", convoTextPlayer);
+            typeD = typeDialogue("Welcome to hell.... says the mysterious entity", convoTextPlayer);
         }
 
         StartCoroutine(typeD);
@@ -258,7 +258,9 @@ public class DBManager : MonoBehaviour
 
     IEnumerator LoadBackLevel()
     {
+        lastDialogueOn = true;
         yield return new WaitForSeconds(transitionTimer);
+        lastDialogueOn = false;
         SceneManager.LoadSceneAsync("MainScene");
     }
 }
