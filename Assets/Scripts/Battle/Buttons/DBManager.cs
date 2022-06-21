@@ -102,7 +102,7 @@ public class DBManager : MonoBehaviour
         //+++++++++++++++++++ Functions to run at start ++++++++++++++++++++++
 
         shuffleOptionsAtStart();
-        
+        dialogueCooldown = true;
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
 
@@ -118,9 +118,17 @@ public class DBManager : MonoBehaviour
     public void nextDialogue()
     {
         dialogueCooldown = true;
-        StopCoroutine(typeD);      
-        battle.turnNum++;       
-        StartCoroutine(endDialogueCooldown());      
+        StopCoroutine(typeD);  
+        if(battle.turnNum!=battle.maxTurn)
+        {
+            battle.turnNum++;
+            StartCoroutine(endDialogueCooldown());
+        }
+        else
+        {
+            Debug.Log("Battle Ended");
+        }
+        Debug.Log($"Real turn : { battle.turnNum}");
     }
     void shuffleOptionsAtStart()
     {
@@ -142,7 +150,8 @@ public class DBManager : MonoBehaviour
 
         enemyEmotion.TakeDamage(dmgValue, enemyType);
         playerDialogueBoxShow(int.Parse(objName.Split("_")[2]));
-        switchOutThisOption(int.Parse(objName.Split("_")[2]));       
+        switchOutThisOption(int.Parse(objName.Split("_")[2]));
+        StartCoroutine(endDialogueCooldown());
     }
     void switchOutThisOption(int btnIndex)//Switch out used dialogue option and take random dialogue option from the pool
     {
@@ -173,14 +182,30 @@ public class DBManager : MonoBehaviour
     //=============================== External Functions to be called ================================================
     public void noBattleStateInitialize()
     {
-                                         //<---Possibly Start battle screen/animation code here too
+               
+        //<---Possibly Start battle screen/animation code here too
         playerDialogueUI.SetActive(true);
         playerOptionsUI.SetActive(false);
         enemyDialogueUI.SetActive(false);
         optionsVisible = false;
+        if(battle.turnNum==battle.maxTurn)
+        {
+            enemyEmotion.checkTargetThreshold();
+            talkerName.text = "Info";
+            typeD = typeDialogue("Battle ended", convoTextPlayer);
+            //End of battle, switch back to main scene
+        }
+        else
+        {
+            talkerName.text = "Info";
+            typeD = typeDialogue("Welcome to hell....", convoTextPlayer);
+        }
+        
+        StartCoroutine(typeD);
     }
     public void playerTurnInitialize()
     {
+       
         playerDialogueUI.SetActive(false);
         playerOptionsUI.SetActive(true);
         enemyDialogueUI.SetActive(false);
@@ -192,6 +217,7 @@ public class DBManager : MonoBehaviour
         playerOptionsUI.SetActive(false);
         enemyDialogueUI.SetActive(false);
         optionsVisible = false;
+        talkerName.text = "Alex";
         typeD = typeDialogue(btnTXTList[btnIndex].text, convoTextPlayer);
 
         StartCoroutine(typeD);
