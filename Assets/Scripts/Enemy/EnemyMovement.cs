@@ -5,22 +5,23 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [Header("List to store player to reference")]
     public List<GameObject> playerInRange = new List<GameObject>();
 
-    private NavMeshAgent agent;
-
     public Transform target; //player to chase
+    [Header("Enemy Characteristics")]
     [SerializeField] private float enemyRange;
-
     [SerializeField] private float patrolRange;
     [SerializeField] private float patrolTimer;
     [SerializeField] private float chaseSpeed;
     private float tempTimer;
 
+    [Header("Ememy Booleans for reference")]
     [SerializeField] private bool chasePlayer;
     [SerializeField] private bool patrol;
     [SerializeField] private bool patrolOnCD;
 
+    private NavMeshAgent agent;
     private Vector3 walkPoint;
 
     private void Awake()
@@ -93,7 +94,7 @@ public class EnemyMovement : MonoBehaviour
         {
             target = playerInRange[0].transform; //tracks players position
 
-            agent.SetDestination(target.position);
+            agent.SetDestination(target.position); //sets the agent to track player(target)
             //transform.position = Vector3.MoveTowards(transform.position, target.position, chaseSpeed * Time.deltaTime);
         }
     }

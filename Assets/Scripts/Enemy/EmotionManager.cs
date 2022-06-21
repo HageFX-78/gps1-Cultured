@@ -122,7 +122,6 @@ public class EmotionManager : MonoBehaviour
                 {"Acceptance", 1.0f}
             };
         }
-
     }
 
     public void TakeDamage(float baseDamage, string damageType)// not completed

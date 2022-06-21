@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player Characteristics")]
     public float moveSpeed = 3f;
     public float sprintSpeed = 6f;
     private float speed;
 
+    [Header("Sprint Related")]
     public float sprintGauge = 100;
     private float sprintMax;
     public float sprintLossRate = 20;
