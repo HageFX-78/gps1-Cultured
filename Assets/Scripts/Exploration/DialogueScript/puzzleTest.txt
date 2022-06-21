@@ -1,0 +1,5 @@
+Player:Hey, do you know how to get this door open?
+Enemy:Sometimes time is the best answer...
+Player:What does that mean?
+Enemy:Look at a clock, watch it spin, then the answer will be clear..
+Player:???

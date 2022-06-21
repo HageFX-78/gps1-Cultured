@@ -85,7 +85,8 @@ public class DialogueManager : MonoBehaviour
     {
         dialogueUI.SetActive(true);
         dialogueActive = true;
-        dialogueCooldown = false;
+        dialogueCooldown = true;
+        StartCoroutine(endDialogueCooldown());
         curLineNum = 0;
         dls = targetFile.text.Split('\n');
         dlsSize = dls.Length;
