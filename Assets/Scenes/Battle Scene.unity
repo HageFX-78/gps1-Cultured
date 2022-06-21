@@ -531,13 +531,13 @@ MonoBehaviour:
   playerDialogueUI: {fileID: 107664982}
   enemyDialogueUI: {fileID: 1853058225}
   enemyDialList: []
-  transitionTimer: 4
+  transitionTimer: 5
   minBaseDmg: 10
   maxBaseDmg: 15
   enemySelfHarmMinDmg: 0
   enemySelfHarmMaxDmg: 15
-  typeSpeed: 0.05
-  nextDialogueCooldown: 1
+  typeSpeed: 0.01
+  nextDialogueCooldown: 2
 --- !u!4 &571111702
 Transform:
   m_ObjectHideFlags: 0
