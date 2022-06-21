@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class EmotionManager : MonoBehaviour
 {
     public Emotion emotion = new Emotion();
     public RectTransform PosBar, NegBar, SafeZone;
+    public TextMeshProUGUI positiveEmotionTXT, enemyEmotionTXT;
     List<string> EmotionList = new List<string>()
     {
         "Delusional", "Hatred", "Self_Loathing", "Despair", "Righteousness"
@@ -27,6 +28,10 @@ public class EmotionManager : MonoBehaviour
 
 
         InitialiseType();
+
+        enemyEmotionTXT.text = emotion.currentType;
+        positiveEmotionTXT.text = "???";
+
         //Safe zone & Size
         float addRand = Random.Range(minDifference, maxDifference);
         Debug.Log(addRand);
