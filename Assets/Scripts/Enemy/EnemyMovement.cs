@@ -1,25 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
     public List<GameObject> playerInRange = new List<GameObject>();
 
-    public Transform target; //player
+    private NavMeshAgent agent;
+
+    public Transform target; //player to chase
     [SerializeField] private float enemyRange;
-    [SerializeField] private float chaseSpeed;
-    [SerializeField] private float patrolSpeed;
 
     [SerializeField] private float patrolRange;
     [SerializeField] private float patrolTimer;
+    [SerializeField] private float chaseSpeed;
     private float tempTimer;
 
     [SerializeField] private bool chasePlayer;
     [SerializeField] private bool patrol;
     [SerializeField] private bool patrolOnCD;
 
-    [SerializeField] private Vector3 walkPoint;
+    private Vector3 walkPoint;
 
     private void Awake()
     {
@@ -27,7 +29,11 @@ public class EnemyMovement : MonoBehaviour
     }
 
     private void Start()
-    {
+    {        
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        
         chasePlayer = false;
         patrol = true;
         patrolOnCD = false;
@@ -36,7 +42,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange.Count > 0 && playerInRange[0] != null) //if player is in list and exist
+        if (playerInRange.Count > 0 && playerInRange[0] != null && !patrol) //if player is in list and exist
         {
             ChasePlayer();
         }
@@ -71,7 +77,8 @@ public class EnemyMovement : MonoBehaviour
                 }
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, walkPoint, patrolSpeed * Time.deltaTime); //updates position
+            agent.SetDestination(walkPoint); //sets the agent walkpoint
+            //transform.position = Vector3.MoveTowards(transform.position, walkPoint, patrolSpeed * Time.deltaTime); 
         }
         else if(!patrol)
         {
@@ -86,7 +93,8 @@ public class EnemyMovement : MonoBehaviour
         {
             target = playerInRange[0].transform; //tracks players position
 
-            transform.position = Vector3.MoveTowards(transform.position, target.position, chaseSpeed * Time.deltaTime);
+            agent.SetDestination(target.position);
+            //transform.position = Vector3.MoveTowards(transform.position, target.position, chaseSpeed * Time.deltaTime);
         }
     }
 
@@ -95,6 +103,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+            agent.speed = chaseSpeed;
+
             playerInRange.Add(collision.gameObject);
             patrol = false;
             chasePlayer = true;
