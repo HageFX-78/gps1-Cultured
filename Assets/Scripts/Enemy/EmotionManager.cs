@@ -11,7 +11,8 @@ public class EmotionManager : MonoBehaviour
         "Delusional", "Hatred", "Self_Loathing", "Despair", "Righteousness"
     };
 
-    public float minDifference, maxDifference, startMinThreshold, startMaxThreshold;//Setting values that should be altered
+    public float startMinThreshold, startMaxThreshold;//Setting values that should be altered
+    public int minDifference, maxDifference;
     float minThreshold, maxThreshold;
     float currentThreshold;
 
@@ -26,24 +27,35 @@ public class EmotionManager : MonoBehaviour
 
 
         InitialiseType();
-        //Safe zone
+        //Safe zone & Size
         float addRand = Random.Range(minDifference, maxDifference);
-        minThreshold = Random.Range(20, 80);
+        Debug.Log(addRand);
+        minThreshold = Random.Range(30, 70);
         maxThreshold = minThreshold + addRand;
         currentThreshold = Random.Range(startMinThreshold, startMaxThreshold);
         SafeZone.sizeDelta = new Vector2((addRand / 100) * 600, 15);
-        float safeZoneOffset = minThreshold > 50 ? 300 : -300;
-        SafeZone.anchoredPosition = new Vector2(((minThreshold+(addRand/2))/100)* safeZoneOffset, 310); 
+
+        //Safe zone position
+        float safeZoneMidOffeset = (addRand / 2);
+        float safeZoneMidpointX = (minThreshold + safeZoneMidOffeset);
+        float safeZoneOffset = 0;
+        float safeZoneMidtoMax = 0;
+        if (safeZoneMidpointX > 50)
+        {
+            safeZoneOffset = 300;
+            safeZoneMidtoMax = safeZoneMidpointX - 50;           
+        }
+        else
+        {
+            safeZoneOffset = -300;
+            safeZoneMidtoMax = 50 - safeZoneMidpointX;
+        }
+        SafeZone.anchoredPosition = new Vector2((safeZoneMidtoMax / 100) * safeZoneOffset, 310);
         updateEmotionBar();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) // just initialises the dictionary and debug log
-        {
-            
-            //Debug.Log($"{emotion.currentType}, Rationality: {emotion.TypeMultiplier["Rationality"]}, Love: {emotion.TypeMultiplier["Love"]}, " +$" Hope: { emotion.TypeMultiplier["Hope"]}, Acceptance: { emotion.TypeMultiplier["Acceptance"]}");
-        }
 
         if(Input.GetKeyDown(KeyCode.K))
         {
@@ -115,27 +127,33 @@ public class EmotionManager : MonoBehaviour
         updateEmotionBar();
         //Debug.Log($"current = {currentThreshold}, dmg dealt {baseDamage * emotion.TypeMultiplier[damageType]}");
     }
-
+    public void selfHarm(float selfDMG)
+    {
+        currentThreshold -= selfDMG * 1;
+        currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
+        updateEmotionBar();
+    }
     public void CurrentEmotionBar()
     {
-        Debug.Log($"Current Emotion bar: {currentThreshold}");
+        Debug.Log($"Min max L {minThreshold}, {maxThreshold} == Current : {currentThreshold}");
     }
 
-    public void checkTargetThreshold() //not completed
+    public bool checkTargetThreshold() //not completed
     {
         if(currentThreshold >= minThreshold && currentThreshold <= maxThreshold)
         {
-            Debug.Log("Threshold reached");
+            return true;
         }
         else
         {
-            Debug.Log("Failed");
+            return false;
         }
     }
     public void updateEmotionBar()
     {
         PosBar.sizeDelta = new Vector2((currentThreshold/100)*600, 15);
         NegBar.sizeDelta = new Vector2(((100-currentThreshold)/ 100)*600, 15);
+        
     }
 
 }
