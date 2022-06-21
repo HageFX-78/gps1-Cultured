@@ -9,7 +9,7 @@ public class PlayerTurnState : BattleBaseState
     public override void EnterState(BattleStateManager battle, DBManager dialbtn)
     {
         //battle.turnNum++;
-        Debug.Log("Turn : " + Mathf.RoundToInt(battle.turnNum / 1.8f));
+        //Debug.Log("Turn : " + Mathf.RoundToInt(battle.turnNum / 1.8f));
         dialbtn.playerTurnInitialize();
     }
 

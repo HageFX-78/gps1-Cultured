@@ -16,6 +16,7 @@ public class BattleStateManager : MonoBehaviour
     public int maxTurn = 11; //Includes player + enemy turn
     void Start()
     {
+        turnNum = 0;
         currentState = battleless;
         currentState.EnterState(this, dbm);
     }
