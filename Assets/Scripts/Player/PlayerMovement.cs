@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public EnemyManager enemyManager;
+    [Header("Player Boundaries")]
+    Vector2 boundary;
+    [SerializeField] private float leftLimit;
+    [SerializeField] private float rightLimit;
+    [SerializeField] private float topLimit;
+    [SerializeField] private float btmLimit;
 
     [Header("Transition References")]
     public static Vector2 transitionPos;
@@ -41,10 +46,22 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>PLAYER MOVEMENT<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-        movement = new Vector2(x, y).normalized;
 
+        movement = new Vector2(x,y).normalized;
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BOUNDARY DETECTION<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+        /*boundary.x = Mathf.Clamp(transform.position.x + 1, leftLimit, rightLimit);
+        boundary.y = Mathf.Clamp(transform.position.y + 1, topLimit, btmLimit);
+            
+        transform.position = boundary;
+
+        Debug.Log(movement);*/
+
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SPRINTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         if(Input.GetKey(KeyCode.LeftShift) && !fatigue)
         {
             if (x != 0 || y != 0)
@@ -110,4 +127,15 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+
+    private void OnDrawGizmosSelected()
+    {
+        //draw player boundary
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawLine(new Vector2(leftLimit, topLimit), new Vector2(rightLimit, topLimit));
+        Gizmos.DrawLine(new Vector2(leftLimit, btmLimit), new Vector2(rightLimit, btmLimit));
+        Gizmos.DrawLine(new Vector2(leftLimit, topLimit), new Vector2(leftLimit, btmLimit));
+        Gizmos.DrawLine(new Vector2(rightLimit, topLimit), new Vector2(rightLimit, btmLimit));
+    }
 }
