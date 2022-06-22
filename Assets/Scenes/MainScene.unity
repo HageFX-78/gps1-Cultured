@@ -4871,6 +4871,7 @@ MonoBehaviour:
   switchDialogueCooldown: 0.2
   coolDownSplitPortion: 5
   typeSpeed: 0.01
+  refreshDialogueTrigger: 0.2
 --- !u!4 &1061877859
 Transform:
   m_ObjectHideFlags: 0
