@@ -8,7 +8,8 @@ public class TriggerDialogue : MonoBehaviour
     [SerializeField] DialogueManager manager;
     [SerializeField] bool interactableType;
     [SerializeField] bool convoTriggered;//False means dialogue never triggered, true means triggered alr and wont trigger again. False by default
-    bool inRange = false, interacting = false;
+    bool inRange = false;
+    public static bool interacting = false;
 
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,12 +21,16 @@ public class TriggerDialogue : MonoBehaviour
                 convoTriggered = true;
                 manager.startConversation(convoFile);
             }
-            else
-            {
-                inRange = true;
-            }
-            
         }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Input.GetKey(KeyCode.Space) && interactableType && !interacting)
+        {
+            interacting = true;
+            manager.startConversation(convoFile);
+        }
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -38,10 +43,6 @@ public class TriggerDialogue : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.Space) && interactableType && inRange && !interacting)
-        {
-            interacting = true;
-            manager.startConversation(convoFile);          
-        }
+        
     }
 }

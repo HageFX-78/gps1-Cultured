@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] float switchDialogueCooldown;
     [SerializeField] int coolDownSplitPortion;
     [SerializeField] float typeSpeed;
+    [SerializeField] float refreshDialogueTrigger;
     bool dialogueCooldown;
     bool dialogueActive;
     string[] dls; int curLineNum, dlsSize;
@@ -41,6 +42,7 @@ public class DialogueManager : MonoBehaviour
                 dialogueUI.SetActive(false);
                 dialogueCooldown = false;
                 Time.timeScale = 1;
+                StartCoroutine(smallDelay());
             }
             else
             {             
@@ -81,6 +83,14 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(typeSpeed);
         }
     }
+    IEnumerator smallDelay()
+    {
+        while (TriggerDialogue.interacting)
+        {
+            yield return new WaitForSecondsRealtime(refreshDialogueTrigger);
+            TriggerDialogue.interacting = false;
+        }
+    }
     public void startConversation(TextAsset targetFile)
     {
         dialogueUI.SetActive(true);
@@ -93,4 +103,5 @@ public class DialogueManager : MonoBehaviour
         Time.timeScale = 0;
         displayCurrentDialogue();
     }
+
 }
