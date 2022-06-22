@@ -10,7 +10,7 @@ public class NoBattleState : BattleBaseState
 
     public override void EnterState(BattleStateManager battle, DBManager dialbtn)
     {
-        //battle.turnNum = 0;
+        battle.turnNum = 1;
         Timer = 3f;
         dialbtn.noBattleStateInitialize();
     }
@@ -25,7 +25,6 @@ public class NoBattleState : BattleBaseState
         {
             if(battle.turnNum<battle.maxTurn)
             {
-                battle.turnNum++;
                 battle.SwitchState(battle.pTurn, dialbtn);
             }
             

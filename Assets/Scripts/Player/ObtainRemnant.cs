@@ -8,7 +8,7 @@ public class ObtainRemnant : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log($"remnant obtained: {remnantObtained}");
+       // Debug.Log($"remnant obtained: {remnantObtained}");
     }
 
 
