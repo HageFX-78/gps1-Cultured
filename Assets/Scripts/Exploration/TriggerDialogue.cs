@@ -7,8 +7,10 @@ public class TriggerDialogue : MonoBehaviour
     [SerializeField] TextAsset convoFile;
     [SerializeField] DialogueManager manager;
     [SerializeField] bool interactableType;
-    [SerializeField] bool convoTriggered;//False means dialogue never triggered, true means triggered alr and wont trigger again. False by default
-    bool inRange = false;
+    [SerializeField] bool convoTriggered;//False means dialogue never triggered, true means triggered alr and wont trigger again. False by default (One-time dialogue scenario)
+    
+    [SerializeField] List<TransformList> transformLocationList = new List<TransformList>();
+
     public static bool interacting = false;
 
     // Update is called once per frame
@@ -19,7 +21,7 @@ public class TriggerDialogue : MonoBehaviour
             if(!interactableType)
             {
                 convoTriggered = true;
-                manager.startConversation(convoFile);
+                startConvo();
             }
         }
     }
@@ -28,7 +30,7 @@ public class TriggerDialogue : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && interactableType && !interacting)
         {
             interacting = true;
-            manager.startConversation(convoFile);
+            startConvo();
         }
         
     }
@@ -36,13 +38,19 @@ public class TriggerDialogue : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            inRange = false;
             interacting = false;
         }
         
     }
-    private void FixedUpdate()
+    private void startConvo()
     {
-        
+        if (transformLocationList.Count == 0)
+        {
+            manager.startConversation(convoFile);
+        }
+        else
+        {
+            manager.startConversation(convoFile, transformLocationList);
+        }
     }
 }
