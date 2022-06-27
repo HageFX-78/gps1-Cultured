@@ -11,15 +11,21 @@ public class EnemyTurnState : BattleBaseState
     }
     public override void UpdateState(BattleStateManager battle, DBManager dialbtn)
     {
-        if (battle.turnNum == battle.maxTurn)
+        
+        if(battle.turnNum%2!=0)
         {
-          //  battle.inBattle = false;
-            battle.SwitchState(battle.battleless, dialbtn);
-        }
-        else if(battle.turnNum%2!=0)
-        {
-          //  Debug.Log("Enemy choice");
-            battle.SwitchState(battle.pTurn, dialbtn);
+            //  Debug.Log("Enemy choice");
+            if (battle.turnNum > battle.maxTurn)
+            {
+                //  battle.inBattle = false;
+                battle.SwitchState(battle.battleless, dialbtn);
+            }
+            else
+            {
+                battle.SwitchState(battle.pTurn, dialbtn);
+
+            }
+            
         }
 
     }

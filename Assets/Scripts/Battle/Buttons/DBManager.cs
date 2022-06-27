@@ -16,14 +16,14 @@ public class DBManager : MonoBehaviour
     [Header("UI References")]
     public TextAsset pDialoguefile;//Player dialogue options file
     public TextAsset eDialoguefile;//Enemy dialogue options file
-    public TextMeshProUGUI convoTextPlayer, convoTextEnemy, talkerName;//Text dialogue box reference
+    public TextMeshProUGUI convoTextPlayer, convoTextEnemy, talkerName, enemyLastConvo;//Text dialogue box reference
 
     public Button btn1; public Button btn2; public Button btn3; public Button btn4;
     TextMeshProUGUI bText1; TextMeshProUGUI bText2; TextMeshProUGUI bText3; TextMeshProUGUI bText4;
     List<Button> btnList;
     List<TextMeshProUGUI> btnTXTList;
 
-    public GameObject playerOptionsUI, playerDialogueUI, enemyDialogueUI;
+    public GameObject playerOptionsUI, playerDialogueUI, enemyDialogueUI, lastConvoUI;
 
     [Header("Lists")]
     public List<PDials> dialLists = new List<PDials>();
@@ -36,11 +36,12 @@ public class DBManager : MonoBehaviour
     [SerializeField] private int enemySelfHarmMinDmg;
     [SerializeField] private int enemySelfHarmMaxDmg;
     [SerializeField] private float typeSpeed;
-    [SerializeField] private float nextDialogueCooldown;
-    bool dialogueCooldown;
+    [SerializeField] private float generalCooldown;
     private IEnumerator typeD; // Type out dialogue coroutine instance reference
-    bool optionsVisible;
-    bool lastDialogueOn;
+    bool optionsVisible, lastDialogueOn, typingDialogue, playerTurn;
+
+    bool canInput;//Global disable and enable the input of player
+    string currentText;
     private void Start()
     {
         //-------------------------Values and reference intialization-----------------------------------
@@ -106,35 +107,57 @@ public class DBManager : MonoBehaviour
         //+++++++++++++++++++ Functions to run at start ++++++++++++++++++++++
 
         shuffleOptionsAtStart();
-        dialogueCooldown = true;
+        canInput = false;
+        typingDialogue = false;
+        playerTurn = true;
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
 
     // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Update <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && !dialogueCooldown && !optionsVisible && !lastDialogueOn)
+        if ((Input.GetKey(KeyCode.Space)|| Input.GetKey(KeyCode.Mouse0))  && !optionsVisible && !lastDialogueOn && canInput)
         {
-            nextDialogue();
+            
+            if(typingDialogue)
+            {
+                instantShowDialogue();
+                //Debug.Log("instant moment");
+            }
+            else
+            {
+                nextDialogue();
+                //Debug.Log("Progressing");
+            }
+            
         }
     }
     //=============================== Internal Functions to be called ================================================
     public void nextDialogue()
     {
-        dialogueCooldown = true;
-        StopCoroutine(typeD);
-        if (battle.turnNum < battle.maxTurn)
-        {
+        canInput = false;
+
             battle.turnNum++;
-            StartCoroutine(endDialogueCooldown());
+
+
+        Debug.Log($"Real turn : {battle.turnNum}");
+
+        StartCoroutine(enableInput());
+    }
+    public void instantShowDialogue()
+    {
+        canInput = false;
+        typingDialogue = false;
+        StopCoroutine(typeD);
+        if (playerTurn)
+        {
+            convoTextPlayer.text = currentText;
         }
         else
         {
-            Debug.Log("Battle Ended");
-
-            //Return to MAINSCENE code
+            convoTextEnemy.text = currentText;
         }
-        Debug.Log($"Real turn : {battle.turnNum}");
+        StartCoroutine(enableInput());
     }
     void shuffleOptionsAtStart()
     {
@@ -150,14 +173,13 @@ public class DBManager : MonoBehaviour
     }
     public void clickOption(string objName)
     {
-        int rand = getRandFromList();
         string enemyType = objName.Split("_")[0];
         int dmgValue = int.Parse(objName.Split("_")[1]);
 
         enemyEmotion.TakeDamage(dmgValue, enemyType);
         playerDialogueBoxShow(int.Parse(objName.Split("_")[2]));
         switchOutThisOption(int.Parse(objName.Split("_")[2]));
-        StartCoroutine(endDialogueCooldown());
+
     }
     void switchOutThisOption(int btnIndex)//Switch out used dialogue option and take random dialogue option from the pool
     {
@@ -166,38 +188,39 @@ public class DBManager : MonoBehaviour
         btnList[btnIndex].gameObject.name = $"{dialLists[rand].emotions}_{Random.Range(minBaseDmg, maxBaseDmg)}_{btnIndex}";//Format of  <emotiontype_DamageValue_btnReferenceIndex>
         dialLists.RemoveAt(rand);
     }
-    IEnumerator endDialogueCooldown()//Cooldown so player cant spam and immediately skip through entire conversation
+    IEnumerator enableInput()//Cooldown so player cant spam and immediately skip through entire conversation
     {
-        while (dialogueCooldown)
+        while (!canInput)
         {
-
-            yield return new WaitForSecondsRealtime(nextDialogueCooldown);
-            dialogueCooldown = false;
-
+            yield return new WaitForSecondsRealtime(generalCooldown);
+            canInput = true;
         }
     }
     IEnumerator typeDialogue(string content, TextMeshProUGUI txtbox)//Display character 1 by 1, visual effect
     {
+        typingDialogue = true;
         txtbox.text = "";
         foreach (char letter in content)
         {
             txtbox.text += letter;
             yield return new WaitForSecondsRealtime(typeSpeed);
         }
+        //Debug.Log("Finished typing");
+        typingDialogue = false;
+
     }
     //=============================== External Functions to be called ================================================
     public void noBattleStateInitialize()
     {
 
-        //<---Possibly Start battle screen/animation code here too
-        dialogueCooldown = true;
-        playerDialogueUI.SetActive(true);
-        playerOptionsUI.SetActive(false);
-        enemyDialogueUI.SetActive(false);
-        optionsVisible = false;
-        talkerName.text = "Info";
-        if (battle.turnNum == battle.maxTurn)
+        optionsVisible = true;
+        
+        if (battle.turnNum > battle.maxTurn)
         {
+            talkerName.text = "Info";
+            playerDialogueUI.SetActive(true);
+            playerOptionsUI.SetActive(false);
+            enemyDialogueUI.SetActive(false);
             if (enemyEmotion.checkTargetThreshold() == true)
             {
                 typeD = typeDialogue("A soul was saved...", convoTextPlayer);
@@ -213,14 +236,19 @@ public class DBManager : MonoBehaviour
         }
         else
         {
-            typeD = typeDialogue("Welcome to hell.... says the mysterious entity", convoTextPlayer);
+            //talkerName.text = "Info";
+            playerDialogueUI.SetActive(false);
+            playerOptionsUI.SetActive(false);
+            enemyDialogueUI.SetActive(true);
+            typeD = typeDialogue("<Starter insult>.... doesnt affect bar ", convoTextEnemy);
         }
 
         StartCoroutine(typeD);
     }
     public void playerTurnInitialize()
     {
-
+        playerTurn = true;
+        lastConvoUI.SetActive(true);
         playerDialogueUI.SetActive(false);
         playerOptionsUI.SetActive(true);
         enemyDialogueUI.SetActive(false);
@@ -228,20 +256,29 @@ public class DBManager : MonoBehaviour
     }
     public void playerDialogueBoxShow(int btnIndex)
     {
+
+        StartCoroutine(enableInput());
+        lastConvoUI.SetActive(false);
         playerDialogueUI.SetActive(true);
         playerOptionsUI.SetActive(false);
         enemyDialogueUI.SetActive(false);
         optionsVisible = false;
-        talkerName.text = "Alex";
-        typeD = typeDialogue(btnTXTList[btnIndex].text, convoTextPlayer);
 
+        talkerName.text = "Alex";
+        currentText = btnTXTList[btnIndex].text;
+        typeD = typeDialogue(btnTXTList[btnIndex].text, convoTextPlayer);
         StartCoroutine(typeD);
+        
     }
     public void enemyTurnInitialize()
     {
+        playerTurn = false;
+        StartCoroutine(enableInput());
+        lastConvoUI.SetActive(false);
         playerDialogueUI.SetActive(false);
         playerOptionsUI.SetActive(false);
         enemyDialogueUI.SetActive(true);
+
         int lastRef = -1;
         int randE = Random.Range(0, enemyDialList.Count);
         while (lastRef == randE)
@@ -249,6 +286,9 @@ public class DBManager : MonoBehaviour
             randE = Random.Range(0, enemyDialList.Count);
         }
 
+
+        currentText = enemyDialList[randE];
+        enemyLastConvo.text = enemyDialList[randE];
         typeD = typeDialogue(enemyDialList[randE], convoTextEnemy);
         StartCoroutine(typeD);
         lastRef = randE;

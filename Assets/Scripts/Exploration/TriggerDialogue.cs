@@ -27,7 +27,7 @@ public class TriggerDialogue : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKey(KeyCode.Space) && interactableType && !interacting)
+        if ((Input.GetKey(KeyCode.Space)|| Input.GetKey(KeyCode.Mouse0)) && interactableType && !interacting)
         {
             interacting = true;
             startConvo();

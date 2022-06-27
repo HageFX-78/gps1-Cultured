@@ -13,10 +13,10 @@ public class BattleStateManager : MonoBehaviour
     public bool inBattle = false;
     public bool nxtTurn = false;
     public int turnNum = 0;
-    public int maxTurn = 11; //Includes player + enemy turn
+    public int maxTurn; //Includes player + enemy turn
     void Start()
     {
-        turnNum = 0;
+        turnNum = 1;
         currentState = battleless;
         currentState.EnterState(this, dbm);
     }

@@ -427,9 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87d5081a41aa0b4291b741f26fb6820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1773002515}
-  buttonOrder: 4
-  onTop: 0
 --- !u!212 &71651793
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1862,9 +1859,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87d5081a41aa0b4291b741f26fb6820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1773002515}
-  buttonOrder: 1
-  onTop: 0
 --- !u!61 &348496492
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2593,9 +2587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87d5081a41aa0b4291b741f26fb6820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1773002515}
-  buttonOrder: 3
-  onTop: 0
 --- !u!212 &491444413
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5003,7 +4994,7 @@ MonoBehaviour:
   typeSpeed: 0.01
   refreshDialogueTrigger: 0.2
   lerpTravelInterval: 0.01
-  travelDistancePerLoop: 0.02
+  travelDistancePerLoop: 0.04
 --- !u!4 &1061877859
 Transform:
   m_ObjectHideFlags: 0
@@ -6917,9 +6908,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87d5081a41aa0b4291b741f26fb6820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1773002515}
-  buttonOrder: 2
-  onTop: 0
 --- !u!212 &1715542547
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7291,12 +7279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a007124cda195e4f81a1a8f8fbe50a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchList:
-  - {fileID: 348496488}
-  - {fileID: 1715542544}
-  - {fileID: 491444409}
-  - {fileID: 71651790}
-  door: {fileID: 155646444}
 --- !u!1 &1867701498
 GameObject:
   m_ObjectHideFlags: 0

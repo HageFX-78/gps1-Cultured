@@ -16,7 +16,7 @@ public class PlayerTurnState : BattleBaseState
     public override void UpdateState(BattleStateManager battle, DBManager dialbtn)
     {
         
-        if (battle.turnNum == battle.maxTurn)
+        if (battle.turnNum > battle.maxTurn)
         {
             battle.inBattle = false;
             battle.SwitchState(battle.battleless, dialbtn);

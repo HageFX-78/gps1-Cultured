@@ -26,8 +26,9 @@ public class DialogueManager : MonoBehaviour
     bool dialogueCooldown;
     bool dialogueActive;
     string[] dls; int curLineNum, dlsSize;
-
+    bool canInput, typingDialogue;
     private IEnumerator typeD;//Letter by letter display coroutine instance
+    string currentText;
 
     private void Start()
     {
@@ -39,11 +40,9 @@ public class DialogueManager : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKey(KeyCode.Space)&& dialogueActive && !dialogueCooldown)
+        if((Input.GetKey(KeyCode.Space)|| Input.GetKey(KeyCode.Mouse0)) && dialogueActive && canInput)
         {
-            StopCoroutine(typeD);
-            dialogueCooldown = true;
-            
+            canInput = false;
             //Debug.Log(curLineNum);
             if (curLineNum >= dlsSize)
             {
@@ -54,23 +53,30 @@ public class DialogueManager : MonoBehaviour
                 Time.timeScale = 1;
                 
                 StartCoroutine(smallDelay());//Stops player from triggering another convo in a frame at the end
-                camState.isCutScene = false;
+                
             }
             else
             {             
-                StartCoroutine(endDialogueCooldown());
-                displayCurrentDialogue();
-            }    
-            
+                if(typingDialogue)
+                {
+                    instantShowDialogue();
+                }
+                else
+                {
+                    displayCurrentDialogue();
+                }               
+            }               
         }
     }
     
     void displayCurrentDialogue()
     {
+        StartCoroutine(enableInput());
         string[] thisLine = dls[curLineNum].Split(':');
         talkerName.text = thisLine[0];
         typeD = typeDialogue(thisLine[1]);
-        if(thisLine.Length>2)
+        currentText = thisLine[1];
+        if (thisLine.Length>2)
         {
             string sanitizedKey;
             if(curLineNum == dlsSize-1)
@@ -90,32 +96,43 @@ public class DialogueManager : MonoBehaviour
         curLineNum++;
         
     }
-    IEnumerator endDialogueCooldown()//Cooldown so player cant spam and immediately skip through entire conversation
+    public void instantShowDialogue()
     {
-        while (dialogueCooldown)
+        canInput = false;
+        typingDialogue = false;
+        StopCoroutine(typeD);
+        dialogueContent.text = currentText;
+        StartCoroutine(enableInput());
+    }
+    IEnumerator enableInput()//Cooldown so player cant spam and immediately skip through entire conversation
+    {
+        while (!canInput)
         {
             
             yield return new WaitForSecondsRealtime(switchDialogueCooldown);
-            dialogueCooldown = false;
+            canInput = true;
 
         }
     }
     IEnumerator typeDialogue(string content)//Display character 1 by 1, visual effect
     {
+        typingDialogue = true;
         dialogueContent.text = "";
         foreach (char letter in content)
         {
             dialogueContent.text += letter;
             yield return new WaitForSecondsRealtime(typeSpeed);
         }
+        typingDialogue = false;
     }
     IEnumerator smallDelay()
     {
         while (TriggerDialogue.interacting)
         {
             yield return new WaitForSecondsRealtime(refreshDialogueTrigger);
-            
+
             TriggerDialogue.interacting = false;
+            camState.isCutScene = false;
         }
     }
     IEnumerator lerpToTarget(Vector3 defPos, Vector3 tarPos)
@@ -138,19 +155,24 @@ public class DialogueManager : MonoBehaviour
     }
     public void startConversation(TextAsset targetFile)
     {
-        
+        currentText = "";
+        canInput = true;
+
         dialogueUI.SetActive(true);
         dialogueActive = true;
         dialogueCooldown = true;
-        StartCoroutine(endDialogueCooldown());
+        StartCoroutine(enableInput());
         curLineNum = 0;
         dls = targetFile.text.Split('\n');
         dlsSize = dls.Length;
         Time.timeScale = 0;
         displayCurrentDialogue();
     }
-    public void startConversation(TextAsset targetFile, List<TransformList> trList)
-    {       
+    public void startConversation(TextAsset targetFile, List<TransformList> trList)//Function override
+    {
+        canInput = true;
+        currentText = "";
+
         gotoDC.Clear();
         gotoDC.Add("player", playerPos);
         if (trList.Count > 0)
@@ -165,7 +187,7 @@ public class DialogueManager : MonoBehaviour
         dialogueUI.SetActive(true);
         dialogueActive = true;
         dialogueCooldown = true;
-        StartCoroutine(endDialogueCooldown());
+        StartCoroutine(enableInput());
         curLineNum = 0;
         dls = targetFile.text.Split('\n');
         dlsSize = dls.Length;
