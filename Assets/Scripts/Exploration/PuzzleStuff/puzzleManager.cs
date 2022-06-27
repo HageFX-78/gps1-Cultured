@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class puzzleManager : MonoBehaviour
+public class PuzzleManager : MonoBehaviour
 {
     private float currentButton;
-    [SerializeField] public switchScript button1;
-    [SerializeField] public switchScript button2;
-    [SerializeField] public switchScript button3;
-    [SerializeField] public switchScript button4;
+    [SerializeField] List<GameObject> switchList;
     [SerializeField] public GameObject door;
+    private new Renderer renderer;
 
     private bool puzzleDone;
 
@@ -24,10 +22,11 @@ public class puzzleManager : MonoBehaviour
         {
             if (buttonNumber != currentButton + 1)
             {
-                button1.PuzzleFail();
-                button2.PuzzleFail();
-                button3.PuzzleFail();
-                button4.PuzzleFail();
+                for(int i = 0; i < switchList.Count; i++)
+                {
+                    renderer = switchList[i].GetComponent<Renderer>();
+                    renderer.material.color = Color.red;
+                }
                 currentButton = 0;
             }
             else

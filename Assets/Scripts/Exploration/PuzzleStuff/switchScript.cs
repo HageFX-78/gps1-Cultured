@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class switchScript : MonoBehaviour
+public class SwitchScript : MonoBehaviour
 {
-    [SerializeField] public puzzleManager manager;
+    [SerializeField] public PuzzleManager manager;
 
     [Header("Put number in the order the buttons supposed to be pressed")]
     public float buttonOrder;
@@ -22,10 +22,5 @@ public class switchScript : MonoBehaviour
             renderer.material.color = Color.green;
             manager.ButtonPress(buttonOrder);
         }
-    }
-
-    public void PuzzleFail()
-    {
-        renderer.material.color = Color.red;
     }
 }
