@@ -1862,7 +1862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1773002515}
-  buttonOrder: 1
+  buttonOrder: 2
 --- !u!61 &348496492
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6911,7 +6911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1773002515}
-  buttonOrder: 2
+  buttonOrder: 1
 --- !u!212 &1715542547
 SpriteRenderer:
   m_ObjectHideFlags: 0
