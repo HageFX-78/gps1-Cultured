@@ -9,6 +9,7 @@ public class SwitchScript : MonoBehaviour
     [Header("Put number in the order the buttons supposed to be pressed")]
     public float buttonOrder;
     private new Renderer renderer;
+
     private void Start()
     {
         renderer = GetComponent<Renderer>();
@@ -19,8 +20,11 @@ public class SwitchScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            renderer.material.color = Color.green;
-            manager.ButtonPress(buttonOrder);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                renderer.material.color = Color.green;
+                manager.ButtonPress(buttonOrder);
+            }
         }
     }
 }

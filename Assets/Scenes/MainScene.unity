@@ -7283,7 +7283,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a007124cda195e4f81a1a8f8fbe50a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchList: []
+  switchList:
+  - {fileID: 348496488}
+  - {fileID: 1715542544}
+  - {fileID: 491444409}
+  - {fileID: 71651790}
   door: {fileID: 155646444}
 --- !u!1 &1867701498
 GameObject:
