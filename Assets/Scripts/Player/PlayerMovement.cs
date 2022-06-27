@@ -118,24 +118,13 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator LoadingBattle()
     {
+        Time.timeScale = 0;
         //add to the transition count
         transitionCount++;
 
-        yield return new WaitForSeconds(timerToTransition);
+        yield return new WaitForSecondsRealtime(timerToTransition);
         //load scene after timer goes;
         SceneManager.LoadSceneAsync("Battle Scene");
 
-    }
-
-
-    private void OnDrawGizmosSelected()
-    {
-        //draw player boundary
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawLine(new Vector2(leftLimit, topLimit), new Vector2(rightLimit, topLimit));
-        Gizmos.DrawLine(new Vector2(leftLimit, btmLimit), new Vector2(rightLimit, btmLimit));
-        Gizmos.DrawLine(new Vector2(leftLimit, topLimit), new Vector2(leftLimit, btmLimit));
-        Gizmos.DrawLine(new Vector2(rightLimit, topLimit), new Vector2(rightLimit, btmLimit));
     }
 }
