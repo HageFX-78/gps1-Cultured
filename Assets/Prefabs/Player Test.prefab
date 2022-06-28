@@ -137,9 +137,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92da3049de4ca644f97d264b5054732c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerToTransition: 1
+  timerToTransition: 0.25
   moveSpeed: 4
-  sprintSpeed: 7
+  sprintSpeed: 8
   sprintGauge: 100
   sprintLossRate: 30
   sprintGainRate: 10

@@ -5,13 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Player Boundaries")]
-    Vector2 boundary;
-    [SerializeField] private float leftLimit;
-    [SerializeField] private float rightLimit;
-    [SerializeField] private float topLimit;
-    [SerializeField] private float btmLimit;
-
     [Header("Transition References")]
     public static Vector2 transitionPos;
     public static int transitionCount = 0;
