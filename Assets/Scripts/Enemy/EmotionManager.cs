@@ -29,16 +29,17 @@ public class EmotionManager : MonoBehaviour
 
         InitialiseType();
 
-        enemyEmotionTXT.text = emotion.currentType;
+        //enemyEmotionTXT.text = emotion.currentType;
+        enemyEmotionTXT.text = "???";
         positiveEmotionTXT.text = "???";
 
         //Safe zone & Size
         float addRand = Random.Range(minDifference, maxDifference);
-        Debug.Log(addRand);
-        minThreshold = Random.Range(30, 70);
+        //Debug.Log(addRand);
+        minThreshold = Random.Range(20, 50);
         maxThreshold = minThreshold + addRand;
         currentThreshold = Random.Range(startMinThreshold, startMaxThreshold);
-        SafeZone.sizeDelta = new Vector2((addRand / 100) * 600, 15);
+        SafeZone.sizeDelta = new Vector2((addRand / 100) * 600, 23);
 
         //Safe zone position
         float safeZoneMidOffeset = (addRand / 2);
@@ -55,7 +56,7 @@ public class EmotionManager : MonoBehaviour
             safeZoneOffset = -300;
             safeZoneMidtoMax = 50 - safeZoneMidpointX;
         }
-        SafeZone.anchoredPosition = new Vector2((safeZoneMidtoMax / 100) * safeZoneOffset, 310);
+        SafeZone.anchoredPosition = new Vector2((safeZoneMidtoMax / 100) * safeZoneOffset, 296);
         updateEmotionBar();
     }
 
@@ -129,6 +130,7 @@ public class EmotionManager : MonoBehaviour
         currentThreshold += baseDamage * emotion.TypeMultiplier[damageType];
         currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
         updateEmotionBar();
+        CurrentEmotionBar();//Logging only - comment when we done
         //Debug.Log($"current = {currentThreshold}, dmg dealt {baseDamage * emotion.TypeMultiplier[damageType]}");
     }
     public void selfHarm(float selfDMG)

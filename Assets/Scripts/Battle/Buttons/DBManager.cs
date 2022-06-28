@@ -17,6 +17,7 @@ public class DBManager : MonoBehaviour
     public TextAsset pDialoguefile;//Player dialogue options file
     public TextAsset eDialoguefile;//Enemy dialogue options file
     public TextMeshProUGUI convoTextPlayer, convoTextEnemy, talkerName, enemyLastConvo;//Text dialogue box reference
+    public Turn turnScriptRef;
 
     public Button btn1; public Button btn2; public Button btn3; public Button btn4;
     TextMeshProUGUI bText1; TextMeshProUGUI bText2; TextMeshProUGUI bText3; TextMeshProUGUI bText4;
@@ -27,6 +28,7 @@ public class DBManager : MonoBehaviour
 
     [Header("Lists")]
     public List<PDials> dialLists = new List<PDials>();
+    public List<PDials> currentDialLists = new List<PDials>();
     public List<string> enemyDialList = new List<string>();
 
     [Header("Settings")]
@@ -38,11 +40,12 @@ public class DBManager : MonoBehaviour
     [SerializeField] private float typeSpeed;
     [SerializeField] private float generalCooldown;
     private IEnumerator typeD; // Type out dialogue coroutine instance reference
-    bool optionsVisible, lastDialogueOn, typingDialogue, playerTurn;
+    public bool optionsVisible, lastDialogueOn, typingDialogue, playerTurn;
 
     bool canInput;//Global disable and enable the input of player
     string currentText;
 
+    int lastRef = -1;//Last reference for enemy dialogue shuffle
     private void Awake()
     {
         //transition
@@ -107,12 +110,12 @@ public class DBManager : MonoBehaviour
         {
             int indexTemp = x;//Workaround so it doesnt only reference X value after loop
             btnList[x].onClick.AddListener(delegate { clickOption(btnList[indexTemp].gameObject.name); });
+            //btnList[x].on(btnList[x].Select());
             btnTXTList[x] = btnList[x].GetComponentInChildren<TextMeshProUGUI>();
         }
         //-------------------------------------------------------------------------------------------------------
 
         //+++++++++++++++++++ Functions to run at start ++++++++++++++++++++++
-
         shuffleOptionsAtStart();
         canInput = false;
         typingDialogue = false;
@@ -123,7 +126,7 @@ public class DBManager : MonoBehaviour
     // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Update <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     void Update()
     {
-        if ((Input.GetKey(KeyCode.Space)|| Input.GetKey(KeyCode.Mouse0))  && !optionsVisible && !lastDialogueOn && canInput)
+        if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.Mouse0))  && !optionsVisible && !lastDialogueOn && canInput)
         {
             
             if(typingDialogue)
@@ -185,7 +188,9 @@ public class DBManager : MonoBehaviour
 
         enemyEmotion.TakeDamage(dmgValue, enemyType);
         playerDialogueBoxShow(int.Parse(objName.Split("_")[2]));
-        switchOutThisOption(int.Parse(objName.Split("_")[2]));
+        dialLists.AddRange(currentDialLists);
+        shuffleOptionsAtStart();
+        turnScriptRef.turnUpdate();
 
     }
     void switchOutThisOption(int btnIndex)//Switch out used dialogue option and take random dialogue option from the pool
@@ -193,7 +198,15 @@ public class DBManager : MonoBehaviour
         int rand = getRandFromList();
         btnTXTList[btnIndex].text = dialLists[rand].dialogues;
         btnList[btnIndex].gameObject.name = $"{dialLists[rand].emotions}_{Random.Range(minBaseDmg, maxBaseDmg)}_{btnIndex}";//Format of  <emotiontype_DamageValue_btnReferenceIndex>
+        currentDialLists.Add(dialLists[rand]);
         dialLists.RemoveAt(rand);
+        /*  
+         * Only when navigation is turned on, can select using arrow keys/wasd
+        if (btnIndex == 0)
+        {
+            btnList[btnIndex].Select();
+        }
+        //*/
     }
     IEnumerator enableInput()//Cooldown so player cant spam and immediately skip through entire conversation
     {
@@ -247,7 +260,8 @@ public class DBManager : MonoBehaviour
             playerDialogueUI.SetActive(false);
             playerOptionsUI.SetActive(false);
             enemyDialogueUI.SetActive(true);
-            typeD = typeDialogue("<Starter insult>.... doesnt affect bar ", convoTextEnemy);
+            typeD = typeDialogue("Ugh.. What do you want?", convoTextEnemy);
+            enemyLastConvo.text = "Ugh.. What do you want?";
         }
 
         StartCoroutine(typeD);
@@ -260,6 +274,8 @@ public class DBManager : MonoBehaviour
         playerOptionsUI.SetActive(true);
         enemyDialogueUI.SetActive(false);
         optionsVisible = true;
+        //canInput = false;
+        //StartCoroutine(enableInput());
     }
     public void playerDialogueBoxShow(int btnIndex)
     {
@@ -286,14 +302,12 @@ public class DBManager : MonoBehaviour
         playerOptionsUI.SetActive(false);
         enemyDialogueUI.SetActive(true);
 
-        int lastRef = -1;
+        
         int randE = Random.Range(0, enemyDialList.Count);
-        while (lastRef == randE)
+        while (randE == lastRef)
         {
             randE = Random.Range(0, enemyDialList.Count);
         }
-
-
         currentText = enemyDialList[randE];
         enemyLastConvo.text = enemyDialList[randE];
         typeD = typeDialogue(enemyDialList[randE], convoTextEnemy);
