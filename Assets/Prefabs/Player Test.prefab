@@ -138,10 +138,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerToTransition: 0.25
-  moveSpeed: 4
-  sprintSpeed: 8
+  moveSpeed: 6
+  sprintSpeed: 10
   sprintGauge: 100
-  sprintLossRate: 30
+  sprintLossRate: 20
   sprintGainRate: 10
   fatigue: 0
   rb: {fileID: -4633987559434726319}

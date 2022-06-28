@@ -150,10 +150,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInRange: []
   target: {fileID: 0}
-  enemyDetectRange: 6
+  enemyDetectRange: 5
   patrolMoveRange: 5
   patrolTimer: 5
-  chaseSpeed: 4.5
+  chaseSpeed: 6.5
   chasePlayer: 0
   patrol: 0
   patrolOnCD: 0
@@ -167,7 +167,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

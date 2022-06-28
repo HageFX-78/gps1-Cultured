@@ -45,15 +45,6 @@ public class PlayerMovement : MonoBehaviour
 
         movement = new Vector2(x,y).normalized;
 
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>BOUNDARY DETECTION<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-        /*boundary.x = Mathf.Clamp(transform.position.x + 1, leftLimit, rightLimit);
-        boundary.y = Mathf.Clamp(transform.position.y + 1, topLimit, btmLimit);
-            
-        transform.position = boundary;
-
-        Debug.Log(movement);*/
-
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SPRINTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         if(Input.GetKey(KeyCode.LeftShift) && !fatigue)
         {

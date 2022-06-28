@@ -42,6 +42,13 @@ public class DBManager : MonoBehaviour
 
     bool canInput;//Global disable and enable the input of player
     string currentText;
+
+    private void Awake()
+    {
+        //transition
+        Time.timeScale = 1;
+    }
+
     private void Start()
     {
         //-------------------------Values and reference intialization-----------------------------------
@@ -230,7 +237,7 @@ public class DBManager : MonoBehaviour
                 typeD = typeDialogue("Alex felt something left his body... something that seemed important..", convoTextPlayer);
             }
 
-
+            //>>>>>>>>>>>>>>>>>>>>TRANSITION<<<<<<<<<<<<<<<<<<<<<<<<
             StartCoroutine(LoadBackLevel());
             //End of battle, switch back to main scene
         }
@@ -301,6 +308,6 @@ public class DBManager : MonoBehaviour
         lastDialogueOn = true;
         yield return new WaitForSeconds(transitionTimer);
         lastDialogueOn = false;
-        SceneManager.LoadSceneAsync("MainScene");
+        SceneManager.LoadSceneAsync("Lvl 1");
     }
 }
