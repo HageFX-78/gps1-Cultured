@@ -32,7 +32,7 @@ public class PuzzleManager : MonoBehaviour
             else
             {
                 currentButton++;
-                if (currentButton == 4)
+                if (currentButton == switchList.Count)
                 {
                     Destroy(door);
                     puzzleDone = true;

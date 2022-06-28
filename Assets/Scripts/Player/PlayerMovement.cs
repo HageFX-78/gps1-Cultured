@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,9 +23,13 @@ public class PlayerMovement : MonoBehaviour
     public float sprintLossRate = 20;
     public float sprintGainRate = 10;
     public bool fatigue = false;
-
     public Rigidbody2D rb;
-    
+
+    [Header("Sprint UI")]
+    public Slider slider;
+    public Image fill;
+    private Color orange = new Color(1, 0.5f, 0);
+    private Color darkOrange = new Color(1, 0.25f, 0);
     Vector2 movement;
 
     private void Start()
@@ -44,9 +49,9 @@ public class PlayerMovement : MonoBehaviour
         float y = Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(x,y).normalized;
-
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SPRINTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        if(Input.GetKey(KeyCode.LeftShift) && !fatigue)
+        slider.value = sprintGauge;
+        if (Input.GetKey(KeyCode.LeftShift) && !fatigue)
         {
             if (x != 0 || y != 0)
             {
@@ -59,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     speed = moveSpeed;
                     fatigue = true;
+                    fill.color = Color.red;
                 }
             }
         }
@@ -71,10 +77,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (sprintGauge > 50)
+        if (sprintGauge > 80) fill.color = Color.green;
+        else if (sprintGauge > 50)
         {
+            fill.color = orange;
             fatigue = false;
         }
+        else if (sprintGauge < 20 && !fatigue) fill.color = darkOrange;
     }
 
     void FixedUpdate()

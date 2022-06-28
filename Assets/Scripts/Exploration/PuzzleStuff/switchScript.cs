@@ -9,7 +9,7 @@ public class switchScript : MonoBehaviour
     [Header("Put number in the order the buttons supposed to be pressed")]
     public float buttonOrder;
     private new Renderer renderer;
-    public bool onTop = false;
+    private bool onTop = false;
 
     private void Start()
     {
