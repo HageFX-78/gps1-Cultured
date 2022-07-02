@@ -39,13 +39,27 @@ public class DBManager : MonoBehaviour
     [SerializeField] private int enemySelfHarmMaxDmg;
     [SerializeField] private float typeSpeed;
     [SerializeField] private float generalCooldown;
+    
+    [Header("Sanity Settings")]//Chance of sanity effect triggering from full sanity to insanity
+    [SerializeField] private float sanityEffectChanceLVL1;
+    [SerializeField] private float sanityEffectChanceLVL2;
+    [SerializeField] private float sanityEffectChanceLVL3;
+    [SerializeField] private float sanityEffectChanceLVL4;
+    [SerializeField] private float sanityEffectChanceLVL5;
+
+    [Header("Text Color Coding")]
+    [SerializeField] private string notEffective;
+    [SerializeField] private string superEffective;
+    [SerializeField] private string normallyEffective;
     private IEnumerator typeD; // Type out dialogue coroutine instance reference
     public bool optionsVisible, lastDialogueOn, typingDialogue, playerTurn;
-
     bool canInput;//Global disable and enable the input of player
-    string currentText;
-
+    string currentText;//Last used enemy dialogue to not have consecutive same dialogue
     int lastRef = -1;//Last reference for enemy dialogue shuffle
+
+    float currentSanity = PlayerCommonStatus.sanityValue;
+    float sanityEffectChance;//Final val
+    
     private void Awake()
     {
         //transition
@@ -120,6 +134,12 @@ public class DBManager : MonoBehaviour
         canInput = false;
         typingDialogue = false;
         playerTurn = true;
+        if (currentSanity >= 100) { sanityEffectChance =sanityEffectChanceLVL1; }
+        else if (currentSanity >= 80) { sanityEffectChance =sanityEffectChanceLVL2; }
+        else if (currentSanity >= 60) { sanityEffectChance = sanityEffectChanceLVL3; }
+        else if (currentSanity >= 40) { sanityEffectChance =sanityEffectChanceLVL4; }
+        else if (currentSanity >= 20) { sanityEffectChance =sanityEffectChanceLVL5; }
+        else { sanityEffectChance = 1; }
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
 
@@ -132,12 +152,10 @@ public class DBManager : MonoBehaviour
             if(typingDialogue)
             {
                 instantShowDialogue();
-                //Debug.Log("instant moment");
             }
             else
             {
                 nextDialogue();
-                //Debug.Log("Progressing");
             }
             
         }
@@ -150,7 +168,7 @@ public class DBManager : MonoBehaviour
             battle.turnNum++;
 
 
-        Debug.Log($"Real turn : {battle.turnNum}");
+        //Debug.Log($"Real turn : {battle.turnNum}");
 
         StartCoroutine(enableInput());
     }
@@ -158,7 +176,9 @@ public class DBManager : MonoBehaviour
     {
         canInput = false;
         typingDialogue = false;
+        //typeSpeed = 0;
         StopCoroutine(typeD);
+        
         if (playerTurn)
         {
             convoTextPlayer.text = currentText;
@@ -167,6 +187,7 @@ public class DBManager : MonoBehaviour
         {
             convoTextEnemy.text = currentText;
         }
+        //*/
         StartCoroutine(enableInput());
     }
     void shuffleOptionsAtStart()
@@ -189,6 +210,7 @@ public class DBManager : MonoBehaviour
         enemyEmotion.TakeDamage(dmgValue, enemyType);
         playerDialogueBoxShow(int.Parse(objName.Split("_")[2]));
         dialLists.AddRange(currentDialLists);
+        currentDialLists.Clear();
         shuffleOptionsAtStart();
         turnScriptRef.turnUpdate();
 
@@ -196,8 +218,20 @@ public class DBManager : MonoBehaviour
     void switchOutThisOption(int btnIndex)//Switch out used dialogue option and take random dialogue option from the pool
     {
         int rand = getRandFromList();
-        btnTXTList[btnIndex].text = dialLists[rand].dialogues;
-        btnList[btnIndex].gameObject.name = $"{dialLists[rand].emotions}_{Random.Range(minBaseDmg, maxBaseDmg)}_{btnIndex}";//Format of  <emotiontype_DamageValue_btnReferenceIndex>
+        string thisDialogue ="";
+        string effectiveColor =returnEffectiveColor(dialLists[rand].emotions)
+;       if(Random.Range(1, 100) < sanityEffectChance)
+        {
+            thisDialogue = dialLists[rand].dialogues.Replace("[", $"<color={effectiveColor}>").Replace("]", "</color>");
+        }
+        else
+        {
+            thisDialogue = dialLists[rand].dialogues.Replace("[", "").Replace("]", "");
+        }
+        
+        btnTXTList[btnIndex].text = thisDialogue;
+        
+        btnList[btnIndex].gameObject.name = $"{dialLists[rand].emotions}_{Random.Range(minBaseDmg, maxBaseDmg)}_{btnIndex}_{effectiveColor}";//Format of  <emotiontype_DamageValue_btnReferenceIndex_effectiveColor>
         currentDialLists.Add(dialLists[rand]);
         dialLists.RemoveAt(rand);
         /*  
@@ -216,18 +250,64 @@ public class DBManager : MonoBehaviour
             canInput = true;
         }
     }
-    IEnumerator typeDialogue(string content, TextMeshProUGUI txtbox)//Display character 1 by 1, visual effect
+    IEnumerator typeDialogue(string content, TextMeshProUGUI txtbox, string emo=null)//Display character 1 by 1, visual effect
     {
         typingDialogue = true;
+        
+        string fColor = emo!=null?returnEffectiveColor(emo):null;
         txtbox.text = "";
+        bool colorFontMode = false;
+
         foreach (char letter in content)
         {
-            txtbox.text += letter;
+
+            if (letter == '[')
+            {
+                colorFontMode = true;
+                continue;
+            }
+            else if (letter == ']')
+            {
+                colorFontMode = false;
+                continue;
+            }
+            if (colorFontMode)
+            {
+                if (fColor != null)
+                {
+                    txtbox.text += $"<color={fColor}>{letter}</color>";
+                }
+                else
+                {
+                    txtbox.text += $"{letter}";//Default color coding in case
+                }
+            }
+            else
+            {
+                txtbox.text += letter;
+            }
             yield return new WaitForSecondsRealtime(typeSpeed);
         }
         //Debug.Log("Finished typing");
+        //typeSpeed = 0.01f;
         typingDialogue = false;
 
+    }
+    public string returnEffectiveColor(string emo)
+    {
+        float effectiveness = enemyEmotion.emotionEffectivenss(emo);
+        if (effectiveness == -1.0f)
+        {
+            return notEffective;
+        }
+        else if (effectiveness == 1.5f)
+        {
+            return superEffective;
+        }
+        else
+        {
+            return normallyEffective;
+        }
     }
     //=============================== External Functions to be called ================================================
     public void noBattleStateInitialize()
@@ -244,10 +324,12 @@ public class DBManager : MonoBehaviour
             if (enemyEmotion.checkTargetThreshold() == true)
             {
                 typeD = typeDialogue("A soul was saved...", convoTextPlayer);
+                PlayerCommonStatus.modifySanity(20);
             }
             else
             {
                 typeD = typeDialogue("Alex felt something left his body... something that seemed important..", convoTextPlayer);
+                PlayerCommonStatus.modifySanity(-20);
             }
 
             //>>>>>>>>>>>>>>>>>>>>TRANSITION<<<<<<<<<<<<<<<<<<<<<<<<
@@ -289,7 +371,7 @@ public class DBManager : MonoBehaviour
 
         talkerName.text = "Alex";
         currentText = btnTXTList[btnIndex].text;
-        typeD = typeDialogue(btnTXTList[btnIndex].text, convoTextPlayer);
+        typeD = typeDialogue(currentDialLists[btnIndex].dialogues, convoTextPlayer, currentDialLists[btnIndex].emotions);
         StartCoroutine(typeD);
         
     }

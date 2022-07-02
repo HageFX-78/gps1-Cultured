@@ -626,6 +626,14 @@ MonoBehaviour:
   enemySelfHarmMaxDmg: 10
   typeSpeed: 0.01
   generalCooldown: 0.2
+  sanityEffectChanceLVL1: 0
+  sanityEffectChanceLVL2: 10
+  sanityEffectChanceLVL3: 15
+  sanityEffectChanceLVL4: 25
+  sanityEffectChanceLVL5: 40
+  notEffective: '#e33b29'
+  superEffective: '#3665c9'
+  normallyEffective: '#57c957'
   optionsVisible: 0
   lastDialogueOn: 0
   typingDialogue: 0
