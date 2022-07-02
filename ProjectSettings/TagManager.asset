@@ -9,6 +9,8 @@ TagManager:
   - Remnant
   - Audio
   - Door
+  - BGM
+  - SFX
   layers:
   - Default
   - TransparentFX

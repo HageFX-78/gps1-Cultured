@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class DontDestroy : MonoBehaviour
 {
-    [SerializeField] private GameObject musical = null;
-    private void Awake()
+    [SerializeField] private static GameObject sounds;
+    void Awake()
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Audio");
-
-        if (objects.Length >1)
+           
+        if (sounds != null)
         {
-            Destroy(musical);
+            Destroy(sounds);
         }
+        sounds = gameObject;
 
-        DontDestroyOnLoad(musical);
+        DontDestroyOnLoad(sounds);
+
     }
+
+
 }
