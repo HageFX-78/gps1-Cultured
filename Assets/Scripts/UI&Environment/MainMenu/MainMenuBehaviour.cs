@@ -9,6 +9,9 @@ public class MainMenuBehaviour : MonoBehaviour
 {
     [Header("Scene Switch")]
     [SerializeField] private int sceneNum;
+    [SerializeField] private Button load;
+    [SerializeField] public static bool loadGame = false;
+    [SerializeField] private GameObject noSaveTXT = null;
 
     [Header("Master Volume")]
     [SerializeField] private TextMeshProUGUI volumeTXT = null;
@@ -26,6 +29,10 @@ public class MainMenuBehaviour : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.GetInt("Load Scene") == 0)
+        {
+            load.interactable = false;
+        }
         volSlider.value = PlayerPrefs.GetFloat("Master Volume") * 100;
         musicSlider.value = PlayerPrefs.GetFloat("Music Volume") * 100;
         sfxSlider.value = PlayerPrefs.GetFloat("SFX Volume") * 100;
@@ -36,9 +43,14 @@ public class MainMenuBehaviour : MonoBehaviour
     }
     public void StartNG()
     {
-        SceneManager.LoadScene(sceneNum);
+        SceneManager.LoadScene(1);
+        PlayerPrefs.SetInt("Load Scene", 1);
     }
-
+    public void LoadGame()
+    {
+        SceneManager.LoadScene(PlayerPrefs.GetInt("Load Scene"));
+        loadGame = true;
+    }
     public void Quit()
     {
         Application.Quit();
@@ -119,6 +131,4 @@ public class MainMenuBehaviour : MonoBehaviour
         music.volume = musicSlider.value * 0.01f;
         AudioListener.volume = volSlider.value * 0.01f;
     }
-
-
 }
