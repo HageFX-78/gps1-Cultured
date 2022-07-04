@@ -10768,14 +10768,6 @@ PrefabInstance:
       propertyPath: sprintUI
       value: 
       objectReference: {fileID: 309556867}
-    - target: {fileID: 7575511799239501695, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
-      propertyPath: sprintGainRate
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7575511799239501695, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
-      propertyPath: sprintLossRate
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 8661872287092588537, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -11772,6 +11764,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a007124cda195e4f81a1a8f8fbe50a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  switchList:
+  - {fileID: 348496488}
+  - {fileID: 1715542544}
+  - {fileID: 491444409}
+  - {fileID: 71651790}
+  door: {fileID: 155646444}
 --- !u!1 &1809700969
 GameObject:
   m_ObjectHideFlags: 0

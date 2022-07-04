@@ -145,6 +145,9 @@ MonoBehaviour:
   sprintGainRate: 10
   fatigue: 0
   rb: {fileID: -4633987559434726319}
+  sprintUI: {fileID: 0}
+  slider: {fileID: 0}
+  fill: {fileID: 0}
 --- !u!114 &6753135511442878567
 MonoBehaviour:
   m_ObjectHideFlags: 0
