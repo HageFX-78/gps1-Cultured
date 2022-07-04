@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     [Header("Sprint UI")]
+    public GameObject sprintUI;
     public Slider slider;
     public Image fill;
     private Color orange = new Color(1, 0.5f, 0);
@@ -67,6 +68,13 @@ public class PlayerMovement : MonoBehaviour
                     fill.color = Color.red;
                 }
             }
+            else
+            {
+                if (sprintGauge < sprintMax)
+                {
+                    sprintGauge += sprintGainRate * Time.deltaTime;
+                }
+            }
         }
         else
         {
@@ -84,6 +92,12 @@ public class PlayerMovement : MonoBehaviour
             fatigue = false;
         }
         else if (sprintGauge < 20 && !fatigue) fill.color = darkOrange;
+
+
+        //shows sprint gauge if not max
+
+        if (sprintGauge < sprintMax) sprintUI.SetActive(true);
+        else sprintUI.SetActive(false);
     }
 
     void FixedUpdate()
