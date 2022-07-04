@@ -9,6 +9,8 @@ public class ExplorationUIController : MonoBehaviour
 {
     [Header("SceneLoad")]
     [SerializeField] private int sceneNum;
+    [SerializeField] private GameObject loadingScreen;
+    [SerializeField] private Slider loadSlider;
     
     [Header("Pause")]
     [SerializeField] private GameObject pauseScreen = null;
@@ -68,9 +70,9 @@ public class ExplorationUIController : MonoBehaviour
     }
     public void Back()
     {
-        PlayerPrefs.SetInt("Load Scene", SceneManager.GetActiveScene().buildIndex);
         //PlayerPrefs.SetFloat("Load Sanity", PlayerCommonStatus.sanityValue);
-        SceneManager.LoadSceneAsync(sceneNum);
+        PlayerPrefs.SetInt("Load Scene", SceneManager.GetActiveScene().buildIndex); 
+        StartCoroutine(LoadAsynchronously(sceneNum));
         Time.timeScale = 1;
     }
 
@@ -143,7 +145,6 @@ public class ExplorationUIController : MonoBehaviour
         PlayerPrefs.SetFloat("Music Volume", music.volume);
 
     }
-
     public void Cancel()
     {
         volSlider.value = PlayerPrefs.GetFloat("Master Volume") * 100;
@@ -158,5 +159,17 @@ public class ExplorationUIController : MonoBehaviour
 
         music.volume = musicSlider.value * 0.01f;
         AudioListener.volume = volSlider.value * 0.01f;
+    }
+    IEnumerator LoadAsynchronously(int sceneIndex)
+    {
+        loadingScreen.gameObject.SetActive(true);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            loadSlider.value = progress;
+            yield return null;
+        }
     }
 }
