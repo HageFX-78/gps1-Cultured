@@ -12,11 +12,12 @@ public class DBManager : MonoBehaviour
     [Header("Manager References")]
     public BattleStateManager battle;
     public EmotionManager enemyEmotion;
+    public ScreenShake camRef;
 
     [Header("UI References")]
     public TextAsset pDialoguefile;//Player dialogue options file
     public TextAsset eDialoguefile;//Enemy dialogue options file
-    public TextMeshProUGUI convoTextPlayer, convoTextEnemy, talkerName, enemyLastConvo;//Text dialogue box reference
+    public TextMeshProUGUI convoTextPlayer, convoTextEnemy, talkerName, enemyLastConvo, runText, runChance;//Text dialogue box reference
     public Turn turnScriptRef;
 
     public Button btn1; public Button btn2; public Button btn3; public Button btn4;
@@ -24,7 +25,7 @@ public class DBManager : MonoBehaviour
     List<Button> btnList;
     List<TextMeshProUGUI> btnTXTList;
 
-    public GameObject playerOptionsUI, playerDialogueUI, enemyDialogueUI, lastConvoUI;
+    public GameObject playerOptionsUI, playerDialogueUI, enemyDialogueUI, lastConvoUI ,runUI;
 
     [Header("Lists")]
     public List<PDials> dialLists = new List<PDials>();
@@ -51,15 +52,19 @@ public class DBManager : MonoBehaviour
     [SerializeField] private string notEffective;
     [SerializeField] private string superEffective;
     [SerializeField] private string normallyEffective;
+
+
     private IEnumerator typeD; // Type out dialogue coroutine instance reference
     public bool optionsVisible, lastDialogueOn, typingDialogue, playerTurn;
     bool canInput;//Global disable and enable the input of player
     string currentText;//Last used enemy dialogue to not have consecutive same dialogue
     int lastRef = -1;//Last reference for enemy dialogue shuffle
+    string enemyIntro;
 
     float currentSanity = PlayerCommonStatus.sanityValue;
     float sanityEffectChance;//Final val
-    
+
+    int runChanceVal;
     private void Awake()
     {
         //transition
@@ -68,7 +73,7 @@ public class DBManager : MonoBehaviour
 
     private void Start()
     {
-        //-------------------------Values and reference intialization-----------------------------------
+        //----------------------------Values and reference intialization-----------------------------------
 
         //Reading text file for player dialogue options
         string[] categorySplit = pDialoguefile.text.Split("\n~");
@@ -104,11 +109,11 @@ public class DBManager : MonoBehaviour
         string[] enemyTypeSplit = eDialoguefile.text.Split("\n~");
         int indexInEnemyDialogueFile = -1;
         string enemyType = enemyEmotion.emotion.currentType;
-        if (enemyType == "Delusional") { indexInEnemyDialogueFile = 0; }
-        else if (enemyType == "Hatred") { indexInEnemyDialogueFile = 1; }
-        else if (enemyType == "Self_Loathing") { indexInEnemyDialogueFile = 2; }
-        else if (enemyType == "Despair") { indexInEnemyDialogueFile = 3; }
-        else if (enemyType == "Righteousness") { indexInEnemyDialogueFile = 4; }
+        if (enemyType == "Delusional") { indexInEnemyDialogueFile = 0;enemyIntro = "Wow! A fateful encounter with a retard!"; }
+        else if (enemyType == "Hatred") { indexInEnemyDialogueFile = 1; enemyIntro = "Thought I saw a pile of feces turns out it was you!"; }
+        else if (enemyType == "Self_Loathing") { indexInEnemyDialogueFile = 2; enemyIntro = "Why must I TALK TO YOU"; }
+        else if (enemyType == "Despair") { indexInEnemyDialogueFile = 3;enemyIntro = "Ever tried a double suicide?"; }
+        else if (enemyType == "Righteousness") { indexInEnemyDialogueFile = 4; enemyIntro = "You pitiful soul.."; }
         string[] typeDialogueSplit = enemyTypeSplit[indexInEnemyDialogueFile].Split("\n");
         for (int x = 0; x < enemyTypeSplit.Length; x++)
         {
@@ -139,7 +144,7 @@ public class DBManager : MonoBehaviour
         else if (currentSanity >= 60) { sanityEffectChance = sanityEffectChanceLVL3; }
         else if (currentSanity >= 40) { sanityEffectChance =sanityEffectChanceLVL4; }
         else if (currentSanity >= 20) { sanityEffectChance =sanityEffectChanceLVL5; }
-        else { sanityEffectChance = 1; }
+        else { sanityEffectChance = 50; }
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
 
@@ -160,15 +165,13 @@ public class DBManager : MonoBehaviour
             
         }
     }
-    //=============================== Internal Functions to be called ================================================
+    //==================================================================== Internal Functions to be called ================================================================
     public void nextDialogue()
     {
         canInput = false;
 
-            battle.turnNum++;
-
-
-        //Debug.Log($"Real turn : {battle.turnNum}");
+        battle.turnNum++;
+        Debug.Log($"Real turn : {battle.turnNum}");
 
         StartCoroutine(enableInput());
     }
@@ -179,14 +182,9 @@ public class DBManager : MonoBehaviour
         //typeSpeed = 0;
         StopCoroutine(typeD);
         
-        if (playerTurn)
-        {
-            convoTextPlayer.text = currentText;
-        }
-        else
-        {
-            convoTextEnemy.text = currentText;
-        }
+
+        convoTextPlayer.text = currentText;
+        convoTextEnemy.text = currentText;
         //*/
         StartCoroutine(enableInput());
     }
@@ -204,25 +202,45 @@ public class DBManager : MonoBehaviour
     }
     public void clickOption(string objName)
     {
-        string enemyType = objName.Split("_")[0];
-        int dmgValue = int.Parse(objName.Split("_")[1]);
+        string[] objArray = objName.Split("_");
+        string dmgType = objArray[0];
+        int dmgValue = int.Parse(objArray[1]);
 
-        enemyEmotion.TakeDamage(dmgValue, enemyType);
-        playerDialogueBoxShow(int.Parse(objName.Split("_")[2]));
-        dialLists.AddRange(currentDialLists);
+        enemyEmotion.TakeDamage(dmgValue, dmgType);
+        playerDialogueBoxShow(int.Parse(objArray[2]), bool.Parse(objArray[3]));
+
+
+        dialLists.AddRange(currentDialLists);//Shuffle options stuffs start here
         currentDialLists.Clear();
         shuffleOptionsAtStart();
         turnScriptRef.turnUpdate();
+
+        //Shake screen visual effect, shake enemy and bg rn
+        if (enemyEmotion.emotionEffectivenss(dmgType)==1.0f)
+        {
+            camRef.ShakeScreen(0.2f);
+        }
+        else if(enemyEmotion.emotionEffectivenss(dmgType) == 1.5f)
+        {
+            camRef.ShakeScreen(0.3f, 0.6f);
+        }
+        else
+        {
+            camRef.ShakeScreen(0.2f, 0.1f);
+        }
+        
 
     }
     void switchOutThisOption(int btnIndex)//Switch out used dialogue option and take random dialogue option from the pool
     {
         int rand = getRandFromList();
         string thisDialogue ="";
-        string effectiveColor =returnEffectiveColor(dialLists[rand].emotions)
-;       if(Random.Range(1, 100) < sanityEffectChance)
+        string effectiveColor = returnEffectiveColor(dialLists[rand].emotions);
+        bool highlightState = false;
+;       if(Random.Range(1, 100) <= sanityEffectChance)
         {
             thisDialogue = dialLists[rand].dialogues.Replace("[", $"<color={effectiveColor}>").Replace("]", "</color>");
+            highlightState = true;
         }
         else
         {
@@ -231,7 +249,7 @@ public class DBManager : MonoBehaviour
         
         btnTXTList[btnIndex].text = thisDialogue;
         
-        btnList[btnIndex].gameObject.name = $"{dialLists[rand].emotions}_{Random.Range(minBaseDmg, maxBaseDmg)}_{btnIndex}_{effectiveColor}";//Format of  <emotiontype_DamageValue_btnReferenceIndex_effectiveColor>
+        btnList[btnIndex].gameObject.name = $"{dialLists[rand].emotions}_{Random.Range(minBaseDmg, maxBaseDmg)}_{btnIndex}_{highlightState}";//Format of  <emotiontype_DamageValue_btnReferenceIndex_effectiveColor>
         currentDialLists.Add(dialLists[rand]);
         dialLists.RemoveAt(rand);
         /*  
@@ -309,7 +327,7 @@ public class DBManager : MonoBehaviour
             return normallyEffective;
         }
     }
-    //=============================== External Functions to be called ================================================
+    //================================================================== External Functions to be called ==================================================================
     public void noBattleStateInitialize()
     {
 
@@ -342,8 +360,9 @@ public class DBManager : MonoBehaviour
             playerDialogueUI.SetActive(false);
             playerOptionsUI.SetActive(false);
             enemyDialogueUI.SetActive(true);
-            typeD = typeDialogue("Ugh.. What do you want?", convoTextEnemy);
-            enemyLastConvo.text = "Ugh.. What do you want?";
+
+            typeD = typeDialogue(enemyIntro, convoTextEnemy);
+            enemyLastConvo.text = enemyIntro;
         }
 
         StartCoroutine(typeD);
@@ -359,7 +378,7 @@ public class DBManager : MonoBehaviour
         //canInput = false;
         //StartCoroutine(enableInput());
     }
-    public void playerDialogueBoxShow(int btnIndex)
+    public void playerDialogueBoxShow(int btnIndex, bool highlighted)
     {
 
         StartCoroutine(enableInput());
@@ -371,7 +390,7 @@ public class DBManager : MonoBehaviour
 
         talkerName.text = "Alex";
         currentText = btnTXTList[btnIndex].text;
-        typeD = typeDialogue(currentDialLists[btnIndex].dialogues, convoTextPlayer, currentDialLists[btnIndex].emotions);
+        typeD = typeDialogue(currentDialLists[btnIndex].dialogues, convoTextPlayer, highlighted?currentDialLists[btnIndex].emotions:null);
         StartCoroutine(typeD);
         
     }
@@ -395,7 +414,8 @@ public class DBManager : MonoBehaviour
         typeD = typeDialogue(enemyDialList[randE], convoTextEnemy);
         StartCoroutine(typeD);
         lastRef = randE;
-        enemyEmotion.selfHarm(Random.Range(0, 20));
+        enemyEmotion.selfHarm(Random.Range(enemySelfHarmMinDmg, enemySelfHarmMaxDmg));
+
     }
 
 
@@ -404,6 +424,75 @@ public class DBManager : MonoBehaviour
         lastDialogueOn = true;
         yield return new WaitForSeconds(transitionTimer);
         lastDialogueOn = false;
+
         SceneManager.LoadSceneAsync("Lvl 1");
+    }
+    //----------------------------------------------------- On click functions -----------------------------------------------------------------------------------------
+
+    public void showRunAway()
+    {
+        int runCount = PlayerCommonStatus.getRunCount();
+        switch (runCount)
+        {
+            case 0:
+                runText.text = "Run from battle?";
+                runChanceVal = 100;
+                break;
+            case 1:
+                runText.text = "Running away again?";
+                runChanceVal = 80;
+                break;
+            case 2:
+                runText.text = "This will make it the third :)";
+                runChanceVal = 60;
+                break;
+            case 3:
+                runText.text = "Can't help it right?";
+                runChanceVal = 40;
+                break;
+            case 4:
+                runText.text = "Ah... sweet escape";
+                runChanceVal = 20;
+                break;
+            default:
+                runText.text = "Chances are.. You're not getting away";
+                runChanceVal = 0;
+                break;
+        }
+        runChance.text = $"{runChanceVal}% Chance";
+        runUI.SetActive(true);
+        lastConvoUI.SetActive(false);
+        playerOptionsUI.SetActive(false);
+    }
+
+    public void closeRunAway()
+    {
+        runUI.SetActive(false);
+        lastConvoUI.SetActive(true);
+        playerOptionsUI.SetActive(true);
+    }
+    public void runAway()
+    {
+        if (Random.Range(1,100)<=runChanceVal)
+        {
+            talkerName.text = "Info";
+            typeD = typeDialogue("Alex ran away from his problems...", convoTextPlayer);
+            StartCoroutine(typeD);
+            playerDialogueUI.SetActive(true);
+            runUI.SetActive(false);
+            PlayerCommonStatus.addRunCount();
+            StartCoroutine(LoadBackLevel());
+        }
+        else
+        {
+            StartCoroutine(enableInput());
+            optionsVisible = false;
+            typeD = typeDialogue("YOU CAN'T RUN AWAY FROM ME, NEVER AGAIN", convoTextEnemy);
+            currentText = "YOU CAN'T RUN AWAY FROM ME, NEVER AGAIN";
+            StartCoroutine(typeD);
+            enemyDialogueUI.SetActive(true);
+            runUI.SetActive(false);
+        }
+        
     }
 }

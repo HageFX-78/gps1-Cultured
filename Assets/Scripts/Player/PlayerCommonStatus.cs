@@ -4,7 +4,8 @@ using UnityEngine;
 
 public static class PlayerCommonStatus
 {
-    public static float sanityValue = 21;//Default static value
+    public static float sanityValue = 10;//Default static value
+    public static int runCount = 5;//Times ran from battle
 
     //Anything else that is carried over to other scenes can be added here
 
@@ -16,5 +17,15 @@ public static class PlayerCommonStatus
     public static float getSanity()
     {
         return sanityValue;
+    }
+    
+    public static void addRunCount()
+    {
+        runCount++;
+    }
+
+    public static int getRunCount()
+    {
+        return runCount;
     }
 }
