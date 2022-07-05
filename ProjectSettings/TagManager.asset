@@ -18,7 +18,7 @@ TagManager:
   - Obstacles
   - Water
   - UI
-  - 
+  - Props
   - 
   - 
   - 
@@ -50,6 +50,9 @@ TagManager:
     locked: 0
   - name: Obstacles
     uniqueID: 3921455407
+    locked: 0
+  - name: Props
+    uniqueID: 3835551679
     locked: 0
   - name: UI
     uniqueID: 1843049459
