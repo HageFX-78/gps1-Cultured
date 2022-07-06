@@ -6,10 +6,13 @@ public class switchScript : MonoBehaviour
 {
     [SerializeField] public PuzzleManager manager;
 
-    [Header("Put number in the order the buttons supposed to be pressed")]
+    [Header("Button ID")]
     public float buttonOrder;
     private new Renderer renderer;
     private bool onTop = false;
+
+    [HideInInspector] public bool activated;
+    public int puzzleType;
 
     private void Start()
     {
@@ -23,8 +26,19 @@ public class switchScript : MonoBehaviour
         {
             if (onTop)
             {
-                renderer.material.color = Color.green;
-                manager.ButtonPress(buttonOrder);
+                switch (puzzleType) 
+                {
+                    case 1:
+                        renderer.material.color = Color.green;
+                        manager.ButtonPress(buttonOrder);
+                        break;
+                    case 2:
+                        manager.ButtonPressType2(buttonOrder);
+                        break;
+                    case 3:
+                        if (!manager.puzzleDone) manager.ResetPuzzle();
+                        break;
+                }
             }
         }
     }
