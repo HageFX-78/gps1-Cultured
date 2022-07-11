@@ -11,6 +11,8 @@ TagManager:
   - Door
   - BGM
   - SFX
+  - TutorialEnemy
+  - interactable
   layers:
   - Default
   - TransparentFX

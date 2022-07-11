@@ -23,21 +23,12 @@ public class BattleStateManager : MonoBehaviour
     void Update()
     {
         currentState.UpdateState(this, dbm);
-        turnTest();
     }
 
     public void SwitchState(BattleBaseState state, DBManager dialbtn)
     {
         currentState = state;
         state.EnterState(this, dbm);
-    }
-
-    void turnTest()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            inBattle = !inBattle;
-        }
     }
 
 }

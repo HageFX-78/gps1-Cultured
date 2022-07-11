@@ -1,0 +1,51 @@
+Guide:This is where all your battles will take place
+Alex:Alright....But how do I fight them? With my fists?
+Guide:You fight with your words and emotions
+Guide:Every enemy carry with them 1 of the 5 emotions
+Guide:Delusional, Hatred, Self Loathing, Despair and Righteousness
+Guide:And you have 4 emotions
+Guide:Rationality, Acceptance, Hope and Love
+Guide:The goal of the battle is simple,
+Guide:All you have to do is balance your enemy emotions in the safe zone with your words
+Guide:The bar at the top shows your enemy's emotional status
+Guide:The green area is the safe zone you are aiming for
+Guide:Remember that both you and your enemy's words will affect the bar
+Guide:You are given 4 dialogue options per turn
+Guide:Each representing a separate emotion
+Guide:You can also attempt to run from a battle but don't count on it working everytime
+Guide:Now lets get started on the battle
+Guide:Do you see how some words have different colours?
+Guide:Those are your hints to the emotions being conveyed
+Guide:[-Green] means the option is super effective against the enemy
+Guide:[_Red] means the option is not effective against the enemy
+Guide:Lastly,[=Blue] means you chose a neutral option
+Guide:However know that they don't always show themselves
+Guide:Why don't we start by choosing the [-Green] option
+Guide:See how the bar moves to the left
+Guide:It shows that your choices are effective against the enemy
+Guide:After your turn, your enemy will then negatively impact their own emotions
+Guide:Next, lets try out the [_Red] option
+Guide:The bar moved to the right because you chose the non effective option
+Guide:Similarly, the enemy will now play their turn
+Guide:For the last turn, let's try the [=Blue] option
+Guide:Notice how little it moved the bar but now you are in the safe zone
+Guide:And that was the final turn,the battle always end on the player turn
+Guide:Congratulations! You beat your inner demon
+Guide:Now lets keep moving forward, I got a couple more things to teach you
+Alex:The door seems to be locked
+Guide:Why dont you try interacting with the switch over there
+Guide:Press the spacebar to interact with an object
+Guide:The next thing i need you to do is to help me look for something important
+Alex: What is it?
+Guide:Its something that once belongs to me, my glasses
+Guide:Just walk around the area, you should find it 
+Guide:Good, you found it!
+Alex:This looks....familiar 
+Alex:Wait....grandpa is that you?
+Guide:Guess you caught me
+Alex:What are you doing here?
+Grandpa:What you just collected is the remnant of my soul
+Grandpa:Its what keeping us here in your dream
+Grandpa:You need to collect the remnants, bring it to the exit
+Grandpa:And set us free
+Grandpa:I believe in you, you can do it!

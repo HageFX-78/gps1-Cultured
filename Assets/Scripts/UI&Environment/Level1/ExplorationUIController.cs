@@ -68,6 +68,11 @@ public class ExplorationUIController : MonoBehaviour
             }                   
         }
     }
+    public void StartNG(int sceneNum)
+    {
+        StartCoroutine(LoadAsynchronously(sceneNum));
+        PlayerPrefs.SetInt("Load Scene", 1);
+    }
     public void Back()
     {
         //PlayerPrefs.SetFloat("Load Sanity", PlayerCommonStatus.sanityValue);

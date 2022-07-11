@@ -1,0 +1,12 @@
+Guide:Time to get you accustomed to this world.
+Guide:Press W,A,S,D to move around the map
+Guide:You can also sprint while moving by holding Shift
+Guide:A sprint gauge will appear under you while you are sprinting
+Guide:Once empty, you will need to wait for it to recharge before you can sprint again
+Guide:Good! Now keep heading east
+Guide:Do you see that thing over there?
+Alex:What is that? It looks.......weird
+Guide:Those are the enemies you will be facing in order to free your mind
+Guide:Creatures born from negative emotions
+Guide:Try and walk up to it and see what happens
+Alex:I hope this is safe...

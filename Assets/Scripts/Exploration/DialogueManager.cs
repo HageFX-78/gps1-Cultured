@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class DialogueManager : MonoBehaviour
@@ -24,7 +25,7 @@ public class DialogueManager : MonoBehaviour
 
     Dictionary<string, Transform> gotoDC = new Dictionary<string, Transform>();//Transform list for locations the cam lerps to
     bool dialogueCooldown;
-    bool dialogueActive;
+    public bool dialogueActive;
     string[] dls; int curLineNum, dlsSize;
     bool canInput, typingDialogue;
     private IEnumerator typeD;//Letter by letter display coroutine instance
@@ -32,7 +33,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        
         dialogueActive = false;
         dialogueCooldown = false;
         curLineNum = 0;
@@ -68,7 +68,6 @@ public class DialogueManager : MonoBehaviour
             }               
         }
     }
-    
     void displayCurrentDialogue()
     {
         StartCoroutine(enableInput());
@@ -93,8 +92,7 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(lerpToTarget(defaultPosition, targetPosition));
         }
         StartCoroutine(typeD);
-        curLineNum++;
-        
+        curLineNum++; 
     }
     public void instantShowDialogue()
     {
@@ -191,6 +189,22 @@ public class DialogueManager : MonoBehaviour
         curLineNum = 0;
         dls = targetFile.text.Split('\n');
         dlsSize = dls.Length;
+        Time.timeScale = 0;
+        displayCurrentDialogue();
+    }
+    
+    public void partialLineConvo(TextAsset targetFile, int begin, int end)
+    {
+        currentText = "";
+        canInput = true;
+
+        dialogueUI.SetActive(true);
+        dialogueActive = true;
+        dialogueCooldown = true;
+        StartCoroutine(enableInput());
+        curLineNum = begin;
+        dls = targetFile.text.Split('\n');
+        dlsSize = end;
         Time.timeScale = 0;
         displayCurrentDialogue();
     }
