@@ -85,7 +85,7 @@ public class BossDialogueManager : MonoBehaviour
         //if there is more than 1 line in the story, set the dialogue text to the currentStory line
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            dialogueText.text = "Boss: " + currentStory.Continue();
 
             DisplayChoices();
         }

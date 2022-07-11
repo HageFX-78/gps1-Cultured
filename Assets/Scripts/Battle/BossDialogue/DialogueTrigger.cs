@@ -8,7 +8,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private GameObject visualCue;
 
     //setting file to read
-    [Header("Inj JSON")]
+    [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJson;
 
     private bool playerInRange;
