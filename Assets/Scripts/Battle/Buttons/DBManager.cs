@@ -53,6 +53,8 @@ public class DBManager : MonoBehaviour
     [SerializeField] private string superEffective;
     [SerializeField] private string normallyEffective;
 
+    [Header("Remnant Settings")]
+    [SerializeField] private int remnant1TriggerChance;
 
     private IEnumerator typeD; // Type out dialogue coroutine instance reference
     public bool optionsVisible, lastDialogueOn, typingDialogue, playerTurn;
@@ -63,7 +65,6 @@ public class DBManager : MonoBehaviour
 
     float currentSanity = PlayerCommonStatus.sanityValue;
     float sanityEffectChance;//Final val
-
     int runChanceVal;
     private void Awake()
     {
@@ -171,7 +172,7 @@ public class DBManager : MonoBehaviour
         canInput = false;
 
         battle.turnNum++;
-        Debug.Log($"Real turn : {battle.turnNum}");
+        //Debug.Log($"Real turn : {battle.turnNum}");
 
         StartCoroutine(enableInput());
     }
@@ -194,7 +195,11 @@ public class DBManager : MonoBehaviour
         {
             switchOutThisOption(z);
         }
-
+        if(Random.Range(1,100)<=remnant1TriggerChance)
+        {
+            circleBestOption();
+        }
+        
     }
     int getRandFromList()
     {
@@ -259,6 +264,61 @@ public class DBManager : MonoBehaviour
             btnList[btnIndex].Select();
         }
         //*/
+    }
+    void circleBestOption()
+    {
+        List<float> dmgList = new List<float>();
+        GameObject circleUI;
+        int bestOption = 0; float bestValue = 100;
+        float min = enemyEmotion.minThreshold;
+        float max = enemyEmotion.maxThreshold;
+        float cur = enemyEmotion.currentThreshold;
+        float mid = min+((max - min) / 2);
+
+        //Remnant Effect
+        for (int ind = 0; ind<btnList.Count;ind++)
+        {
+            string[] nameSplit = btnList[ind].gameObject.name.Split("_");
+            float finalDmg = float.Parse(nameSplit[1]) * enemyEmotion.emotionEffectivenss(nameSplit[0]);
+
+            float afterDmg = cur + finalDmg;
+            //Debug.Log(afterDmg);
+            float currentValue = 0;
+
+            if (afterDmg > mid)
+            {
+                currentValue = afterDmg - mid;
+            }
+            else if (afterDmg < mid)
+            {
+                currentValue = mid - afterDmg;
+            }
+            else
+            {
+                bestValue = 0;
+                bestOption = ind;
+            }
+            
+            if (currentValue < bestValue)
+            {
+                bestOption = ind;
+                bestValue = currentValue;
+            }
+            
+        }
+        for (int ind = 0; ind < btnList.Count; ind++)
+        {
+            circleUI = btnList[ind].transform.Find("TC").gameObject;
+            if (ind == bestOption)
+            {
+                circleUI.SetActive(true);
+            }
+            else
+            {
+                circleUI.SetActive(false);
+            }
+        }
+
     }
     IEnumerator enableInput()//Cooldown so player cant spam and immediately skip through entire conversation
     {

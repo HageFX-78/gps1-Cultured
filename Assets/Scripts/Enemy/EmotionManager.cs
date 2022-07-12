@@ -14,8 +14,8 @@ public class EmotionManager : MonoBehaviour
 
     public float startMinThreshold, startMaxThreshold;//Setting values that should be altered
     public int minDifference, maxDifference;
-    float minThreshold, maxThreshold;
-    float currentThreshold;
+    public float minThreshold, maxThreshold;
+    public float currentThreshold;
 
 
     private void Awake()
