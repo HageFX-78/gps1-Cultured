@@ -57,7 +57,7 @@ public class TutorialStateManager : MonoBehaviour
     private void Start()
     {
         overlay.SetActive(true);
-        currentState = interaction;
+        currentState = narration;
         currentState.EnterState(this);
     }
 
