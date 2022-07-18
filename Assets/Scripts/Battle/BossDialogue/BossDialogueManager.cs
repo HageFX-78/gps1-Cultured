@@ -16,7 +16,6 @@ public class BossDialogueManager : MonoBehaviour
     private Story currentStory;
     public bool dialogueIsPlaying;
 
-
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI [] choicesText;
@@ -54,7 +53,7 @@ public class BossDialogueManager : MonoBehaviour
             return;
         }
 
-        //if there are no more 
+        //if there are no more options to give and player click
         if (currentStory.currentChoices.Count == 0 && Input.GetMouseButtonDown(0))
         {
             ContinueStory();
