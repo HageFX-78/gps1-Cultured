@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
     [Header("Scene Switch")]
-    [SerializeField] private int sceneNum;
     [SerializeField] public static bool loadGame = false;
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Slider loadSlider;
@@ -18,7 +17,7 @@ public class SceneChange : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
-                LoadAsynchronously(sceneNum);
+                LoadAsynchronously((int)sceneIndex.LV1);
             }
         }
     }
