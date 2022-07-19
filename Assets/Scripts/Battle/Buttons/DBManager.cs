@@ -55,6 +55,7 @@ public class DBManager : MonoBehaviour
 
     [Header("Remnant Settings")]
     [SerializeField] private int remnant1TriggerChance;
+    bool remnant1Acquired;
 
     private IEnumerator typeD; // Type out dialogue coroutine instance reference
     public bool optionsVisible, lastDialogueOn, typingDialogue, playerTurn;
@@ -136,6 +137,27 @@ public class DBManager : MonoBehaviour
         //-------------------------------------------------------------------------------------------------------
 
         //+++++++++++++++++++ Functions to run at start ++++++++++++++++++++++
+        if(PlayerCommonStatus.checkIfRemnantExist("bear"))
+        {
+            if (PlayerCommonStatus.checkRemnantAcquired("bear"))
+            {
+                remnant1Acquired = true;
+            }
+            else
+            {
+                remnant1Acquired = false;
+            }
+        }
+        else
+        {
+            remnant1Acquired = true;
+            //True for testing purposes
+            //This is for when u just run battle scene without going through exploration scene
+            //If player went through exploration scene, all remnants should exist
+        }
+        
+
+
         shuffleOptionsAtStart();
         canInput = false;
         typingDialogue = false;
@@ -195,7 +217,7 @@ public class DBManager : MonoBehaviour
         {
             switchOutThisOption(z);
         }
-        if(Random.Range(1,100)<=remnant1TriggerChance)
+        if(Random.Range(1,100)<=remnant1TriggerChance && remnant1Acquired)
         {
             circleBestOption();
         }
