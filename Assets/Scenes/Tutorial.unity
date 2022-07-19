@@ -431,8 +431,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86740643}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 55, y: 8.44, z: -154.61847}
-  m_LocalScale: {x: 1, y: 22, z: 1}
+  m_LocalPosition: {x: 55, y: 10.42, z: -154.61847}
+  m_LocalScale: {x: 1, y: 18, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 590006990}
@@ -1117,7 +1117,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Lets try to <color="green">understand</color> each other
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1181,7 +1181,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &270182610
@@ -1313,8 +1313,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329149425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55, y: -4.93, z: -154.61847}
-  m_LocalScale: {x: 1, y: 4.7, z: 1}
+  m_LocalPosition: {x: 55, y: -3, z: -154.61847}
+  m_LocalScale: {x: 1, y: 8.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 590006990}
@@ -1862,7 +1862,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "I\u2019m learning to <color=\"blue>love myself</color> and so can you"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1926,7 +1926,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &475802315
@@ -2250,7 +2250,7 @@ RectTransform:
   - {fileID: 1839955329}
   - {fileID: 1313636506}
   m_Father: {fileID: 1341082579}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3142,7 +3142,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3269,7 +3269,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Testing Font
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3333,7 +3333,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &736363700
@@ -3406,7 +3406,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3470,7 +3470,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &752707901
@@ -3687,7 +3687,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enemy
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3751,7 +3751,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &989987196
@@ -3945,7 +3945,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "I <color=\"red\">admit</color> that I\u2019m full of flaws just like you"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4009,7 +4009,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1047152437
@@ -4255,7 +4255,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Space or Left-Click to Continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4319,7 +4319,7 @@ MonoBehaviour:
   m_margin: {x: 738.9453, y: 156.1689, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1117921122
@@ -4356,7 +4356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121068209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 55, y: -18.33, z: -154.61847}
+  m_LocalPosition: {x: 55, y: -18.45, z: -154.61847}
   m_LocalScale: {x: 1, y: 22, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5263,8 +5263,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1481955844}
   - {fileID: 570285617}
+  - {fileID: 1481955844}
   - {fileID: 1365269096}
   - {fileID: 831223312}
   - {fileID: 286078987}
@@ -5691,7 +5691,7 @@ RectTransform:
   - {fileID: 1523048589}
   - {fileID: 1117921120}
   m_Father: {fileID: 1341082579}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5776,7 +5776,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: ..........................
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6058,7 +6058,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Alex
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6122,7 +6122,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1670148300
@@ -6627,7 +6627,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: A parasite like you is talking to me? Disgusting!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6691,7 +6691,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1806061589
@@ -7588,6 +7588,10 @@ PrefabInstance:
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 707669524}
+    - target: {fileID: 724766010430363327, guid: 4375412aefc1394479392be678f0e9fa, type: 3}
+      propertyPath: m_Mass
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 724766010430363327, guid: 4375412aefc1394479392be678f0e9fa, type: 3}
       propertyPath: m_Constraints
       value: 4
