@@ -53,8 +53,20 @@ public static class PlayerCommonStatus
     {
         return remDic[remName].acquired;
     }
-    public static void sacrificeRemnants()
+    public static void sacrificeRemnants()// REMEMBER TO CALL THIS IF WE'RE SWITCHING TO LEVEL 2, OR THERE WILL BE MIX OF DESCRIPTIONS
     {
         remDic.Clear();
+    }
+    public static string getRemnantDescriptionWithSceneIndex(int index)
+    {
+        foreach(string key in remDic.Keys)
+        {
+            Remnant thisRem = remDic[key];
+            if(thisRem.remnantSceneIndex == index)
+            {
+                return thisRem.remnantDescription;
+            }
+        }
+        return "No description Found";
     }
 }

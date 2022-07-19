@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class RemnantBehaviour : MonoBehaviour
 {
     [SerializeField] string remnantName;
     [TextArea][SerializeField] string remnantDescription;
+    [SerializeField] int remnantSceneIndex;
 
     public bool inRange;
     //ITS A TRIGGER REMEMBER TO CHECK TRIGGER
@@ -22,7 +22,7 @@ public class RemnantBehaviour : MonoBehaviour
         }
         else
         {
-            Remnant thisRem = new Remnant(remnantName, remnantDescription);
+            Remnant thisRem = new Remnant(remnantName, remnantDescription, remnantSceneIndex);
             PlayerCommonStatus.addRemnant(thisRem);
         }
         
@@ -41,6 +41,7 @@ public class RemnantBehaviour : MonoBehaviour
         if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Mouse0))&&inRange)
         {
             //Enable Ui
+            ExplorationHUD.expHUD.showRemnant(remnantSceneIndex);
             PlayerCommonStatus.acquireRemnant(remnantName);
             gameObject.SetActive(false);
         }
