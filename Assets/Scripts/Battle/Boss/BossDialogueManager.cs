@@ -4,17 +4,24 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossDialogueManager : MonoBehaviour
 {
     public static BossDialogueManager instance;
 
     [Header("Dialogue UI")]
+    [SerializeField] private GameObject FullPanel;
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private Image dialoguePanelImage;
+    [SerializeField] private RectTransform dialogueTransform;
     [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private Vector2 dialogueSize;
+    [SerializeField] private Vector2 defaultDialogueSize;
+    [SerializeField] private Vector3 dialogueOffset;
 
     private Story currentStory;
-    public bool dialogueIsPlaying;
+    public bool storyIsPlaying;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -22,18 +29,18 @@ public class BossDialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance != null)
+        if(instance != null && instance != this)
         {
             Debug.LogWarning("Found more than one singleton");
         }
-
-        instance = this;
+        else
+            instance = this;
     }
 
     private void Start()
     {
-        dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
+        storyIsPlaying = false;
+        //dialoguePanel.SetActive(false);
 
         //initialise array of choicetext to be the same as the amount of choices
         choicesText = new TextMeshProUGUI[choices.Length];
@@ -48,15 +55,23 @@ public class BossDialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if(!dialogueIsPlaying)
+        if(!storyIsPlaying)
         {
             return;
         }
 
         //if there are no more options to give and player click
-        if (currentStory.currentChoices.Count == 0 && Input.GetMouseButtonDown(0))
+        if (currentStory.currentChoices.Count == 0)
         {
-            ContinueStory();
+            //if there is no choices, sets the color, size, position
+            dialogueTransform.sizeDelta = dialogueSize;
+            dialogueTransform.anchoredPosition = dialogueOffset;
+            dialoguePanelImage.color = Color.white;
+            dialogueText.color = Color.black;
+            if (Input.GetMouseButtonDown(0))
+            {
+                ContinueStory();
+            }
         }
     }
 
@@ -64,7 +79,7 @@ public class BossDialogueManager : MonoBehaviour
     {
         //instantiate a new instance of story based on the json file and enable the panels
         currentStory = new Story(inkJson.text);
-        dialogueIsPlaying = true;
+        storyIsPlaying = true;
         dialoguePanel.SetActive(true);
 
         ContinueStory();
@@ -74,7 +89,7 @@ public class BossDialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        dialogueIsPlaying = false;
+        storyIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
     }
@@ -118,6 +133,15 @@ public class BossDialogueManager : MonoBehaviour
         {
             //if there are any extra choices based on where the index left off, setactive(false) the remaining buttons
             choices[i].gameObject.SetActive(false);
+        }
+
+        if(index != 0)
+        {
+            //if there are choices, resets the color, size, position
+            dialoguePanelImage.color = Color.black;
+            dialogueText.color = Color.white;
+            dialogueTransform.sizeDelta = defaultDialogueSize;
+            dialogueTransform.anchoredPosition = new Vector3(0, 0, 0);
         }
     }
 
