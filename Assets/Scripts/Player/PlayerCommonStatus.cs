@@ -5,7 +5,7 @@ using UnityEngine;
 public static class PlayerCommonStatus
 {
     public static Dictionary<string, Remnant> remDic = new Dictionary<string, Remnant>();
-    public static float sanityValue = 100;//Default static value
+    public static float sanityValue = 80;//Default static value
     public static int runCount = 0;//Times ran from battle
 
     //Anything else that is carried over to other scenes can be added here
