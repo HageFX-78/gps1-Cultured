@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
     private Color darkOrange = new Color(1, 0.25f, 0);
     Vector2 movement;
 
+    [Header("Animation")]
+    public Animator animator;
+
     private void Start()
     {
         //Checks if player has transitioned to battle scene more than once
@@ -50,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
         float y = Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(x,y).normalized;
+        animator.SetFloat("xSpeed", x);
+        animator.SetFloat("ySpeed", y);
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SPRINTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         slider.value = sprintGauge;
         if (Input.GetKey(KeyCode.LeftShift) && !fatigue)

@@ -10,8 +10,12 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] public int puzzleType;
     private new Renderer renderer;
 
-    [HideInInspector] public bool puzzleDone;
+    [HideInInspector] public static bool puzzleDone;
 
+    private void Awake()
+    {
+        if (puzzleDone) Destroy(door);
+    }
     private void Start()
     {
         puzzleDone = false;
