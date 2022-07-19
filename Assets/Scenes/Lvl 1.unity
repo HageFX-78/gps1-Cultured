@@ -10592,6 +10592,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 889954910}
     m_Modifications:
+    - target: {fileID: 558494863390683605, guid: 45785c14a95539e43aad8625692e01b3, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+    - target: {fileID: 558494863390683605, guid: 45785c14a95539e43aad8625692e01b3, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 558494864265021054, guid: 45785c14a95539e43aad8625692e01b3, type: 3}
       propertyPath: m_Name
       value: DIalogueUI
@@ -10679,6 +10687,14 @@ PrefabInstance:
     - target: {fileID: 558494864265021055, guid: 45785c14a95539e43aad8625692e01b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 558494864661343569, guid: 45785c14a95539e43aad8625692e01b3, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+    - target: {fileID: 558494864661343569, guid: 45785c14a95539e43aad8625692e01b3, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45785c14a95539e43aad8625692e01b3, type: 3}

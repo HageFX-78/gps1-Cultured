@@ -219,7 +219,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Space or Left-Click to Continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1117,7 +1117,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Lets try to <color="green">understand</color> each other
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1470,7 +1470,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &365533067
@@ -1967,7 +1967,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "I\u2019m learning to <color=\"blue>love myself</color> and so can you"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3252,7 +3252,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3379,7 +3379,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Testing Font
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3516,7 +3516,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3797,7 +3797,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enemy
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4055,7 +4055,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "I <color=\"red\">admit</color> that I\u2019m full of flaws just like you"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -4365,7 +4365,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Space or Left-Click to Continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5901,7 +5901,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: ..........................
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6183,7 +6183,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Alex
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6752,7 +6752,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: A parasite like you is talking to me? Disgusting!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
