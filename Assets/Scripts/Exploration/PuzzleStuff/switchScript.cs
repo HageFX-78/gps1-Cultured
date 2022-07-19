@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class switchScript : MonoBehaviour
 {
-    [SerializeField] public PuzzleManager manager;
+    [SerializeField] public puzzleManager manager;
 
     [Header("Button ID")]
     public float buttonOrder;
@@ -36,7 +36,7 @@ public class switchScript : MonoBehaviour
                         manager.ButtonPressType2(buttonOrder);
                         break;
                     case 3:
-                        if (PuzzleManager.puzzleDone) manager.ResetPuzzle();
+                        if (puzzleManager.puzzleDone) manager.ResetPuzzle();
                         break;
                 }
             }
