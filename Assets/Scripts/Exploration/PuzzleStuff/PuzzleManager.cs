@@ -10,7 +10,7 @@ public class puzzleManager : MonoBehaviour
     [SerializeField] public int puzzleType;
     private new Renderer renderer;
 
-    [HideInInspector] public static bool puzzleDone;
+    [HideInInspector] public bool puzzleDone;
 
     private void Awake()
     {
@@ -45,6 +45,8 @@ public class puzzleManager : MonoBehaviour
                 if (currentButton == switchList.Count)
                 {
                     Destroy(door);
+                    FinishedPuzzlesManager.PuzzleList.Remove(door.name);
+                    FinishedPuzzlesManager.FinishedPuzzles.Add(door.name);
                     puzzleDone = true;
                 }
                 

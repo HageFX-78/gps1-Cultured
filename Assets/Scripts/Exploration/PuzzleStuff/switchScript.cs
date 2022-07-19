@@ -22,7 +22,7 @@ public class switchScript : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             if (onTop)
             {
@@ -36,7 +36,7 @@ public class switchScript : MonoBehaviour
                         manager.ButtonPressType2(buttonOrder);
                         break;
                     case 3:
-                        if (puzzleManager.puzzleDone) manager.ResetPuzzle();
+                        if (manager.puzzleDone) manager.ResetPuzzle();
                         break;
                 }
             }

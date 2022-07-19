@@ -125,6 +125,9 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log(collision.gameObject.name);
 
             StartCoroutine(LoadingBattle());            
+        } else if (collision.gameObject.CompareTag("Boss"))
+        {
+            StartCoroutine(LoadingBoss());
         }
     }
 
@@ -137,6 +140,16 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSecondsRealtime(timerToTransition);
         //load scene after timer goes;
         SceneManager.LoadSceneAsync("Battle Scene");
+
+    }
+
+    IEnumerator LoadingBoss()
+    {
+        Time.timeScale = 0;
+
+        yield return new WaitForSecondsRealtime(timerToTransition);
+        //load scene after timer goes;
+        SceneManager.LoadSceneAsync("MainMenu");
 
     }
 }
