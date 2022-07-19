@@ -159,8 +159,8 @@ public class EmotionManager : MonoBehaviour
     {
         PosBar.sizeDelta = new Vector2((currentThreshold/100)*600, 15);
         NegBar.sizeDelta = new Vector2(((100-currentThreshold)/ 100)*600, 15);
-        
     }
+
     public float emotionEffectivenss(string type)
     {
         return emotion.TypeMultiplier[type];

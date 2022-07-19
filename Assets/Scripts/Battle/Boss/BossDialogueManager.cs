@@ -9,9 +9,9 @@ using UnityEngine.UI;
 public class BossDialogueManager : MonoBehaviour
 {
     public static BossDialogueManager instance;
+    public BossEmotionManager bossEmotionManager;
 
     [Header("Dialogue UI")]
-    [SerializeField] private GameObject FullPanel;
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private Image dialoguePanelImage;
     [SerializeField] private RectTransform dialogueTransform;
@@ -26,6 +26,9 @@ public class BossDialogueManager : MonoBehaviour
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI [] choicesText;
+    private int choiceIndex;
+    public List<string> tempTag;
+    private int tagIndex;
 
     private void Awake()
     {
@@ -35,17 +38,13 @@ public class BossDialogueManager : MonoBehaviour
         }
         else
             instance = this;
-    }
 
-    private void Start()
-    {
+
         storyIsPlaying = false;
-        //dialoguePanel.SetActive(false);
-
         //initialise array of choicetext to be the same as the amount of choices
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
-        foreach(GameObject choice in choices)
+        foreach (GameObject choice in choices)
         {
             //setting the element of the array to the text of each choice
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
@@ -61,7 +60,7 @@ public class BossDialogueManager : MonoBehaviour
         }
 
         //if there are no more options to give and player click
-        if (currentStory.currentChoices.Count == 0)
+        if (storyIsPlaying && currentStory.currentChoices.Count == 0)
         {
             //if there is no choices, sets the color, size, position
             dialogueTransform.sizeDelta = dialogueSize;
@@ -101,6 +100,8 @@ public class BossDialogueManager : MonoBehaviour
         {
             dialogueText.text = currentStory.Continue();
 
+            List<string> currentTag = currentStory.currentTags;
+            tempTag = currentTag; 
             DisplayChoices();
         }
         else
@@ -111,44 +112,59 @@ public class BossDialogueManager : MonoBehaviour
 
     private void DisplayChoices()
     {
-        //create a list of type choices based on the current story choices
+        //creates a list of choices and tags into a list
         List<Choice> currentChoices = currentStory.currentChoices;
-
-        if(currentChoices.Count > choices.Length)
+        
+        if (currentChoices.Count > choices.Length)
         {
             Debug.LogError("More choices were given: " + currentChoices.Count);
         }
 
-        int index = 0;
+        choiceIndex = 0;
 
         foreach(Choice choice in currentChoices)
         {
             //for each choice in the list, activate the buttons, and set that buttons text to that choice
-            choices[index].gameObject.SetActive(true);
-            choicesText[index].text = choice.text;
-            index++;
+            choices[choiceIndex].gameObject.SetActive(true);
+            choicesText[choiceIndex].text = choice.text;
+
+            choiceIndex++;
         }
 
-        for(int i = index; i< choices.Length; i++)
+        for(int i = choiceIndex; i< choices.Length; i++)
         {
             //if there are any extra choices based on where the index left off, setactive(false) the remaining buttons
             choices[i].gameObject.SetActive(false);
         }
 
-        if(index != 0)
+        if(choiceIndex != 0)
         {
             //if there are choices, resets the color, size, position
             dialoguePanelImage.color = Color.black;
             dialogueText.color = Color.white;
             dialogueTransform.sizeDelta = defaultDialogueSize;
-            dialogueTransform.anchoredPosition = new Vector3(0, 0, 0);
+            dialogueTransform.anchoredPosition = new Vector3(0, -75, 0);
         }
     }
 
+    //onclick function for buttons
     public void MakeChoice(int choiceIndex)
     {
-        //onclick function that returns the choice index
         currentStory.ChooseChoiceIndex(choiceIndex);
-        ContinueStory();
+        //========================================Player deals dmg================================================
+        if(tempTag.Count > 0)
+        {
+            if(bossEmotionManager.phase1)
+            {
+                int randDmg = (int)UnityEngine.Random.Range(bossEmotionManager.minBaseDamage, bossEmotionManager.maxBaseDamage);
+                bossEmotionManager.DealDamage(randDmg, tempTag[choiceIndex]);
+
+                int randRecover = (int)UnityEngine.Random.Range(bossEmotionManager.minBaseDamage, bossEmotionManager.maxBaseDamage);
+                bossEmotionManager.Recover(randRecover);
+            }
+        }
+
+        ContinueStory();     
+        BossEmotionManager.turnCounter--;
     }
 }

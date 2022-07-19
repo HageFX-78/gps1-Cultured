@@ -4,49 +4,12 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    [Header("Visual Cue")]
-    [SerializeField] private GameObject visualCue;
-
     //setting file to read
     [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJson;
+    [SerializeField] private TextAsset phase1;
 
-    private bool playerInRange;
-
-    private void Awake()
+    private void Start()
     {
-        playerInRange = false;
-        visualCue.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (playerInRange)
-        {
-            visualCue.SetActive(true);
-            if(Input.GetMouseButtonDown(0) && !BossDialogueManager.instance.storyIsPlaying)
-            {
-                BossDialogueManager.instance.EnterDialogueMode(inkJson);
-            }
-        }
-        else
-        {
-            visualCue.SetActive(false);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Player")
-        {
-            playerInRange = true;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            playerInRange = false;
-        }
+        BossDialogueManager.instance.EnterDialogueMode(phase1);
     }
 }

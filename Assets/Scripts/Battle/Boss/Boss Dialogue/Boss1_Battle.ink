@@ -8,23 +8,20 @@ VAR Acceptance = false
  
  ===battle===
 //==============================================================TURN 1============================================================
-Boss: You are not the brother I know, give me back my brother!!
-    + I am still me?
-        Boss: No.. no! You are a FAKE! You are a LIAR!!
+Boss: You are not the brother I know, give me back my brother!! #Rational #Rational # Hope #Hope
+    + I am still me? 
         ->PathA2
-    + Stop acting like you do not know anything!!
-        Boss: Stop making me uncomfortable, I don't understand!
+    + Stop acting like you do not know anything!! 
         ->PathB2
-    + I... just hope you are already at a better place..
-        Boss: That doesn't make any sense to me..
+    + I... just hope you are already at a better place.. 
         ->PathC2
-    + [Mention about something in the past] We used to play by the riverside, it's me! Dont you remember??
-        Boss: I dont buy it!!
+    + [Mention about something in the past] We used to play by the riverside, it's me! Dont you remember?? 
         ->PathD2
  
  //==============================================================PATH A============================================================
  //==============================================================TURN 2============================================================
- ===PathA2===
+ =PathA2
+ Boss: No.. no! You are a FAKE! You are a LIAR!! #Hope # Love #Rational #Rational
     + You should know that I am not lying.. 
         ~ Hope = true
     + Do you think this is easy for me right now??
@@ -33,19 +30,18 @@ Boss: You are not the brother I know, give me back my brother!!
         ~ Rational = true
     + Prove it to me that I lied to you.
         ~ Rational = true
-
 - ->checkA2
 
 //==============================================================CHECK 2============================================================
 
 =checkA2
-    {Rational || Hope:
-        Boss: How about you prove to me that you didn't lie!? I know you can't!
+    {Rational || Hope: 
+        Boss: How about you prove to me that you didn't lie!? I know you can't! #Love #Acceptance #Hope #Rational
         ~Rational = false
         ~Hope = false
         ->PathA3_1
     - else:
-        Boss: Yeah!... You probably think this is funny somehow!!
+        Boss: Yeah!... You probably think this is funny somehow!! #Acceptance #Hope #Love #Rational
         ~Love = false
         ~Acceptance = false
         ->PathA3_2
@@ -80,12 +76,12 @@ Boss: You are not the brother I know, give me back my brother!!
 
 =checkA3
     {Rational||Hope:
-        Boss: Are you really telling the truth? You must be still lying!
+        Boss: Are you really telling the truth? You must be still lying! #Love #Rational #Acceptance #Hope
         ~Rational = false
         ~Hope = false
         ->PathA4_1
     -else:
-        Boss: Blah, blah, blah. You are making this unbearable and making me miserable!
+        Boss: Blah, blah, blah. You are making this unbearable and making me miserable! #Rational #Love #Acceptance # Hope
         ~Love = false
         ~Acceptance = false
         ->PathA4_2
@@ -121,11 +117,12 @@ Boss: You are not the brother I know, give me back my brother!!
 =checkA4
     {Rational||Hope:
         Boss: At the end of the day, it's just your side of story. Do you really think your "talk" is going to help you now?
+        #Rational #Hope #Acceptance #Love
         ~Rational = false
         ~Hope = false
         ->PathA5_1
     -else:
-        Boss: So now it's MY fault? You ALWAYS want to be right!
+        Boss: So now it's MY fault? You ALWAYS want to be right! #Acceptance #Acceptance #Hope #Rational
         ~Love = false
         ~Acceptance = false
         ->PathA5_2
@@ -163,12 +160,12 @@ Boss: You are not the brother I know, give me back my brother!!
 
 =checkA5
     {Rational||Hope:
-        Boss: In the end, all you can do is bark. All for NOTHING!
+        Boss: In the end, all you can do is bark. All for NOTHING! #Acceptance #Love #Hope #Rational
         ~Rational = false
         ~Hope = false
         ->PathA6_1
     -else:
-        Boss: Stop trying to correct me with your logic and reasoning!
+        Boss: Stop trying to correct me with your logic and reasoning! #Acceptance #Love #Hope #Rational
         ~Love = false
         ~Acceptance = false
         ->PathA6_2
@@ -202,12 +199,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 6============================================================
 =checkA6
     {Rational||Hope:
-        Boss: No matter what you say, It's not going to change my mind!!
+        Boss: No matter what you say, It's not going to change my mind!! #Acceptance #Rational #Acceptance #Hope
         ~Rational = false
         ~Hope = false
         ->PathA7_1
     -else:
-        Boss: My brother would never leave me behind, YOU AREN'T MY BROTHER
+        Boss: My brother would never leave me behind, YOU AREN'T MY BROTHER #Acceptance #Love #Rational #Hope
         ~Love = false
         ~Acceptance = false
         ->PathA7_2
@@ -221,6 +218,7 @@ Boss: You are not the brother I know, give me back my brother!!
     + [Give Up?]I'm leaving and I'm DONE TRYING
         ~ Acceptance = true
     + [*Kneel Down*] P- Please...
+        ~Hope = true
 - ->checkA7
 
 =PathA7_2
@@ -236,19 +234,10 @@ Boss: You are not the brother I know, give me back my brother!!
 
 //==============================================================CHECK 7============================================================
 =checkA7 //have to fix in code
-    {Rational||Hope:
-        "Your sister seems to have calmed down slightly"
-        ~Rational = false
-        ~Hope = false
-        Phase 2 
-        ->DONE
-    -else:
-        Boss: This is goodbye.... I dont know why I wasted my time...
-        ~Love = false
-        ~Acceptance = false
-        Game over
-        ->DONE
-    }
+    "Your sister seems to have calmed down slightly"
+    Phase 2 
+- ->PathA8
+
 //==============================================================TURN 8============================================================
 =PathA8
     + Do you believe that I am your brother now?
@@ -260,7 +249,8 @@ Boss: You are not the brother I know, give me back my brother!!
     
 //==============================================================PATH B============================================================
 //==============================================================TURN 2============================================================
-===PathB2===
+=PathB2
+Boss: Stop making me uncomfortable, I don't understand! #Rational #Rational #Love #Hope
     + You are in denial right now..
         ~ Rational = true
     + That's because you are RUNNING away from reality!
@@ -275,12 +265,12 @@ Boss: You are not the brother I know, give me back my brother!!
 
 =checkB2
     {Rational||Hope:
-        Boss: WHO GIVES YOU THE RIGHT TO LECTURE ME!!
+        Boss: WHO GIVES YOU THE RIGHT TO LECTURE ME!! #Love #Acceptance #Hope #Rational
         ~Rational = false
         ~Hope = false
         ->PathB3_1
     -else:
-        Boss: Hah! Funny how YOU are the person telling ME this.
+        Boss: Hah! Funny how YOU are the person telling ME this. #Rational #Acceptance #Love #Hope
         ~Love = false
         ~Acceptance = false
         ->PathB3_2
@@ -311,25 +301,26 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 3============================================================
 =checkB3
     {Rational||Hope:
-        Boss: I'm trying to!! But YOU are the one being unreasonable and annoying!!
+        Boss: I'm trying to!! But YOU are the one being unreasonable and annoying!! #Rational #Hope #Acceptance #Acceptance
         ~Rational = false
         ~Hope = false
         ->PathB4_1
     -else:
-        Boss: You are trying to bully me! My brother would never do this to me! HMPH!
+        Boss: You are trying to bully me! My brother would never do this to me! HMPH! #Love #Hope #Acceptance #Rational
         ~Love = false
         ~Acceptance = false
         ->PathB4_2
     }
 //==============================================================TURN 4============================================================
 =PathB4_1
-    + Don't try to twist the story to your favor
+    + Don't try to twist the story to your favor!
         ~Rational = true
     + I hope you can cooperate right know
-        ~Acceptance=true
+        ~Hope=true
     + I'm really disappointed on how you reacted
         ~Acceptance=true
     + Do you really expect me to accept your tantrum??
+        ~Acceptance=true
 - ->checkB4
 
 =PathB4_2
@@ -346,12 +337,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 4============================================================
 =checkB4
     {Rational||Hope:
-        Boss: ARGHH!! You don't understand... It is YOU who keeps adding salt to my wound!!!
+        Boss: ARGHH!! You don't understand... It is YOU who keeps adding salt to my wound!!! #Acceptance #Rational #Hope #Acceptance
         ~Rational = false
         ~Hope = false
         ->PathB5_1
     -else:
-        Boss: You KNOW what I said is the truth...
+        Boss: You KNOW what I said is the truth... #Acceptance #Hope #Love #Rational
         ~Love = false
         ~Acceptance = false
         ->PathB5_2
@@ -359,7 +350,7 @@ Boss: You are not the brother I know, give me back my brother!!
 
 //==============================================================TURN 5============================================================
 =PathB5_1
-    + Nowww we are playing the blame game.
+    + Nowww we are playing the blame game. 
         ~Acceptance=true
     + You just need to relax and take a deep breath right now.
         ~Rational=true
@@ -382,12 +373,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 5============================================================
 =checkB5
     {Rational||Hope:
-        Boss: The audacity of you to say that really impressed me, but I hardly feel anything
+        Boss: The audacity of you to say that really impressed me, but I hardly feel anything #Acceptance #Love #Rational #Hope
         ~Rational = false
         ~Hope = false
         ->PathB6_1
     -else:
-        Boss: Looking at you panic... IS THE BEST THING I'VE SEEN IN AWHILE!! HAHAHA
+        Boss: Looking at you panic... IS THE BEST THING I'VE SEEN IN AWHILE!! HAHAHA #Acceptance #Love #Rational #Hope
         ~Love = false
         ~Acceptance = false
         ->PathB6_2
@@ -418,12 +409,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 6============================================================
 =checkB6
     {Rational||Hope:
-        Boss: Still trying?!? At the end of the day, you are just weak!!
+        Boss: Still trying?!? At the end of the day, you are just weak!! #Acceptance #Love #Rational #Hope
         ~Rational = false
         ~Hope = false
         ->PathB7_1
     -else:
-        Boss: I'm already better... without you. So run along now!!
+        Boss: I'm already better... without you. So run along now!! #Acceptance #Love #Rational #Hope
         ~Love = false
         ~Acceptance = false
         ->PathB7_2
@@ -454,18 +445,9 @@ Boss: You are not the brother I know, give me back my brother!!
 
 //==============================================================CHECK 7============================================================
 =checkB7 //have to fix in code
-    {Rational||Hope: 
-        "She seem to have calmed down"
-        ~Rational = false
-        ~Hope = false
-        ->PathB8
-    -else:
-        Boss: This is goodbye...
-        GAME OVER
-        ~Love = false
-        ~Acceptance = false
-        ->DONE
-    }
+    "Your sister seems to have calmed down slightly"
+    Phase 2 
+- ->PathB8
     
 //==============================================================PATH 8============================================================
 =PathB8
@@ -477,7 +459,8 @@ Boss: You are not the brother I know, give me back my brother!!
 
 //==============================================================PATH C============================================================
 //==============================================================TURN 2============================================================
-===PathC2===
+=PathC2
+Boss: That doesn't make any sense to me.. #Love #Hope $Acceptance #Rational
     + Even if you passed, I will always love you
         ~Love=true
     + Please don't run away from this
@@ -491,12 +474,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 2============================================================
 =checkC2
     {Rational||Hope: 
-        Boss: So you are saying I'm running away? Like you!? You are a coward!!?
+        Boss: So you are saying I'm running away? Like you!? You are a coward!!? #Hope #Love #Rational #Acceptance
         ~Rational = false
         ~Hope = false
         ->PathC3_1
     -else:
-        Boss: All you want is to see me suffer!!
+        Boss: All you want is to see me suffer!! #Love #Hope #Acceptance #Rational
         ~Love = false
         ~Acceptance = false
         ->PathC3_2
@@ -528,12 +511,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 3============================================================
 =checkC3
     {Rational||Hope: 
-        Boss: YOU think YOU know EVERYTHING... but you don't!
+        Boss: YOU think YOU know EVERYTHING... but you don't! #Hope #Rational #Acceptance #Love
         ~Rational = false
         ~Hope = false
         ->PathC4_1
     -else:
-        Boss: "Yawn" Keep up with your fake identity.. It won't work!
+        Boss: "Yawn" Keep up with your fake identity.. It won't work! #Love #Hope #Rational #Acceptance
         ~Love = false
         ~Acceptance = false
         ->PathC4_2
@@ -564,12 +547,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 4============================================================
 =checkC4
     {Rational||Hope: 
-        Boss: To accept that I'm dead?? Thats nothing but a lie!!
+        Boss: To accept that I'm dead?? Thats nothing but a lie!! #Rational #Hope #Acceptance #Love
         ~Rational = false
         ~Hope = false
         ->PathC5_1
     -else:
-        Boss: It's my fault now?!?? All you can do is blame me, but the truth both our suffering is your doing!!
+        Boss: It's my fault now?!?? All you can do is blame me, but the truth both our suffering is your doing!! #Rational #Love #Hope # Acceptance
         ~Love = false
         ~Acceptance = false
         ->PathC5_2
@@ -602,12 +585,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 5=====================================================
 =checkC5
     {Rational||Hope: 
-        Boss: I'm suppose to trust you while you continue to lie to my face!?? You DISGUST ME
+        Boss: I'm suppose to trust you while you continue to lie to my face!?? You DISGUST ME #Rational #Hope #Acceptance #Love
         ~Rational = false
         ~Hope = false
         ->PathC6_1
-    -else:
-        Boss: You are weak!!! I'm not surprised
+    -else: 
+        Boss: You are weak!!! I'm not surprised #Rational #Acceptance #Love #Hope
         ~Love = false
         ~Acceptance = false
         ->PathC6_2
@@ -639,12 +622,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 6=====================================================
 =checkC6
     {Rational||Hope: 
-        Boss: Not sincere enough!! I hardly feel anything!!
+        Boss: Not sincere enough!! I hardly feel anything!! #Hope #Rational #Acceptance #Love
         ~Rational = false
         ~Hope = false
         ->PathC7_1
     -else:
-        Boss: I'm delighted that this is happening. Seeing you SUFFER make me happy!
+        Boss: I'm delighted that this is happening. Seeing you SUFFER make me happy! #Hope #Rational #Acceptance #Love
         ~Love = false
         ~Acceptance = false
         ->PathC7_2
@@ -676,18 +659,9 @@ Boss: You are not the brother I know, give me back my brother!!
 
 //==============================================================CHECK 7=====================================================
 =checkC7 //fix in code
-    {Rational||Hope: 
-        "She seem to have calmed down"
-        ~Rational = false
-        ~Hope = false
-        ->PathC8
-    -else:
-        Boss: This is goodbye...
-        GAME OVER
-        ~Love = false
-        ~Acceptance = false
-        ->DONE
-    }
+    "Your sister seems to have calmed down slightly"
+    Phase 2 
+- ->PathC8
 //==============================================================TURN 8============================================================
 =PathC8
     + Do you believe that I am your brother now?
@@ -699,7 +673,8 @@ Boss: You are not the brother I know, give me back my brother!!
 
 //==============================================================PATH D============================================================
 //==============================================================TURN 2============================================================
-===PathD2===
+=PathD2
+Boss: I dont buy it!! #Rational #Love #Acceptance #Hope
     + I'm not lying, thats my final answer
         ~Rational=true
     + You are making depressed by questioning me...
@@ -713,12 +688,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 2============================================================
 =checkD2
     {Rational||Hope: 
-        Boss: Get real!! Everyone Lies!!
+        Boss: Get real!! Everyone Lies!! #Rational #Love #Hope #Acceptance
         ~Rational = false
         ~Hope = false
         ->PathD3_1
     -else:
-        Boss: I won't change my mind now!!
+        Boss: I won't change my mind now!! #Hope #Rational #Love #Acceptance
         ~Love = false
         ~Acceptance = false
         ->PathD3_2
@@ -749,12 +724,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 3============================================================
 =checkD3
     {Rational||Hope: 
-        Boss: You fake!! You are trying to bait me into this!! This must be a trap!!
+        Boss: You fake!! You are trying to bait me into this!! This must be a trap!! #Acceptance #Rational #Love #Hope
         ~Rational = false
         ~Hope = false
         ->PathD4_1
     -else:
-        Boss: You are not even trying!! A fake cracks easily!!
+        Boss: You are not even trying!! A fake cracks easily!! #Hope #Acceptance #Rational #Love
         ~Love = false
         ~Acceptance = false
         ->PathD4_2
@@ -786,12 +761,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 4============================================================
 =checkD4
     {Rational||Hope: 
-        Boss: You are so pathetic with your attempts right now
+        Boss: You are so pathetic with your attempts right now #Hope #Rational #Acceptance #Love
         ~Rational = false
         ~Hope = false
         ->PathD5_1
     -else:
-        Boss: So easily to crumble under pressure! So predictable...
+        Boss: So easily to crumble under pressure! So predictable...#Rational #Hope #Love #Acceptance
         ~Love = false
         ~Acceptance = false
         ->PathD5_2
@@ -810,7 +785,7 @@ Boss: You are not the brother I know, give me back my brother!!
 - ->checkD5
 
 =PathD5_2
-    + I just want you to be better than this, that's all
+    + I just want you to be better than this, that's all 
         ~Rational=true
     + I wish you can drop the act now
         ~Hope=true
@@ -822,12 +797,12 @@ Boss: You are not the brother I know, give me back my brother!!
 //==============================================================CHECK 5============================================================
 =checkD5
     {Rational||Hope: 
-        Boss: Why should i trust you? You are not even real!!
+        Boss: Why should i trust you? You are not even real!! #Rational #Hope #Love #Acceptance
         ~Rational = false
         ~Hope = false
         ->PathD6_1
     -else:
-        Boss: Watching you STRUGGLE and SUFFER is my cup of tea
+        Boss: Watching you STRUGGLE and SUFFER is my cup of tea #Hope #Rational #Acceptance #Love
         ~Love = false
         ~Acceptance = false
         ->PathD6_2
@@ -858,13 +833,13 @@ Boss: You are not the brother I know, give me back my brother!!
 
 //==============================================================CHECK 6============================================================
 =checkD6
-    {Rational||Hope: 
-        Boss: At the end of the day, all of this is just an act!
+    {Rational||Hope:  
+        Boss: At the end of the day, all of this is just an act! #Hope #Rational #Acceptance #Love
         ~Rational = false
         ~Hope = false
         ->PathD7_1
-    -else:
-        Boss: You are so pathetic, are you sure you are not fake?
+    -else: 
+        Boss: You are so pathetic, are you sure you are not fake? #Hope #Rational #Love #Acceptance
         ~Love = false
         ~Acceptance = false
         ->PathD7_2
@@ -896,18 +871,9 @@ Boss: You are not the brother I know, give me back my brother!!
 
 //==============================================================CHECK 7============================================================
 =checkD7//fix in code
-    {Rational||Hope: 
-        "She seem to have calmed down"
-        ~Rational = false
-        ~Hope = false
-        ->PathD8
-    -else:
-        Boss: This is goodbye...
-        GAME OVER
-        ~Love = false
-        ~Acceptance = false
-        ->DONE
-    }
+    "Your sister seems to have calmed down slightly"
+    Phase 2 
+- ->PathD8
 //==============================================================TURN 8============================================================
 =PathD8
     + Do you believe that I am your brother now?
