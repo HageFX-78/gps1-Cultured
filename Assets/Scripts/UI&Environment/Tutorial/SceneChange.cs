@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
     [Header("Scene Switch")]
-    [SerializeField] public static bool loadGame = false;
+   // [SerializeField] public static bool loadGame = false;
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Slider loadSlider;
 
@@ -17,7 +17,9 @@ public class SceneChange : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
-                LoadAsynchronously((int)sceneIndex.LV1);
+                PlayerCommonStatus.sacrificeRemnants();
+                StartCoroutine(LoadAsynchronously((int)sceneIndex.LV1));
+                TRemnant.collect = false;
             }
         }
     }
@@ -30,6 +32,8 @@ public class SceneChange : MonoBehaviour
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
             loadSlider.value = progress;
+            Debug.Log("SEND HELP");
+            Debug.Log(operation);
             yield return null;
         }
     }

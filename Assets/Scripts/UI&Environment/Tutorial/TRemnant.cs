@@ -12,7 +12,7 @@ public class TRemnant : MonoBehaviour
         {
             Debug.Log("Collected");
             collect = true;
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
         }
     }
 }
