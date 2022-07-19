@@ -70,14 +70,14 @@ public class ExplorationUIController : MonoBehaviour
     }
     public void StartNG(int sceneNum)
     {
-        StartCoroutine(LoadAsynchronously(sceneNum));
+        StartCoroutine(LoadAsynchronously((int)sceneIndex.TUTORIAL));
         PlayerPrefs.SetInt("Load Scene", 1);
     }
     public void Back()
     {
         //PlayerPrefs.SetFloat("Load Sanity", PlayerCommonStatus.sanityValue);
-        PlayerPrefs.SetInt("Load Scene", SceneManager.GetActiveScene().buildIndex); 
-        StartCoroutine(LoadAsynchronously(sceneNum));
+        PlayerPrefs.SetInt("Load Scene", SceneManager.GetActiveScene().buildIndex);
+        StartCoroutine(LoadAsynchronously((int)sceneIndex.MAINMENU));
         Time.timeScale = 1;
     }
 
