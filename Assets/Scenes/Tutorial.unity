@@ -998,12 +998,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210247163}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6479.9995}
-  m_LocalScale: {x: 36.5, y: 29.5, z: 72}
+  m_LocalPosition: {x: 55, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1341082579}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &210247165
 SpriteRenderer:
@@ -1228,7 +1228,7 @@ RectTransform:
   - {fileID: 145651808}
   - {fileID: 1516638991}
   m_Father: {fileID: 1341082579}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3781,8 +3781,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.5362663, y: 0.70560837}
-  m_Size: {x: 2.7485886, y: 16.128782}
+  m_Offset: {x: -1, y: 1}
+  m_Size: {x: 4, y: 16}
   m_Direction: 0
 --- !u!1 &1047152434
 GameObject:
@@ -5026,7 +5026,6 @@ RectTransform:
   - {fileID: 570285617}
   - {fileID: 1365269096}
   - {fileID: 831223312}
-  - {fileID: 210247164}
   - {fileID: 286078987}
   m_Father: {fileID: 0}
   m_RootOrder: 3
