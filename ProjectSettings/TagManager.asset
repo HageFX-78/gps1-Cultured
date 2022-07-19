@@ -13,7 +13,7 @@ TagManager:
   - SFX
   - TutorialEnemy
   - interactable
-  - Boss
+  - Boss1
   layers:
   - Default
   - TransparentFX

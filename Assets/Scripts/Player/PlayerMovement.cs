@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         //on collision with enemy, set the transitionPos to the collide point, destroy the enemy and load next scene
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Hit Enemy");
+            //Debug.Log("Hit Enemy");
             transitionPos = collision.transform.position;
 
             //currently after collision, set enemy to inactive, add into removed enemy and enemy list
@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log(collision.gameObject.name);
 
             StartCoroutine(LoadingBattle());            
-        } else if (collision.gameObject.CompareTag("Boss"))
+        } else if (collision.gameObject.CompareTag("Boss1"))
         {
             StartCoroutine(LoadingBoss());
         }
@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(timerToTransition);
         //load scene after timer goes;
-        SceneManager.LoadSceneAsync("Battle Scene");
+        SceneManager.LoadSceneAsync((int)sceneIndex.BATTLE);
 
     }
 
@@ -149,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(timerToTransition);
         //load scene after timer goes;
-        SceneManager.LoadSceneAsync("MainMenu");
+        SceneManager.LoadSceneAsync((int)sceneIndex.LVL1BOSS);
 
     }
 }

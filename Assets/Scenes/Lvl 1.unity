@@ -4683,7 +4683,7 @@ GameObject:
   - component: {fileID: 508064771}
   m_Layer: 0
   m_Name: Lvl1Boss
-  m_TagString: Boss
+  m_TagString: Boss1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

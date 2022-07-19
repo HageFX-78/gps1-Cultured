@@ -32,8 +32,6 @@ public class SceneChange : MonoBehaviour
         {
             float progress = Mathf.Clamp01(operation.progress / .9f);
             loadSlider.value = progress;
-            Debug.Log("SEND HELP");
-            Debug.Log(operation);
             yield return null;
         }
     }
