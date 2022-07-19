@@ -4118,6 +4118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a007124cda195e4f81a1a8f8fbe50a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  switchList: []
+  door: {fileID: 0}
+  puzzleType: 0
+  puzzleDone: 0
 --- !u!1 &634335605
 GameObject:
   m_ObjectHideFlags: 0
@@ -5488,6 +5492,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a007124cda195e4f81a1a8f8fbe50a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  switchList:
+  - {fileID: 1557317817}
+  - {fileID: 1638572255}
+  - {fileID: 1646464094}
+  - {fileID: 1075050448}
+  - {fileID: 52431236}
+  - {fileID: 192325412}
+  door: {fileID: 343799229}
+  puzzleType: 2
+  puzzleDone: 0
 --- !u!1 &927183651
 GameObject:
   m_ObjectHideFlags: 0
@@ -9733,6 +9747,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a007124cda195e4f81a1a8f8fbe50a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  switchList:
+  - {fileID: 348496488}
+  - {fileID: 1715542544}
+  - {fileID: 491444409}
+  - {fileID: 71651790}
+  door: {fileID: 1807560316}
+  puzzleType: 1
+  puzzleDone: 0
 --- !u!1 &1807560316
 GameObject:
   m_ObjectHideFlags: 0

@@ -1051,7 +1051,7 @@ MonoBehaviour:
   notEffective: '#e33b29'
   superEffective: '#3665c9'
   normallyEffective: '#11bf40'
-  remnant1TriggerChance: 100
+  remnant1TriggerChance: 10
   optionsVisible: 0
   lastDialogueOn: 0
   typingDialogue: 0
