@@ -2080,8 +2080,8 @@ MonoBehaviour:
   enemyMaxSafeZone: 40
   minBaseDamage: 10
   maxBaseDamage: 15
-  minSelfRecover: 1
-  maxSelfRecover: 1
+  minSelfRecover: 5
+  maxSelfRecover: 5
   PosBar: {fileID: 220598929}
   NegBar: {fileID: 1409650480}
   SafeZone: {fileID: 1672509493}
