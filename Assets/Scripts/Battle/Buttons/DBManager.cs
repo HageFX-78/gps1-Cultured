@@ -507,7 +507,7 @@ public class DBManager : MonoBehaviour
         yield return new WaitForSeconds(transitionTimer);
         lastDialogueOn = false;
 
-        SceneManager.LoadSceneAsync((int)sceneIndex.LV1);
+        SceneManager.LoadScene((int)sceneIndex.LV1);
     }
     //----------------------------------------------------- On click functions -----------------------------------------------------------------------------------------
 

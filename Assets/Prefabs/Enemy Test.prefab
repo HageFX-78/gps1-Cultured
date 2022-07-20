@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInRange: []
   target: {fileID: 0}
-  enemyDetectRange: 5
+  enemyDetectRange: 7
   patrolMoveRange: 5
   patrolTimer: 5
   chaseSpeed: 6.5

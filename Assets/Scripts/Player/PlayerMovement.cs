@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(timerToTransition);
         //load scene after timer goes;
-        SceneManager.LoadSceneAsync((int)sceneIndex.BATTLE);
+        SceneManager.LoadScene((int)sceneIndex.BATTLE);
 
     }
 
@@ -149,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(timerToTransition);
         //load scene after timer goes;
-        SceneManager.LoadSceneAsync((int)sceneIndex.LVL1BOSS);
+        SceneManager.LoadScene((int)sceneIndex.LVL1BOSS);
 
     }
 }
