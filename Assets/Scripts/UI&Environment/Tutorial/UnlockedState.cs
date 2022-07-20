@@ -21,21 +21,21 @@ public class UnlockedState : TutorialBaseState
 
         if (Input.GetAxisRaw("Horizontal") !=0 || Input.GetAxisRaw("Vertical") !=0 ) 
         {
-            if (runTimer < 2f)
+            if (runTimer < 1.5f)
             {
                 runTimer += Time.deltaTime;
             }
-            else if (runTimer < 4f && Input.GetKey(KeyCode.LeftShift))
+            else if (runTimer < 2.5f && Input.GetKey(KeyCode.LeftShift))
             {
                 runTimer += Time.deltaTime;
             }
         }
-        if (runTimer > 1.5 && !sprint)
+        if (runTimer > 1.25 && !sprint)
         {
             tutorial.partialConvo(tutorial.convoFile2, 2, 5);
             sprint = true;
         }
-        else if ((runTimer > 3f && !walk) || (tutorial.gameObject.transform.position.x > 30 && !walk))
+        else if ((runTimer > 2f && !walk) || (tutorial.gameObject.transform.position.x > 25 && !walk))
         {
             tutorial.partialConvo(tutorial.convoFile2, 5, 6);
             walk = true;

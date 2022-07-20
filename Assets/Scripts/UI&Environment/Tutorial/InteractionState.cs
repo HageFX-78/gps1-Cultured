@@ -37,17 +37,12 @@ public class InteractionState : TutorialBaseState
 
         if(TRemnant.collect && !triggeredR)
         {
-            tutorial.partialConvo(tutorial.convoFile3, 42, 51);
+            tutorial.partialConvo(tutorial.convoFile3, 42, 47);
             triggeredR = true;
         }
     }
     public override void OnTriggerEnter2D(TutorialStateManager tutorial, Collider2D trigger)
     {
-
-        if(TRemnant.collect && trigger.CompareTag("Door"))
-        {
-            tutorial.SceneChange();
-        }
     }
     public override void OnCollisionEnter2D(TutorialStateManager tutorial, Collision2D col)
     {
