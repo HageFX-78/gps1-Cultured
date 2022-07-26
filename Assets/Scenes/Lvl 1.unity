@@ -688,7 +688,7 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 5
   activated: 0
-  puzzleType: 0
+  puzzleType: 2
 --- !u!61 &52431240
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1881,7 +1881,7 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 6
   activated: 0
-  puzzleType: 0
+  puzzleType: 2
 --- !u!61 &192325416
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7097,7 +7097,7 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 4
   activated: 0
-  puzzleType: 0
+  puzzleType: 2
 --- !u!61 &1075050452
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10586,7 +10586,7 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 1
   activated: 0
-  puzzleType: 0
+  puzzleType: 2
 --- !u!61 &1557317821
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10933,7 +10933,7 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 2
   activated: 0
-  puzzleType: 0
+  puzzleType: 2
 --- !u!61 &1638572259
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11061,7 +11061,7 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 3
   activated: 0
-  puzzleType: 0
+  puzzleType: 2
 --- !u!61 &1646464098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13015,7 +13015,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
