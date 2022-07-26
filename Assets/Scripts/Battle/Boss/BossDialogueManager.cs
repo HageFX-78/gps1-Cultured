@@ -169,14 +169,17 @@ public class BossDialogueManager : MonoBehaviour
         {
             if(bossEmotionManager.phase1)
             {
+                //deals damage to boss based on choice
                 int randDmg = (int)UnityEngine.Random.Range(bossEmotionManager.minBaseDamage, bossEmotionManager.maxBaseDamage);
                 bossEmotionManager.DealDamage(randDmg, tempTag[choiceIndex]);
-
+                
+                //boss recovers after attack
                 int randRecover = (int)UnityEngine.Random.Range(bossEmotionManager.minBaseDamage, bossEmotionManager.maxBaseDamage);
                 bossEmotionManager.Recover(randRecover);
             }
         }
 
+        
         ContinueStory();     
         BossEmotionManager.turnCounter--;
     }
