@@ -67,6 +67,12 @@ public class BossDialogueManager : MonoBehaviour
             dialogueTransform.anchoredPosition = dialogueOffset;
             dialoguePanelImage.color = Color.white;
             dialogueText.color = Color.black;
+
+            //setting the alpha on the dialogueBox
+            Color temp = dialoguePanelImage.color;
+            temp.a = 0.5f;
+            dialoguePanelImage.color = temp;
+
             if (Input.GetMouseButtonDown(0))
             {
                 ContinueStory();
@@ -142,6 +148,13 @@ public class BossDialogueManager : MonoBehaviour
             //if there are choices, resets the color, size, position
             dialoguePanelImage.color = Color.black;
             dialogueText.color = Color.white;
+            
+            //setting the alpha on the dialogueBox
+            Color temp = dialoguePanelImage.color;
+            temp.a = 0.5f;
+            dialoguePanelImage.color = temp;
+
+            //resizing the box
             dialogueTransform.sizeDelta = defaultDialogueSize;
             dialogueTransform.anchoredPosition = new Vector3(0, -75, 0);
         }
