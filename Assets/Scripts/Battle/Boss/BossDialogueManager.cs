@@ -106,6 +106,7 @@ public class BossDialogueManager : MonoBehaviour
         {
             dialogueText.text = currentStory.Continue();
 
+            //reads the current tags
             List<string> currentTag = currentStory.currentTags;
             tempTag = currentTag; 
             DisplayChoices();
@@ -169,8 +170,9 @@ public class BossDialogueManager : MonoBehaviour
         {
             if(bossEmotionManager.phase1)
             {
-                //deals damage to boss based on choice
+                //deals damage to boss based on choice and the tag
                 int randDmg = (int)UnityEngine.Random.Range(bossEmotionManager.minBaseDamage, bossEmotionManager.maxBaseDamage);
+                //passes in the temptag based on the choiceIndex
                 bossEmotionManager.DealDamage(randDmg, tempTag[choiceIndex]);
                 
                 //boss recovers after attack

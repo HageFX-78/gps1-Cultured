@@ -4,9 +4,9 @@ VAR Hope = false
 VAR Acceptance = false
  
  
- ->battle
+ ->Phase1
  
- ===battle===
+ ===Phase1===
 //==============================================================TURN 1============================================================
 Boss: You are not the brother I know, give me back my brother!! #Rational #Rational # Hope #Hope
     + I am still me? 
