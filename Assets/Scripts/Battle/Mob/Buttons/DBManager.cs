@@ -12,7 +12,7 @@ public class DBManager : MonoBehaviour
     [Header("Manager References")]
     public BattleStateManager battle;
     public EmotionManager enemyEmotion;
-    public ScreenShake camRef;
+    public ScreenShake enemyShakeRef;
 
     [Header("UI References")]
     public TextAsset pDialoguefile;//Player dialogue options file
@@ -217,9 +217,12 @@ public class DBManager : MonoBehaviour
         {
             switchOutThisOption(z);
         }
-        if(Random.Range(1,100)<=remnant1TriggerChance && remnant1Acquired)
+
+        int remChance = Random.Range(1, 100);
+        if (remChance <= remnant1TriggerChance && remnant1Acquired)
         {
             circleBestOption();
+            //Debug.Log(remChance);
         }
         
     }
@@ -245,15 +248,15 @@ public class DBManager : MonoBehaviour
         //Shake screen visual effect, shake enemy and bg rn
         if (enemyEmotion.emotionEffectivenss(dmgType)==1.0f)
         {
-            camRef.ShakeScreen(0.2f);
+            enemyShakeRef.ShakeScreen(0.2f);
         }
         else if(enemyEmotion.emotionEffectivenss(dmgType) == 1.5f)
         {
-            camRef.ShakeScreen(0.3f, 0.6f);
+            enemyShakeRef.ShakeScreen(0.3f, 0.6f);
         }
         else
         {
-            camRef.ShakeScreen(0.2f, 0.1f);
+            enemyShakeRef.ShakeScreen(0.2f, 0.1f);
         }
         
 
@@ -264,6 +267,9 @@ public class DBManager : MonoBehaviour
         string thisDialogue ="";
         string effectiveColor = returnEffectiveColor(dialLists[rand].emotions);
         bool highlightState = false;
+        GameObject circleUI;
+
+
 ;       if(Random.Range(1, 100) <= sanityEffectChance)
         {
             thisDialogue = dialLists[rand].dialogues.Replace("[", $"<color={effectiveColor}>").Replace("]", "</color>");
@@ -279,6 +285,14 @@ public class DBManager : MonoBehaviour
         btnList[btnIndex].gameObject.name = $"{dialLists[rand].emotions}_{Random.Range(minBaseDmg, maxBaseDmg)}_{btnIndex}_{highlightState}";//Format of  <emotiontype_DamageValue_btnReferenceIndex_effectiveColor>
         currentDialLists.Add(dialLists[rand]);
         dialLists.RemoveAt(rand);
+
+
+        //-------Reset hint circles
+        for (int ind = 0; ind < btnList.Count; ind++)
+        {
+            circleUI = btnList[ind].transform.Find("TC").gameObject;
+            circleUI.SetActive(false);
+        }
         /*  
          * Only when navigation is turned on, can select using arrow keys/wasd
         if (btnIndex == 0)

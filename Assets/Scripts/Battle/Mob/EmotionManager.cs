@@ -11,12 +11,15 @@ public class EmotionManager : MonoBehaviour
     {
         "Delusional", "Hatred", "Self_Loathing", "Despair", "Righteousness"
     };
-
+    [Header("Emo Bar Initial Settings")]
     public float startMinThreshold, startMaxThreshold;//Setting values that should be altered
     public int minDifference, maxDifference;
     public float minThreshold, maxThreshold;
     public float currentThreshold;
 
+    [Header("Emo Bar Move Settings")]
+    [SerializeField] float moveEmoBarLoopCooldown;
+    [SerializeField] float moveEmoBarLoopSplit;
 
     private void Awake()
     {
@@ -57,7 +60,7 @@ public class EmotionManager : MonoBehaviour
             safeZoneMidtoMax = 50 - safeZoneMidpointX;
         }
         SafeZone.anchoredPosition = new Vector2((safeZoneMidtoMax / 100) * safeZoneOffset, 296);
-        updateEmotionBar();
+        updateEmotionBar();//DOnt remove
     }
 
     private void Update()
@@ -129,15 +132,18 @@ public class EmotionManager : MonoBehaviour
     {
         currentThreshold += baseDamage * emotion.TypeMultiplier[damageType];
         currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
-        updateEmotionBar();
-        CurrentEmotionBar();//Logging only - comment when we done
+        //updateEmotionBar();
+        StartCoroutine(moveEmotionBar());
+
+        //CurrentEmotionBar();//Logging only - comment when we done
         //Debug.Log($"current = {currentThreshold}, dmg dealt {baseDamage * emotion.TypeMultiplier[damageType]}");
     }
     public void selfHarm(float selfDMG)
     {
         currentThreshold -= selfDMG * 1;
         currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
-        updateEmotionBar();
+        //updateEmotionBar();
+        StartCoroutine(moveEmotionBar());
     }
     public void CurrentEmotionBar()
     {
@@ -155,10 +161,10 @@ public class EmotionManager : MonoBehaviour
             return false;
         }
     }
-    public void updateEmotionBar()
+    public void updateEmotionBar()//DOnt delete, need for initial bar setting
     {
         PosBar.sizeDelta = new Vector2((currentThreshold/100)*600, 15);
-        NegBar.sizeDelta = new Vector2(((100-currentThreshold)/ 100)*600, 15);
+        //NegBar.sizeDelta = new Vector2(((100-currentThreshold)/ 100)*600, 15);
     }
 
     public float emotionEffectivenss(string type)
@@ -166,4 +172,30 @@ public class EmotionManager : MonoBehaviour
         return emotion.TypeMultiplier[type];
     }
 
+    IEnumerator moveEmotionBar()
+    {
+        float newXVal = new Vector2((currentThreshold / 100) * 600, 15).x;
+        float oldXVal = PosBar.sizeDelta.x;
+
+        float incrementVal = (newXVal > oldXVal ? newXVal - oldXVal:oldXVal-newXVal) / moveEmoBarLoopSplit;
+
+        if(newXVal > oldXVal)
+        {
+            while (PosBar.sizeDelta.x < newXVal)
+            {
+                PosBar.sizeDelta = new Vector2(PosBar.sizeDelta.x + incrementVal, 15);
+                yield return new WaitForSeconds(moveEmoBarLoopCooldown);
+            }
+        }
+        else
+        {
+            while (PosBar.sizeDelta.x > newXVal)
+            {
+                PosBar.sizeDelta = new Vector2(PosBar.sizeDelta.x - incrementVal, 15);
+                yield return new WaitForSeconds(moveEmoBarLoopCooldown);
+            }
+        }
+        PosBar.sizeDelta = new Vector2(newXVal, 15);
+
+    }
 }

@@ -6,6 +6,8 @@ public class ScreenShake : MonoBehaviour
 {
     /*Attach this script to cameras only, then when wan to call it just refer to this on the cam and the last function
      * 
+     * 
+     * This can be used on other game objects as well to make them shake like the enemy, jsut need to attach to them instead
      */
     [SerializeField] float shakeDuration = 0f;
     [SerializeField] float shakeMagnitude = 0.3f;
