@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class RemnantBehaviour : MonoBehaviour
 {
     [SerializeField] string remnantName;
     [TextArea][SerializeField] string remnantDescription;
     [SerializeField] int remnantSceneIndex;
+    Sprite remSprite;
 
     public bool inRange;
     //ITS A TRIGGER REMEMBER TO CHECK TRIGGER
@@ -13,6 +15,8 @@ public class RemnantBehaviour : MonoBehaviour
     {
         inRange = false;
         gameObject.name = remnantName;
+        remSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+
         if(PlayerCommonStatus.checkIfRemnantExist(remnantName))
         {
             if(PlayerCommonStatus.checkRemnantAcquired(remnantName))
@@ -22,7 +26,7 @@ public class RemnantBehaviour : MonoBehaviour
         }
         else
         {
-            Remnant thisRem = new Remnant(remnantName, remnantDescription, remnantSceneIndex);
+            Remnant thisRem = new Remnant(remnantName, remnantDescription, remnantSceneIndex, remSprite);
             PlayerCommonStatus.addRemnant(thisRem);
         }
         

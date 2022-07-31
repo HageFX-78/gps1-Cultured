@@ -278,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shows hints to the player during battle
+  m_text: No description
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}

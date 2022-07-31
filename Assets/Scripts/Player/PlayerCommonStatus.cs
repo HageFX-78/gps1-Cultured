@@ -57,6 +57,8 @@ public static class PlayerCommonStatus
     {
         remDic.Clear();
     }
+
+    //----------------------------Get remnant details with scene index
     public static string getRemnantDescriptionWithSceneIndex(int index)
     {
         foreach(string key in remDic.Keys)
@@ -68,5 +70,29 @@ public static class PlayerCommonStatus
             }
         }
         return "No description Found";
+    }
+    public static string getRemnantNameWithSceneIndex(int index)
+    {
+        foreach (string key in remDic.Keys)
+        {
+            Remnant thisRem = remDic[key];
+            if (thisRem.remnantSceneIndex == index)
+            {
+                return thisRem.remnantName;
+            }
+        }
+        return "Empty";
+    }
+    public static Sprite getRemnantSpriteWithSceneIndex(int index)
+    {
+        foreach (string key in remDic.Keys)
+        {
+            Remnant thisRem = remDic[key];
+            if (thisRem.remnantSceneIndex == index)
+            {
+                return thisRem.remnantSprite;
+            }
+        }
+        return null;
     }
 }
