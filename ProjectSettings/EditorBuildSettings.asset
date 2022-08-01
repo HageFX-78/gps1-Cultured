@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Lvl 1.unity
     guid: f7926701393faa545ba1c82cb19bb3ff
   - enabled: 1
-    path: Assets/Scenes/BossDemo.unity
+    path: Assets/Scenes/BossLvl1.unity
     guid: 8838f0bf15dd8c0429a31a1c2022f2c9
   - enabled: 1
     path: Assets/Scenes/Battle Scene.unity
