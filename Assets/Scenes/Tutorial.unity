@@ -967,8 +967,8 @@ Transform:
   m_GameObject: {fileID: 206390858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 18, y: 10.125, z: 0}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 36.5, y: 20.5, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1228,7 +1228,7 @@ RectTransform:
   - {fileID: 145651808}
   - {fileID: 1516638991}
   m_Father: {fileID: 1341082579}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1650,7 +1650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5211191234674822249, guid: 0cfc6c09e66d9da4396f1c159fb029d3, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5211191234674822249, guid: 0cfc6c09e66d9da4396f1c159fb029d3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2144,10 +2144,10 @@ MonoBehaviour:
   SafeZone: {fileID: 645074139}
   positiveEmotionTXT: {fileID: 1281857597}
   enemyEmotionTXT: {fileID: 674967125}
-  startMinThreshold: 50
-  startMaxThreshold: 50
-  minDifference: 5
-  maxDifference: 10
+  startMinThreshold: 35
+  startMaxThreshold: 35
+  minDifference: 20
+  maxDifference: 20
 --- !u!1 &548821095
 GameObject:
   m_ObjectHideFlags: 0
@@ -2230,6 +2230,7 @@ MonoBehaviour:
   D: {fileID: 1165004860}
   E: {fileID: 1721192112}
   negBar: {fileID: 1783798763}
+  posBar: {fileID: 459958598}
   dialopt: {fileID: 13811201}
   eDial: {fileID: 1516638990}
   pDial: {fileID: 145651807}
@@ -2267,8 +2268,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 16, y: 7.5}
+  m_Offset: {x: -0.26993564, y: -0.049097035}
+  m_Size: {x: 32.935574, y: 18.580242}
   m_Direction: 1
 --- !u!114 &548821102
 MonoBehaviour:
@@ -2285,10 +2286,10 @@ MonoBehaviour:
   dialogueUI: {fileID: 1481955843}
   talkerName: {fileID: 732426108}
   dialogueContent: {fileID: 1523048587}
-  switchDialogueCooldown: 0.4
+  switchDialogueCooldown: 0.35
   coolDownSplitPortion: 5
   typeSpeed: 0.01
-  refreshDialogueTrigger: 0.2
+  refreshDialogueTrigger: 0.4
   defType: 0
   dialogueActive: 0
 --- !u!50 &548821103
@@ -2680,7 +2681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1780835134592772994, guid: 762af390dc67fa24d92c346c89015605, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1780835134592772994, guid: 762af390dc67fa24d92c346c89015605, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3253,7 +3254,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
-  m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_sharedMaterial: {fileID: -4447693244700658263, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3316,7 +3317,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &736363697
@@ -4366,7 +4367,7 @@ MonoBehaviour:
   m_text: Space or Left-Click to Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
-  m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_sharedMaterial: {fileID: -4447693244700658263, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4429,7 +4430,7 @@ MonoBehaviour:
   m_margin: {x: 738.9453, y: 156.1689, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1117921122
@@ -4885,6 +4886,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 145651807}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 548821098}
         m_TargetAssemblyTypeName: TutorialStateManager, Assembly-CSharp
         m_MethodName: ContTurn
@@ -4909,9 +4922,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 145651807}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 1191283558}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4919,7 +4932,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1191283559
 MonoBehaviour:
@@ -5389,11 +5402,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 570285617}
-  - {fileID: 1481955844}
   - {fileID: 1365269096}
   - {fileID: 831223312}
   - {fileID: 286078987}
   - {fileID: 1123221528}
+  - {fileID: 1481955844}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5631,7 +5644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1382318956914794245, guid: 02a6bfd26d96aed48b51ee9f160e7fca, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1382318956914794245, guid: 02a6bfd26d96aed48b51ee9f160e7fca, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5816,7 +5829,7 @@ RectTransform:
   - {fileID: 1523048589}
   - {fileID: 1117921120}
   m_Father: {fileID: 1341082579}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5902,7 +5915,7 @@ MonoBehaviour:
   m_text: ..........................
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
-  m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
+  m_sharedMaterial: {fileID: -4447693244700658263, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5965,7 +5978,7 @@ MonoBehaviour:
   m_margin: {x: 87.06201, y: -14.583242, z: 39.636353, w: -120.3117}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1523048588
@@ -6407,7 +6420,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Space or Left-Click to Continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 51ad36222bbb54e46bf04345178dbc00, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_sharedMaterial: {fileID: -3465073551946762411, guid: 365d3346850dc48488c3f21b8380d10e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -7326,7 +7339,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885476080}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 59.6, y: -15.49, z: -154.61847}
+  m_LocalPosition: {x: 71.77, y: -15.51, z: -154.61847}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

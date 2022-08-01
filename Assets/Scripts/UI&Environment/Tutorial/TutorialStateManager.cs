@@ -44,6 +44,7 @@ public class TutorialStateManager : MonoBehaviour
     public Button D;
     public Button E;
     public RectTransform negBar;
+    public RectTransform posBar;
     public GameObject dialopt;
     public GameObject eDial;
     public GameObject pDial;
@@ -120,7 +121,8 @@ public class TutorialStateManager : MonoBehaviour
         if(curTurn == 1)
         {
             pText.text = $"Lets try to understand each other";
-            negBar.sizeDelta = new Vector2(450, 15);
+            negBar.sizeDelta = new Vector2(350, 15);
+            posBar.sizeDelta = new Vector2(250, 15);
             optionA.text = $" Is that the best you can do?" + "<color=" + "green" + ">Try harder! </color>"; //R
             optionB.text = $"Come on !!We are " + "<color=" + "blue" + ">better than this!!"; // H
             optionC.text = $"Although this place is bad, you can live a " + "<color=" + "blue" + ">good life </color>" + "here"; //L
@@ -130,7 +132,8 @@ public class TutorialStateManager : MonoBehaviour
         {
             pText.text = $"Yea Im not good at all actually, this is the truth";
             eText.text = $"Shut your filthy mouth, you don’t deserve my time!";
-            negBar.sizeDelta = new Vector2(350, 15);
+            negBar.sizeDelta = new Vector2(400, 15);
+            posBar.sizeDelta = new Vector2(200, 15);
             optionA.text = $" Are you " + "<color=" + "green" + ">done</color>" +"?"; //R
             optionB.text = $"Today is a bad day but tomorrow " + "<color=" + "blue" + ">it will be better"; // H
             optionC.text = $"Come here you, let me " + "<color=" + "blue" + ">shower some love" + "for you"; // L 
@@ -139,7 +142,8 @@ public class TutorialStateManager : MonoBehaviour
         else if (curTurn == 3)
         {
             pText.text = $"Come here you, let me shower some love for you";
-            negBar.sizeDelta = new Vector2(335, 15);
+            negBar.sizeDelta = new Vector2(390, 15);
+            posBar.sizeDelta = new Vector2(210, 15);
         }
     }
 }

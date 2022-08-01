@@ -45,7 +45,7 @@ public class MainMenuBehaviour : MonoBehaviour
     }
     public void StartNG()
     {
-        StartCoroutine(LoadAsynchronously(sceneNum));
+        StartCoroutine(LoadAsynchronously((int)sceneIndex.TUTORIAL));
         PlayerPrefs.SetInt("Load Scene", 1);
     }
     public void LoadGame()

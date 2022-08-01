@@ -19,6 +19,7 @@ public class BattleState : TutorialBaseState
     }
     public override void UpdateState(TutorialStateManager tutorial)
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>().position = new Vector3(43,0,0);
         if (tutorial.end && step == 0)
         {
             if (cd > 0)
@@ -42,7 +43,7 @@ public class BattleState : TutorialBaseState
             else
             {
                 tutorial.battleUi[3].SetActive(true);
-                tutorial.SetGuideUi(385);
+                //tutorial.SetGuideUi(385);
                 tutorial.partialConvo(tutorial.convoFile3, 12, 16);
                 step++;
                 cd = 0.6f;
@@ -101,18 +102,18 @@ public class BattleState : TutorialBaseState
         }
         else if (tutorial.end && turn == 4)
         {
-            if (cd > 0 )
+            if (cd > 0)
             {
                 cd -= Time.deltaTime;
             }
-            else 
+            else
             {
                 tutorial.partialConvo(tutorial.convoFile3, 26, 27);
                 turn++;
                 cd = 0.5f;
-            }   
+            }
         }
-        else if(turn == 5 && tutorial.end)
+        else if (turn == 5 && tutorial.end)
         {
             tutorial.dialopt.SetActive(true);
             tutorial.A.interactable = false;
@@ -174,7 +175,7 @@ public class BattleState : TutorialBaseState
             turn++;
             tutorial.curTurn++;
         }
-       if (tutorial.pDial.activeSelf == true && tutorial.curTurn == 3) //Start of turn 3
+        if (tutorial.pDial.activeSelf == true && tutorial.curTurn == 3) //Start of turn 3
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
@@ -202,7 +203,7 @@ public class BattleState : TutorialBaseState
             tutorial.SwitchState(tutorial.interaction);
         }
     }
-        
+
     public override void OnTriggerEnter2D(TutorialStateManager tutorial, Collider2D trigger)
     {
     }
