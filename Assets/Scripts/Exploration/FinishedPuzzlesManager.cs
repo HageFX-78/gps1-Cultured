@@ -8,7 +8,7 @@ public class FinishedPuzzlesManager : MonoBehaviour
     public static List<string> PuzzleList = new List<string>();
     public static List<string> FinishedPuzzles = new List<string>();
 
-    void Start()
+    void Awake()
     {
         StoreAndCheckPuzzles();
     }

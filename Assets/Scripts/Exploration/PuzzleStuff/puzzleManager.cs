@@ -12,20 +12,28 @@ public class puzzleManager : MonoBehaviour
 
     [HideInInspector] public bool puzzleDone;
 
-    private void Awake()
-    {
-        if (puzzleDone) Destroy(door);
-    }
     private void Start()
     {
         puzzleDone = false;
         for (int i = 0; i < switchList.Count; i++)
         {
             switchList[i].GetComponent<switchScript>().puzzleType = puzzleType;
+        }
 
+        if(door.activeInHierarchy == false)
+        {
+            FinishedPuzzle();
+            puzzleDone = true;
         }
     }
-
+    public void FinishedPuzzle()
+    {
+        for (int i = 0; i < switchList.Count; i++)
+        {
+            renderer = switchList[i].GetComponent<Renderer>();
+            renderer.material.color = Color.green;
+        }
+    }
     public void ButtonPress(float buttonNumber)
     {
         if (puzzleDone == false)
@@ -44,7 +52,7 @@ public class puzzleManager : MonoBehaviour
                 currentButton++;
                 if (currentButton == switchList.Count)
                 {
-                    Destroy(door);
+                    door.SetActive(false);
                     FinishedPuzzlesManager.PuzzleList.Remove(door.name);
                     FinishedPuzzlesManager.FinishedPuzzles.Add(door.name);
                     puzzleDone = true;
@@ -72,9 +80,10 @@ public class puzzleManager : MonoBehaviour
                     SwitchButtonColour(4);
                     break;
                 case 3:
-                    SwitchButtonColour(2);
-                    SwitchButtonColour(3);
-                    SwitchButtonColour(4);
+                    for (int i = 2; i < 5; i++)
+                    {
+                        SwitchButtonColour(i);
+                    }
                     break;
                 case 4:
                     SwitchButtonColour(1);
@@ -82,7 +91,7 @@ public class puzzleManager : MonoBehaviour
                     SwitchButtonColour(4);
                     break;
                 case 5:
-                    SwitchButtonColour(0);
+                    SwitchButtonColour(5);
                     SwitchButtonColour(2);
                     SwitchButtonColour(4);
                     break;
@@ -107,7 +116,7 @@ public class puzzleManager : MonoBehaviour
             }
             if (currentButton == switchList.Count)
             {
-                Destroy(door);
+                door.SetActive(false);
                 puzzleDone = true;
             }
         }
