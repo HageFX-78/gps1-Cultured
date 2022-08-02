@@ -158,7 +158,7 @@ public class DBManager : MonoBehaviour
         
 
 
-        shuffleOptionsAtStart();
+        
         canInput = false;
         typingDialogue = false;
         playerTurn = true;
@@ -168,6 +168,7 @@ public class DBManager : MonoBehaviour
         else if (currentSanity >= 40) { sanityEffectChance =sanityEffectChanceLVL4; }
         else if (currentSanity >= 20) { sanityEffectChance =sanityEffectChanceLVL5; }
         else { sanityEffectChance = 50; }
+        shuffleOptionsAtStart();
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
 
