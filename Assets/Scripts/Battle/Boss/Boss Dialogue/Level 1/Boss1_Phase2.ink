@@ -7,14 +7,14 @@ VAR Acceptance = false
 
 ===Phase2===
 Boss: .....
-Boss: If you think I would trust you with thes-these simple words, you are gravely mistaken!!
+Boss: If you think I would trust you with thes- these simple words, you are gravely mistaken!!
 Boss: You might sound like my brother, but I still have my doubts!!
 Boss: Give me back my brother!!
 
     + I'm sorry that I didn't live up to your expectations, but.. I am still the same!
         ->PathA2
         ~Rational=true
-    + Stop.. you already knew the whole truth!! Stop being delusional
+    + Stop it!! you already knew the whole truth!! Stop being delusional
         ->PathB2
         ~Rational=true
     + Come on now... You have to accept the truth, you are dead!!
@@ -24,12 +24,13 @@ Boss: Give me back my brother!!
         ->PathD2
         ~Hope=true
         
-//==============================================PathA==============================================    
+//=============================================================PATH A===================================================
 =PathA2
-Boss: Things change, yes... But you have the audacity to still lie?!?
+Boss: Things change, yes... 
+Boss: But you!! you have the audacity to still lie?!?
     + Come on... I'm not lying!! Listen to me!
         ~Rational=true
-    + All I ever want is to have a strong trust between us.... That's really
+    + All I ever want is to have a strong trust between us.... That's really it
         ~Hope=true
     + I am your brother, if you think I need to lie to you, then I'm saddened
         ~Love=true
@@ -113,12 +114,14 @@ Boss: Things change, yes... But you have the audacity to still lie?!?
 
 =checkA5
    {Rational||Hope: 
-        Boss: My brother would actually know what I want and how to make me happy... THAT IS NOT YOU
+        Boss: My brother would actually know what I want and how to make me happy... 
+        Boss: .....THAT IS NOT YOU!
         ~Rational = false
         ~Hope = false
         ->PathA5_1
     -else:
-        Boss: Thankfully, this will be the last time I'll talk to you. What a waste of time and energy!
+        Boss: Thankfully, this will be the last time I'll talk to you. 
+        Boss: What a waste of time and energy!
         ~Love = false
         ~Acceptance = false
         ->PathA5_2
@@ -150,12 +153,14 @@ Boss: Things change, yes... But you have the audacity to still lie?!?
 
 =checkA6
    {Rational||Hope: 
-        Boss: You will never understand what I've been through..... Pain... Suffering...
+        Boss: You will never understand what I've been through..... 
+        Boss: Pain... Suffering...
         ~Rational = false
         ~Hope = false
         ->PathA6_1
     -else:
-        Boss: That's great!! It's about time you give up!! Now... where is my real brother..
+        Boss: That's great!! It's about time you give up!! 
+        Boss: Now... where is my real brother..
         ~Love = false
         ~Acceptance = false
         ->PathA6_2
@@ -193,20 +198,103 @@ Boss: *She seems to calm down for real time this time...*
 
 
 
-
+//=============================================================PATH B===================================================
 =PathB2
-What is this?!? Are you putting me on the spot? My real brother would never do that!!
+Boss: What is this?!? Are you putting me on the spot? My real brother would never do that!!
+    + This is a good time to realize that you are deluded
+        ~Rational=true  
+    + I have to hope you can be better than this
+        ~Hope=true
+    + Surely your loved ones educated you better than this
+        ~Love=true
+    + If you face the truth, you will feel better. 
+        ~Acceptance=true
 
+- ->checkB2
 
-- ->DONE
+=checkB2
+    {Rational||Hope: 
+        Boss: My brother would just accept me for who I am... Why can't you?
+        Boss: Oh? That's because you are not!!
+        ~Rational = false
+        ~Hope = false
+        ->PathB3_1
+    -else:
+        Boss: So.. so many red flags... You are so self righteous...
+        ~Love = false
+        ~Acceptance = false
+        ->PathB3_2
+    }
+    
+=PathB3_1
+    + This reaction of yours... It is natural, but it's going to push me away...
+        ~Rational=true
+    + You are going to regret this.... I can assure you that.... 
+        ~Hope=true
+    + I have no reason to stop just because you say so
+        ~Acceptance=true
+    + You are truly pushing your luck, even if I am your brother
+        ~Love=true
+        
+- ->checkB3
 
+=PathB3_2
+    + Okay... Let's assume you are right.. what do you lose if you give me a chance?
+        ~Acceptance=true
+    + You are just ignoring the truth to escape reality
+        ~Rational=true
+    + Is this all a ruse to gain attention?
+        ~Love=true
+    + What do you gain by doing this?? What happens if you give me a chance?
+        ~Hope=true
+        
+- ->checkB3
+
+=checkB3
+    {Rational||Hope: 
+        Boss: You think you are slick with your words..
+        Boss: You are just like the rest of them.. A liar!!
+        ~Rational = false
+        ~Hope = false
+        ->PathB4_1
+    -else:
+        Boss: Don't try to play me for a fool!!
+        Boss: I wasn't born yesterday!!
+        ~Love = false
+        ~Acceptance = false
+        ->PathB4_2
+    }
+
+=PathB4_1
+
+- ->checkB4
+
+=PathB4_2
+
+- ->checkB4
+
+=checkB4
+    {Rational||Hope: 
+        Boss: 
+        Boss: 
+        ~Rational = false
+        ~Hope = false
+        ->DONE
+    -else:
+        Boss: 
+        ~Love = false
+        ~Acceptance = false
+        ->DONE
+    }
+
+//=============================================================PATH C===================================================
 =PathC2
 No
 
 
 - ->DONE
 
-
+//=============================================================PATH D===================================================
 =PathD2
 
 - ->DONE
