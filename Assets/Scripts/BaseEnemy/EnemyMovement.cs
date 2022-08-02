@@ -21,8 +21,13 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private bool patrol;
     [SerializeField] private bool patrolOnCD;
 
+    [Header("Animation")]
+    public Animator animator;
+
     private NavMeshAgent agent;
     private Vector3 walkPoint;
+    float RandomX;
+    float RandomY;
 
     private void Awake()
     {
@@ -43,6 +48,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+
         if (playerInRange.Count > 0 && playerInRange[0] != null && !patrol) //if player is in list and exist
         {
             ChasePlayer();
@@ -51,6 +57,21 @@ public class EnemyMovement : MonoBehaviour
         {
             Patrolling();
         }
+
+        //if enemy is not moving, set bool idle to true
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+            {
+                animator.SetBool("Idle", true);
+            }
+        }
+        else
+            //set animator idle to false
+            animator.SetBool("Idle", false);
+
+
+        
     }
 
 
@@ -60,11 +81,22 @@ public class EnemyMovement : MonoBehaviour
         {
             if (!patrolOnCD) //if you are not on CD, set a walkpoint
             {
-                float RandomX = Random.Range(-patrolMoveRange, patrolMoveRange);
-                float RandomY = Random.Range(-patrolMoveRange, patrolMoveRange);
+
+                RandomX = Random.Range(-patrolMoveRange, patrolMoveRange);
+                RandomY = Random.Range(-patrolMoveRange, patrolMoveRange);
 
                 walkPoint = new Vector3(transform.position.x + RandomX, transform.position.y + RandomY, 0.0f);
                 patrolOnCD = true;
+
+                //set the direction the enemy is facing
+                if (transform.position.x - walkPoint.x > 0)
+                {
+                    animator.SetBool("Left", true);
+                }
+                else
+                {
+                    animator.SetBool("Left", false);
+                }
             }
 
             if (patrolOnCD) //if your are on CD, countsdown till you can set a walk point
@@ -95,7 +127,19 @@ public class EnemyMovement : MonoBehaviour
             target = playerInRange[0].transform; //tracks players position
 
             agent.SetDestination(target.position); //sets the agent to track player(target)
-            //transform.position = Vector3.MoveTowards(transform.position, target.position, chaseSpeed * Time.deltaTime);
+
+            //for chasing
+            if (target != null)
+            {
+                if (transform.position.x - target.position.x > 0)
+                {
+                    animator.SetBool("Left", true);
+                }
+                else
+                {
+                    animator.SetBool("Left", false);
+                }
+            }
         }
     }
 

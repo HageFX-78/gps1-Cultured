@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -785788711750361175}
   - component: {fileID: -4633987559434726319}
   - component: {fileID: 7575511799239501695}
-  - component: {fileID: 6753135511442878567}
   - component: {fileID: 2976096807895566155}
   m_Layer: 0
   m_Name: Player
@@ -149,18 +148,7 @@ MonoBehaviour:
   sprintUI: {fileID: 0}
   slider: {fileID: 0}
   fill: {fileID: 0}
---- !u!114 &6753135511442878567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8661872287092588539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e4fef2f4707e6d4bab9a50a7ef5738e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!95 &2976096807895566155
 Animator:
   serializedVersion: 4

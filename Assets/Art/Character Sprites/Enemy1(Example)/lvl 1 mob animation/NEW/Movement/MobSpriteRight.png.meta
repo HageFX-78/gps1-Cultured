@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e33370b29d860af4593508b1c98ae03c
+guid: 939ed31c380275c49b2b2d0d520981a1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_0
+      name: MobSpriteRight_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 170
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb560d7f350883542923eb9fda9d6814
-      internalID: 185208416
+      spriteID: 7b42918734b4dcb44ba1b80215c3555f
+      internalID: -1197168899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_1
+      name: MobSpriteRight_1
       rect:
         serializedVersion: 2
-        x: 169
+        x: 187
         y: 0
-        width: 156
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 232d718fe681c2449b251501051855d7
-      internalID: 555164313
+      spriteID: 88e5a6ec00151094e83dd2f07171d83d
+      internalID: 1485928601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_2
+      name: MobSpriteRight_2
       rect:
         serializedVersion: 2
-        x: 332
+        x: 374
         y: 0
-        width: 121
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed63d44a7aee9434ba43950aed04d345
-      internalID: 658926672
+      spriteID: 9cc00cf2a5add2b48b3f2bb4bd5d6353
+      internalID: 657881092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_3
+      name: MobSpriteRight_3
       rect:
         serializedVersion: 2
-        x: 454
+        x: 561
         y: 0
-        width: 107
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8f5496786664374993b3b3723aa517d
-      internalID: -1876316575
+      spriteID: 3ddc08d4d29f1b043a3d3661127b3a25
+      internalID: 1055825052
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_4
+      name: MobSpriteRight_4
       rect:
         serializedVersion: 2
-        x: 563
+        x: 748
         y: 0
-        width: 169
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +214,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0c4b6d2f631c1049bb1eb00ba285398
-      internalID: -1099338179
+      spriteID: 9ccfe65413cb7a84d9d2a0b1a8d91516
+      internalID: -9341921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_5
+      name: MobSpriteRight_5
       rect:
         serializedVersion: 2
-        x: 733
+        x: 935
         y: 0
-        width: 154
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +235,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ff87278837b71b438158850d908cd47
-      internalID: 928626863
+      spriteID: 5e4ca8e20ae2f3143a065084fed8f6d6
+      internalID: 1176615737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_6
+      name: MobSpriteRight_6
       rect:
         serializedVersion: 2
-        x: 889
+        x: 1122
         y: 0
-        width: 129
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,20 +256,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0157e1a2e15ad94ba6f38f24a30a8c4
-      internalID: 846402736
+      spriteID: 1ab4ab65f486c4f4dbf16e0dc35c0d68
+      internalID: 912909479
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_7
+      name: MobSpriteRight_7
       rect:
         serializedVersion: 2
-        x: 1020
+        x: 1309
         y: 0
-        width: 101
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,8 +277,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab51a6c38fe5e7b4d96bd03aa2dab78c
-      internalID: -738896711
+      spriteID: 54e8c6c455a873741a1f407511e84a0b
+      internalID: -1115574992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MobSpriteRight_8
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 0
+        width: 187
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5106e377829b5c045aa97ee52a7248df
+      internalID: 501125090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MobSpriteRight_9
+      rect:
+        serializedVersion: 2
+        x: 1683
+        y: 0
+        width: 187
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa5a5ce225122fe40acfa63d22ac1adc
+      internalID: -1392320997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MobSpriteRight_10
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 0
+        width: 187
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fd463fbace45764dbcb6673b07bd5be
+      internalID: -1661639027
       vertices: []
       indices: 
       edges: []
@@ -294,14 +357,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Alex LEFT WALK spritesheet_2: 658926672
-      Alex LEFT WALK spritesheet_1: 555164313
-      Alex LEFT WALK spritesheet_6: 846402736
-      Alex LEFT WALK spritesheet_3: -1876316575
-      Alex LEFT WALK spritesheet_4: -1099338179
-      Alex LEFT WALK spritesheet_7: -738896711
-      Alex LEFT WALK spritesheet_0: 185208416
-      Alex LEFT WALK spritesheet_5: 928626863
+      MobSpriteRight_1: 1485928601
+      MobSpriteRight_10: -1661639027
+      MobSpriteRight_7: -1115574992
+      MobSpriteRight_3: 1055825052
+      MobSpriteRight_0: -1197168899
+      MobSpriteRight_2: 657881092
+      MobSpriteRight_5: 1176615737
+      MobSpriteRight_8: 501125090
+      MobSpriteRight_4: -9341921
+      MobSpriteRight_6: 912909479
+      MobSpriteRight_9: -1392320997
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

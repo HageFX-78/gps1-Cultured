@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e33370b29d860af4593508b1c98ae03c
+guid: da30d21010503c5439edf85793b9989e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_0
+      name: MobSpriteEditted_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 170
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb560d7f350883542923eb9fda9d6814
-      internalID: 185208416
+      spriteID: 763bb757aa88b8d47901de49419ab212
+      internalID: 1425760342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_1
+      name: MobSpriteEditted_1
       rect:
         serializedVersion: 2
-        x: 169
+        x: 187
         y: 0
-        width: 156
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 232d718fe681c2449b251501051855d7
-      internalID: 555164313
+      spriteID: 20977c377980ece4289c67911c5338ce
+      internalID: -354522002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_2
+      name: MobSpriteEditted_2
       rect:
         serializedVersion: 2
-        x: 332
+        x: 374
         y: 0
-        width: 121
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed63d44a7aee9434ba43950aed04d345
-      internalID: 658926672
+      spriteID: 9f875d3c53cd64845a1a52a2b7394d9e
+      internalID: -1110572278
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_3
+      name: MobSpriteEditted_3
       rect:
         serializedVersion: 2
-        x: 454
+        x: 561
         y: 0
-        width: 107
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8f5496786664374993b3b3723aa517d
-      internalID: -1876316575
+      spriteID: 8daa647b90aea8f4ab66290675ef5dc0
+      internalID: -452900468
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_4
+      name: MobSpriteEditted_4
       rect:
         serializedVersion: 2
-        x: 563
+        x: 748
         y: 0
-        width: 169
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +214,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0c4b6d2f631c1049bb1eb00ba285398
-      internalID: -1099338179
+      spriteID: b61fd4b1438fd02428570b9ca054fe61
+      internalID: -781092365
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_5
+      name: MobSpriteEditted_5
       rect:
         serializedVersion: 2
-        x: 733
+        x: 935
         y: 0
-        width: 154
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,20 +235,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ff87278837b71b438158850d908cd47
-      internalID: 928626863
+      spriteID: 27813d65794e8e247949e69ed1df9b2d
+      internalID: 1486526667
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_6
+      name: MobSpriteEditted_6
       rect:
         serializedVersion: 2
-        x: 889
+        x: 1122
         y: 0
-        width: 129
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,20 +256,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0157e1a2e15ad94ba6f38f24a30a8c4
-      internalID: 846402736
+      spriteID: f22ec52c77c5f924ca28d12a8bea8077
+      internalID: 596295088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Alex LEFT WALK spritesheet_7
+      name: MobSpriteEditted_7
       rect:
         serializedVersion: 2
-        x: 1020
+        x: 1309
         y: 0
-        width: 101
-        height: 407
+        width: 187
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -277,8 +277,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab51a6c38fe5e7b4d96bd03aa2dab78c
-      internalID: -738896711
+      spriteID: dca6407a3b1111848a000f51637093ac
+      internalID: -357129788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MobSpriteEditted_8
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 0
+        width: 187
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cb021541c21ecc499cb0e2660ddd5af
+      internalID: -1980323116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MobSpriteEditted_9
+      rect:
+        serializedVersion: 2
+        x: 1683
+        y: 0
+        width: 187
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd680ec4f708a443b2c328ff57737bb
+      internalID: 1880201498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MobSpriteEditted_10
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 0
+        width: 187
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf967753d927a8d409348b3ad8dc4580
+      internalID: 1816693295
       vertices: []
       indices: 
       edges: []
@@ -294,14 +357,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Alex LEFT WALK spritesheet_2: 658926672
-      Alex LEFT WALK spritesheet_1: 555164313
-      Alex LEFT WALK spritesheet_6: 846402736
-      Alex LEFT WALK spritesheet_3: -1876316575
-      Alex LEFT WALK spritesheet_4: -1099338179
-      Alex LEFT WALK spritesheet_7: -738896711
-      Alex LEFT WALK spritesheet_0: 185208416
-      Alex LEFT WALK spritesheet_5: 928626863
+      MobSpriteEditted_8: -1980323116
+      MobSpriteEditted_6: 596295088
+      MobSpriteEditted_10: 1816693295
+      MobSpriteEditted_3: -452900468
+      MobSpriteEditted_9: 1880201498
+      MobSpriteEditted_1: -354522002
+      MobSpriteEditted_5: 1486526667
+      MobSpriteEditted_4: -781092365
+      MobSpriteEditted_7: -357129788
+      MobSpriteEditted_2: -1110572278
+      MobSpriteEditted_0: 1425760342
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
