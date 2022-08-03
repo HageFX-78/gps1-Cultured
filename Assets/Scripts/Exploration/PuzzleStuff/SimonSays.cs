@@ -4,52 +4,85 @@ using UnityEngine;
 
 public class SimonSays : MonoBehaviour
 {
-    [SerializeField] private int[] simon;
-    [SerializeField] private GameObject[] simonSays;
-    [SerializeField] private int[] player;
-    [SerializeField] private float timer = 1;
+    public int[] simon;
+    public GameObject[] simonSays;
+    [SerializeField] private float timer = 5;
     [SerializeField] private int n = 0;
+    public static bool clickable = false;
+    public int turns = 4;
+    private int tempN = 5;
+    private int r;
     private void Start()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < simon.Length; i++) 
         {
-            simon[i] = Random.Range(1, 4);
+            RanNum(i);
         }
+        StartSystem();
     }
 
     private void Update()
     {
-        Flicker();
+
+       if(Input.GetKeyDown(KeyCode.P))
+        {
+            StartSystem();
+        }
     }
 
-    public void Flicker()
+    public void StartSystem() // Initiate random num + start the puzzle
     {
-        if( timer > 0 )
+        for (int i = 0; i < simon.Length; i++)
         {
-            timer -= Time.deltaTime;
+            RanNum(i);
         }
-        else
+        n = 0;
+        StartCoroutine(Flickering(1));
+    }
+    public void RanNum(int x) // Random num gen with no b2b number
+    {
+        r = Random.Range(0, 4);
+        if(r == tempN)
         {
-            for ( int i = 0; i < 4; i++)
+            RanNum(x);
+        }
+        else if (r != tempN)
+        {
+            simon[x] = r ;
+            tempN = r;
+        }
+    }
+    public void Failure() // puzzle reset
+    {
+        for (int i = 0; i < simonSays.Length; i++)
+        {
+            simonSays[i].SetActive(false);
+        }
+    }
+    IEnumerator Flickering(int timer)
+    {
+        clickable = false;
+        simonSays[simon[n]].SetActive(true);
+        for (int i = 0; i < simonSays.Length;i++) //Check if i is equal to the value of simon[n]
+        {
+            if ( i != simon[n])
             {
-                if (i != n)
-                {
-                    simonSays[simon[i]].SetActive(false);
-                }
-                else
-                {
-                    simonSays[simon[i]].SetActive(true);
-                }
+                simonSays[i].SetActive(false);
             }
-            n++;
-            n = n % 4;
-            if(n == 0)
+        }
+        n++;
+        yield return new WaitForSeconds(timer);
+
+        if (n != simon.Length) // Repeating coroutine
+        {
+            StartCoroutine(Flickering(1));
+        }
+        else if (n == simon.Length)
+        {
+            for (int i = 0; i < simonSays.Length; i++) //Allow clicking once finished flicker
             {
-                timer = 2f;
-            }
-            else
-            {
-                timer = 1;
+                clickable = true;
+                simonSays[i].SetActive(false);
             }
         }
     }
