@@ -93,7 +93,7 @@ Boss: But you!! you have the audacity to still lie?!?
         ~Rational=true
     + I'm.... I think I'm done trying to convince you any further
         ~Acceptance=true
-    + This is one step forward sis, lets resolve this...
+    + This is one step forward sis, let's resolve this...
         ~Rational=true
     + It will be easier if you can just own up to it!
         ~Love=true
@@ -200,7 +200,8 @@ Boss: *She seems to calm down for real time this time...*
 
 //=============================================================PATH B===================================================
 =PathB2
-Boss: What is this?!? Are you putting me on the spot? My real brother would never do that!!
+Boss: What is this?!? Are you putting me on the spot? 
+Boss: My real brother would never do that!!
     + This is a good time to realize that you are deluded
         ~Rational=true  
     + I have to hope you can be better than this
@@ -266,14 +267,67 @@ Boss: What is this?!? Are you putting me on the spot? My real brother would neve
     }
 
 =PathB4_1
-
+    + It's fine if you still think that way, I'm doing this for your sake
+        ~Love=true
+    + I'm sure everyone has their own reasons, but you have to trust me
+        ~Rational=true
+    + Why do you keep jumping to conclusions about who I am?
+        ~Rational=true
+    + Does that matter if I care about you? I won't give in!!
+        ~Hope=true
+    
 - ->checkB4
 
 =PathB4_2
-
+    + I'm really not pretending to be your brother!! I know our history together!!
+        ~Rational=true
+    + If your hope is to drag this on and make me give up, you got another thing coming!
+        ~Hope=true
+    + You have to accept the truth.... I am your brother! That isn't going to change
+        ~Acceptance=true
+    + I'm not trying to fool you!! I only want to help you out as your brother
+        ~Love=true
 - ->checkB4
 
 =checkB4
+    {Rational||Hope: 
+        Boss: If I keep this up, surely...
+        Boss: Surely you will crack!!
+        ~Rational = false
+        ~Hope = false
+        ->PathB5_1
+    -else:
+        Boss: .....
+        Boss: THAT'S VERY EASY FOR YOU TO SAY
+        Boss: You are only saying things to let my guard down
+        ~Love = false
+        ~Acceptance = false
+        ->PathB5_2
+    }
+
+=PathB5_1
+    + .
+        ~Rational=true
+    + .
+        ~Hope=true
+    + .
+        ~Acceptance=true
+    + .
+        ~Love=true
+- ->checkB5
+
+=PathB5_2
+    + .
+        ~Rational=true
+    + .
+        ~Hope=true
+    + .
+        ~Acceptance=true
+    + .
+        ~Love=true
+- ->checkB5
+
+=checkB5
     {Rational||Hope: 
         Boss: 
         Boss: 
@@ -286,6 +340,12 @@ Boss: What is this?!? Are you putting me on the spot? My real brother would neve
         ~Acceptance = false
         ->DONE
     }
+
+
+
+
+
+
 
 //=============================================================PATH C===================================================
 =PathC2

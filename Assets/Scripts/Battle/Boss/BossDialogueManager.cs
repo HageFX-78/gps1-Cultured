@@ -180,9 +180,9 @@ public class BossDialogueManager : MonoBehaviour
                 bossEmotionManager.Recover(randRecover);
             }
         }
-
         
         ContinueStory();     
         BossEmotionManager.turnCounter--;
+
     }
 }
