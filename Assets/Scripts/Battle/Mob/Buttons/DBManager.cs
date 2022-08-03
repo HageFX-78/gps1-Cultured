@@ -91,7 +91,7 @@ public class DBManager : MonoBehaviour
         else if (enemyType == "Self_Loathing") { emoTypeIndex = 2;}
         else if (enemyType == "Despair") { emoTypeIndex = 3; }
         else if (enemyType == "Righteousness") { emoTypeIndex = 4;}
-        dialogueBundleSplit = enemyEmoTypeSplit[emoTypeIndex].Split("\n///");
+        dialogueBundleSplit = enemyEmoTypeSplit[emoTypeIndex].Split("\n///");       
         enemyIntro = dialogueBundleSplit[0].Split("\n")[1];//Setting enemy intro
         currentDialogueBundle = 0;
 
@@ -195,7 +195,7 @@ public class DBManager : MonoBehaviour
          */
 
         string[] currentBundleOptions = dialogueBundleSplit[currentDialogueBundle].Split("\n");
-        //Debug.Log(currentBundleOptions.Length);
+
         for (int x= 2; x< currentBundleOptions.Length; x++)
         {
             string curEmo="";
@@ -240,10 +240,7 @@ public class DBManager : MonoBehaviour
         enemyEmotion.TakeDamage(dmgValue, dmgType);
         playerDialogueBoxShow(int.Parse(objArray[2]), bool.Parse(objArray[3]));
 
-
-        //dialLists.AddRange(currentDialLists);//Shuffle options stuffs start here
         currentDialLists.Clear();
-        //shuffleOptionsAtStart();
         turnScriptRef.turnUpdate();
 
         //Shake screen visual effect, shake enemy and bg rn
@@ -266,7 +263,7 @@ public class DBManager : MonoBehaviour
     {
         int rand = Random.Range(0, dialLists.Count-1);
         //Debug.Log(rand);
-        //Debug.Log($"THis is count {dialLists.Count}");
+        
         string thisDialogue ="";
         string effectiveColor = returnEffectiveColor(dialLists[rand].emotions);
         bool highlightState = false;
@@ -405,8 +402,6 @@ public class DBManager : MonoBehaviour
             }
             yield return new WaitForSecondsRealtime(typeSpeed);
         }
-        //Debug.Log("Finished typing");
-        //typeSpeed = 0.01f;
         typingDialogue = false;
 
     }

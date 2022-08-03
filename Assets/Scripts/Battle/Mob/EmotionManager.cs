@@ -21,6 +21,11 @@ public class EmotionManager : MonoBehaviour
     [SerializeField] float moveEmoBarLoopCooldown;
     [SerializeField] float moveEmoBarLoopSplit;
 
+    [Header("New Emo Indicator References")]
+    [SerializeField] RectTransform emoPointer;
+    [SerializeField] RectTransform safeL;
+    [SerializeField] RectTransform safeR;
+
     private void Awake()
     {
         int temp = Random.Range(0, 5);
@@ -38,10 +43,12 @@ public class EmotionManager : MonoBehaviour
 
         //Safe zone & Size
         float addRand = Random.Range(minDifference, maxDifference);
-        //Debug.Log(addRand);
+
         minThreshold = Random.Range(20, 50);
         maxThreshold = minThreshold + addRand;
         currentThreshold = Random.Range(startMinThreshold, startMaxThreshold);
+
+/*        //OLD EMOBAR CALCULATION
         SafeZone.sizeDelta = new Vector2((addRand / 100) * 600, 23);
 
         //Safe zone position
@@ -52,15 +59,23 @@ public class EmotionManager : MonoBehaviour
         if (safeZoneMidpointX > 50)
         {
             safeZoneOffset = 300;
-            safeZoneMidtoMax = safeZoneMidpointX - 50;           
+            safeZoneMidtoMax = safeZoneMidpointX - 50;
         }
         else
         {
             safeZoneOffset = -300;
             safeZoneMidtoMax = 50 - safeZoneMidpointX;
         }
-        SafeZone.anchoredPosition = new Vector2((safeZoneMidtoMax / 100) * safeZoneOffset, 296);
+        SafeZone.anchoredPosition = new Vector2((safeZoneMidtoMax / 100) * safeZoneOffset, 296);*/
+
+
         updateEmotionBar();//DOnt remove
+
+
+        //New pointer code
+        safeL.anchoredPosition = new Vector2((minThreshold>=50?(((minThreshold - 50)/100)*600):((50- minThreshold) / 100) * -600), 296);
+        safeR.anchoredPosition = new Vector2((maxThreshold>=50?((maxThreshold-50)/ 100 * 600) :(50-maxThreshold)/ 100 * -600), 296);
+
     }
 
     private void Update()
@@ -133,7 +148,7 @@ public class EmotionManager : MonoBehaviour
         currentThreshold += baseDamage * emotion.TypeMultiplier[damageType];
         currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
         //updateEmotionBar();
-        StartCoroutine(moveEmotionBar());
+        StartCoroutine(moveEmoPointer());
 
         //CurrentEmotionBar();//Logging only - comment when we done
         //Debug.Log($"current = {currentThreshold}, dmg dealt {baseDamage * emotion.TypeMultiplier[damageType]}");
@@ -143,7 +158,7 @@ public class EmotionManager : MonoBehaviour
         currentThreshold -= selfDMG * 1;
         currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
         //updateEmotionBar();
-        StartCoroutine(moveEmotionBar());
+        StartCoroutine(moveEmoPointer());
     }
     public void CurrentEmotionBar()
     {
@@ -163,8 +178,9 @@ public class EmotionManager : MonoBehaviour
     }
     public void updateEmotionBar()//DOnt delete, need for initial bar setting
     {
-        PosBar.sizeDelta = new Vector2((currentThreshold/100)*600, 15);
+        //PosBar.sizeDelta = new Vector2((currentThreshold/100)*600, 15);
         //NegBar.sizeDelta = new Vector2(((100-currentThreshold)/ 100)*600, 15);
+        emoPointer.anchoredPosition = new Vector2((currentThreshold >= 50 ? (((currentThreshold - 50) / 100) * 600) : ((50 - currentThreshold) / 100) * -600), 296);
     }
 
     public float emotionEffectivenss(string type)
@@ -173,7 +189,35 @@ public class EmotionManager : MonoBehaviour
         return emotion.TypeMultiplier[type];
     }
 
-    IEnumerator moveEmotionBar()
+    IEnumerator moveEmoPointer()
+    {
+        float newXVal = (currentThreshold >= 50 ? (((currentThreshold - 50) / 100) * 600) : ((50 - currentThreshold) / 100) * -600);
+        float oldXVal = emoPointer.anchoredPosition.x;
+
+        float incrementVal = (newXVal > oldXVal ? newXVal - oldXVal : oldXVal - newXVal) / moveEmoBarLoopSplit;
+
+        if (newXVal > oldXVal)
+        {
+            while (emoPointer.anchoredPosition.x < newXVal)
+            {
+                emoPointer.anchoredPosition = new Vector2(emoPointer.anchoredPosition.x + incrementVal, 296);
+                yield return new WaitForSeconds(moveEmoBarLoopCooldown);
+            }
+        }
+        else
+        {
+            while (emoPointer.anchoredPosition.x > newXVal)
+            {
+                emoPointer.anchoredPosition = new Vector2(emoPointer.anchoredPosition.x - incrementVal, 296);
+                yield return new WaitForSeconds(moveEmoBarLoopCooldown);
+            }
+        }
+        emoPointer.anchoredPosition = new Vector2(newXVal, 296);
+
+    }
+
+    //OLD MOVE EMOTION BAR
+    /*IEnumerator moveEmotionBar()
     {
         float newXVal = new Vector2((currentThreshold / 100) * 600, 15).x;
         float oldXVal = PosBar.sizeDelta.x;
@@ -198,5 +242,5 @@ public class EmotionManager : MonoBehaviour
         }
         PosBar.sizeDelta = new Vector2(newXVal, 15);
 
-    }
+    }*/
 }
