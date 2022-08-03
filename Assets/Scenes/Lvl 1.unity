@@ -2054,7 +2054,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 473963642}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &224638387
 SpriteRenderer:
@@ -4681,7 +4681,7 @@ GameObject:
   - component: {fileID: 458648281}
   - component: {fileID: 458648282}
   m_Layer: 0
-  m_Name: Bush (corrected) (1)
+  m_Name: Bush (corrected) (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4694,13 +4694,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458648280}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4, y: -33.5, z: -2.8}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -1.4, y: 2.800003, z: -33.500004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 870142118}
-  m_RootOrder: 8
+  m_Father: {fileID: 473963642}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &458648282
 SpriteRenderer:
@@ -4913,6 +4913,8 @@ Transform:
   - {fileID: 1875990986}
   - {fileID: 1385740527}
   - {fileID: 349545041}
+  - {fileID: 458648281}
+  - {fileID: 2125227883}
   - {fileID: 224638386}
   - {fileID: 2050042465}
   - {fileID: 1129305980}
@@ -6426,7 +6428,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 473963642}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &796956766
 BoxCollider2D:
@@ -6838,8 +6840,6 @@ Transform:
   - {fileID: 2088109189}
   - {fileID: 446320014}
   - {fileID: 1653804819}
-  - {fileID: 2125227883}
-  - {fileID: 458648281}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6983,7 +6983,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 473963642}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &914892196
 BoxCollider2D:
@@ -8435,7 +8435,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 473963642}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1129305981
 SpriteRenderer:
@@ -12536,7 +12536,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 473963642}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1755766861
 CapsuleCollider2D:
@@ -13821,7 +13821,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 473963642}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2050042466
 SpriteRenderer:
@@ -14294,7 +14294,7 @@ GameObject:
   - component: {fileID: 2125227883}
   - component: {fileID: 2125227884}
   m_Layer: 0
-  m_Name: Bush (corrected)
+  m_Name: Bush (corrected) (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14307,13 +14307,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125227882}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.9, y: -33.1, z: -2.8}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -19.9, y: 2.800003, z: -33.100002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 870142118}
-  m_RootOrder: 7
+  m_Father: {fileID: 473963642}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2125227884
 SpriteRenderer:
