@@ -1412,6 +1412,7 @@ MonoBehaviour:
   dialogueSize: {x: 1200, y: 250}
   defaultDialogueSize: {x: 1200, y: 110}
   dialogueOffset: {x: 0, y: -200, z: 0}
+  emotionPanel: {fileID: 1639774817}
   storyIsPlaying: 0
   choices:
   - {fileID: 1974194019}

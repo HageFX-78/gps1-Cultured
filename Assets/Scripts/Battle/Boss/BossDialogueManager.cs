@@ -20,6 +20,9 @@ public class BossDialogueManager : MonoBehaviour
     [SerializeField] private Vector2 defaultDialogueSize;
     [SerializeField] private Vector3 dialogueOffset;
 
+    [Header("Emotion UI")]
+    [SerializeField] private GameObject emotionPanel;
+
     private Story currentStory;
     public bool storyIsPlaying;
 
