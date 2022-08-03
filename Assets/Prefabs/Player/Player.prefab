@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -459415617
+  m_SortingLayer: 2
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 6a15a25c96d48bc42adf8b7c8ed1e159, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,8 +101,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: -1.2978374}
+  m_Size: {x: 1, y: 1.8843253}
   m_Direction: 0
 --- !u!50 &-4633987559434726319
 Rigidbody2D:
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92da3049de4ca644f97d264b5054732c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerToTransition: 0.25
+  timerToTransition: 0.1
   moveSpeed: 6
   sprintSpeed: 10
   sprintGauge: 100
@@ -148,7 +148,7 @@ MonoBehaviour:
   sprintUI: {fileID: 0}
   slider: {fileID: 0}
   fill: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 2976096807895566155}
 --- !u!95 &2976096807895566155
 Animator:
   serializedVersion: 4
@@ -159,7 +159,7 @@ Animator:
   m_GameObject: {fileID: 8661872287092588539}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: db1d82ac13913f340a9b413a673de50a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

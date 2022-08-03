@@ -263,6 +263,8 @@ GameObject:
   - component: {fileID: 4269607598697687015}
   - component: {fileID: 4269607598697687033}
   - component: {fileID: 4269607598697687014}
+  - component: {fileID: 1654172369}
+  - component: {fileID: 1654172370}
   m_Layer: 0
   m_Name: street light
   m_TagString: Untagged
@@ -354,9 +356,38 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.013355255, y: -2.1501985}
-  m_Size: {x: 0.8317032, y: 1.8851233}
+  m_Offset: {x: 0, y: -2.78}
+  m_Size: {x: 0.69, y: 1.38}
   m_Direction: 0
+--- !u!70 &1654172369
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4269607598697687012}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.18}
+  m_Size: {x: 5, y: 4}
+  m_Direction: 1
+--- !u!114 &1654172370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4269607598697687012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d02a37d5d5c03d458daf5d6805855fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 0}
 --- !u!1 &8379606756599705323
 GameObject:
   m_ObjectHideFlags: 0

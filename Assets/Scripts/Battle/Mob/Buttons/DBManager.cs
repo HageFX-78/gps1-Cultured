@@ -17,6 +17,8 @@ public class DBManager : MonoBehaviour
     [Header("UI References")]
     public TextAsset pDialoguefile;//Player dialogue options file
     public TextAsset eDialoguefile;//Enemy dialogue options file
+    public TextAsset newDialogueFile;//Overhauled battle flow dialogue file
+
     public TextMeshProUGUI convoTextPlayer, convoTextEnemy, talkerName, enemyLastConvo, runText, runChance;//Text dialogue box reference
     public Turn turnScriptRef;
 
@@ -31,6 +33,8 @@ public class DBManager : MonoBehaviour
     public List<PDials> dialLists = new List<PDials>();
     public List<PDials> currentDialLists = new List<PDials>();
     public List<string> enemyDialList = new List<string>();
+    int currentDialogueBundle;
+    string[] dialogueBundleSplit;
 
     [Header("Settings")]
     [SerializeField] private float transitionTimer;
@@ -77,51 +81,20 @@ public class DBManager : MonoBehaviour
     {
         //----------------------------Values and reference intialization-----------------------------------
 
-        //Reading text file for player dialogue options
-        string[] categorySplit = pDialoguefile.text.Split("\n~");
 
-        for (int x = 0; x < categorySplit.Length; x++)
-        {
-            string[] temp = categorySplit[x].Split(new string[] { "\n" }, System.StringSplitOptions.RemoveEmptyEntries);
-            foreach (string y in temp)
-            {
-                string emotionStr = "";
-                switch (x)
-                {
-                    case 0:
-                        emotionStr = "Rationality";
-                        break;
-                    case 1:
-                        emotionStr = "Hope";
-                        break;
-                    case 2:
-                        emotionStr = "Love";
-                        break;
-                    case 3:
-                        emotionStr = "Acceptance";
-                        break;
-                }
-                dialLists.Add(new PDials(y, emotionStr));
-                //Debug.Log(y);
-            }
-        }
-
-
-        //Reading text file for enemy dialogues and assign based on type
-        string[] enemyTypeSplit = eDialoguefile.text.Split("\n~");
-        int indexInEnemyDialogueFile = -1;
+        //Deciding dialogue based on enemy type
+        string[] enemyEmoTypeSplit = newDialogueFile.text.Split("\n<SPLIT>");
+        int emoTypeIndex = -1;
         string enemyType = enemyEmotion.emotion.currentType;
-        if (enemyType == "Delusional") { indexInEnemyDialogueFile = 0;enemyIntro = "Wow! A fateful encounter with a retard!"; }
-        else if (enemyType == "Hatred") { indexInEnemyDialogueFile = 1; enemyIntro = "Thought I saw a pile of feces turns out it was you!"; }
-        else if (enemyType == "Self_Loathing") { indexInEnemyDialogueFile = 2; enemyIntro = "Why must I TALK TO YOU"; }
-        else if (enemyType == "Despair") { indexInEnemyDialogueFile = 3;enemyIntro = "Ever tried a double suicide?"; }
-        else if (enemyType == "Righteousness") { indexInEnemyDialogueFile = 4; enemyIntro = "You pitiful soul.."; }
-        string[] typeDialogueSplit = enemyTypeSplit[indexInEnemyDialogueFile].Split("\n");
-        for (int x = 0; x < enemyTypeSplit.Length; x++)
-        {
-            enemyDialList.Add(typeDialogueSplit[x]);
-            //Debug.Log(typeDialogueSplit[x]);
-        }
+        if (enemyType == "Delusional") { emoTypeIndex = 0;}
+        else if (enemyType == "Hatred") { emoTypeIndex = 1;}
+        else if (enemyType == "Self_Loathing") { emoTypeIndex = 2;}
+        else if (enemyType == "Despair") { emoTypeIndex = 3; }
+        else if (enemyType == "Righteousness") { emoTypeIndex = 4;}
+        dialogueBundleSplit = enemyEmoTypeSplit[emoTypeIndex].Split("\n///");
+        enemyIntro = dialogueBundleSplit[0].Split("\n")[1];//Setting enemy intro
+        currentDialogueBundle = 0;
+
 
 
         //Button listeners and text references
@@ -156,8 +129,6 @@ public class DBManager : MonoBehaviour
             //If player went through exploration scene, all remnants should exist
         }
         
-
-
         
         canInput = false;
         typingDialogue = false;
@@ -214,6 +185,39 @@ public class DBManager : MonoBehaviour
     }
     void shuffleOptionsAtStart()
     {
+
+        /*Rationality = 2
+         *Love = 3
+         *Hope = 4
+         *Acceptance = 5
+         *
+         *All dialogue options goes by this sequence
+         */
+
+        string[] currentBundleOptions = dialogueBundleSplit[currentDialogueBundle].Split("\n");
+        //Debug.Log(currentBundleOptions.Length);
+        for (int x= 2; x< currentBundleOptions.Length; x++)
+        {
+            string curEmo="";
+            switch (x)
+            {
+                case 2:
+                    curEmo = "Rationality";
+                    break;
+                case 3:
+                    curEmo = "Love";
+                    break;
+                case 4:
+                    curEmo = "Hope";
+                    break;
+                case 5:
+                    curEmo = "Acceptance";
+                    break;
+            }
+            dialLists.Add(new PDials(currentBundleOptions[x], curEmo));
+            
+        }
+
         for (int z = 0; z < btnList.Count; z++)
         {
             switchOutThisOption(z);
@@ -227,10 +231,6 @@ public class DBManager : MonoBehaviour
         }
         
     }
-    int getRandFromList()
-    {
-        return Random.Range(0, dialLists.Count);
-    }
     public void clickOption(string objName)
     {
         string[] objArray = objName.Split("_");
@@ -241,9 +241,9 @@ public class DBManager : MonoBehaviour
         playerDialogueBoxShow(int.Parse(objArray[2]), bool.Parse(objArray[3]));
 
 
-        dialLists.AddRange(currentDialLists);//Shuffle options stuffs start here
+        //dialLists.AddRange(currentDialLists);//Shuffle options stuffs start here
         currentDialLists.Clear();
-        shuffleOptionsAtStart();
+        //shuffleOptionsAtStart();
         turnScriptRef.turnUpdate();
 
         //Shake screen visual effect, shake enemy and bg rn
@@ -264,7 +264,9 @@ public class DBManager : MonoBehaviour
     }
     void switchOutThisOption(int btnIndex)//Switch out used dialogue option and take random dialogue option from the pool
     {
-        int rand = getRandFromList();
+        int rand = Random.Range(0, dialLists.Count-1);
+        //Debug.Log(rand);
+        //Debug.Log($"THis is count {dialLists.Count}");
         string thisDialogue ="";
         string effectiveColor = returnEffectiveColor(dialLists[rand].emotions);
         bool highlightState = false;
@@ -410,6 +412,7 @@ public class DBManager : MonoBehaviour
     }
     public string returnEffectiveColor(string emo)
     {
+        //Debug.Log(emo);
         float effectiveness = enemyEmotion.emotionEffectivenss(emo);
         if (effectiveness == -1.0f)
         {
@@ -501,15 +504,20 @@ public class DBManager : MonoBehaviour
         enemyDialogueUI.SetActive(true);
 
         
-        int randE = Random.Range(0, enemyDialList.Count);
+        int randE = Random.Range(1, dialogueBundleSplit.Length);
         while (randE == lastRef)
         {
-            randE = Random.Range(0, enemyDialList.Count);
+            randE = Random.Range(1, dialogueBundleSplit.Length);
         }
-        currentText = enemyDialList[randE];
-        enemyLastConvo.text = enemyDialList[randE];
-        typeD = typeDialogue(enemyDialList[randE], convoTextEnemy);
+        string[] dialBundleInDepthSplit = dialogueBundleSplit[randE].Split("\n");
+        currentText = dialBundleInDepthSplit[1];//The enemy reply is always index 1, index 0 is empty
+        enemyLastConvo.text = dialBundleInDepthSplit[1];
+        typeD = typeDialogue(dialBundleInDepthSplit[1], convoTextEnemy);
         StartCoroutine(typeD);
+
+        currentDialogueBundle = randE;//Set the options for the players
+        shuffleOptionsAtStart();
+
         lastRef = randE;
         enemyEmotion.selfHarm(Random.Range(enemySelfHarmMinDmg, enemySelfHarmMaxDmg));
 
