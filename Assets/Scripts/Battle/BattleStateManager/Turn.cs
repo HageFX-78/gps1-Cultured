@@ -18,12 +18,12 @@ public class Turn : MonoBehaviour
     private void Start()
     {
         turnLeft = battle.maxTurn / 2;
-        textMeshProUGUI.text = "Turns left:" + turnLeft;
+        textMeshProUGUI.text = $"Turns left: <size=200%>{turnLeft}";
     }
     public void turnUpdate()
     {
         turnLeft = Mathf.Clamp(turnLeft-1, 0, turnLeft);
        
-        textMeshProUGUI.text = "Turns left:" + turnLeft;
+        textMeshProUGUI.text = $"Turns left: <size=200%>{turnLeft}";
     }
 }
