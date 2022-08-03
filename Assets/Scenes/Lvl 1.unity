@@ -9531,7 +9531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1611070187
 Transform:
   m_ObjectHideFlags: 0
@@ -10079,7 +10079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8661872287092588536, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8661872287092588536, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_SortingLayerID
@@ -10135,6 +10135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
+--- !u!212 &1655415175 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8661872287092588536, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
+  m_PrefabInstance: {fileID: 1655415174}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1663387184
 GameObject:
   m_ObjectHideFlags: 0
@@ -13686,6 +13691,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 254512895}
     m_Modifications:
+    - target: {fileID: 1654172370, guid: 43fa1f2e97db5384cb839e76f2258c3d, type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 1655415175}
     - target: {fileID: 4269607598697687012, guid: 43fa1f2e97db5384cb839e76f2258c3d, type: 3}
       propertyPath: m_Name
       value: street light

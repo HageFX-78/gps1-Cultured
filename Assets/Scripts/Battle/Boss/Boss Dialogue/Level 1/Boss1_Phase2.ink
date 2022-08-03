@@ -299,43 +299,45 @@ Boss: My real brother would never do that!!
     -else:
         Boss: .....
         Boss: THAT'S VERY EASY FOR YOU TO SAY
-        Boss: You are only saying things to let my guard down
+        Boss: You are only saying this to let my guard down!!!
         ~Love = false
         ~Acceptance = false
         ->PathB5_2
     }
 
 =PathB5_1
-    + .
+    + Why do you insist I am a fake, let alone crack??
         ~Rational=true
-    + .
+    + I would keep my hopes up if I were you, because I'm not going to crack!
         ~Hope=true
-    + .
+    + Would you prefer if I just admit and pretend that you are right? That am lying to you?
         ~Acceptance=true
-    + .
+    + You would love if I gave up, I'll be honest, I'm very close doing it.
         ~Love=true
 - ->checkB5
 
 =PathB5_2
-    + .
-        ~Rational=true
-    + .
+    + It only hurts because it is the truth!! I hope you can see that!!
         ~Hope=true
-    + .
+    + Just your assumptions again. There is no proof of that.
+        ~Rational=true
+    + Would it make you feel better if I admit I was lying?!?? What do you want??
         ~Acceptance=true
-    + .
+    + You are getting more and more deluded!! 
         ~Love=true
 - ->checkB5
 
 =checkB5
     {Rational||Hope: 
-        Boss: 
-        Boss: 
+        Boss: Don't try to play mind games with me!! It won't work!
+        Boss: You will never understand..... And I dont plan on trusting you!!
+        Boss: I.... can't...
         ~Rational = false
         ~Hope = false
         ->DONE
     -else:
-        Boss: 
+        Boss: HAHAHAHA
+        Boss: Seeing you lose your mind makes me really happy.
         ~Love = false
         ~Acceptance = false
         ->DONE
