@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RenderingPlayer : MonoBehaviour
+public class RenderPlayerLamppost : MonoBehaviour
 {
 
     [SerializeField] SpriteRenderer sr;
