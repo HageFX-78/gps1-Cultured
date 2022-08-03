@@ -169,6 +169,7 @@ public class EmotionManager : MonoBehaviour
 
     public float emotionEffectivenss(string type)
     {
+        //Debug.Log(emotion.TypeMultiplier["Love"]);
         return emotion.TypeMultiplier[type];
     }
 
