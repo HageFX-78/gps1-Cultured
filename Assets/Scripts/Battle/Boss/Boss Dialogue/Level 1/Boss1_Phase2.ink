@@ -17,7 +17,7 @@ Boss: Give me back my brother!!
     + Stop it!! you already knew the whole truth!! Stop being delusional
         ->PathB2
         ~Rational=true
-    + Come on now... You have to accept the truth, you are dead!!
+    + Come on... You have to accept the truth, you are dead!!
         ->PathC2
         ~Hope=true
     + [*Show the remnant*] Remember when I made this for you?
@@ -312,12 +312,12 @@ Boss: My real brother would never do that!!
         ~Hope=true
     + Would you prefer if I just admit and pretend that you are right? That am lying to you?
         ~Acceptance=true
-    + You would love if I gave up, I'll be honest, I'm very close doing it.
+    + You would love to see me give up. I'll be honest, I'm very close to doing it.
         ~Love=true
 - ->checkB5
 
 =PathB5_2
-    + It only hurts because it is the truth!! I hope you can see that!!
+    + It only hurts because it is the truth!! can't you see that!!
         ~Hope=true
     + Just your assumptions again. There is no proof of that.
         ~Rational=true
@@ -334,24 +334,48 @@ Boss: My real brother would never do that!!
         Boss: I.... can't...
         ~Rational = false
         ~Hope = false
-        ->DONE
+        ->PathB6_1
     -else:
         Boss: HAHAHAHA
         Boss: Seeing you lose your mind makes me really happy.
         ~Love = false
         ~Acceptance = false
-        ->DONE
+        ->PathB6_2
     }
 
+=PathB6_1
+    + I'm- ... Just trust me, give me a chance.. I'm willing to lend an ear to you.
+        ~Rational=true
+    + I just need one shot, deep down.. I know you hope I can save you from this
+        ~Hope=true
+    + [*Accept the fact your sister is no longer sane*] I should accept the fact that you are beyond saving
+        ~Acceptance=true
+    + You are seriously testing my patience here
+        ~Love=true
+- ->checkB6
 
+=PathB6_2
+    + [*Accept reality and give up on her*] You are being manipulated by... whatever is going on in this place
+        ~Acceptance=true
+    + Logically speaking, I've gotten this far, there is no reason to give up now
+        ~Rational=true
+    + This isn't going to set me back, I'm saving you if it's the last thing I do!
+        ~Hope=true
+    + [If thats what you want...] I will give up and leave then....
+        ~Love=true
+- ->checkB6
 
-
-
-
+=checkB6
+Boss: *She seems to calm down, your words must have reached her*
+    + [Ask what she is thinking about] Do you really trust me now? Are you calm now?
+    + [Ask how she feels] Sis? Are you okay?
+    
+- ->DONE
 
 //=============================================================PATH C===================================================
 =PathC2
-No
+Boss: Nooo? Mom and Dad are waiting for us at home? 
+Boss: Pfft, you must be crazy
 
 
 - ->DONE
