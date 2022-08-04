@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4854869111364329675}
   - component: {fileID: 4854869111364329674}
-  - component: {fileID: 4854869111364329676}
+  - component: {fileID: 3163801141893892431}
   m_Layer: 0
   m_Name: vertical fence 1 1
   m_TagString: Untagged
@@ -25,9 +25,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4854869111364329673}
-  m_LocalRotation: {x: -0, y: -0, z: 0.93752515, w: -0.34791753}
+  m_LocalRotation: {x: 0, y: -0, z: 0.93752515, w: -0.34791753}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.8314791, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4854869111364329676
-CircleCollider2D:
+--- !u!68 &3163801141893892431
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -99,5 +99,14 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.84
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.3882954, y: -4.106666}
+  - {x: -1.0179422, y: -4.4929657}
+  - {x: 2.633153, y: 0.8879421}
+  - {x: 2.2975807, y: 1.3961207}
+  - {x: -1.4094316, y: -4.126317}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

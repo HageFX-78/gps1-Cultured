@@ -377,8 +377,48 @@ Boss: *She seems to calm down, your words must have reached her*
 Boss: Nooo? Mom and Dad are waiting for us at home? 
 Boss: Pfft, you must be crazy
 
+    + If they were watching right now, they would had said the same thing
+        ~Rational=true
+    + Acceptance is hard, but it is what Mom and Dad would have wanted from their baby girl
+        ~Acceptance=true
+    + How do you think Mom and Dad would react to this? With love?
+        ~Love=true
+    + I bet if Mom was here, she would hope you face the truth.
+        ~Hope=true
+    
+- ->checkC2
 
-- ->DONE
+=checkC2
+    {Rational||Hope: 
+        Boss: Anddd...? How would YOU know that?? Did they tell you to say that??
+        Boss: Its not very nice trying to justify your lie~
+        ~Rational = false
+        ~Hope = false
+        ->PathB6_1
+    -else:
+        Boss: 
+        Boss: 
+        ~Love = false
+        ~Acceptance = false
+        ->PathB6_2
+    }
+
+=PathC3_1
+
+- ->checkC3
+
+=PathC3_2
+
+- ->checkC3
+
+
+
+=checkC3
+
+->DONE
+
+
+
 
 //=============================================================PATH D===================================================
 =PathD2
