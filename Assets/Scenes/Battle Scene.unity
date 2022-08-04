@@ -1108,7 +1108,7 @@ MonoBehaviour:
   enemySelfHarmMaxDmg: 10
   typeSpeed: 0.01
   generalCooldown: 0.2
-  sanityEffectChanceLVL1: 100
+  sanityEffectChanceLVL1: 0
   sanityEffectChanceLVL2: 5
   sanityEffectChanceLVL3: 10
   sanityEffectChanceLVL4: 20
