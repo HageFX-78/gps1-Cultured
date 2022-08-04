@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 public class SanityUIController : MonoBehaviour
 {
     [SerializeField] Volume globalVol;//Remember to reference 
@@ -12,6 +13,8 @@ public class SanityUIController : MonoBehaviour
     Bloom bl;
     FilmGrain fg;
 
+    Image heartUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,8 @@ public class SanityUIController : MonoBehaviour
         globalVol.profile.TryGet(out vg);
         globalVol.profile.TryGet(out bl);
         globalVol.profile.TryGet(out fg);
+
+        heartUI = transform.GetComponentInChildren<Image>();
         updateSanity();
     }
 
@@ -33,6 +38,8 @@ public class SanityUIController : MonoBehaviour
             vg.intensity.value = 0.5f;
             bl.intensity.value = 2f;
             fg.intensity.value = 0.3f;
+
+            heartUI.color = new Color32(252,40,3, 255);
         }
         else if(curSanity >= 80)
         {
@@ -41,6 +48,8 @@ public class SanityUIController : MonoBehaviour
             StartCoroutine(pulsatingSanity(0.4f, 0.6f));
             bl.intensity.value = 2.5f;
             fg.intensity.value = 0.5f;
+
+            heartUI.color = new Color32(252, 98, 3, 255);
         }
         else if (curSanity >= 60)
         {
@@ -49,6 +58,8 @@ public class SanityUIController : MonoBehaviour
             StartCoroutine(pulsatingSanity(0.5f, 0.7f));
             bl.intensity.value = 3f;
             fg.intensity.value = 0.7f;
+
+            heartUI.color = new Color32(252, 194, 3, 255);
         }
         else if (curSanity >= 40)
         {
@@ -57,6 +68,8 @@ public class SanityUIController : MonoBehaviour
             StartCoroutine(pulsatingSanity(0.7f, 0.9f));
             bl.intensity.value = 4f;
             fg.intensity.value = 0.85f;
+
+            heartUI.color = new Color32(132, 3, 252, 255);
         }
         else if (curSanity >= 20)
         {
@@ -65,6 +78,8 @@ public class SanityUIController : MonoBehaviour
             StartCoroutine(pulsatingSanity(0.8f, 1.0f));
             bl.intensity.value = 5f;
             fg.intensity.value = 1.0f;
+
+            heartUI.color = new Color32(91, 90, 92, 255);
         }
     }
     IEnumerator pulsatingSanity(float min, float max)
