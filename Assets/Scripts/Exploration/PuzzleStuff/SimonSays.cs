@@ -8,25 +8,30 @@ public class SimonSays : MonoBehaviour
     public GameObject[] simonSays;
     [SerializeField] private float timer = 5;
     [SerializeField] private int n = 0;
-    public static bool clickable = false;
-    public int turns = 4;
+    public static bool clickable = true ;
+    [SerializeField] private GameObject remnant;
+    private bool onTop;
     private int tempN = 5;
     private int r;
+
     private void Start()
     {
-        for (int i = 0; i < simon.Length; i++) 
-        {
-            RanNum(i);
-        }
-        StartSystem();
-    }
+        onTop = false;
+        clickable = true;
+        n = 0;
 
+    }
     private void Update()
     {
-
-       if(Input.GetKeyDown(KeyCode.P))
+       if(Input.GetKeyDown(KeyCode.Space) && onTop && clickable )
         {
             StartSystem();
+        }
+
+        if (SimonButton.complete)
+        {
+            // Insert puzzle completion lines here
+            remnant.SetActive(true);
         }
     }
 
@@ -58,6 +63,8 @@ public class SimonSays : MonoBehaviour
         {
             simonSays[i].SetActive(false);
         }
+        n = 0;
+        StartCoroutine(Flickering(1));
     }
     IEnumerator Flickering(int timer)
     {
@@ -85,5 +92,17 @@ public class SimonSays : MonoBehaviour
                 simonSays[i].SetActive(false);
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            onTop = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        onTop = false;
     }
 }

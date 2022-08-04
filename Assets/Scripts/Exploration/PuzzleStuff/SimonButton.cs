@@ -8,17 +8,26 @@ public class SimonButton : MonoBehaviour
     [SerializeField] private SimonSays ss;
     [SerializeField] private KeyCode kc;
     [SerializeField] private static int order;
-    [SerializeField] private static bool complete = false;
+    [SerializeField] public static bool complete = false;
     public static bool stage1 = false;
     public static bool stage2 = false;
-    public static bool stage3 = false;
+    [SerializeField]private bool onTop = false;
+
+    private void Start()
+    {
+        stage1 = false;
+        stage2 = false;
+        order = 0;
+        onTop = false;
+    }
     private void Update()
     {
-        if (Input.GetKeyDown( kc ) && !complete && SimonSays.clickable)  //Button clicking with resets
+        if (Input.GetKeyDown(kc) && !complete && SimonSays.clickable && onTop)  //Button clicking with resets
         {
             if (buttonNo == ss.simon[order])
             {
                 ss.simonSays[ss.simon[order]].SetActive(true);
+                Debug.Log(ss.simon[order]);
                 for ( int i = 0; i < ss.simonSays.Length; i++)
                 {
                     if ( i != ss.simon[order])
@@ -56,19 +65,28 @@ public class SimonButton : MonoBehaviour
         {
             complete = true;
         }
-
-        if (complete)
-        {
-            // Insert puzzle completion lines here
-        }
     }
     IEnumerator LevelDelay()
     {
+        yield return new WaitForSeconds(1);
         for (int i = 0; i < ss.simonSays.Length; i++)
         {
             ss.simonSays[i].SetActive(false);
         }
         yield return new WaitForSeconds(1.5f);
         ss.StartSystem();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+            {
+            onTop = true;
+            }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        onTop = false ;
     }
 }

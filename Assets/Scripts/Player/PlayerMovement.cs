@@ -53,8 +53,6 @@ public class PlayerMovement : MonoBehaviour
         float y = Input.GetAxisRaw("Vertical");
 
         movement = new Vector2(x,y).normalized;
-        animator.SetFloat("xSpeed", x);
-        animator.SetFloat("ySpeed", y);
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SPRINTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         slider.value = sprintGauge;
         if (Input.GetKey(KeyCode.LeftShift) && !fatigue)
