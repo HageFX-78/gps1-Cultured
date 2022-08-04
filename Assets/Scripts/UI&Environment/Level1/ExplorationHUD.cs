@@ -19,8 +19,8 @@ public class ExplorationHUD : MonoBehaviour
         remList.Clear();
         remList.Add(remnant1);
         remList.Add(remnant2);
-        remnantCount = 1;
-        //remnantCount = 2;<------- 2 once remnant 2 is set up with scens index 1 and new description properly
+        //remnantCount = 1;
+        remnantCount = 2;//<------- 2 once remnant 2 is set up with scens index 1 and new description properly
         Invoke("uiUpdate", 0.2f);
     }
 

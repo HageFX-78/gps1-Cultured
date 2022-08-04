@@ -10434,13 +10434,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 10218150}
     m_Modifications:
+    - target: {fileID: 1681080244, guid: b504c502ae1fa254ca50293e82794c49, type: 3}
+      propertyPath: remnantName
+      value: diary
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681080244, guid: b504c502ae1fa254ca50293e82794c49, type: 3}
+      propertyPath: isInactiveAtStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681080244, guid: b504c502ae1fa254ca50293e82794c49, type: 3}
+      propertyPath: remnantSceneIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681080244, guid: b504c502ae1fa254ca50293e82794c49, type: 3}
+      propertyPath: remnantDescription
+      value: Buffs boss battle dialogue
+      objectReference: {fileID: 0}
     - target: {fileID: 745740580011371789, guid: b504c502ae1fa254ca50293e82794c49, type: 3}
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 745740580011371789, guid: b504c502ae1fa254ca50293e82794c49, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 745740580011371789, guid: b504c502ae1fa254ca50293e82794c49, type: 3}
       propertyPath: m_SortingLayerID
@@ -10452,7 +10468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6277844478869789952, guid: b504c502ae1fa254ca50293e82794c49, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6743478366981606572, guid: b504c502ae1fa254ca50293e82794c49, type: 3}
       propertyPath: m_RootOrder
