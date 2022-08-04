@@ -381,7 +381,7 @@ Boss: Pfft, you must be crazy
         ~Rational=true
     + Acceptance is hard, but it is what Mom and Dad would have wanted from their baby girl
         ~Acceptance=true
-    + How do you think Mom and Dad would react to this? With love?
+    + How do you think Mom and Dad would react to this?
         ~Love=true
     + I bet if Mom was here, she would hope you face the truth.
         ~Hope=true
@@ -391,33 +391,107 @@ Boss: Pfft, you must be crazy
 =checkC2
     {Rational||Hope: 
         Boss: Anddd...? How would YOU know that?? Did they tell you to say that??
-        Boss: Its not very nice trying to justify your lie~
+        Boss: It's not very nice trying to justify your lie~
         ~Rational = false
         ~Hope = false
-        ->PathB6_1
+        ->PathC3_1
     -else:
-        Boss: 
-        Boss: 
+        Boss: Trying to gaslight me??
+        Boss: Not going to worrrk~~~ 
         ~Love = false
         ~Acceptance = false
-        ->PathB6_2
+        ->PathC3_2
     }
 
 =PathC3_1
-
+    + You think i made that up? What do you take me for?
+        ~Rational=true
+    + I'd really hope if you would at least think about what I said
+        ~Hope=true
+    + Surely you can snap out of this delusion and accept it...
+        ~Acceptance=true
+    + It's a shame what someone can say sometimes...
+        ~Love=true
 - ->checkC3
-
+    
+    
 =PathC3_2
-
+    + Why would you imply that I'm trying to manipulate you? 
+        ~Rational=true
+    + Avoiding what I said? Then I must be close to cracking you
+        ~Rational=true
+    + I cannot accept that you are this delusion to see the truth
+        ~Acceptance=true
+    + This is going nowhere. I don't know if my love for you can last
+        ~Love=true
 - ->checkC3
 
 
 
 =checkC3
+    {Rational||Hope: 
+        Boss: How can you speak for Mom and Dad???
+        Boss: This is just disrespectful at this point.
+        ~Rational = false
+        ~Hope = false
+        ->PathC4_1
+    -else:
+        Boss: If Dad was here right now, he would be on my side.
+        Boss: You are a terrible liar and a brother... If you really were one.
+        ~Love = false
+        ~Acceptance = false
+        ->PathC4_2
+    }
+    
+=PathC4_1
+    + The love and care I have for them is insurmountable.
+        ~Love=true
+    + I never said I was speaking for them. What are you talking about!
+        ~Acceptance=true
+    + That's a nice attempt at a strawman, but it isn't going to work!!
+        ~Rational=true
+    + I hope they will forgive me for overstepping my boundaries
+      But what I have to do now is to convince you
+        ~Hope=true
+- ->checkC4
 
+=PathC4_2
+    + No one is perfect, I'm just trying my best to reach you
+        ~Hope=true
+    + It's only natural that you'd reject what I say.
+      But that is only going to cause more pain.
+        ~Rational=true
+    + I'm not throwing in the towel, even if I what you say is true
+        ~Acceptance=true
+    + The amount of distrust you shown in me... that hurts me.
+        ~Acceptance=true
+- ->checkC4
+
+=checkC4
+    {Rational||Hope: 
+        Boss: You really annoy me with your "Everything is going to be alright" attitude.
+        Boss: Grow up my supposed ... "brother".
+        ~Rational = false
+        ~Hope = false
+        ->PathC5_1
+    -else:
+        Boss: Try as you might, what you say is not working.
+        Boss: You are just faking all of this from the start.
+        ~Love = false
+        ~Acceptance = false
+        ->PathC5_2
+    }
+    
+=PathC5_1
+
+- ->checkC5
+
+=PathC5_2
+
+- ->checkC5
+
+=checkC5
 ->DONE
-
-
 
 
 //=============================================================PATH D===================================================
