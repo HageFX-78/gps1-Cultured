@@ -461,7 +461,7 @@ Boss: Pfft, you must be crazy
     + It's only natural that you'd reject what I say.
       But that is only going to cause more pain.
         ~Rational=true
-    + I'm not throwing in the towel, even if I what you say is true
+    + I'm not throwing in the towel, even if what you say is true
         ~Acceptance=true
     + The amount of distrust you shown in me... that hurts me.
         ~Acceptance=true
@@ -475,27 +475,123 @@ Boss: Pfft, you must be crazy
         ~Hope = false
         ->PathC5_1
     -else:
-        Boss: Try as you might, what you say is not working.
-        Boss: You are just faking all of this from the start.
+        Boss: Try as you might, whatever you say is not going to work.
+        Boss: You are just faking all of this from the start anyways.
         ~Love = false
         ~Acceptance = false
         ->PathC5_2
     }
     
 =PathC5_1
-
+    + It is normal to have a positive outlook on things.
+      What's not normal is being a constant debbie downer.
+        ~Rational=true
+    + I'm still the same old, same old. I really wish you would see that.
+        ~Hope=true
+    + The sooner you realize that what you are doing is not working, the better.
+        ~Acceptance=true
+    + I- .. Why would that annoy you? 
+      I'm just doing my best to help you
+        ~Love=true
 - ->checkC5
 
 =PathC5_2
-
+    + I'm starting to think otherwise if I should continue this conversation
+        ~Acceptance=true
+    + It really pains me to hear you say that.
+        ~Love=true
+    + For the 1000th time, I just need you to give me a chance.
+        ~Hope=true
+    + Denial just shows that what I say is working.
+        ~Rational=true
 - ->checkC5
 
 =checkC5
-->DONE
+    {Rational||Hope: 
+        Boss: Man~ You are seriously beating a dead horse.
+        Boss: Nevermind~ I want to see how much further you will go.
+        ~Rational = false
+        ~Hope = false
+        ->PathC6_1
+    -else:
+        Boss: Then you understand what it's like talking to you!!
+        Boss: HAHAHA finally tasting your own medicine?!?
+        ~Love = false
+        ~Acceptance = false
+        ->PathC6_2
+    }
 
+=PathC6_1
+    + I've made it this far, there is no reason for me to give up
+        ~Rational=true
+    + You have to give up this scenario you made up in your head
+      I'm your brother, and thats that.
+        ~Hope=true
+    + Maybe you were doomed from the start 
+      You can try to find someone else better than me. 
+        ~Acceptance=true
+    + [*My patience is being tested*] I'm slowly losing reasons to.
+        ~Love=true
+- ->checkC6
 
+=PathC6_2
+    + [*It's time I accept that she dont want to be saved*] Alright, I'll take a step back then.
+        ~Acceptance=true
+    + If giving you up is what it takes... Then... fine..
+        ~Love=true
+    + I have all the time in the world. I'll wait for you to let me explain myself
+        ~Hope=true
+    + Why... Why not let me explain myself, and then see if you want to believe me??
+        ~Rational=true
+- ->checkC6
+
+=checkC6
+Boss: *She seems to calm down, your words must have reached her*
+    + [Ask what she is thinking about] Do you really trust me now? Are you calm now?
+    + [Ask how she feels] Sis? Are you okay?
+    
+- ->DONE
 //=============================================================PATH D===================================================
 =PathD2
+Boss: Really?!? A teddy bear??
+Boss: That's the best you can do??
+    + Think deeply, I'm sure you can remember it!!
+        ~Hope=true
+    + You didn't even give me a chance. Why?
+        ~Rational=true
+    + I brought something dear to you, you have to accept that and not be so stubborn
+        ~Acceptance=true
+    + You loved this bear, what are you talking about!!
+        ~Love=true
+- ->checkD2
 
-- ->DONE
-->END
+=checkD2
+    {Rational||Hope: 
+        Boss: 
+        Boss: 
+        ~Rational = false
+        ~Hope = false
+        ->PathD3_1
+    -else:
+        Boss: 
+        ~Love = false
+        ~Acceptance = false
+        ->PathD3_2
+    }
+    
+=PathD3_1
+
+- ->checkD3
+
+=PathD3_2
+
+- ->checkD3
+
+=checkD3
+
+->DONE
+
+===GameOver===
+Boss: This is goodbye, I'm listening to your rabbling anymore.
+
+->DONE
