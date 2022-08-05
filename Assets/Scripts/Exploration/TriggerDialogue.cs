@@ -46,7 +46,7 @@ public class TriggerDialogue : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if ((Input.GetKey(KeyCode.Space)|| Input.GetKey(KeyCode.Mouse0)) && interactableType && !interacting && collision.gameObject.CompareTag("Player"))
+        if (Input.GetKey(KeyCode.Space)&& interactableType && !interacting && collision.gameObject.CompareTag("Player"))
         {
             if (transform.Find("interact_prompt") != null)
             {
