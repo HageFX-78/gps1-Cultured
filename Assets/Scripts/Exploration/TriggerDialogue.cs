@@ -8,16 +8,35 @@ public class TriggerDialogue : MonoBehaviour
     [SerializeField] DialogueManager manager;
     [SerializeField] bool interactableType;
     [SerializeField] bool convoTriggered;//False means dialogue never triggered, true means triggered alr and wont trigger again. False by default (One-time dialogue scenario)
-    
+
+    [SerializeField] GameObject promptPrefab;
     [SerializeField] List<TransformList> transformLocationList = new List<TransformList>();
 
+
+    
     public static bool interacting = false;
+
+
+    private void Start()
+    {
+        if (transform.Find("interact_prompt") == null)
+        {
+            GameObject thisPref = Instantiate(promptPrefab, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
+            thisPref.transform.SetParent(gameObject.transform);
+            thisPref.name = "interact_prompt";
+            thisPref.SetActive(false);
+        }
+    }
 
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player") && !convoTriggered)
         {
+            if(transform.Find("interact_prompt")!=null)
+            {
+                transform.Find("interact_prompt").gameObject.SetActive(true);
+            }
             if(!interactableType)
             {
                 convoTriggered = true;
@@ -27,8 +46,13 @@ public class TriggerDialogue : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if ((Input.GetKey(KeyCode.Space)|| Input.GetKey(KeyCode.Mouse0)) && interactableType && !interacting)
+        if ((Input.GetKey(KeyCode.Space)|| Input.GetKey(KeyCode.Mouse0)) && interactableType && !interacting && collision.gameObject.CompareTag("Player"))
         {
+            if (transform.Find("interact_prompt") != null)
+            {
+                transform.Find("interact_prompt").gameObject.SetActive(false);
+            }
+
             interacting = true;
             startConvo();
         }
@@ -38,6 +62,12 @@ public class TriggerDialogue : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+
+            if (transform.Find("interact_prompt") != null)
+            {
+                transform.Find("interact_prompt").gameObject.SetActive(false);
+            }
+
             interacting = false;
         }
         

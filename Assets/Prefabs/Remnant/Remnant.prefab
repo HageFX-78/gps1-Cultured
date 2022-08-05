@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6743478366981606572}
   - component: {fileID: 745740580011371789}
   - component: {fileID: 1681080244}
+  - component: {fileID: 7008402792069136443}
   - component: {fileID: 2970453895515000058}
   m_Layer: 0
   m_Name: Remnant
@@ -101,7 +102,22 @@ MonoBehaviour:
   remnantName: bear
   remnantDescription: Shows hints to the player during battle
   remnantSceneIndex: 0
+  isInactiveAtStart: 0
   inRange: 0
+--- !u!114 &7008402792069136443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277844478869789952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73039736903569949bdd0da687e82b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yPositionOffset: 1.5
+  promptPrefab: {fileID: 5134848514543655227, guid: 6651d828925a7a543b40382c400d2ca1, type: 3}
 --- !u!61 &2970453895515000058
 BoxCollider2D:
   m_ObjectHideFlags: 0
