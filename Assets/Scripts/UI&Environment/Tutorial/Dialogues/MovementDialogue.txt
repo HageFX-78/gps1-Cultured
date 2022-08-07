@@ -1,12 +1,12 @@
 ???:Time to get you accustomed to this world.
 ???:Press W,A,S,D to move around the map
-???:You can also sprint while moving by holding Shift
-???:A sprint gauge will appear under you while you are sprinting
-???:Once empty, you will need to wait for it to recharge before you can sprint again
+???:You can sprint while moving by holding 'Shift'
+???:A sprint gauge will appear while you are sprinting
+???:Once empty, you need to wait for it to recharge before sprinting again
 ???:Good! Now keep heading east
 ???:Do you see that thing over there?
 Alex:What is that? It looks.......weird
-???:Those are the enemies you will be facing in order to free your mind
+???:Those are the enemies you will be facing 
 ???:Creatures born from negative emotions
 ???:Try and walk up to it and see what happens
 Alex:I hope this is safe...

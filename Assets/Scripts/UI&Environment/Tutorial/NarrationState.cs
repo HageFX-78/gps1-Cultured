@@ -12,7 +12,6 @@ public class NarrationState : TutorialBaseState
 
     [SerializeField] DialogueManager manager;
  
-
     public override void EnterState(TutorialStateManager tutorial)
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().enabled = false;

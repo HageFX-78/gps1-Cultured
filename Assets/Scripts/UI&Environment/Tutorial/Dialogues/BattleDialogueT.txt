@@ -35,7 +35,7 @@ Alex:Alright...How do I fight them?
 Alex:The door seems to be locked
 ???:Why dont you try interacting with the switch over there
 ???:Press the spacebar to interact with an object
-???:The next thing i need you to do is to help me look for something important
+???:Next I need you to help me look for something
 Alex: What is it?
 ???:Its something that once belongs to me, my glasses
 ???:Just walk around the area, you should find it 
