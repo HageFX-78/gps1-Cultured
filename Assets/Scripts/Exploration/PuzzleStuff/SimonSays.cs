@@ -13,6 +13,7 @@ public class SimonSays : MonoBehaviour
     private bool onTop;
     private int tempN = 5;
     private int r;
+    private static bool collected;
 
     private void Start()
     {
@@ -28,10 +29,11 @@ public class SimonSays : MonoBehaviour
             StartSystem();
         }
 
-        if (SimonButton.complete)
+        if (SimonButton.complete && !collected) 
         {
             // Insert puzzle completion lines here
             remnant.SetActive(true);
+            collected = true;
         }
     }
 
