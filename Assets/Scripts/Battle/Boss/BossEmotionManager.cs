@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BossEmotionManager : MonoBehaviour
 {
@@ -16,11 +17,13 @@ public class BossEmotionManager : MonoBehaviour
     public static int turnCounter;
     public bool phase1;
     public bool phase2;
+    public bool gameOver;
 
     [Header("Boss Emotion Details")]
     public float playerMinThreshold;
     public float playerMaxThreshold;//Setting values that should be altered
     public int enemyMinSafeZone, enemyMaxSafeZone;
+    public float pointerStart, pointerEnd;
 
     private float tempMinThreshold, tempMaxThreshold;
     private float currentThreshold;
@@ -47,6 +50,7 @@ public class BossEmotionManager : MonoBehaviour
     {
         phase1 = true;
         phase2 = false;
+        gameOver = false;
         InitBoss();
     }
 
@@ -54,15 +58,16 @@ public class BossEmotionManager : MonoBehaviour
     {
         turnCounterText.text = "Turns Left: " + turnCounter;
 
-        if(turnCounter <=0)
+        if(turnCounter <= 0)
         {
-            if(checkTargetThreshold() == false)
+            if(checkTargetThreshold() == false && gameOver == false)
             {
-                Debug.Log("GAME OVER");
+                gameOver = true;
+                BossDialogueManager.instance.EnterDialogueMode(dialogueTrigger.gameOver);
             }
             else
             {
-                if(phase1)
+                if(phase1 && gameOver == false)
                 {
                     phase1 = false;
                     phase2 = true;
@@ -71,12 +76,30 @@ public class BossEmotionManager : MonoBehaviour
                     BossDialogueManager.instance.EnterDialogueMode(dialogueTrigger.phase2Dialogue);
                 }
             }
+
+            if(gameOver)
+            {
+                if (BossDialogueManager.instance.storyIsPlaying == false)
+                {
+                    SceneManager.LoadScene((int)sceneIndex.GAMEOVER);
+                }
+            }
         }
+
+        Debug.Log($"Min max L {tempMinThreshold}, {tempMaxThreshold} == Current : {currentThreshold}");
     }
    
 
     void InitBoss()
     {
+        BossDialogueManager.instance.firstTurn = true;
+
+        float addRand = Random.Range(enemyMinSafeZone, enemyMaxSafeZone);
+
+        tempMinThreshold = Random.Range(50, 60);
+        tempMaxThreshold = tempMinThreshold + addRand;
+        currentThreshold = Random.Range(pointerStart, pointerEnd);
+
         //takes the list of fields and sets the currentType based on the list
         phaseIndex = 0;
         emotion.currentType = bossPhases[phaseIndex];
@@ -158,62 +181,24 @@ public class BossEmotionManager : MonoBehaviour
                 break;
         }
 
-        //sets Safe zone & Size
-        /*float addRand = Random.Range(enemyMinSafeZone, enemyMaxSafeZone);
+        emoPointer.anchoredPosition = new Vector2((currentThreshold >= 50 ? (((currentThreshold - 50) / 100) * 600) : ((50 - currentThreshold) / 100) * -600), 296);
 
-        tempMinThreshold = Random.Range(20, 50);
-        tempMaxThreshold = tempMinThreshold + addRand;
-        
-        currentThreshold = Random.Range(playerMinThreshold, playerMaxThreshold);
-        SafeZone.sizeDelta = new Vector2((addRand / 100) * 600, 23);
-
-        //Safe zone position
-        float safeZoneMidOffeset = (addRand / 2);
-        float safeZoneMidpointX = (tempMinThreshold + safeZoneMidOffeset);
-        float safeZoneOffset = 0;
-        float safeZoneMidtoMax = 0;
-
-        if (safeZoneMidpointX > 50)
-        {
-            safeZoneOffset = 300;
-            safeZoneMidtoMax = safeZoneMidpointX - 50;
-        }
-        else
-        {
-            safeZoneOffset = -300;
-            safeZoneMidtoMax = 50 - safeZoneMidpointX;
-        }
-
-        SafeZone.anchoredPosition = new Vector2((safeZoneMidtoMax / 100) * safeZoneOffset, 296);*/
-        updateEmotionBar();
-
-        safeLeft.anchoredPosition = new Vector2((playerMinThreshold >= 50 ? (((playerMinThreshold - 50) / 100) * 600) : ((50 - playerMinThreshold) / 100) * -600), 296);
-        safeRight.anchoredPosition = new Vector2((playerMaxThreshold >= 50 ? ((playerMaxThreshold - 50) / 100 * 600) : (50 - playerMaxThreshold) / 100 * -600), 296);
+        safeLeft.anchoredPosition = new Vector2((tempMinThreshold >= 50 ? (((tempMinThreshold - 50) / 100) * 600) : ((50 - tempMinThreshold) / 100) * -600), 296);
+        safeRight.anchoredPosition = new Vector2((tempMaxThreshold >= 50 ? ((tempMaxThreshold - 50) / 100 * 600) : (50 - tempMaxThreshold) / 100 * -600), 296);
     }
 
     public void DealDamage(float baseDamage, string damageType)// not completed
     {
         currentThreshold += baseDamage * emotion.TypeMultiplier[damageType];
         currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
-        //updateEmotionBar();
         StartCoroutine(moveEmoPointer());
-        //CurrentEmotionBar();//Logging only - comment when we done
-        //Debug.Log($"current = {currentThreshold}, dmg dealt {baseDamage * emotion.TypeMultiplier[damageType]}");
     }
 
     public void Recover(float recoverAmount)
     {
         currentThreshold -= recoverAmount * 1;
         currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
-        //updateEmotionBar();
         StartCoroutine(moveEmoPointer());
-    }
-
-    public void updateEmotionBar()
-    {
-        //PosBar.sizeDelta = new Vector2((currentThreshold / 100) * 600, 15);
-        //NegBar.sizeDelta = new Vector2(((100 - currentThreshold) / 100) * 600, 15);
-        emoPointer.anchoredPosition = new Vector2((currentThreshold >= 50 ? (((currentThreshold - 50) / 100) * 600) : ((50 - currentThreshold) / 100) * -600), 296);
     }
 
     public bool checkTargetThreshold() //not completed
@@ -226,11 +211,6 @@ public class BossEmotionManager : MonoBehaviour
         {
             return false;
         }
-    }
-
-    public void CurrentEmotionBar()
-    {
-        Debug.Log($"Min max L {tempMinThreshold}, {tempMaxThreshold} == Current : {currentThreshold}");
     }
 
     IEnumerator moveEmoPointer()
@@ -257,6 +237,11 @@ public class BossEmotionManager : MonoBehaviour
             }
         }
         emoPointer.anchoredPosition = new Vector2(newXVal, 296);
+    }
 
+    IEnumerator LoadScene(int sceneIndex)
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadSceneAsync(sceneIndex);
     }
 }

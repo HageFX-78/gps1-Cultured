@@ -417,7 +417,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 220598928}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -427,9 +427,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43, y: 300}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 300}
+  m_SizeDelta: {x: 80, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220598930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,8 +957,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 48, y: 300}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 131, y: 300}
+  m_SizeDelta: {x: 80, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &631351548
 MonoBehaviour:
@@ -1494,6 +1494,7 @@ MonoBehaviour:
   - {fileID: 1280481310}
   - {fileID: 6710865}
   tempTag: []
+  firstTurn: 0
 --- !u!1 &1023243268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,13 +2151,16 @@ MonoBehaviour:
   phase2Turn: 7
   phase1: 0
   phase2: 0
+  gameOver: 0
   playerMinThreshold: 40
   playerMaxThreshold: 50
   enemyMinSafeZone: 20
-  enemyMaxSafeZone: 40
+  enemyMaxSafeZone: 30
+  pointerStart: 10
+  pointerEnd: 25
   minBaseDamage: 10
   maxBaseDamage: 15
-  minSelfRecover: 5
+  minSelfRecover: 1
   maxSelfRecover: 5
   safeLeft: {fileID: 1672509493}
   safeRight: {fileID: 631351547}
@@ -2214,7 +2218,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1672509492
 GameObject:
@@ -2251,8 +2255,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34, y: 300}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -122, y: 300}
+  m_SizeDelta: {x: 80, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672509494
 MonoBehaviour:
@@ -2568,10 +2572,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1240940747, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1be1889bfa6947742924e8cb0329dcfe, type: 3}
     - target: {fileID: 3084559788141113481, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
       propertyPath: phase1
       value: 
       objectReference: {fileID: 4900000, guid: e005baf9b33c69c42ab6941eba150d63, type: 3}
+    - target: {fileID: 3084559788141113481, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
+      propertyPath: gameOver
+      value: 
+      objectReference: {fileID: 4900000, guid: e25aa583783d06d4a8d1e30ef1dfd186, type: 3}
     - target: {fileID: 3084559788141113481, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
       propertyPath: prePhase
       value: 

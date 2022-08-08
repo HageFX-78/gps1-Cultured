@@ -30,6 +30,8 @@ public class BossDialogueManager : MonoBehaviour
     public List<string> tempTag;
     private int tagIndex;
 
+    public bool firstTurn;
+
     private void Awake()
     {
         if(instance != null && instance != this)
@@ -38,7 +40,6 @@ public class BossDialogueManager : MonoBehaviour
         }
         else
             instance = this;
-
 
         storyIsPlaying = false;
         //initialise array of choicetext to be the same as the amount of choices
@@ -153,12 +154,20 @@ public class BossDialogueManager : MonoBehaviour
             temp.a = 0.5f;
             dialoguePanelImage.color = temp;
 
+
+            if(!firstTurn && bossEmotionManager.gameOver == false)
+            {
+                //boss recovers after attack
+                int randRecover = (int)UnityEngine.Random.Range(bossEmotionManager.minSelfRecover, bossEmotionManager.maxSelfRecover);
+                bossEmotionManager.Recover(randRecover);
+            }
         }
     }
 
     //onclick function for buttons
     public void MakeChoice(int choiceIndex)
     {
+        firstTurn = false;
         currentStory.ChooseChoiceIndex(choiceIndex);
         //========================================Player deals dmg================================================
         if(tempTag.Count > 0)
@@ -169,15 +178,11 @@ public class BossDialogueManager : MonoBehaviour
                 int randDmg = (int)UnityEngine.Random.Range(bossEmotionManager.minBaseDamage, bossEmotionManager.maxBaseDamage);
                 //passes in the temptag based on the choiceIndex
                 bossEmotionManager.DealDamage(randDmg, tempTag[choiceIndex]);
-                
-                //boss recovers after attack
-                int randRecover = (int)UnityEngine.Random.Range(bossEmotionManager.minBaseDamage, bossEmotionManager.maxBaseDamage);
-                bossEmotionManager.Recover(randRecover);
             }
         }
-        
-        ContinueStory();     
-        BossEmotionManager.turnCounter--;
 
+        ContinueStory();
+        if(!bossEmotionManager.gameOver)
+            BossEmotionManager.turnCounter--;
     }
 }

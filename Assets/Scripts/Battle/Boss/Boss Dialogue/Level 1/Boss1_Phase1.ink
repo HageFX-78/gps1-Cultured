@@ -87,7 +87,6 @@ Boss: You are not the brother I know, give me back my brother!! #Rational #Ratio
         ->PathA4_2
     }
     
-    
 //==============================================================TURN 4============================================================
 =PathA4_1
     + No, I'm just messing with you
@@ -180,7 +179,6 @@ Boss: You are not the brother I know, give me back my brother!! #Rational #Ratio
         ~ Hope = true
     + It doesn't matter if you think I can't back it up, I'm trying to save you!
         ~ Rational = true
-        
 - ->checkA6
 
 =PathA6_2
@@ -192,9 +190,8 @@ Boss: You are not the brother I know, give me back my brother!! #Rational #Ratio
         ~ Hope = true
     + Provoke me all you want, It is not going to break me
         ~ Rational = true
-
-
 - ->checkA6
+
 //==============================================================CHECK 6============================================================
 =checkA6
     {Rational||Hope:
@@ -234,7 +231,6 @@ Boss: You are not the brother I know, give me back my brother!! #Rational #Ratio
 //==============================================================CHECK 7============================================================
 =checkA7 //have to fix in code
     "Your sister seems to have calmed down slightly"
-    Phase 2 
 - ->PathA8
 
 //==============================================================TURN 8============================================================
@@ -439,13 +435,11 @@ Boss: Stop making me uncomfortable, I don't understand! #Rational #Rational #Lov
         ~Rational=true
     + As long as I'm still breathing, I will not give up!!
         ~Hope=true
-
 - ->checkB7
 
 //==============================================================CHECK 7============================================================
 =checkB7 //have to fix in code
     "Your sister seems to have calmed down slightly"
-    Phase 2 
 - ->PathB8
     
 //==============================================================PATH 8============================================================
@@ -459,7 +453,7 @@ Boss: Stop making me uncomfortable, I don't understand! #Rational #Rational #Lov
 //==============================================================PATH C============================================================
 //==============================================================TURN 2============================================================
 =PathC2
-Boss: That doesn't make any sense to me.. #Love #Hope $Acceptance #Rational
+Boss: That doesn't make any sense to me.. #Love #Hope #Acceptance #Rational
     + Even if you passed, I will always love you
         ~Love=true
     + Please don't run away from this
@@ -659,7 +653,6 @@ Boss: That doesn't make any sense to me.. #Love #Hope $Acceptance #Rational
 //==============================================================CHECK 7=====================================================
 =checkC7 //fix in code
     "Your sister seems to have calmed down slightly"
-    Phase 2 
 - ->PathC8
 //==============================================================TURN 8============================================================
 =PathC8
@@ -871,19 +864,11 @@ Boss: I dont buy it!! #Rational #Love #Acceptance #Hope
 //==============================================================CHECK 7============================================================
 =checkD7//fix in code
     "Your sister seems to have calmed down slightly"
-    Phase 2 
 - ->PathD8
 //==============================================================TURN 8============================================================
 =PathD8
     + Do you believe that I am your brother now?
-        ...
+        Boss: ...
     + I would never dare pretend to be someone you know
         Boss: If you think I would trust you with these simple words... You are gravely mistaken!!
 - ->DONE
-
-
-=GameOver
-GameOver
-
-
-->END
