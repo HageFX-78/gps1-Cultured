@@ -5,6 +5,9 @@ using TMPro;
 
 public class BossEmotionManager : MonoBehaviour
 {
+    [Header("Dialogue Trigger")]
+    public DialogueTrigger dialogueTrigger;
+
     [Header("Boss Emotion (Phases)")]
     [SerializeField] private string[] bossPhases;
     public Emotion emotion = new();
@@ -29,13 +32,21 @@ public class BossEmotionManager : MonoBehaviour
     public float maxSelfRecover;
 
     [Header("Emotion Bar Details")]
-    public RectTransform PosBar, NegBar, SafeZone;
-    public TextMeshProUGUI posEmotionText, enemyEmotionText, turnCounterText;
+    public RectTransform safeLeft;
+    public RectTransform safeRight; 
+    public RectTransform emoPointer;
+    public TextMeshProUGUI turnCounterText;
+
+    [Header("Emo Bar Move Settings")]
+    [SerializeField] float moveEmoBarLoopCooldown;
+    [SerializeField] float moveEmoBarLoopSplit;
 
     private int phaseIndex;
 
     private void Start()
     {
+        phase1 = true;
+        phase2 = false;
         InitBoss();
     }
 
@@ -45,14 +56,20 @@ public class BossEmotionManager : MonoBehaviour
 
         if(turnCounter <=0)
         {
-            if(!checkTargetThreshold())
+            if(checkTargetThreshold() == false)
             {
                 Debug.Log("GAME OVER");
             }
             else
             {
-                phase1 = false;
-                phase2 = true;
+                if(phase1)
+                {
+                    phase1 = false;
+                    phase2 = true;
+                    //init boss for phase 2
+                    InitBoss();
+                    BossDialogueManager.instance.EnterDialogueMode(dialogueTrigger.phase2Dialogue);
+                }
             }
         }
     }
@@ -61,12 +78,16 @@ public class BossEmotionManager : MonoBehaviour
     void InitBoss()
     {
         //takes the list of fields and sets the currentType based on the list
-        posEmotionText.text = "???";
-        enemyEmotionText.text = "???";
         phaseIndex = 0;
         emotion.currentType = bossPhases[phaseIndex];
-        turnCounter = phase1Turn;
-        phase1 = true;
+        if(phase1)
+        {
+            turnCounter = phase1Turn;
+        }
+        else if(phase2)
+        {
+            turnCounter = phase2Turn;
+        }
 
         //sets the multipler based on the currentType set
         switch(emotion.currentType)
@@ -95,6 +116,7 @@ public class BossEmotionManager : MonoBehaviour
                 
                 break;
 
+            //below follwing not updated
             case "Hatred":
                 emotion.TypeMultiplier = new Dictionary<string, float>()
                 {
@@ -137,7 +159,7 @@ public class BossEmotionManager : MonoBehaviour
         }
 
         //sets Safe zone & Size
-        float addRand = Random.Range(enemyMinSafeZone, enemyMaxSafeZone);
+        /*float addRand = Random.Range(enemyMinSafeZone, enemyMaxSafeZone);
 
         tempMinThreshold = Random.Range(20, 50);
         tempMaxThreshold = tempMinThreshold + addRand;
@@ -162,16 +184,20 @@ public class BossEmotionManager : MonoBehaviour
             safeZoneMidtoMax = 50 - safeZoneMidpointX;
         }
 
-        SafeZone.anchoredPosition = new Vector2((safeZoneMidtoMax / 100) * safeZoneOffset, 296);
+        SafeZone.anchoredPosition = new Vector2((safeZoneMidtoMax / 100) * safeZoneOffset, 296);*/
         updateEmotionBar();
+
+        safeLeft.anchoredPosition = new Vector2((playerMinThreshold >= 50 ? (((playerMinThreshold - 50) / 100) * 600) : ((50 - playerMinThreshold) / 100) * -600), 296);
+        safeRight.anchoredPosition = new Vector2((playerMaxThreshold >= 50 ? ((playerMaxThreshold - 50) / 100 * 600) : (50 - playerMaxThreshold) / 100 * -600), 296);
     }
 
     public void DealDamage(float baseDamage, string damageType)// not completed
     {
         currentThreshold += baseDamage * emotion.TypeMultiplier[damageType];
         currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
-        updateEmotionBar();
-        CurrentEmotionBar();//Logging only - comment when we done
+        //updateEmotionBar();
+        StartCoroutine(moveEmoPointer());
+        //CurrentEmotionBar();//Logging only - comment when we done
         //Debug.Log($"current = {currentThreshold}, dmg dealt {baseDamage * emotion.TypeMultiplier[damageType]}");
     }
 
@@ -179,13 +205,15 @@ public class BossEmotionManager : MonoBehaviour
     {
         currentThreshold -= recoverAmount * 1;
         currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
-        updateEmotionBar();
+        //updateEmotionBar();
+        StartCoroutine(moveEmoPointer());
     }
 
     public void updateEmotionBar()
     {
-        PosBar.sizeDelta = new Vector2((currentThreshold / 100) * 600, 15);
-        NegBar.sizeDelta = new Vector2(((100 - currentThreshold) / 100) * 600, 15);
+        //PosBar.sizeDelta = new Vector2((currentThreshold / 100) * 600, 15);
+        //NegBar.sizeDelta = new Vector2(((100 - currentThreshold) / 100) * 600, 15);
+        emoPointer.anchoredPosition = new Vector2((currentThreshold >= 50 ? (((currentThreshold - 50) / 100) * 600) : ((50 - currentThreshold) / 100) * -600), 296);
     }
 
     public bool checkTargetThreshold() //not completed
@@ -203,5 +231,32 @@ public class BossEmotionManager : MonoBehaviour
     public void CurrentEmotionBar()
     {
         Debug.Log($"Min max L {tempMinThreshold}, {tempMaxThreshold} == Current : {currentThreshold}");
+    }
+
+    IEnumerator moveEmoPointer()
+    {
+        float newXVal = (currentThreshold >= 50 ? (((currentThreshold - 50) / 100) * 600) : ((50 - currentThreshold) / 100) * -600);
+        float oldXVal = emoPointer.anchoredPosition.x;
+
+        float incrementVal = (newXVal > oldXVal ? newXVal - oldXVal : oldXVal - newXVal) / moveEmoBarLoopSplit;
+
+        if (newXVal > oldXVal)
+        {
+            while (emoPointer.anchoredPosition.x < newXVal)
+            {
+                emoPointer.anchoredPosition = new Vector2(emoPointer.anchoredPosition.x + incrementVal, 296);
+                yield return new WaitForSeconds(moveEmoBarLoopCooldown);
+            }
+        }
+        else
+        {
+            while (emoPointer.anchoredPosition.x > newXVal)
+            {
+                emoPointer.anchoredPosition = new Vector2(emoPointer.anchoredPosition.x - incrementVal, 296);
+                yield return new WaitForSeconds(moveEmoBarLoopCooldown);
+            }
+        }
+        emoPointer.anchoredPosition = new Vector2(newXVal, 296);
+
     }
 }

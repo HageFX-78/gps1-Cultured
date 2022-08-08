@@ -16,9 +16,6 @@ public class BossDialogueManager : MonoBehaviour
     [SerializeField] private Image dialoguePanelImage;
     [SerializeField] private RectTransform dialogueTransform;
     [SerializeField] private TextMeshProUGUI dialogueText;
-    [SerializeField] private Vector2 dialogueSize;
-    [SerializeField] private Vector2 defaultDialogueSize;
-    [SerializeField] private Vector3 dialogueOffset;
 
     [Header("Emotion UI")]
     [SerializeField] private GameObject emotionPanel;
@@ -66,8 +63,6 @@ public class BossDialogueManager : MonoBehaviour
         if (storyIsPlaying && currentStory.currentChoices.Count == 0)
         {
             //if there is no choices, sets the color, size, position
-            dialogueTransform.sizeDelta = dialogueSize;
-            dialogueTransform.anchoredPosition = dialogueOffset;
             dialoguePanelImage.color = Color.white;
             dialogueText.color = Color.black;
 
@@ -158,9 +153,6 @@ public class BossDialogueManager : MonoBehaviour
             temp.a = 0.5f;
             dialoguePanelImage.color = temp;
 
-            //resizing the box
-            dialogueTransform.sizeDelta = defaultDialogueSize;
-            dialogueTransform.anchoredPosition = new Vector3(0, -75, 0);
         }
     }
 

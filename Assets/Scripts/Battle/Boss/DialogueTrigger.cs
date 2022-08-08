@@ -6,10 +6,13 @@ public class DialogueTrigger : MonoBehaviour
 {
     //setting file to read
     [Header("Ink JSON")]
-    [SerializeField] private TextAsset phase1;
+    [SerializeField] public TextAsset prePhase;
+    [SerializeField] public TextAsset phase1Dialogue;
+    [SerializeField] public TextAsset phase2Dialogue;
+    [SerializeField] public TextAsset gameOver;
 
     private void Start()
     {
-        BossDialogueManager.instance.EnterDialogueMode(phase1);
+        BossDialogueManager.instance.EnterDialogueMode(phase1Dialogue);
     }
 }
