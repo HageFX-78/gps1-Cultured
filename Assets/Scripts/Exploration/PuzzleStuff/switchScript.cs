@@ -8,7 +8,9 @@ public class switchScript : MonoBehaviour
 
     [Header("Button ID")]
     public float buttonOrder;
-    private new Renderer renderer;
+    public SpriteRenderer sprite;
+    public Sprite green;
+    public Sprite red;
     private bool onTop = false;
 
     [HideInInspector] public bool activated;
@@ -16,8 +18,7 @@ public class switchScript : MonoBehaviour
 
     private void Start()
     {
-        renderer = GetComponent<Renderer>();
-        renderer.material.color = Color.red;
+        sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -29,7 +30,7 @@ public class switchScript : MonoBehaviour
                 switch (puzzleType) 
                 {
                     case 1:
-                        renderer.material.color = Color.green;
+                        sprite.sprite = green;
                         manager.ButtonPress(buttonOrder);
                         break;
                     case 2:

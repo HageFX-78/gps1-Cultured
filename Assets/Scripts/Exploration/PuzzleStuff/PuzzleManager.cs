@@ -8,8 +8,9 @@ public class puzzleManager : MonoBehaviour
     [SerializeField] List<GameObject> switchList;
     [SerializeField] public GameObject door;
     [SerializeField] public int puzzleType;
-    private new Renderer renderer;
-
+    public SpriteRenderer[] sprite;
+    public Sprite[] green;
+    public Sprite[] red;
     [HideInInspector] public bool puzzleDone;
 
     private void Start()
@@ -30,8 +31,7 @@ public class puzzleManager : MonoBehaviour
     {
         for (int i = 0; i < switchList.Count; i++)
         {
-            renderer = switchList[i].GetComponent<Renderer>();
-            renderer.material.color = Color.green;
+            sprite[i].sprite = green[i];
         }
     }
     public void ButtonPress(float buttonNumber)
@@ -42,8 +42,7 @@ public class puzzleManager : MonoBehaviour
             {
                 for(int i = 0; i < switchList.Count; i++)
                 {
-                    renderer = switchList[i].GetComponent<Renderer>();
-                    renderer.material.color = Color.red;
+                    sprite[i].sprite = red[i];
                 }
                 currentButton = 0;
             }
@@ -126,15 +125,14 @@ public class puzzleManager : MonoBehaviour
 
     public void SwitchButtonColour(int num)
     {
-        renderer = switchList[num].GetComponent<Renderer>();
         if (!switchList[num].GetComponent<switchScript>().activated)
         {
-            renderer.material.color = Color.green;
+            sprite[num].sprite = green[num];
             switchList[num].GetComponent<switchScript>().activated = true;
         }
         else
         {
-            renderer.material.color = Color.red;
+            sprite[num].sprite = red[num];
             switchList[num].GetComponent<switchScript>().activated = false;
         }
     }
@@ -143,10 +141,8 @@ public class puzzleManager : MonoBehaviour
     {
         for (int i = 0; i < switchList.Count; i++)
         {
-            renderer = switchList[i].GetComponent<Renderer>();
-            renderer.material.color = Color.red;
+            sprite[i].sprite = red[i];
             switchList[i].GetComponent<switchScript>().activated = false;
-
         }
     }
 }

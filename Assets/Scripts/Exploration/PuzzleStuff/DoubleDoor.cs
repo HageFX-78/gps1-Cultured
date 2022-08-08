@@ -6,8 +6,13 @@ public class DoubleDoor : MonoBehaviour
 {
     public static bool doorOpen;
     private bool onTop = false;
+    private SpriteRenderer spriteR;
     [SerializeField] private GameObject[] doors;
 
+    private void Start()
+    {
+        spriteR = GetComponent<SpriteRenderer>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && onTop)
@@ -16,11 +21,13 @@ public class DoubleDoor : MonoBehaviour
         }
         if(doorOpen)
         {
+            spriteR.flipX = true;
             doors[0].gameObject.SetActive(false);
             doors[1].gameObject.SetActive(true);
         }
         else if (!doorOpen)
         {
+            spriteR.flipX = false;
             doors[0].gameObject.SetActive(true);
             doors[1].gameObject.SetActive(false);
         }
