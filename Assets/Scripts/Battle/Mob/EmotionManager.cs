@@ -44,7 +44,7 @@ public class EmotionManager : MonoBehaviour
         //Safe zone & Size
         float addRand = Random.Range(minDifference, maxDifference);
 
-        minThreshold = Random.Range(20, 50);
+        minThreshold = Random.Range(20, 100-maxDifference);
         maxThreshold = minThreshold + addRand;
         currentThreshold = Random.Range(startMinThreshold, startMaxThreshold);
 

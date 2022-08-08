@@ -8,6 +8,7 @@ public class TriggerDialogue : MonoBehaviour
     [SerializeField] DialogueManager manager;
     [SerializeField] bool interactableType;
     [SerializeField] bool convoTriggered;//False means dialogue never triggered, true means triggered alr and wont trigger again. False by default (One-time dialogue scenario)
+    [SerializeField] float yPositionOffset;
 
     [SerializeField] GameObject promptPrefab;
     [SerializeField] List<TransformList> transformLocationList = new List<TransformList>();
@@ -21,7 +22,7 @@ public class TriggerDialogue : MonoBehaviour
     {
         if (transform.Find("interact_prompt") == null)
         {
-            GameObject thisPref = Instantiate(promptPrefab, new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z), Quaternion.identity);
+            GameObject thisPref = Instantiate(promptPrefab, new Vector3(transform.position.x, transform.position.y + yPositionOffset, transform.position.z), Quaternion.identity);
             thisPref.transform.SetParent(gameObject.transform);
             thisPref.name = "interact_prompt";
             thisPref.SetActive(false);

@@ -45,7 +45,7 @@ public class SanityUIController : MonoBehaviour
         {
             vg.color.value = new Color(2, 0, 0);
             //vg.intensity.value = 0.6f;
-            StartCoroutine(pulsatingSanity(0.4f, 0.6f));
+            StartCoroutine(pulsatingSanity(0.1f, 0.2f));
             bl.intensity.value = 2.5f;
             fg.intensity.value = 0.5f;
 
@@ -55,7 +55,7 @@ public class SanityUIController : MonoBehaviour
         {
             vg.color.value = new Color(6, 0, 0);
             //vg.intensity.value = 0.8f;
-            StartCoroutine(pulsatingSanity(0.5f, 0.7f));
+            StartCoroutine(pulsatingSanity(0.2f, 0.3f));
             bl.intensity.value = 3f;
             fg.intensity.value = 0.7f;
 
@@ -65,7 +65,7 @@ public class SanityUIController : MonoBehaviour
         {
             vg.color.value = new Color(10, 0, 0);
             //vg.intensity.value = 0.9f;
-            StartCoroutine(pulsatingSanity(0.7f, 0.9f));
+            StartCoroutine(pulsatingSanity(0.2f, 0.4f));
             bl.intensity.value = 4f;
             fg.intensity.value = 0.85f;
 
@@ -75,11 +75,11 @@ public class SanityUIController : MonoBehaviour
         {
             vg.color.value = new Color(15, 0, 0);
             //vg.intensity.value = 1.0f;
-            StartCoroutine(pulsatingSanity(0.8f, 1.0f));
+            StartCoroutine(pulsatingSanity(0.3f, 0.5f));
             bl.intensity.value = 5f;
             fg.intensity.value = 1.0f;
 
-            heartUI.color = new Color32(91, 90, 92, 255);
+            heartUI.color = new Color32(18, 12, 105, 255);
         }
     }
     IEnumerator pulsatingSanity(float min, float max)
