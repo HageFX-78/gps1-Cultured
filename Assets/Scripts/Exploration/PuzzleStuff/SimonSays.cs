@@ -15,21 +15,22 @@ public class SimonSays : MonoBehaviour
     private int tempN = 5;
     private int r;
     private static bool collected;
+    [SerializeField] private SpriteRenderer starter;
+    [SerializeField] private Sprite green;
+    [SerializeField] private Sprite red;
 
     private void Start()
     {
         onTop = false;
         clickable = true;
         n = 0;
-
     }
     private void Update()
     {
-       if(Input.GetKeyDown(KeyCode.Space) && onTop && clickable )
+       if(Input.GetKeyDown(KeyCode.Space) && onTop && clickable)
         {
             StartSystem();
         }
-
         if (SimonButton.complete && !collected) 
         {
             // Insert puzzle completion lines here
@@ -38,6 +39,15 @@ public class SimonSays : MonoBehaviour
             FinishedPuzzlesManager.PuzzleList.Remove(door.name);
             FinishedPuzzlesManager.FinishedPuzzles.Add(door.name);
             collected = true;
+        }
+
+        if (clickable)
+        {
+            starter.sprite = red;
+        }
+        else if (!clickable)
+        {
+            starter.sprite = green;
         }
     }
 
