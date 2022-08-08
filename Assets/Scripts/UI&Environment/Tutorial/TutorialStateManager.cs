@@ -52,6 +52,7 @@ public class TutorialStateManager : MonoBehaviour
     public TextMeshProUGUI eText;
     public GameObject battleObj;
     public GameObject enemy;
+    [SerializeField] RectTransform emoPointer;
 
     [Header("Interaction")]
     public GameObject doorT;
@@ -121,8 +122,9 @@ public class TutorialStateManager : MonoBehaviour
         if(curTurn == 1)
         {
             pText.text = $"Lets try to understand each other";
-            negBar.sizeDelta = new Vector2(350, 15);
-            posBar.sizeDelta = new Vector2(250, 15);
+            /*negBar.sizeDelta = new Vector2(350, 15);
+            posBar.sizeDelta = new Vector2(250, 15);*/
+            StartCoroutine(moveEmoPointer(250));
             optionA.text = $" Is that the best you can do?" + "<color=" + "green" + ">Try harder! </color>"; //R
             optionB.text = $"Come on !!We are " + "<color=" + "blue" + ">better than this!!"; // H
             optionC.text = $"Although this place is bad, you can live a " + "<color=" + "blue" + ">good life </color>" + "here"; //L
@@ -132,8 +134,9 @@ public class TutorialStateManager : MonoBehaviour
         {
             pText.text = $"Yea Im not good at all actually, this is the truth";
             eText.text = $"Shut your filthy mouth, you don’t deserve my time!";
-            negBar.sizeDelta = new Vector2(400, 15);
-            posBar.sizeDelta = new Vector2(200, 15);
+            /*negBar.sizeDelta = new Vector2(400, 15);
+            posBar.sizeDelta = new Vector2(200, 15);*/
+            StartCoroutine(moveEmoPointer(200));
             optionA.text = $" Are you " + "<color=" + "green" + ">done</color>" +"?"; //R
             optionB.text = $"Today is a bad day but tomorrow " + "<color=" + "blue" + ">it will be better"; // H
             optionC.text = $"Come here you, let me " + "<color=" + "blue" + ">shower some love" + "for you"; // L 
@@ -142,8 +145,36 @@ public class TutorialStateManager : MonoBehaviour
         else if (curTurn == 3)
         {
             pText.text = $"Come here you, let me shower some love for you";
-            negBar.sizeDelta = new Vector2(390, 15);
-            posBar.sizeDelta = new Vector2(210, 15);
+            /*negBar.sizeDelta = new Vector2(390, 15);
+            posBar.sizeDelta = new Vector2(210, 15);*/
+            StartCoroutine(moveEmoPointer(210));
         }
+    }
+
+    IEnumerator moveEmoPointer(int currentThreshold)
+    {
+        float newXVal = currentThreshold < 300 ? -(300 - currentThreshold): currentThreshold-300 ;
+        float oldXVal = emoPointer.anchoredPosition.x;
+
+        float incrementVal = (newXVal > oldXVal ? newXVal - oldXVal : oldXVal - newXVal) / 18;
+
+        if (newXVal > oldXVal)
+        {
+            while (emoPointer.anchoredPosition.x < newXVal)
+            {
+                emoPointer.anchoredPosition = new Vector2(emoPointer.anchoredPosition.x + incrementVal, 296);
+                yield return new WaitForSecondsRealtime(0.05f);
+            }
+        }
+        else
+        {
+            while (emoPointer.anchoredPosition.x > newXVal)
+            {
+                emoPointer.anchoredPosition = new Vector2(emoPointer.anchoredPosition.x - incrementVal, 296);
+                yield return new WaitForSecondsRealtime(0.05f);
+            }
+        }
+        emoPointer.anchoredPosition = new Vector2(newXVal, 296);
+
     }
 }

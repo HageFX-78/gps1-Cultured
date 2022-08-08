@@ -12,6 +12,10 @@ public class TEmotionManager : MonoBehaviour
     float minThreshold, maxThreshold;
     float currentThreshold;
 
+    [Header("New Emo Indicator References")]
+    [SerializeField] RectTransform emoPointer;
+    [SerializeField] RectTransform safeL;
+    [SerializeField] RectTransform safeR;
 
     private void Awake()
     {
@@ -29,28 +33,17 @@ public class TEmotionManager : MonoBehaviour
         currentThreshold = Random.Range(startMinThreshold, startMaxThreshold);
         SafeZone.sizeDelta = new Vector2((addRand / 100) * 600, 23);
 
-        //Safe zone position
-        //float safeZoneMidOffeset = (addRand / 2);
-        //float safeZoneMidpointX = (minThreshold + safeZoneMidOffeset);
-        //float safeZoneOffset = 0;
-        //float safeZoneMidtoMax = 0;
-        //if (safeZoneMidpointX > 50)
-        //{
-        //    safeZoneOffset = 300;
-        //    safeZoneMidtoMax = safeZoneMidpointX - 50;
-        //}
-        //else
-        //{
-        //    safeZoneOffset = -300;
-        //    safeZoneMidtoMax = 50 - safeZoneMidpointX;
-        //}
+        
         SafeZone.anchoredPosition = new Vector2(-50, 296);
+
+        safeL.anchoredPosition = new Vector2(-50-(SafeZone.sizeDelta.x/2), 296);
+        safeR.anchoredPosition = new Vector2(-50 + (SafeZone.sizeDelta.x / 2), 296);
         updateEmotionBar();
     }
     public void updateEmotionBar()
     {
-        PosBar.sizeDelta = new Vector2((currentThreshold / 100) * 600, 15);
-        NegBar.sizeDelta = new Vector2(((100 - currentThreshold) / 100) * 600, 15);
-
+        /*PosBar.sizeDelta = new Vector2((currentThreshold / 100) * 600, 15);
+        NegBar.sizeDelta = new Vector2(((100 - currentThreshold) / 100) * 600, 15);*/
+        emoPointer.anchoredPosition = new Vector2((currentThreshold >= 50 ? (((currentThreshold - 50) / 100) * 600) : ((50 - currentThreshold) / 100) * -600), 296);
     }
 }
