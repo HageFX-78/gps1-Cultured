@@ -117,6 +117,8 @@ public class puzzleManager : MonoBehaviour
             if (currentButton == switchList.Count)
             {
                 door.SetActive(false);
+                FinishedPuzzlesManager.PuzzleList.Remove(door.name);
+                FinishedPuzzlesManager.FinishedPuzzles.Add(door.name);
                 puzzleDone = true;
             }
         }

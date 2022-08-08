@@ -36,7 +36,11 @@ public class switchScript : MonoBehaviour
                         manager.ButtonPressType2(buttonOrder);
                         break;
                     case 3:
-                        if (manager.puzzleDone) manager.ResetPuzzle();
+                        if (!manager.puzzleDone) 
+                        { 
+                            manager.ResetPuzzle(); 
+                        }
+                            
                         break;
                 }
             }

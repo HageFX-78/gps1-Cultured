@@ -10,6 +10,7 @@ public class SimonSays : MonoBehaviour
     [SerializeField] private int n = 0;
     public static bool clickable = true ;
     [SerializeField] private GameObject remnant;
+    [SerializeField] private GameObject door;
     private bool onTop;
     private int tempN = 5;
     private int r;
@@ -33,6 +34,9 @@ public class SimonSays : MonoBehaviour
         {
             // Insert puzzle completion lines here
             remnant.SetActive(true);
+            door.SetActive(false);
+            FinishedPuzzlesManager.PuzzleList.Remove(door.name);
+            FinishedPuzzlesManager.FinishedPuzzles.Add(door.name);
             collected = true;
         }
     }
