@@ -536,7 +536,7 @@ public class DBManager : MonoBehaviour
         {
             case 0:
                 runText.text = "Run from battle?";
-                runChanceVal = 100;
+                runChanceVal = 90;
                 break;
             case 1:
                 runText.text = "Running away again?";

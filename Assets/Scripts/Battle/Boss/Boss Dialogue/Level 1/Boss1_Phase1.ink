@@ -116,8 +116,7 @@ Boss: You are not the brother I know, give me back my brother!! #Rational #Ratio
 //==============================================================CHECK 4============================================================
 =checkA4
     {Rational||Hope:
-        Boss: At the end of the day, it's just your side of story. Do you really think your "talk" is going to help you now?
-        #Rational #Hope #Acceptance #Love
+        Boss: At the end of the day, it's just your side of story. Do you really think your "talk" is going to help you now? #Rational #Hope #Acceptance #Love
         ~Rational = false
         ~Hope = false
         ->PathA5_1
@@ -881,5 +880,10 @@ Boss: I dont buy it!! #Rational #Love #Acceptance #Hope
     + I would never dare pretend to be someone you know
         Boss: If you think I would trust you with these simple words... You are gravely mistaken!!
 - ->DONE
+
+
+=GameOver
+GameOver
+
 
 ->END
