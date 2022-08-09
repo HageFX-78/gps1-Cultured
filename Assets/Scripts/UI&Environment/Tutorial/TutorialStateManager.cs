@@ -122,8 +122,7 @@ public class TutorialStateManager : MonoBehaviour
         if(curTurn == 1)
         {
             pText.text = $"Lets try to understand each other";
-            /*negBar.sizeDelta = new Vector2(350, 15);
-            posBar.sizeDelta = new Vector2(250, 15);*/
+
             StartCoroutine(moveEmoPointer(250));
             optionA.text = $" Is that the best you can do?" + "<color=" + "green" + ">Try harder! </color>"; //R
             optionB.text = $"Come on !!We are " + "<color=" + "blue" + ">better than this!!"; // H
@@ -133,9 +132,8 @@ public class TutorialStateManager : MonoBehaviour
         else if(curTurn == 2)
         {
             pText.text = $"Yea Im not good at all actually, this is the truth";
-            eText.text = $"Shut your filthy mouth, you don’t deserve my time!";
-            /*negBar.sizeDelta = new Vector2(400, 15);
-            posBar.sizeDelta = new Vector2(200, 15);*/
+            eText.text = $"Shut your filthy mouth, you don't deserve my time!";
+
             StartCoroutine(moveEmoPointer(200));
             optionA.text = $" Are you " + "<color=" + "green" + ">done</color>" +"?"; //R
             optionB.text = $"Today is a bad day but tomorrow " + "<color=" + "blue" + ">it will be better"; // H
@@ -145,8 +143,7 @@ public class TutorialStateManager : MonoBehaviour
         else if (curTurn == 3)
         {
             pText.text = $"Come here you, let me shower some love for you";
-            /*negBar.sizeDelta = new Vector2(390, 15);
-            posBar.sizeDelta = new Vector2(210, 15);*/
+
             StartCoroutine(moveEmoPointer(210));
         }
     }
