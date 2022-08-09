@@ -100,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.1472702, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8828125, y: 1}
+  m_Size: {x: 2.9445724, y: 5.4916763}
   m_EdgeRadius: 0
 --- !u!114 &4017909599879861962
 MonoBehaviour:
@@ -129,6 +129,7 @@ MonoBehaviour:
   manager: {fileID: 0}
   interactableType: 1
   convoTriggered: 0
+  yPositionOffset: 0
   promptPrefab: {fileID: 5134848514543655227, guid: 6651d828925a7a543b40382c400d2ca1, type: 3}
   transformLocationList: []
 --- !u!95 &4017909599879861961
