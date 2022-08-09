@@ -96,7 +96,7 @@ public class BossEmotionManager : MonoBehaviour
 
         float addRand = Random.Range(enemyMinSafeZone, enemyMaxSafeZone);
 
-        tempMinThreshold = Random.Range(50, 60);
+        tempMinThreshold = Random.Range(50, 70);
         tempMaxThreshold = tempMinThreshold + addRand;
         currentThreshold = Random.Range(pointerStart, pointerEnd);
 
