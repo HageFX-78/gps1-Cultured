@@ -127,12 +127,15 @@ public class puzzleManager : MonoBehaviour
     {
         if (!switchList[num].GetComponent<switchScript>().activated)
         {
-            sprite[num].sprite = green[num];
+            //sprite[num].sprite = green[num];
+            switchList[num].GetComponent<switchScript>().sprite.sprite = green[0];
+            switchList[num].GetComponent<SpriteRenderer>().flipX = true;
             switchList[num].GetComponent<switchScript>().activated = true;
         }
         else
         {
-            sprite[num].sprite = red[num];
+            switchList[num].GetComponent<SpriteRenderer>().flipX = false;
+            switchList[num].GetComponent<switchScript>().sprite.sprite = red[0];
             switchList[num].GetComponent<switchScript>().activated = false;
         }
     }
@@ -141,7 +144,8 @@ public class puzzleManager : MonoBehaviour
     {
         for (int i = 0; i < switchList.Count; i++)
         {
-            sprite[i].sprite = red[i];
+            switchList[i].GetComponent<SpriteRenderer>().flipX = false;
+            switchList[i].GetComponent<switchScript>().sprite.sprite = red[0];
             switchList[i].GetComponent<switchScript>().activated = false;
         }
     }

@@ -693,6 +693,7 @@ MonoBehaviour:
   manager: {fileID: 1061877858}
   interactableType: 1
   convoTriggered: 0
+  yPositionOffset: 0
   promptPrefab: {fileID: 0}
   transformLocationList:
   - locationName: D7Location
@@ -830,7 +831,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -856,8 +857,8 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 5
   sprite: {fileID: 52431238}
-  green: {fileID: 0}
-  red: {fileID: 0}
+  green: {fileID: 21300000, guid: 3ef230b473d75514684bae368de365e6, type: 3}
+  red: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   activated: 0
   puzzleType: 2
 --- !u!61 &52431240
@@ -877,7 +878,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 1.92}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1666,7 +1667,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1692,8 +1693,8 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 6
   sprite: {fileID: 52431238}
-  green: {fileID: 0}
-  red: {fileID: 0}
+  green: {fileID: 21300000, guid: 3ef230b473d75514684bae368de365e6, type: 3}
+  red: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   activated: 0
   puzzleType: 2
 --- !u!61 &192325416
@@ -1713,7 +1714,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 1.92}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4192,6 +4193,7 @@ MonoBehaviour:
   manager: {fileID: 1061877858}
   interactableType: 0
   convoTriggered: 0
+  yPositionOffset: 0
   promptPrefab: {fileID: 0}
   transformLocationList: []
 --- !u!61 &615444787
@@ -5260,8 +5262,10 @@ MonoBehaviour:
   door: {fileID: 369069793}
   puzzleType: 2
   sprite: []
-  green: []
-  red: []
+  green:
+  - {fileID: 21300000, guid: a849a7fdfa70b5242a70aa0098b8c4e7, type: 3}
+  red:
+  - {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   puzzleDone: 0
 --- !u!1001 &940657984
 PrefabInstance:
@@ -5973,7 +5977,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5999,8 +6003,8 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 4
   sprite: {fileID: 52431238}
-  green: {fileID: 0}
-  red: {fileID: 0}
+  green: {fileID: 21300000, guid: 3ef230b473d75514684bae368de365e6, type: 3}
+  red: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   activated: 0
   puzzleType: 2
 --- !u!61 &1075050452
@@ -6020,7 +6024,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 1.92}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -12596,7 +12600,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12622,8 +12626,8 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 1
   sprite: {fileID: 52431238}
-  green: {fileID: 0}
-  red: {fileID: 0}
+  green: {fileID: 21300000, guid: 3ef230b473d75514684bae368de365e6, type: 3}
+  red: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   activated: 0
   puzzleType: 2
 --- !u!61 &1557317821
@@ -12643,7 +12647,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 1.92}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -12926,7 +12930,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12952,8 +12956,8 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 2
   sprite: {fileID: 52431238}
-  green: {fileID: 0}
-  red: {fileID: 0}
+  green: {fileID: 21300000, guid: 3ef230b473d75514684bae368de365e6, type: 3}
+  red: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   activated: 0
   puzzleType: 2
 --- !u!61 &1638572259
@@ -12973,7 +12977,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 1.92}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -13057,7 +13061,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -13083,8 +13087,8 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 3
   sprite: {fileID: 52431238}
-  green: {fileID: 0}
-  red: {fileID: 0}
+  green: {fileID: 21300000, guid: 3ef230b473d75514684bae368de365e6, type: 3}
+  red: {fileID: 21300000, guid: 4c32e30ac6e46c7429b1aaa992ec3ad7, type: 3}
   activated: 0
   puzzleType: 2
 --- !u!61 &1646464098
@@ -13104,7 +13108,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.56, y: 1.92}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -13187,11 +13191,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8661872287092588537, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.02
+      value: 68.3
       objectReference: {fileID: 0}
     - target: {fileID: 8661872287092588537, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -57.83
+      value: -39.5
       objectReference: {fileID: 0}
     - target: {fileID: 8661872287092588537, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13957,11 +13961,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f114503b505ff242a8fe7f65044e981, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
+  m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -13976,8 +13980,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766391922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.09518, y: 31.51047, z: 0.73309684}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalPosition: {x: 25.51, y: 31.85, z: 0.73309684}
+  m_LocalScale: {x: 2.594595, y: 2.49, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 926477672}
@@ -13998,8 +14002,8 @@ MonoBehaviour:
   manager: {fileID: 926477673}
   buttonOrder: 0
   sprite: {fileID: 0}
-  green: {fileID: 0}
-  red: {fileID: 0}
+  green: {fileID: 21300000, guid: 9de4ca126b284b04abd4668c865deb59, type: 3}
+  red: {fileID: 21300000, guid: 3f114503b505ff242a8fe7f65044e981, type: 3}
   activated: 0
   puzzleType: 3
 --- !u!61 &1766391926
@@ -14017,12 +14021,12 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.25, y: 0.25, z: 0.25, w: 0.25}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.578125, y: 1.5390625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
-    drawMode: 2
+    drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
@@ -14585,6 +14589,7 @@ MonoBehaviour:
   manager: {fileID: 1061877858}
   interactableType: 1
   convoTriggered: 0
+  yPositionOffset: 0
   promptPrefab: {fileID: 0}
   transformLocationList:
   - locationName: puzzleGuy

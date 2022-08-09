@@ -38,14 +38,19 @@ public class switchScript : MonoBehaviour
                         break;
                     case 3:
                         if (!manager.puzzleDone) 
-                        { 
+                        {
+                            StartCoroutine(SwitchColourTemp());
                             manager.ResetPuzzle(); 
                         }
-                            
                         break;
                 }
             }
         }
+
+        //For reset puzzle button
+        if (!manager.puzzleDone) return;
+        if (puzzleType != 3) return;
+        sprite.sprite = green;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -58,5 +63,15 @@ public class switchScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
             onTop = false;
+    }
+
+    private IEnumerator SwitchColourTemp()
+    {
+        sprite.sprite = green;
+        while (true)
+        {
+            yield return new WaitForSeconds(1.0f);
+            sprite.sprite = red;
+        }
     }
 }
