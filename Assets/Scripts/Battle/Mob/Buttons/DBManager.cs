@@ -140,6 +140,7 @@ public class DBManager : MonoBehaviour
         else if (currentSanity >= 20) { sanityEffectChance =sanityEffectChanceLVL5; }
         else { sanityEffectChance = 50; }
         shuffleOptionsAtStart();
+        updateRunChance();
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
 
@@ -531,40 +532,40 @@ public class DBManager : MonoBehaviour
 
     public void showRunAway()
     {
+        
+        
+        runChance.text = $"{runChanceVal}% Chance";
+        runUI.SetActive(true);
+        lastConvoUI.SetActive(false);
+        playerOptionsUI.SetActive(false);
+    }
+    public void updateRunChance()
+    {
         int runCount = PlayerCommonStatus.getRunCount();
+        runChanceVal = PlayerCommonStatus.runChance;
         switch (runCount)
         {
             case 0:
                 runText.text = "Run from battle?";
-                runChanceVal = 90;
                 break;
             case 1:
                 runText.text = "Running away again?";
-                runChanceVal = 80;
                 break;
             case 2:
                 runText.text = "This will make it the third :)";
-                runChanceVal = 60;
                 break;
             case 3:
                 runText.text = "Can't help it right?";
-                runChanceVal = 40;
                 break;
             case 4:
                 runText.text = "Ah... sweet escape";
-                runChanceVal = 20;
                 break;
             default:
                 runText.text = "Chances are.. You're not getting away";
                 runChanceVal = 0;
                 break;
         }
-        runChance.text = $"{runChanceVal}% Chance";
-        runUI.SetActive(true);
-        lastConvoUI.SetActive(false);
-        playerOptionsUI.SetActive(false);
     }
-
     public void closeRunAway()
     {
         runUI.SetActive(false);
@@ -581,6 +582,7 @@ public class DBManager : MonoBehaviour
             playerDialogueUI.SetActive(true);
             runUI.SetActive(false);
             PlayerCommonStatus.addRunCount();
+            PlayerCommonStatus.setRunChance(PlayerCommonStatus.runChance - 20);
             StartCoroutine(LoadBackLevel());
         }
         else
@@ -592,6 +594,10 @@ public class DBManager : MonoBehaviour
             StartCoroutine(typeD);
             enemyDialogueUI.SetActive(true);
             runUI.SetActive(false);
+
+            turnScriptRef.turnUpdate();
+            PlayerCommonStatus.setRunChance(PlayerCommonStatus.runChance - 10);
+            runChanceVal = PlayerCommonStatus.runChance;
         }
         
     }

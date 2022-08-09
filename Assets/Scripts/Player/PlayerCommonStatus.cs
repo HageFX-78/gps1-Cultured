@@ -7,7 +7,7 @@ public static class PlayerCommonStatus
     public static Dictionary<string, Remnant> remDic = new Dictionary<string, Remnant>();
     public static float sanityValue = 100;//Default static value
     public static int runCount = 0;//Times ran from battle
-
+    public static int runChance = 90;
     //Anything else that is carried over to other scenes can be added here
 
     public static void modifySanity(float mod)
@@ -24,7 +24,10 @@ public static class PlayerCommonStatus
     {
         runCount++;
     }
-
+    public static void setRunChance(int ch)
+    {
+        runChance = Mathf.Clamp(ch, 0, 100);
+    }
     public static int getRunCount()
     {
         return runCount;
