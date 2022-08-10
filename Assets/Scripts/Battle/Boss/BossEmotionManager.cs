@@ -52,6 +52,7 @@ public class BossEmotionManager : MonoBehaviour
         phase2 = false;
         gameOver = false;
         InitBoss();
+        Time.timeScale = 1;
     }
 
     private void Update()
