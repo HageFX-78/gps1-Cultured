@@ -10,7 +10,7 @@ public class SimonSays : MonoBehaviour
     [SerializeField] private int n = 0;
     public static bool clickable = true ;
     [SerializeField] private GameObject remnant;
-    [SerializeField] private GameObject door;
+    [SerializeField] public GameObject door;
     private bool onTop;
     private int tempN = 5;
     private int r;
