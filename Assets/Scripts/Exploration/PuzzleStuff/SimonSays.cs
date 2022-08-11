@@ -6,7 +6,6 @@ public class SimonSays : MonoBehaviour
 {
     public int[] simon;
     public GameObject[] simonSays;
-    [SerializeField] private float timer = 5;
     [SerializeField] private int n = 0;
     public static bool clickable = true ;
     [SerializeField] private GameObject remnant;
