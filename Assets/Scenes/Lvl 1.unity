@@ -1502,9 +1502,6 @@ MonoBehaviour:
   - {fileID: 1043957312}
   - {fileID: 568610687}
   audioSrc: {fileID: 456791761}
-  SFList:
-  - {fileID: 8300000, guid: 17b33d7383b61de40a60692ac44b0713, type: 3}
-  - {fileID: 8300000, guid: 2dd2df4aa0a196b45923a5a90f396012, type: 3}
 --- !u!212 &168328312
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4032,7 +4029,6 @@ GameObject:
   - component: {fileID: 532950250}
   - component: {fileID: 532950251}
   - component: {fileID: 532950252}
-  - component: {fileID: 532950253}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -4247,102 +4243,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &532950253
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 532950249}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 58ce11a2cc086204c9d8596de0f65fea, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.5
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &537611937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4462,6 +4362,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 17b33d7383b61de40a60692ac44b0713, type: 3}
   - {fileID: 8300000, guid: 2dd2df4aa0a196b45923a5a90f396012, type: 3}
   - {fileID: 8300000, guid: 2f4828f4e421cce43943712561f09757, type: 3}
+  - {fileID: 8300000, guid: 1f16ba3c9036f614e94ce7f834692501, type: 3}
 --- !u!4 &562027383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2550020801350364772, guid: e3e34affa2271fa4195a7e028ad7947c, type: 3}
@@ -6121,10 +6022,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSrc: {fileID: 456791761}
-  SFList:
-  - {fileID: 8300000, guid: 2f4828f4e421cce43943712561f09757, type: 3}
-  - {fileID: 8300000, guid: 2dd2df4aa0a196b45923a5a90f396012, type: 3}
-  - {fileID: 8300000, guid: 17b33d7383b61de40a60692ac44b0713, type: 3}
   switchList:
   - {fileID: 1557317817}
   - {fileID: 1638572255}
@@ -6784,8 +6681,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSrc: {fileID: 456791761}
-  SFList:
-  - {fileID: 8300000, guid: 6002457dbdca898428493d513ce0897c, type: 3}
   dialogueUI: {fileID: 2106502380}
   camPos: {fileID: 2088838419}
   camState: {fileID: 2088838421}
@@ -14970,6 +14865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bc376df68c741248aedc957572777ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSrc: {fileID: 456791761}
   simon: 000000000000000000000000
   simonSays:
   - {fileID: 4269607598143488954}
@@ -15271,10 +15167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSrc: {fileID: 456791761}
-  SFList:
-  - {fileID: 8300000, guid: 2f4828f4e421cce43943712561f09757, type: 3}
-  - {fileID: 8300000, guid: 2dd2df4aa0a196b45923a5a90f396012, type: 3}
-  - {fileID: 8300000, guid: 17b33d7383b61de40a60692ac44b0713, type: 3}
   switchList:
   - {fileID: 348496488}
   - {fileID: 1715542544}

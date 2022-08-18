@@ -1006,7 +1006,7 @@ MonoBehaviour:
   thisSR: {fileID: 0}
   onSprite: {fileID: 21300000, guid: a849a7fdfa70b5242a70aa0098b8c4e7, type: 3}
   audioSrc: {fileID: 2053272601}
-  SF: {fileID: 8300000, guid: 17b33d7383b61de40a60692ac44b0713, type: 3}
+  SF: {fileID: 8300000, guid: 2dd2df4aa0a196b45923a5a90f396012, type: 3}
 --- !u!58 &166124943
 CircleCollider2D:
   m_ObjectHideFlags: 0
