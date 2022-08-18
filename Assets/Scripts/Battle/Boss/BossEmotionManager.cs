@@ -64,8 +64,10 @@ public class BossEmotionManager : MonoBehaviour
         {
             if(checkTargetThreshold() == false && gameOver == false)
             {
-                gameOver = true;
+                
                 BossDialogueManager.instance.EnterDialogueMode(dialogueTrigger.gameOver);
+                if (BossDialogueManager.instance.storyIsPlaying == false)
+                    gameOver = true;
             }
             else
             {
@@ -81,10 +83,7 @@ public class BossEmotionManager : MonoBehaviour
 
             if(gameOver)
             {
-                if (BossDialogueManager.instance.storyIsPlaying == false)
-                {
-                    SceneManager.LoadScene((int)sceneIndex.GAMEOVER);
-                }
+                SceneManager.LoadSceneAsync((int)sceneIndex.GAMEOVER);
             }
         }
 
@@ -257,9 +256,4 @@ public class BossEmotionManager : MonoBehaviour
         emoPointer.anchoredPosition = new Vector2(newXVal, 296);
     }
 
-    IEnumerator LoadScene(int sceneIndex)
-    {
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadSceneAsync(sceneIndex);
-    }
 }
