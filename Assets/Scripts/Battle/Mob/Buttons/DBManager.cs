@@ -274,9 +274,9 @@ public class DBManager : MonoBehaviour
         GameObject circleUI;
 
 
-        ; if (Random.Range(1, 100) <= sanityEffectChance)
+        if (Random.Range(1, 100) <= sanityEffectChance)
         {
-            thisDialogue = dialLists[rand].dialogues.Replace("[", $"<color={effectiveColor}>").Replace("]", "</color>");
+            thisDialogue = dialLists[rand].dialogues.Replace("[", $"<b><color={effectiveColor}>").Replace("]", "</color></b>");
             highlightState = true;
         }
         else
@@ -395,7 +395,7 @@ public class DBManager : MonoBehaviour
             {
                 if (fColor != null)
                 {
-                    txtbox.text += $"<color={fColor}>{letter}</color>";
+                    txtbox.text += $"<b><color={fColor}>{letter}</color></b>";
                 }
                 else
                 {
@@ -451,13 +451,13 @@ public class DBManager : MonoBehaviour
             if (enemyEmotion.checkTargetThreshold() == true)
             {
                 typeD = typeDialogue("A soul was saved...", convoTextPlayer);
-                PlayerCommonStatus.modifySanity(20);
+                PlayerCommonStatus.modifySanity(10);
             }
             else
             {
                 audioSrc.clip = SFList[2];
                 audioSrc.Play();
-                typeD = typeDialogue("Alex felt something left his body... something that seemed important..", convoTextPlayer);
+                typeD = typeDialogue("Alex felt <b>something left his body</b>... something that seemed <b>important</b>..", convoTextPlayer);
                 PlayerCommonStatus.modifySanity(-20);
 
                 if(PlayerCommonStatus.sanityValue <=0)
