@@ -17580,6 +17580,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9882353
       objectReference: {fileID: 0}
+    - target: {fileID: 1066678217, guid: 3bedf8f120d2b624181757d47cbf7d14, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3069099552658132124, guid: 3bedf8f120d2b624181757d47cbf7d14, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -18001,6 +18005,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 889954910}
     m_Modifications:
+    - target: {fileID: 5211191233906801637, guid: 0cfc6c09e66d9da4396f1c159fb029d3, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5211191234674822248, guid: 0cfc6c09e66d9da4396f1c159fb029d3, type: 3}
       propertyPath: m_Name
       value: Inventory
@@ -18087,6 +18095,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5211191234674822249, guid: 0cfc6c09e66d9da4396f1c159fb029d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211191234919625037, guid: 0cfc6c09e66d9da4396f1c159fb029d3, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
