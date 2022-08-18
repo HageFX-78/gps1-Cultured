@@ -60,6 +60,9 @@ public static class PlayerCommonStatus
     public static void sacrificeRemnants()// REMEMBER TO CALL THIS IF WE'RE SWITCHING TO LEVEL 2, OR THERE WILL BE MIX OF DESCRIPTIONS
     {
         remDic.Clear();
+        runChance = 70;
+        sanityValue = 100;
+        runCount = 0;
     }
 
     //----------------------------Get remnant details with scene index
