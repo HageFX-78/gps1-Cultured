@@ -8,6 +8,7 @@ public static class PlayerCommonStatus
     public static float sanityValue = 100;//Default static value
     public static int runCount = 0;//Times ran from battle
     public static int runChance = 90;
+    public static int typeBeepChance = 5;//Chance of typing beep sound triggering per character
     //Anything else that is carried over to other scenes can be added here
 
     public static void modifySanity(float mod)

@@ -13,6 +13,7 @@ public class DBManager : MonoBehaviour
     public BattleStateManager battle;
     public EmotionManager enemyEmotion;
     public ScreenShake enemyShakeRef;
+    public AudioSource[] SFList;
 
     [Header("UI References")]
     public TextAsset pDialoguefile;//Player dialogue options file
@@ -77,6 +78,7 @@ public class DBManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    #region start
     private void Start()
     {
         //----------------------------Values and reference intialization-----------------------------------
@@ -143,7 +145,7 @@ public class DBManager : MonoBehaviour
         updateRunChance();
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }
-
+    #endregion
     // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Update <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     void Update()
     {
@@ -161,6 +163,7 @@ public class DBManager : MonoBehaviour
             
         }
     }
+    #region internal functions
     //==================================================================== Internal Functions to be called ================================================================
     public void nextDialogue()
     {
@@ -247,23 +250,25 @@ public class DBManager : MonoBehaviour
         //Shake screen visual effect, shake enemy and bg rn
         if (enemyEmotion.emotionEffectivenss(dmgType)==1.0f)
         {
+            SFList[3].volume = 0.8f;
             enemyShakeRef.ShakeScreen(0.2f);
         }
         else if(enemyEmotion.emotionEffectivenss(dmgType) == 1.5f)
         {
+            SFList[3].volume = 1f;
             enemyShakeRef.ShakeScreen(0.3f, 0.6f);
         }
         else
         {
+            SFList[3].volume = 0.5f;
             enemyShakeRef.ShakeScreen(0.2f, 0.1f);
         }
-        
+        SFList[3].Play();
 
     }
     void switchOutThisOption(int btnIndex)//Switch out used dialogue option and take random dialogue option from the pool
     {
         int rand = Random.Range(0, dialLists.Count-1);
-        //Debug.Log(rand);
         
         string thisDialogue ="";
         string effectiveColor = returnEffectiveColor(dialLists[rand].emotions);
@@ -401,6 +406,12 @@ public class DBManager : MonoBehaviour
             {
                 txtbox.text += letter;
             }
+            if(Random.Range(0, PlayerCommonStatus.typeBeepChance) == 0)
+            {
+                Debug.Log(SFList[0]);
+                SFList[0].Play();
+            }
+            
             yield return new WaitForSecondsRealtime(typeSpeed);
         }
         typingDialogue = false;
@@ -423,6 +434,9 @@ public class DBManager : MonoBehaviour
             return normallyEffective;
         }
     }
+    #endregion
+
+    #region external functions and initializations
     //================================================================== External Functions to be called ==================================================================
     public void noBattleStateInitialize()
     {
@@ -442,6 +456,7 @@ public class DBManager : MonoBehaviour
             }
             else
             {
+                SFList[2].Play();
                 typeD = typeDialogue("Alex felt something left his body... something that seemed important..", convoTextPlayer);
                 PlayerCommonStatus.modifySanity(-20);
             }
@@ -528,6 +543,7 @@ public class DBManager : MonoBehaviour
 
         SceneManager.LoadScene((int)sceneIndex.LV1);
     }
+    #endregion
     //----------------------------------------------------- On click functions -----------------------------------------------------------------------------------------
 
     public void showRunAway()
