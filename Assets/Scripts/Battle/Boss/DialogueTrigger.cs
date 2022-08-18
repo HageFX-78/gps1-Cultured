@@ -27,4 +27,5 @@ public class DialogueTrigger : MonoBehaviour
             battleStart = true;
         }
     }
+
 }
