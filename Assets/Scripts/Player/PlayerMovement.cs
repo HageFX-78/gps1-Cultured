@@ -52,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
 
+        animator.SetFloat("Horizontal", x);
+        animator.SetFloat("Vertical", y);
+
         movement = new Vector2(x,y).normalized;
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>SPRINTING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         slider.value = sprintGauge;
@@ -78,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
                     sprintGauge += sprintGainRate * Time.deltaTime;
                 }
             }
+            animator.SetBool("Sprint", true);
         }
         else
         {
@@ -86,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 sprintGauge += sprintGainRate * Time.deltaTime;
             }
+            animator.SetBool("Sprint", false);
         }
 
         if (sprintGauge > 80) fill.color = Color.green;

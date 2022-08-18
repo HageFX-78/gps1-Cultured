@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -121,10 +121,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 240.9
+        width: 93
         height: 413
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -140,12 +140,12 @@ TextureImporter:
       name: (V2) Alex-Left-IDLE_1
       rect:
         serializedVersion: 2
-        x: 240
+        x: 256
         y: 0
-        width: 240.9
+        width: 95
         height: 413
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -161,12 +161,12 @@ TextureImporter:
       name: (V2) Alex-Left-IDLE_2
       rect:
         serializedVersion: 2
-        x: 480
+        x: 513
         y: 0
-        width: 240.9
+        width: 92
         height: 413
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -182,12 +182,12 @@ TextureImporter:
       name: (V2) Alex-Left-IDLE_3
       rect:
         serializedVersion: 2
-        x: 720
+        x: 770
         y: 0
-        width: 240.9
+        width: 91
         height: 413
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -203,12 +203,12 @@ TextureImporter:
       name: (V2) Alex-Left-IDLE_4
       rect:
         serializedVersion: 2
-        x: 960
+        x: 1024
         y: 0
-        width: 240.9
+        width: 94
         height: 413
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -224,12 +224,12 @@ TextureImporter:
       name: (V2) Alex-Left-IDLE_5
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 1281
         y: 0
-        width: 240.9
+        width: 91
         height: 413
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -245,12 +245,12 @@ TextureImporter:
       name: (V2) Alex-Left-IDLE_6
       rect:
         serializedVersion: 2
-        x: 1440
+        x: 1536
         y: 0
-        width: 240.9
+        width: 92
         height: 413
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -266,12 +266,12 @@ TextureImporter:
       name: (V2) Alex-Left-IDLE_7
       rect:
         serializedVersion: 2
-        x: 1680
+        x: 1792
         y: 0
-        width: 240.9
+        width: 91
         height: 413
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -287,12 +287,12 @@ TextureImporter:
       name: (V2) Alex-Left-IDLE_8
       rect:
         serializedVersion: 2
-        x: 1920
+        x: 2049
         y: 0
-        width: 240.9
+        width: 91
         height: 413
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -308,12 +308,12 @@ TextureImporter:
       name: (V2) Alex-Left-IDLE_9
       rect:
         serializedVersion: 2
-        x: 2160
+        x: 2305
         y: 0
-        width: 240.9
+        width: 91
         height: 413
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
