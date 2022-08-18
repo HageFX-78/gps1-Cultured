@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Transition References")]
     public static Vector2 transitionPos;
-    public static int transitionCount = 0;
+    public static int transitionCount;
     [SerializeField] private float timerToTransition;
 
 

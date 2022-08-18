@@ -55,6 +55,8 @@ public class MainMenuBehaviour : MonoBehaviour
     {
         StartCoroutine(LoadAsynchronously((int)sceneIndex.TUTORIAL));
         PlayerPrefs.SetInt("Load Scene", (int)sceneIndex.TUTORIAL);
+        PlayerMovement.transitionCount = 0;
+        PlayerCommonStatus.sacrificeRemnants();
     }
     public void LoadGame()
     {
