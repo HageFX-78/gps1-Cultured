@@ -249,6 +249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 5239472127442029237, guid: 39677e4420e1b894096001a06b2d5982, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0e29d2d7d5385a64da2ed0d92a11dd05, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39677e4420e1b894096001a06b2d5982, type: 3}
 --- !u!1 &878529773
@@ -521,11 +525,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1020682194}
   m_CullTransparentMesh: 1
---- !u!82 &1065189957 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3683320304352113879, guid: 39677e4420e1b894096001a06b2d5982, type: 3}
-  m_PrefabInstance: {fileID: 653761028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1238797100
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +643,11 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!82 &1306455100 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5239472128090055055, guid: 39677e4420e1b894096001a06b2d5982, type: 3}
+  m_PrefabInstance: {fileID: 653761028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1312641631
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,7 +732,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1065189957}
+      - m_Target: {fileID: 1306455100}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -826,10 +830,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 780}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
