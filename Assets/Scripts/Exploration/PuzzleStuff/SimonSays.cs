@@ -79,6 +79,7 @@ public class SimonSays : MonoBehaviour
             simonSays[i].SetActive(false);
         }
         n = 0;
+        Debug.Log("FAIL");
         StartCoroutine(Flickering(1));
     }
     IEnumerator Flickering(int timer)
