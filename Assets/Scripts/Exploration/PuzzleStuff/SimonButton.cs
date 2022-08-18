@@ -26,6 +26,9 @@ public class SimonButton : MonoBehaviour
         {
             if (buttonNo == ss.simon[order])
             {
+                ss.audioSrc.clip = LVL1SFList.sflInstance.SFList[4];
+                ss.audioSrc.Play();
+
                 ss.simonSays[ss.simon[order]].SetActive(true);
                 Debug.Log(ss.simon[order]);
                 for ( int i = 0; i < ss.simonSays.Length; i++)

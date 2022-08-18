@@ -8,6 +8,7 @@ public class DoubleDoor : MonoBehaviour
     private bool onTop = false;
     private SpriteRenderer spriteR;
     [SerializeField] private GameObject[] doors;
+    [SerializeField] AudioSource audioSrc;
 
     private void Start()
     {
@@ -17,6 +18,8 @@ public class DoubleDoor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && onTop)
         {
+            audioSrc.clip = LVL1SFList.sflInstance.SFList[2];
+            audioSrc.Play();
             doorOpen = !doorOpen;
         }
         if(doorOpen)
@@ -27,6 +30,7 @@ public class DoubleDoor : MonoBehaviour
         }
         else if (!doorOpen)
         {
+            
             spriteR.flipX = false;
             doors[0].gameObject.SetActive(true);
             doors[1].gameObject.SetActive(false);

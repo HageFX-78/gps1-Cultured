@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SimonSays : MonoBehaviour
 {
+    [SerializeField] public AudioSource audioSrc;
     public int[] simon;
     public GameObject[] simonSays;
     [SerializeField] private int n = 0;
@@ -28,11 +29,16 @@ public class SimonSays : MonoBehaviour
     {
        if(Input.GetKeyDown(KeyCode.Space) && onTop && clickable)
         {
+            audioSrc.clip = LVL1SFList.sflInstance.SFList[4];
+            audioSrc.Play();
             StartSystem();
         }
         if (SimonButton.complete && !collected) 
         {
             // Insert puzzle completion lines here
+            audioSrc.clip = LVL1SFList.sflInstance.SFList[2];
+            audioSrc.Play();
+
             remnant.SetActive(true);
             door.SetActive(false);
             FinishedPuzzlesManager.PuzzleList.Remove(door.name);
@@ -79,12 +85,14 @@ public class SimonSays : MonoBehaviour
             simonSays[i].SetActive(false);
         }
         n = 0;
-        Debug.Log("FAIL");
+        //Debug.Log("FAIL");
         StartCoroutine(Flickering(1));
     }
     IEnumerator Flickering(int timer)
     {
         clickable = false;
+        audioSrc.clip = LVL1SFList.sflInstance.SFList[4];
+        audioSrc.Play();
         simonSays[simon[n]].SetActive(true);
         for (int i = 0; i < simonSays.Length;i++) //Check if i is equal to the value of simon[n]
         {

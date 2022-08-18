@@ -6,6 +6,8 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSrc;
+
     [Header("Object References")]
     [SerializeField] GameObject dialogueUI;
     [SerializeField] Transform camPos;
@@ -116,8 +118,14 @@ public class DialogueManager : MonoBehaviour
     {
         typingDialogue = true;
         dialogueContent.text = "";
+
+        audioSrc.clip = LVL1SFList.sflInstance.SFList[0];
         foreach (char letter in content)
         {
+            if (Random.Range(0, PlayerCommonStatus.typeBeepChance) == 0)
+            {
+                audioSrc.Play();
+            }
             dialogueContent.text += letter;
             yield return new WaitForSecondsRealtime(typeSpeed);
         }
@@ -159,7 +167,6 @@ public class DialogueManager : MonoBehaviour
         dialogueUI.SetActive(true);
         dialogueActive = true;
         dialogueCooldown = true;
-        StartCoroutine(enableInput());
         curLineNum = 0;
         dls = targetFile.text.Split('\n');
         dlsSize = dls.Length;
@@ -185,7 +192,6 @@ public class DialogueManager : MonoBehaviour
         dialogueUI.SetActive(true);
         dialogueActive = true;
         dialogueCooldown = true;
-        StartCoroutine(enableInput());
         curLineNum = 0;
         dls = targetFile.text.Split('\n');
         dlsSize = dls.Length;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class puzzleManager : MonoBehaviour
 {
     private float currentButton;
+    [SerializeField] AudioSource audioSrc;
     [SerializeField] List<GameObject> switchList;
     [SerializeField] public GameObject door;
     [SerializeField] public int puzzleType;
@@ -40,6 +41,7 @@ public class puzzleManager : MonoBehaviour
         {
             if (buttonNumber != currentButton + 1)
             {
+                
                 for(int i = 0; i < switchList.Count; i++)
                 {
                     sprite[i].sprite = red[i];
@@ -48,9 +50,14 @@ public class puzzleManager : MonoBehaviour
             }
             else
             {
+                audioSrc.clip = LVL1SFList.sflInstance.SFList[3];
+                audioSrc.Play();
                 currentButton++;
                 if (currentButton == switchList.Count)
                 {
+                    audioSrc.clip = LVL1SFList.sflInstance.SFList[2];
+                    audioSrc.Play();
+
                     door.SetActive(false);
                     FinishedPuzzlesManager.PuzzleList.Remove(door.name);
                     FinishedPuzzlesManager.FinishedPuzzles.Add(door.name);
@@ -65,7 +72,9 @@ public class puzzleManager : MonoBehaviour
     {
         if (puzzleDone == false)
         {
-            switch(buttonNumber)
+            audioSrc.clip = LVL1SFList.sflInstance.SFList[1];
+            audioSrc.Play();
+            switch (buttonNumber)
             {
                 case 1:
                     for (int i = 0; i < 3; i++)
@@ -115,6 +124,8 @@ public class puzzleManager : MonoBehaviour
             }
             if (currentButton == switchList.Count)
             {
+                audioSrc.clip = LVL1SFList.sflInstance.SFList[2];
+                audioSrc.Play();
                 door.SetActive(false);
                 FinishedPuzzlesManager.PuzzleList.Remove(door.name);
                 FinishedPuzzlesManager.FinishedPuzzles.Add(door.name);
@@ -142,6 +153,9 @@ public class puzzleManager : MonoBehaviour
 
     public void ResetPuzzle()
     {
+        audioSrc.clip = LVL1SFList.sflInstance.SFList[1];
+        audioSrc.Play();
+
         for (int i = 0; i < switchList.Count; i++)
         {
             switchList[i].GetComponent<SpriteRenderer>().flipX = false;
