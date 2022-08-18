@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
 
     public static List<string> EnemyList = new List<string>();
     public static List<string> RemovedEnemy = new List<string>();
+    public static bool firstPlay;
 
     void Start()
     {
@@ -16,6 +17,12 @@ public class EnemyManager : MonoBehaviour
   
     void StoreAndCheckEnemies()
     {
+        if(PlayerPrefs.GetInt("New Game") == 0)
+        {
+            EnemyList.Clear();
+            RemovedEnemy.Clear();
+        }
+
         foreach (Transform child in transform)
         {
             foreach (string obj in RemovedEnemy)

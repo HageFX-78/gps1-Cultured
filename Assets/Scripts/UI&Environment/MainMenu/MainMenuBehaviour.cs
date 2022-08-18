@@ -54,6 +54,7 @@ public class MainMenuBehaviour : MonoBehaviour
     public void StartNG()
     {
         PlayerPrefs.SetInt("Load Scene", (int)sceneIndex.TUTORIAL);
+        PlayerPrefs.SetInt("New Game", 0);
         PlayerMovement.transitionCount = 0;
         PlayerCommonStatus.sacrificeRemnants();
         StartCoroutine(LoadAsynchronously((int)sceneIndex.TUTORIAL));
