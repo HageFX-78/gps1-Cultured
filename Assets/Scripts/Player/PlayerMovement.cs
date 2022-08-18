@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        if (Time.timeScale == 0) return;
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>PLAYER MOVEMENT<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");

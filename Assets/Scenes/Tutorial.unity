@@ -1022,7 +1022,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.72}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 2.25
 --- !u!1001 &193145562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1777,7 +1777,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329149425}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -3108,7 +3108,7 @@ RectTransform:
   m_GameObject: {fileID: 570285616}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3996798, y: 1.3996798, z: 1.3996798}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1839955329}
@@ -3118,7 +3118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -185}
+  m_AnchoredPosition: {x: 4.4, y: -101.8}
   m_SizeDelta: {x: 143.86, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &570285618
@@ -5355,7 +5355,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043058478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.74, y: -5.6, z: 0}
+  m_LocalPosition: {x: 42.86, y: -5.6, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -8553,6 +8553,7 @@ GameObject:
   - component: {fileID: 1705704587}
   - component: {fileID: 1705704589}
   - component: {fileID: 1705704588}
+  - component: {fileID: 1705704590}
   m_Layer: 0
   m_Name: Bench (new)
   m_TagString: Untagged
@@ -8653,6 +8654,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1705704590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705704586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f19836928b1d744a87e0e7525fd6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
 --- !u!1 &1718135239
 GameObject:
   m_ObjectHideFlags: 0
@@ -9812,6 +9827,7 @@ GameObject:
   - component: {fileID: 1847211631}
   - component: {fileID: 1847211633}
   - component: {fileID: 1847211632}
+  - component: {fileID: 1847211634}
   m_Layer: 0
   m_Name: Bench (new) (1)
   m_TagString: Untagged
@@ -9912,6 +9928,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1847211634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847211630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f19836928b1d744a87e0e7525fd6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
 --- !u!1001 &1854169353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10868,6 +10898,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2086044322114880933, guid: 4375412aefc1394479392be678f0e9fa, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: db1d82ac13913f340a9b413a673de50a, type: 2}
     - target: {fileID: 5587560822321642773, guid: 4375412aefc1394479392be678f0e9fa, type: 3}
       propertyPath: m_Name
       value: Player Test
