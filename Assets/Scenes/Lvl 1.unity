@@ -4363,6 +4363,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2dd2df4aa0a196b45923a5a90f396012, type: 3}
   - {fileID: 8300000, guid: 2f4828f4e421cce43943712561f09757, type: 3}
   - {fileID: 8300000, guid: 1f16ba3c9036f614e94ce7f834692501, type: 3}
+  - {fileID: 8300000, guid: c2b8bda573741884ea1e00e67646a0a7, type: 3}
 --- !u!4 &562027383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2550020801350364772, guid: e3e34affa2271fa4195a7e028ad7947c, type: 3}

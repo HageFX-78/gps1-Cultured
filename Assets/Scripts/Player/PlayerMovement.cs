@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Audio Settings")]
+    [SerializeField] AudioSource audioSrc;
+
     [Header("Transition References")]
     public static Vector2 transitionPos;
     public static int transitionCount = 0;
@@ -118,6 +121,8 @@ public class PlayerMovement : MonoBehaviour
         //on collision with enemy, set the transitionPos to the collide point, destroy the enemy and load next scene
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            audioSrc.clip = LVL1SFList.sflInstance.SFList[5];
+            audioSrc.Play();
             //Debug.Log("Hit Enemy");
             transitionPos = collision.transform.position;
 

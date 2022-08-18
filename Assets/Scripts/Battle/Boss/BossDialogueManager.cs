@@ -34,6 +34,10 @@ public class BossDialogueManager : MonoBehaviour
     public List<string> tempTag;
     private int tagIndex;
 
+    [Header("Audio Settings")]
+    [SerializeField] AudioSource audioSrc;
+    [SerializeField] AudioClip[] SFList;
+
     public bool firstTurn;
 
     private void Awake()
@@ -104,6 +108,12 @@ public class BossDialogueManager : MonoBehaviour
 
     private void ContinueStory()
     {
+        if(UnityEngine.Random.Range(0, 9)==0)
+        {
+            audioSrc.clip = SFList[1];
+            audioSrc.Play();
+        }
+        
         //if there is more than 1 line in the story, set the dialogue text to the currentStory line
         if (currentStory.canContinue)
         {
