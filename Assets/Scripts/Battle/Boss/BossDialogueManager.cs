@@ -107,13 +107,7 @@ public class BossDialogueManager : MonoBehaviour
     }
 
     private void ContinueStory()
-    {
-        if(UnityEngine.Random.Range(0, 9)==0)
-        {
-            audioSrc.clip = SFList[1];
-            audioSrc.Play();
-        }
-        
+    {        
         //if there is more than 1 line in the story, set the dialogue text to the currentStory line
         if (currentStory.canContinue)
         {
@@ -169,11 +163,17 @@ public class BossDialogueManager : MonoBehaviour
             dialoguePanelImage.color = temp;
 
 
-            if(!firstTurn && bossEmotionManager.gameOver == false && dialogueTrigger.battleStart)
+            if(!firstTurn && bossEmotionManager.gameOver == false && dialogueTrigger.battleStart && BossEmotionManager.turnCounter != 1)
             {
                 //boss recovers after attack
                 int randRecover = (int)UnityEngine.Random.Range(bossEmotionManager.minSelfRecover, bossEmotionManager.maxSelfRecover);
                 bossEmotionManager.Recover(randRecover);
+
+                if (UnityEngine.Random.Range(0, 9) == 0)
+                {
+                    audioSrc.clip = SFList[1];
+                    audioSrc.Play();
+                }
             }
         }
     }
@@ -186,7 +186,6 @@ public class BossDialogueManager : MonoBehaviour
         //========================================Player deals dmg================================================
         if(tempTag.Count > 0)
         {
-           
             //deals damage to boss based on choice and the tag
             int randDmg = (int)UnityEngine.Random.Range(bossEmotionManager.minBaseDamage, bossEmotionManager.maxBaseDamage);
             //passes in the temptag based on the choiceIndex

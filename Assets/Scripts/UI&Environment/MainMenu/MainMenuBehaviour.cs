@@ -31,7 +31,7 @@ public class MainMenuBehaviour : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt("Load Scene") == 0)
+        if (PlayerPrefs.GetInt("Load Scene") == (int)sceneIndex.MAINMENU)
         {
             load.interactable = false;
         }
@@ -54,7 +54,7 @@ public class MainMenuBehaviour : MonoBehaviour
     public void StartNG()
     {
         StartCoroutine(LoadAsynchronously((int)sceneIndex.TUTORIAL));
-        PlayerPrefs.SetInt("Load Scene", 1);
+        PlayerPrefs.SetInt("Load Scene", (int)sceneIndex.TUTORIAL);
     }
     public void LoadGame()
     {

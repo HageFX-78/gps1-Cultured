@@ -2200,10 +2200,10 @@ MonoBehaviour:
   enemyMaxSafeZone: 30
   pointerStart: 0
   pointerEnd: 15
-  minBaseDamage: 15
-  maxBaseDamage: 20
-  minSelfRecover: 5
-  maxSelfRecover: 10
+  minBaseDamage: 20
+  maxBaseDamage: 25
+  minSelfRecover: 10
+  maxSelfRecover: 15
   safeLeft: {fileID: 1672509493}
   safeRight: {fileID: 631351547}
   emoPointer: {fileID: 220598929}
@@ -2215,7 +2215,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3084559788141113481, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
   m_PrefabInstance: {fileID: 5242088581141821156}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5242088581141821157}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1535febddfeb931429ccbbf452a0528d, type: 3}
@@ -2697,41 +2697,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1240940747, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1be1889bfa6947742924e8cb0329dcfe, type: 3}
-    - target: {fileID: 3084559788141113481, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
-      propertyPath: phase1
-      value: 
-      objectReference: {fileID: 4900000, guid: e005baf9b33c69c42ab6941eba150d63, type: 3}
-    - target: {fileID: 3084559788141113481, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
-      propertyPath: gameOver
-      value: 
-      objectReference: {fileID: 4900000, guid: e25aa583783d06d4a8d1e30ef1dfd186, type: 3}
-    - target: {fileID: 3084559788141113481, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
-      propertyPath: prePhase
-      value: 
-      objectReference: {fileID: 4900000, guid: ec06649d3c830e844ac579c8b3e288e6, type: 3}
-    - target: {fileID: 3084559788141113481, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
-      propertyPath: phase1Dialogue
-      value: 
-      objectReference: {fileID: 4900000, guid: e005baf9b33c69c42ab6941eba150d63, type: 3}
-    - target: {fileID: 3084559788141113481, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
-      propertyPath: phase2Dialogue
-      value: 
-      objectReference: {fileID: 4900000, guid: e64a34666a198cf4e81176a8b69fbf13, type: 3}
     - target: {fileID: 5242088580467479385, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242088580467479385, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242088580467479385, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 5242088580467479385, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2779,26 +2747,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
---- !u!1 &5242088581141821157 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5242088580467479391, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
+--- !u!114 &5242088581141821158 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5242088581141821158, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
   m_PrefabInstance: {fileID: 5242088581141821156}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5242088581141821158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5242088581141821157}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 859f1e574a8d0ce409e640a655f09a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shakeDuration: 0
-  shakeMagnitude: 0.3
-  dampingSpeed: 1
-  uiRef: {fileID: 0}
-  isShaking: 0
-  isFollowCam: 0

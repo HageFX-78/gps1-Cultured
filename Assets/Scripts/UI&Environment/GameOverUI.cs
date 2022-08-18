@@ -15,6 +15,7 @@ public class GameOverUI : MonoBehaviour
     }
     public void GameOver()
     {
+        PlayerPrefs.SetInt("Load Scene", (int)sceneIndex.LV1);
         SceneManager.LoadSceneAsync((int)sceneIndex.MAINMENU);
     }
     

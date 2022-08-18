@@ -90,7 +90,7 @@ public class BossEmotionManager : MonoBehaviour
 
         //Debug.Log($"Min max L {tempMinThreshold}, {tempMaxThreshold} == Current : {currentThreshold}");
     }
-   
+
 
     void InitBoss()
     {
@@ -187,6 +187,7 @@ public class BossEmotionManager : MonoBehaviour
 
         safeLeft.anchoredPosition = new Vector2((tempMinThreshold >= 50 ? (((tempMinThreshold - 50) / 100) * 600) : ((50 - tempMinThreshold) / 100) * -600), 296);
         safeRight.anchoredPosition = new Vector2((tempMaxThreshold >= 50 ? ((tempMaxThreshold - 50) / 100 * 600) : (50 - tempMaxThreshold) / 100 * -600), 296);
+        Debug.Log($"Emotion type: {emotion.currentType}");
     }
 
     public void DealDamage(float baseDamage, string damageType)// not completed
@@ -208,6 +209,7 @@ public class BossEmotionManager : MonoBehaviour
         }
 
         StartCoroutine(moveEmoPointer());
+
     }
 
     public void Recover(float recoverAmount)
