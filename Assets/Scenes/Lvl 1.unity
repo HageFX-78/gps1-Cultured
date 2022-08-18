@@ -7581,6 +7581,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2006295996}
+    - target: {fileID: 6901804304868961051, guid: dd2b8ddbf5ca348468fa964213f730b5, type: 3}
+      propertyPath: enemyDetectRange
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd2b8ddbf5ca348468fa964213f730b5, type: 3}
 --- !u!1 &1261386112
