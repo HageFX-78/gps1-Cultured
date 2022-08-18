@@ -13,7 +13,9 @@ public class DBManager : MonoBehaviour
     public BattleStateManager battle;
     public EmotionManager enemyEmotion;
     public ScreenShake enemyShakeRef;
-    public AudioSource[] SFList;
+    
+    [SerializeField] AudioSource audioSrc;
+    [SerializeField] AudioClip[] SFList;
 
     [Header("UI References")]
     public TextAsset pDialoguefile;//Player dialogue options file
@@ -170,7 +172,6 @@ public class DBManager : MonoBehaviour
         canInput = false;
 
         battle.turnNum++;
-        //Debug.Log($"Real turn : {battle.turnNum}");
 
         StartCoroutine(enableInput());
     }
@@ -178,13 +179,11 @@ public class DBManager : MonoBehaviour
     {
         canInput = false;
         typingDialogue = false;
-        //typeSpeed = 0;
         StopCoroutine(typeD);
         
 
         convoTextPlayer.text = currentText;
         convoTextEnemy.text = currentText;
-        //*/
         StartCoroutine(enableInput());
     }
     void shuffleOptionsAtStart()
@@ -231,7 +230,6 @@ public class DBManager : MonoBehaviour
         if (remChance <= remnant1TriggerChance && remnant1Acquired)
         {
             circleBestOption();
-            //Debug.Log(remChance);
         }
         
     }
@@ -240,6 +238,9 @@ public class DBManager : MonoBehaviour
         string[] objArray = objName.Split("_");
         string dmgType = objArray[0];
         int dmgValue = int.Parse(objArray[1]);
+
+        audioSrc.clip = SFList[1];
+        audioSrc.Play();
 
         enemyEmotion.TakeDamage(dmgValue, dmgType);
         playerDialogueBoxShow(int.Parse(objArray[2]), bool.Parse(objArray[3]));
@@ -250,20 +251,17 @@ public class DBManager : MonoBehaviour
         //Shake screen visual effect, shake enemy and bg rn
         if (enemyEmotion.emotionEffectivenss(dmgType)==1.0f)
         {
-            SFList[3].volume = 0.8f;
             enemyShakeRef.ShakeScreen(0.2f);
         }
         else if(enemyEmotion.emotionEffectivenss(dmgType) == 1.5f)
         {
-            SFList[3].volume = 1f;
             enemyShakeRef.ShakeScreen(0.3f, 0.6f);
         }
         else
         {
-            SFList[3].volume = 0.5f;
             enemyShakeRef.ShakeScreen(0.2f, 0.1f);
         }
-        SFList[3].Play();
+        
 
     }
     void switchOutThisOption(int btnIndex)//Switch out used dialogue option and take random dialogue option from the pool
@@ -378,6 +376,8 @@ public class DBManager : MonoBehaviour
         txtbox.text = "";
         bool colorFontMode = false;
 
+        audioSrc.clip = SFList[0];
+
         foreach (char letter in content)
         {
 
@@ -408,8 +408,7 @@ public class DBManager : MonoBehaviour
             }
             if(Random.Range(0, PlayerCommonStatus.typeBeepChance) == 0)
             {
-                Debug.Log(SFList[0]);
-                SFList[0].Play();
+                audioSrc.Play();
             }
             
             yield return new WaitForSecondsRealtime(typeSpeed);
@@ -456,7 +455,8 @@ public class DBManager : MonoBehaviour
             }
             else
             {
-                SFList[2].Play();
+                audioSrc.clip = SFList[2];
+                audioSrc.Play();
                 typeD = typeDialogue("Alex felt something left his body... something that seemed important..", convoTextPlayer);
                 PlayerCommonStatus.modifySanity(-20);
             }
@@ -486,8 +486,6 @@ public class DBManager : MonoBehaviour
         playerOptionsUI.SetActive(true);
         enemyDialogueUI.SetActive(false);
         optionsVisible = true;
-        //canInput = false;
-        //StartCoroutine(enableInput());
     }
     public void playerDialogueBoxShow(int btnIndex, bool highlighted)
     {

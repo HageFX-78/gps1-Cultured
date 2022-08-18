@@ -994,6 +994,8 @@ MonoBehaviour:
   door: {fileID: 329149425}
   thisSR: {fileID: 0}
   onSprite: {fileID: 21300000, guid: a849a7fdfa70b5242a70aa0098b8c4e7, type: 3}
+  audioSrc: {fileID: 2053272601}
+  SF: {fileID: 8300000, guid: 17b33d7383b61de40a60692ac44b0713, type: 3}
 --- !u!58 &166124943
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1009,7 +1011,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.72}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.5
 --- !u!1001 &193145562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1608,11 +1610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3297366226156958368, guid: 69aaaa2fe80648e4089cbfec30ccfa8b, type: 3}
       propertyPath: m_Size.y
-      value: 2.4012327
+      value: 1.7965631
       objectReference: {fileID: 0}
     - target: {fileID: 3297366226156958368, guid: 69aaaa2fe80648e4089cbfec30ccfa8b, type: 3}
       propertyPath: m_Offset.y
-      value: -0.29938364
+      value: -0.6017184
       objectReference: {fileID: 0}
     - target: {fileID: 3297366226156958369, guid: 69aaaa2fe80648e4089cbfec30ccfa8b, type: 3}
       propertyPath: m_Name
@@ -2739,8 +2741,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -459415617
-  m_SortingLayer: 2
+  m_SortingLayerID: 1843049459
+  m_SortingLayer: 3
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: f693c0402363a854d9ae24d6708a629d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3044,6 +3046,9 @@ MonoBehaviour:
   typeSpeed: 0.01
   refreshDialogueTrigger: 0.4
   defType: 0
+  audioSrc: {fileID: 2053272601}
+  SFList:
+  - {fileID: 8300000, guid: 6002457dbdca898428493d513ce0897c, type: 3}
   dialogueActive: 0
 --- !u!50 &548821103
 Rigidbody2D:
@@ -4786,8 +4791,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -459415617
-  m_SortingLayer: 2
+  m_SortingLayerID: 1843049459
+  m_SortingLayer: 3
   m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 1be1889bfa6947742924e8cb0329dcfe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5122,10 +5127,6 @@ PrefabInstance:
     - target: {fileID: 5239472127082769706, guid: 39677e4420e1b894096001a06b2d5982, type: 3}
       propertyPath: m_Name
       value: Audio Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 5239472127082769706, guid: 39677e4420e1b894096001a06b2d5982, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39677e4420e1b894096001a06b2d5982, type: 3}
@@ -5690,6 +5691,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2053272594}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1080223191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6239,6 +6252,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 2053272594}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1165004861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6471,6 +6496,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
         m_MethodName: set_interactable
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2053272594}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7404,8 +7441,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -459415617
-  m_SortingLayer: 2
+  m_SortingLayerID: 1843049459
+  m_SortingLayer: 3
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 6603aa23833c331408aa1b8db5c86362, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.47058824}
@@ -8686,8 +8723,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -459415617
-  m_SortingLayer: 2
+  m_SortingLayerID: 1843049459
+  m_SortingLayer: 3
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 6603aa23833c331408aa1b8db5c86362, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.47058824}
@@ -9559,6 +9596,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2053272594}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10581,6 +10630,11 @@ AudioSource:
 --- !u!82 &2053272594 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 5239472128090055054, guid: 39677e4420e1b894096001a06b2d5982, type: 3}
+  m_PrefabInstance: {fileID: 973313251}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2053272601 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3683320304352113879, guid: 39677e4420e1b894096001a06b2d5982, type: 3}
   m_PrefabInstance: {fileID: 973313251}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2061893481

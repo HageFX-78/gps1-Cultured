@@ -15,6 +15,8 @@ public class DialogueManagerT : MonoBehaviour
     [SerializeField] float typeSpeed;
     [SerializeField] float refreshDialogueTrigger;
     [SerializeField] float defType;
+    [SerializeField] AudioSource audioSrc;
+    [SerializeField] AudioClip[] SFList;
 
     bool dialogueCooldown;
     public bool dialogueActive;
@@ -155,6 +157,11 @@ public class DialogueManagerT : MonoBehaviour
                 blue = false;
                 colorFontMode = false;
                 continue;
+            }
+            if (Random.Range(0, PlayerCommonStatus.typeBeepChance) == 0)
+            {
+                audioSrc.clip = SFList[0];
+                audioSrc.Play();
             }
             if (colorFontMode)
             {

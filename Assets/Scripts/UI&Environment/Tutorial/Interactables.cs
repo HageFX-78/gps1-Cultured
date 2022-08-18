@@ -10,6 +10,9 @@ public class Interactables : MonoBehaviour
     public SpriteRenderer thisSR;
     public Sprite onSprite;
 
+    [SerializeField] AudioSource audioSrc;
+    [SerializeField] AudioClip SF;
+
     private void Start()
     {
         thisSR = gameObject.GetComponent<SpriteRenderer>();
@@ -21,6 +24,8 @@ public class Interactables : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
+                audioSrc.clip = SF;
+                audioSrc.Play();
                 door.SetActive(false);
                 thisSR.sprite = onSprite;
                 thisSR.flipX = false;
