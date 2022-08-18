@@ -88,7 +88,7 @@ public class BossEmotionManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"Min max L {tempMinThreshold}, {tempMaxThreshold} == Current : {currentThreshold}");
+        //Debug.Log($"Min max L {tempMinThreshold}, {tempMaxThreshold} == Current : {currentThreshold}");
     }
    
 

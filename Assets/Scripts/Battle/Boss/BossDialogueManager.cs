@@ -9,7 +9,11 @@ using UnityEngine.UI;
 public class BossDialogueManager : MonoBehaviour
 {
     public static BossDialogueManager instance;
+
+    [Header("Script References")]
     public BossEmotionManager bossEmotionManager;
+    public DialogueTrigger dialogueTrigger;
+
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -20,7 +24,7 @@ public class BossDialogueManager : MonoBehaviour
     [Header("Emotion UI")]
     [SerializeField] private GameObject emotionPanel;
 
-    private Story currentStory;
+    public Story currentStory;
     public bool storyIsPlaying;
 
     [Header("Choices UI")]
@@ -155,7 +159,7 @@ public class BossDialogueManager : MonoBehaviour
             dialoguePanelImage.color = temp;
 
 
-            if(!firstTurn && bossEmotionManager.gameOver == false)
+            if(!firstTurn && bossEmotionManager.gameOver == false && currentStory != dialogueTrigger.prePhase)
             {
                 //boss recovers after attack
                 int randRecover = (int)UnityEngine.Random.Range(bossEmotionManager.minSelfRecover, bossEmotionManager.maxSelfRecover);
@@ -182,7 +186,7 @@ public class BossDialogueManager : MonoBehaviour
         }
 
         ContinueStory();
-        if(!bossEmotionManager.gameOver)
+        if(!bossEmotionManager.gameOver && currentStory != dialogueTrigger.prePhase)
             BossEmotionManager.turnCounter--;
     }
 }

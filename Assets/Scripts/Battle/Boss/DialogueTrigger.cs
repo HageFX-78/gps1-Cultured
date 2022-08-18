@@ -11,8 +11,20 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] public TextAsset phase2Dialogue;
     [SerializeField] public TextAsset gameOver;
 
+    bool battleStart;
+
     private void Start()
     {
-        BossDialogueManager.instance.EnterDialogueMode(phase1Dialogue);
+        BossDialogueManager.instance.EnterDialogueMode(prePhase);
+    }
+
+    private void Update()
+    {
+        if(BossDialogueManager.instance.currentStory == prePhase && !battleStart && !BossDialogueManager.instance.storyIsPlaying)
+        {
+            Debug.Log("Enter Boss");
+            BossDialogueManager.instance.EnterDialogueMode(phase1Dialogue);
+            battleStart = true;
+        }
     }
 }

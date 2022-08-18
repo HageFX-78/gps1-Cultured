@@ -1482,6 +1482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossEmotionManager: {fileID: 1416154314}
+  dialogueTrigger: {fileID: 1494101262}
   dialoguePanel: {fileID: 1362659154}
   dialoguePanelImage: {fileID: 1362659156}
   dialogueTransform: {fileID: 1362659155}
