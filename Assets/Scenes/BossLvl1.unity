@@ -2145,6 +2145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueTrigger: {fileID: 1494101262}
+  enemyShake: {fileID: 5242088581141821158}
   bossPhases:
   - Delusional/Despair
   phase1Turn: 8
@@ -2173,7 +2174,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3084559788141113481, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
   m_PrefabInstance: {fileID: 5242088581141821156}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5242088581141821157}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1535febddfeb931429ccbbf452a0528d, type: 3}
@@ -2654,3 +2655,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
+--- !u!1 &5242088581141821157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5242088580467479391, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
+  m_PrefabInstance: {fileID: 5242088581141821156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5242088581141821158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242088581141821157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859f1e574a8d0ce409e640a655f09a45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0
+  shakeMagnitude: 0.3
+  dampingSpeed: 1
+  uiRef: {fileID: 0}
+  isShaking: 0
+  isFollowCam: 0

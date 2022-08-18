@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4633987559434726319, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_Mass
-      value: 50
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: -4633987559434726319, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_BodyType
@@ -17,15 +17,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4633987559434726319, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_Constraints
-      value: 7
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -785788711750361175, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
+      propertyPath: m_Size.y
+      value: 2.0966678
       objectReference: {fileID: 0}
     - target: {fileID: -785788711750361175, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -785788711750361175, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.1051514
+      objectReference: {fileID: 0}
+    - target: {fileID: -785788711750361175, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006296001, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
+      propertyPath: offset
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2976096807895566155, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
       propertyPath: m_Enabled
@@ -106,23 +118,3 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 2976096807895566155, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
   m_PrefabInstance: {fileID: 3872574534358581998}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5587560822321642773 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8661872287092588539, guid: c5c95f77165c1cc44bf01eed5dfe8562, type: 3}
-  m_PrefabInstance: {fileID: 3872574534358581998}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2009691748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5587560822321642773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dedcf57898207e44ca3c66b5e944c8ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneNum: 1
-  loadingScreen: {fileID: 0}
-  loadSlider: {fileID: 0}
