@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class BossEmotionManager : MonoBehaviour
 {
-    [Header("Dialogue Trigger")]
+    [Header("Script References")]
     public DialogueTrigger dialogueTrigger;
+    public ScreenShake enemyShake;
 
     [Header("Boss Emotion (Phases)")]
     [SerializeField] private string[] bossPhases;
@@ -192,6 +193,20 @@ public class BossEmotionManager : MonoBehaviour
     {
         currentThreshold += baseDamage * emotion.TypeMultiplier[damageType];
         currentThreshold = Mathf.Clamp(currentThreshold, 0, 100);
+
+        if(emotion.TypeMultiplier[damageType] == 1.0f)
+        {
+            enemyShake.ShakeScreen(0.2f);
+        }
+        if (emotion.TypeMultiplier[damageType] == 1.5f)
+        {
+            enemyShake.ShakeScreen(0.3f, 0.6f);
+        }
+        else
+        {
+            enemyShake.ShakeScreen(0.2f, 0.1f);
+        }
+
         StartCoroutine(moveEmoPointer());
     }
 
