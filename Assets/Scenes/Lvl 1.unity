@@ -18064,7 +18064,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5211191233906801637, guid: 0cfc6c09e66d9da4396f1c159fb029d3, type: 3}
       propertyPath: m_RaycastTarget
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5211191234674822248, guid: 0cfc6c09e66d9da4396f1c159fb029d3, type: 3}
       propertyPath: m_Name
@@ -18156,7 +18156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5211191234919625037, guid: 0cfc6c09e66d9da4396f1c159fb029d3, type: 3}
       propertyPath: m_RaycastTarget
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cfc6c09e66d9da4396f1c159fb029d3, type: 3}
