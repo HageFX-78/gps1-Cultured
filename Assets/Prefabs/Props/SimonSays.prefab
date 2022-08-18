@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09703541, y: -2.4582405}
+  m_Offset: {x: -0.09703541, y: -2.721655}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.29381, y: 1.8409729}
+  m_Size: {x: 2.29381, y: 2.3678017}
   m_EdgeRadius: 0
 --- !u!114 &4945332092088290179
 MonoBehaviour:
@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1ffea4fb518f9489e20d7120d35ebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonNo: 0
+  buttonNo: 3
   ss: {fileID: 0}
   kc: 32
   onTop: 0
@@ -170,9 +170,8 @@ GameObject:
   - component: {fileID: 2550020801350364772}
   - component: {fileID: 2550020801350364794}
   - component: {fileID: 2550020801350364773}
-  - component: {fileID: 1739461573324301138}
-  - component: {fileID: 1739461573324301137}
   - component: {fileID: 5614663456364369081}
+  - component: {fileID: 455483693716149483}
   m_Layer: 0
   m_Name: SimonSays
   m_TagString: Untagged
@@ -262,38 +261,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.78}
-  m_Size: {x: 0.69, y: 1.38}
+  m_Offset: {x: -0.10277748, y: -2.7989502}
+  m_Size: {x: 1.2499542, y: 1.3421001}
   m_Direction: 0
---- !u!70 &1739461573324301138
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2550020801350364775}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.18}
-  m_Size: {x: 5, y: 4}
-  m_Direction: 1
---- !u!114 &1739461573324301137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2550020801350364775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d02a37d5d5c03d458daf5d6805855fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sr: {fileID: 0}
 --- !u!61 &5614663456364369081
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -320,6 +290,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7, y: 7.5}
   m_EdgeRadius: 0
+--- !u!114 &455483693716149483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2550020801350364775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f19836928b1d744a87e0e7525fd6d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortingOrderBase: 5000
+  offset: 0
 --- !u!1 &2550020801593223429
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +399,7 @@ GameObject:
   - component: {fileID: 2550020802679691222}
   - component: {fileID: 2550020802679691223}
   m_Layer: 0
-  m_Name: S1
+  m_Name: S4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

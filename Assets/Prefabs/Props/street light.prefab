@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -459415617
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1ffc34f38797f9344beae76cd63f26db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -238,8 +238,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -459415617
-  m_SortingLayer: 2
+  m_SortingLayerID: -373511889
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bdd7856e7f994284ead6c2fb97dc6a7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -263,8 +263,7 @@ GameObject:
   - component: {fileID: 4269607598697687015}
   - component: {fileID: 4269607598697687033}
   - component: {fileID: 4269607598697687014}
-  - component: {fileID: 1654172369}
-  - component: {fileID: 1654172370}
+  - component: {fileID: 4269607598119423275}
   m_Layer: 0
   m_Name: street light
   m_TagString: Untagged
@@ -359,23 +358,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -2.78}
   m_Size: {x: 0.69, y: 1.38}
   m_Direction: 0
---- !u!70 &1654172369
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4269607598697687012}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.18}
-  m_Size: {x: 5, y: 4}
-  m_Direction: 1
---- !u!114 &1654172370
+--- !u!114 &4269607598119423275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -384,10 +367,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4269607598697687012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d02a37d5d5c03d458daf5d6805855fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 28f19836928b1d744a87e0e7525fd6d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sr: {fileID: 0}
+  sortingOrderBase: 5000
+  offset: 0
 --- !u!1 &8379606756599705323
 GameObject:
   m_ObjectHideFlags: 0
