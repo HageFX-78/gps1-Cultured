@@ -458,7 +458,7 @@ public class DBManager : MonoBehaviour
                 audioSrc.clip = SFList[2];
                 audioSrc.Play();
                 typeD = typeDialogue("Alex felt <b>something left his body</b>... something that seemed <b>important</b>..", convoTextPlayer);
-                PlayerCommonStatus.modifySanity(-20);
+                PlayerCommonStatus.modifySanity(-30);
 
                 if(PlayerCommonStatus.sanityValue <=0)
                 {
