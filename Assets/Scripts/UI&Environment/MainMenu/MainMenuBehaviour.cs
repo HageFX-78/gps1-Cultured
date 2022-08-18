@@ -61,6 +61,7 @@ public class MainMenuBehaviour : MonoBehaviour
     }
     public void LoadGame()
     {
+        PlayerPrefs.SetInt("New Game", 1);
         StartCoroutine(LoadAsynchronously(PlayerPrefs.GetInt("Load Scene")));
         loadGame = true;
     }
