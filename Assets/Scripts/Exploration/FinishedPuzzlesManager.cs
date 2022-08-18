@@ -16,6 +16,11 @@ public class FinishedPuzzlesManager : MonoBehaviour
 
     void StoreAndCheckPuzzles()
     {
+        if (PlayerPrefs.GetInt("New Game") == 0)
+        {
+            PuzzleList.Clear();
+            FinishedPuzzles.Clear();
+        }
         foreach (Transform child in transform)
         {
             foreach (string obj in FinishedPuzzles)
