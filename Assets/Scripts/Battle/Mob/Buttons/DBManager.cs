@@ -13,7 +13,7 @@ public class DBManager : MonoBehaviour
     public BattleStateManager battle;
     public EmotionManager enemyEmotion;
     public ScreenShake enemyShakeRef;
-    
+
     [SerializeField] AudioSource audioSrc;
     [SerializeField] AudioClip[] SFList;
 
@@ -30,7 +30,7 @@ public class DBManager : MonoBehaviour
     List<Button> btnList;
     List<TextMeshProUGUI> btnTXTList;
 
-    public GameObject playerOptionsUI, playerDialogueUI, enemyDialogueUI, lastConvoUI ,runUI;
+    public GameObject playerOptionsUI, playerDialogueUI, enemyDialogueUI, lastConvoUI, runUI;
 
     [Header("Lists")]
     public List<PDials> dialLists = new List<PDials>();
@@ -47,7 +47,7 @@ public class DBManager : MonoBehaviour
     [SerializeField] private int enemySelfHarmMaxDmg;
     [SerializeField] private float typeSpeed;
     [SerializeField] private float generalCooldown;
-    
+
     [Header("Sanity Settings")]//Chance of sanity effect triggering from full sanity to insanity
     [SerializeField] private float sanityEffectChanceLVL1;
     [SerializeField] private float sanityEffectChanceLVL2;
@@ -90,12 +90,12 @@ public class DBManager : MonoBehaviour
         string[] enemyEmoTypeSplit = newDialogueFile.text.Split("\n<SPLIT>");
         int emoTypeIndex = -1;
         string enemyType = enemyEmotion.emotion.currentType;
-        if (enemyType == "Delusional") { emoTypeIndex = 0;}
-        else if (enemyType == "Hatred") { emoTypeIndex = 1;}
-        else if (enemyType == "Self_Loathing") { emoTypeIndex = 2;}
+        if (enemyType == "Delusional") { emoTypeIndex = 0; }
+        else if (enemyType == "Hatred") { emoTypeIndex = 1; }
+        else if (enemyType == "Self_Loathing") { emoTypeIndex = 2; }
         else if (enemyType == "Despair") { emoTypeIndex = 3; }
-        else if (enemyType == "Righteousness") { emoTypeIndex = 4;}
-        dialogueBundleSplit = enemyEmoTypeSplit[emoTypeIndex].Split("\n///");       
+        else if (enemyType == "Righteousness") { emoTypeIndex = 4; }
+        dialogueBundleSplit = enemyEmoTypeSplit[emoTypeIndex].Split("\n///");
         enemyIntro = dialogueBundleSplit[0].Split("\n")[1];//Setting enemy intro
         currentDialogueBundle = 0;
 
@@ -114,7 +114,7 @@ public class DBManager : MonoBehaviour
         //-------------------------------------------------------------------------------------------------------
 
         //+++++++++++++++++++ Functions to run at start ++++++++++++++++++++++
-        if(PlayerCommonStatus.checkIfRemnantExist("bear"))
+        if (PlayerCommonStatus.checkIfRemnantExist("bear"))
         {
             if (PlayerCommonStatus.checkRemnantAcquired("bear"))
             {
@@ -132,16 +132,16 @@ public class DBManager : MonoBehaviour
             //This is for when u just run battle scene without going through exploration scene
             //If player went through exploration scene, all remnants should exist
         }
-        
-        
+
+
         canInput = false;
         typingDialogue = false;
         playerTurn = true;
-        if (currentSanity >= 100) { sanityEffectChance =sanityEffectChanceLVL1; }
-        else if (currentSanity >= 80) { sanityEffectChance =sanityEffectChanceLVL2; }
+        if (currentSanity >= 100) { sanityEffectChance = sanityEffectChanceLVL1; }
+        else if (currentSanity >= 80) { sanityEffectChance = sanityEffectChanceLVL2; }
         else if (currentSanity >= 60) { sanityEffectChance = sanityEffectChanceLVL3; }
-        else if (currentSanity >= 40) { sanityEffectChance =sanityEffectChanceLVL4; }
-        else if (currentSanity >= 20) { sanityEffectChance =sanityEffectChanceLVL5; }
+        else if (currentSanity >= 40) { sanityEffectChance = sanityEffectChanceLVL4; }
+        else if (currentSanity >= 20) { sanityEffectChance = sanityEffectChanceLVL5; }
         else { sanityEffectChance = 50; }
         shuffleOptionsAtStart();
         updateRunChance();
@@ -151,10 +151,10 @@ public class DBManager : MonoBehaviour
     // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  Update <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.Mouse0))  && !optionsVisible && !lastDialogueOn && canInput)
+        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) && !optionsVisible && !lastDialogueOn && canInput)
         {
-            
-            if(typingDialogue)
+
+            if (typingDialogue)
             {
                 instantShowDialogue();
             }
@@ -162,7 +162,7 @@ public class DBManager : MonoBehaviour
             {
                 nextDialogue();
             }
-            
+
         }
     }
     #region internal functions
@@ -180,7 +180,7 @@ public class DBManager : MonoBehaviour
         canInput = false;
         typingDialogue = false;
         StopCoroutine(typeD);
-        
+
 
         convoTextPlayer.text = currentText;
         convoTextEnemy.text = currentText;
@@ -199,9 +199,9 @@ public class DBManager : MonoBehaviour
 
         string[] currentBundleOptions = dialogueBundleSplit[currentDialogueBundle].Split("\n");
 
-        for (int x= 2; x< currentBundleOptions.Length; x++)
+        for (int x = 2; x < currentBundleOptions.Length; x++)
         {
-            string curEmo="";
+            string curEmo = "";
             switch (x)
             {
                 case 2:
@@ -218,7 +218,7 @@ public class DBManager : MonoBehaviour
                     break;
             }
             dialLists.Add(new PDials(currentBundleOptions[x], curEmo));
-            
+
         }
 
         for (int z = 0; z < btnList.Count; z++)
@@ -231,7 +231,7 @@ public class DBManager : MonoBehaviour
         {
             circleBestOption();
         }
-        
+
     }
     public void clickOption(string objName)
     {
@@ -249,11 +249,11 @@ public class DBManager : MonoBehaviour
         turnScriptRef.turnUpdate();
 
         //Shake screen visual effect, shake enemy and bg rn
-        if (enemyEmotion.emotionEffectivenss(dmgType)==1.0f)
+        if (enemyEmotion.emotionEffectivenss(dmgType) == 1.0f)
         {
             enemyShakeRef.ShakeScreen(0.2f);
         }
-        else if(enemyEmotion.emotionEffectivenss(dmgType) == 1.5f)
+        else if (enemyEmotion.emotionEffectivenss(dmgType) == 1.5f)
         {
             enemyShakeRef.ShakeScreen(0.3f, 0.6f);
         }
@@ -261,20 +261,20 @@ public class DBManager : MonoBehaviour
         {
             enemyShakeRef.ShakeScreen(0.2f, 0.1f);
         }
-        
+
 
     }
     void switchOutThisOption(int btnIndex)//Switch out used dialogue option and take random dialogue option from the pool
     {
-        int rand = Random.Range(0, dialLists.Count-1);
-        
-        string thisDialogue ="";
+        int rand = Random.Range(0, dialLists.Count - 1);
+
+        string thisDialogue = "";
         string effectiveColor = returnEffectiveColor(dialLists[rand].emotions);
         bool highlightState = false;
         GameObject circleUI;
 
 
-;       if(Random.Range(1, 100) <= sanityEffectChance)
+        ; if (Random.Range(1, 100) <= sanityEffectChance)
         {
             thisDialogue = dialLists[rand].dialogues.Replace("[", $"<color={effectiveColor}>").Replace("]", "</color>");
             highlightState = true;
@@ -283,9 +283,9 @@ public class DBManager : MonoBehaviour
         {
             thisDialogue = dialLists[rand].dialogues.Replace("[", "").Replace("]", "");
         }
-        
+
         btnTXTList[btnIndex].text = thisDialogue;
-        
+
         btnList[btnIndex].gameObject.name = $"{dialLists[rand].emotions}_{Random.Range(minBaseDmg, maxBaseDmg)}_{btnIndex}_{highlightState}";//Format of  <emotiontype_DamageValue_btnReferenceIndex_effectiveColor>
         currentDialLists.Add(dialLists[rand]);
         dialLists.RemoveAt(rand);
@@ -313,10 +313,10 @@ public class DBManager : MonoBehaviour
         float min = enemyEmotion.minThreshold;
         float max = enemyEmotion.maxThreshold;
         float cur = enemyEmotion.currentThreshold;
-        float mid = min+((max - min) / 2);
+        float mid = min + ((max - min) / 2);
 
         //Remnant Effect
-        for (int ind = 0; ind<btnList.Count;ind++)
+        for (int ind = 0; ind < btnList.Count; ind++)
         {
             string[] nameSplit = btnList[ind].gameObject.name.Split("_");
             float finalDmg = float.Parse(nameSplit[1]) * enemyEmotion.emotionEffectivenss(nameSplit[0]);
@@ -338,13 +338,13 @@ public class DBManager : MonoBehaviour
                 bestValue = 0;
                 bestOption = ind;
             }
-            
+
             if (currentValue < bestValue)
             {
                 bestOption = ind;
                 bestValue = currentValue;
             }
-            
+
         }
         for (int ind = 0; ind < btnList.Count; ind++)
         {
@@ -368,11 +368,11 @@ public class DBManager : MonoBehaviour
             canInput = true;
         }
     }
-    IEnumerator typeDialogue(string content, TextMeshProUGUI txtbox, string emo=null)//Display character 1 by 1, visual effect
+    IEnumerator typeDialogue(string content, TextMeshProUGUI txtbox, string emo = null)//Display character 1 by 1, visual effect
     {
         typingDialogue = true;
-        
-        string fColor = emo!=null?returnEffectiveColor(emo):null;
+
+        string fColor = emo != null ? returnEffectiveColor(emo) : null;
         txtbox.text = "";
         bool colorFontMode = false;
 
@@ -406,11 +406,11 @@ public class DBManager : MonoBehaviour
             {
                 txtbox.text += letter;
             }
-            if(Random.Range(0, PlayerCommonStatus.typeBeepChance) == 0)
+            if (Random.Range(0, PlayerCommonStatus.typeBeepChance) == 0)
             {
                 audioSrc.Play();
             }
-            
+
             yield return new WaitForSecondsRealtime(typeSpeed);
         }
         typingDialogue = false;
@@ -441,7 +441,7 @@ public class DBManager : MonoBehaviour
     {
 
         optionsVisible = true;
-        
+
         if (battle.turnNum > battle.maxTurn)
         {
             talkerName.text = "Info";
@@ -459,6 +459,11 @@ public class DBManager : MonoBehaviour
                 audioSrc.Play();
                 typeD = typeDialogue("Alex felt something left his body... something that seemed important..", convoTextPlayer);
                 PlayerCommonStatus.modifySanity(-20);
+
+                if(PlayerCommonStatus.sanityValue <=0)
+                {
+                    SceneManager.LoadScene((int)sceneIndex.GAMEOVER);
+                }
             }
 
             //>>>>>>>>>>>>>>>>>>>>TRANSITION<<<<<<<<<<<<<<<<<<<<<<<<
@@ -499,9 +504,9 @@ public class DBManager : MonoBehaviour
 
         talkerName.text = "Alex";
         currentText = btnTXTList[btnIndex].text;
-        typeD = typeDialogue(currentDialLists[btnIndex].dialogues, convoTextPlayer, highlighted?currentDialLists[btnIndex].emotions:null);
+        typeD = typeDialogue(currentDialLists[btnIndex].dialogues, convoTextPlayer, highlighted ? currentDialLists[btnIndex].emotions : null);
         StartCoroutine(typeD);
-        
+
     }
     public void enemyTurnInitialize()
     {
@@ -512,7 +517,7 @@ public class DBManager : MonoBehaviour
         playerOptionsUI.SetActive(false);
         enemyDialogueUI.SetActive(true);
 
-        
+
         int randE = Random.Range(1, dialogueBundleSplit.Length);
         while (randE == lastRef)
         {
@@ -546,8 +551,8 @@ public class DBManager : MonoBehaviour
 
     public void showRunAway()
     {
-        
-        
+
+
         runChance.text = $"{runChanceVal}% Chance";
         runUI.SetActive(true);
         lastConvoUI.SetActive(false);
@@ -588,7 +593,7 @@ public class DBManager : MonoBehaviour
     }
     public void runAway()
     {
-        if (Random.Range(1,100)<=runChanceVal)
+        if (Random.Range(1, 100) <= runChanceVal)
         {
             talkerName.text = "Info";
             typeD = typeDialogue("Alex ran away from his problems...", convoTextPlayer);
@@ -613,6 +618,6 @@ public class DBManager : MonoBehaviour
             PlayerCommonStatus.setRunChance(PlayerCommonStatus.runChance - 10);
             runChanceVal = PlayerCommonStatus.runChance;
         }
-        
+
     }
 }
