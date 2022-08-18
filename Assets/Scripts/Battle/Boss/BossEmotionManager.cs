@@ -64,10 +64,9 @@ public class BossEmotionManager : MonoBehaviour
         {
             if(checkTargetThreshold() == false && gameOver == false)
             {
-                
+                gameOver = true;
                 BossDialogueManager.instance.EnterDialogueMode(dialogueTrigger.gameOver);
-                if (BossDialogueManager.instance.storyIsPlaying == false)
-                    gameOver = true;
+                    
             }
             else
             {
@@ -83,7 +82,10 @@ public class BossEmotionManager : MonoBehaviour
 
             if(gameOver)
             {
-                SceneManager.LoadSceneAsync((int)sceneIndex.GAMEOVER);
+                if (BossDialogueManager.instance.storyIsPlaying == false)
+                {
+                    SceneManager.LoadSceneAsync((int)sceneIndex.GAMEOVER);
+                }
             }
         }
 
