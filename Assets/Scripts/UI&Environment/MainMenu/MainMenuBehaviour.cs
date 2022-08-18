@@ -35,13 +35,21 @@ public class MainMenuBehaviour : MonoBehaviour
         {
             load.interactable = false;
         }
-        volSlider.value = PlayerPrefs.GetFloat("Master Volume") * 100;
-        musicSlider.value = PlayerPrefs.GetFloat("Music Volume") * 100;
-        sfxSlider.value = PlayerPrefs.GetFloat("SFX Volume") * 100;
-        SetMusic();
-        SetSFX();
-        SetVol();
-        Apply();
+        if(!PlayerPrefs.HasKey("Master Volume"))
+        {
+            ResetAll();
+            Debug.Log(PlayerPrefs.HasKey("Master Volume"));
+        }
+        else
+        {
+            volSlider.value = PlayerPrefs.GetFloat("Master Volume") * 100;
+            musicSlider.value = PlayerPrefs.GetFloat("Music Volume") * 100;
+            sfxSlider.value = PlayerPrefs.GetFloat("SFX Volume") * 100;
+            SetMusic();
+            SetSFX();
+            SetVol();
+            Apply();
+        }
     }
     public void StartNG()
     {

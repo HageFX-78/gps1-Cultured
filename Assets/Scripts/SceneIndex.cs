@@ -5,7 +5,7 @@ public enum sceneIndex
     LV1 = 2,
     LVL1BOSS = 3,
     BATTLE = 4,
-    GAMEOVER =5,
+    GAMEOVER = 5,
 
 }
 
