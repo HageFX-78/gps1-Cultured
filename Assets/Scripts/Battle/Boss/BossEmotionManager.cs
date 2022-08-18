@@ -19,6 +19,7 @@ public class BossEmotionManager : MonoBehaviour
     public bool phase1;
     public bool phase2;
     public bool gameOver;
+    public bool gameWin;
 
     [Header("Boss Emotion Details")]
     public float playerMinThreshold;
@@ -52,6 +53,7 @@ public class BossEmotionManager : MonoBehaviour
         phase1 = true;
         phase2 = false;
         gameOver = false;
+        gameWin = false;
         InitBoss();
         Time.timeScale = 1;
     }
@@ -68,28 +70,40 @@ public class BossEmotionManager : MonoBehaviour
                 BossDialogueManager.instance.EnterDialogueMode(dialogueTrigger.gameOver);
                     
             }
-            else
+            else if(checkTargetThreshold() == true && phase1 && gameOver == false)
             {
-                if(phase1 && gameOver == false)
-                {
-                    phase1 = false;
-                    phase2 = true;
-                    //init boss for phase 2
-                    InitBoss();
-                    BossDialogueManager.instance.EnterDialogueMode(dialogueTrigger.phase2Dialogue);
-                }
+                phase1 = false;
+                phase2 = true;
+                //init boss for phase 2
+                InitBoss();
+                BossDialogueManager.instance.EnterDialogueMode(dialogueTrigger.phase2Dialogue);
+                
+            }
+            else if(checkTargetThreshold() == true && phase2 && gameOver == false)
+            {
+                gameWin = true;
+                BossDialogueManager.instance.EnterDialogueMode(dialogueTrigger.gameWin);
+                phase2 = false;
             }
 
-            if(gameOver)
+            if(gameOver && !gameWin)
             {
                 if (BossDialogueManager.instance.storyIsPlaying == false)
                 {
                     SceneManager.LoadSceneAsync((int)sceneIndex.GAMEOVER);
                 }
             }
-        }
 
-        //Debug.Log($"Min max L {tempMinThreshold}, {tempMaxThreshold} == Current : {currentThreshold}");
+            if(gameWin && !gameOver)
+            {
+                if (BossDialogueManager.instance.storyIsPlaying == false)
+                {
+                    SceneManager.LoadSceneAsync((int)sceneIndex.GAMEWIN);
+                }
+            }
+
+        }
+        Debug.Log($"Min max L {tempMinThreshold}, {tempMaxThreshold} == Current : {currentThreshold}");
     }
 
 

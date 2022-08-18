@@ -10,6 +10,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] public TextAsset phase1Dialogue;
     [SerializeField] public TextAsset phase2Dialogue;
     [SerializeField] public TextAsset gameOver;
+    [SerializeField] public TextAsset gameWin;
 
     public bool battleStart;
 

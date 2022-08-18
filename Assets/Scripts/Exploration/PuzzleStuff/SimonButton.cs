@@ -20,6 +20,7 @@ public class SimonButton : MonoBehaviour
         order = 0;
         onTop = false;
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(kc) && !complete && SimonSays.clickable && onTop)  //Button clicking with resets
@@ -83,9 +84,9 @@ public class SimonButton : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
-            {
+        {
             onTop = true;
-            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

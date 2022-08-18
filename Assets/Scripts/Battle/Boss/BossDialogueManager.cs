@@ -163,7 +163,7 @@ public class BossDialogueManager : MonoBehaviour
             dialoguePanelImage.color = temp;
 
 
-            if(!firstTurn && bossEmotionManager.gameOver == false && dialogueTrigger.battleStart && BossEmotionManager.turnCounter != 1)
+            if(!firstTurn && bossEmotionManager.gameOver == false && dialogueTrigger.battleStart && BossEmotionManager.turnCounter != 1 && !bossEmotionManager.gameWin)
             {
                 //boss recovers after attack
                 int randRecover = (int)UnityEngine.Random.Range(bossEmotionManager.minSelfRecover, bossEmotionManager.maxSelfRecover);
@@ -193,7 +193,7 @@ public class BossDialogueManager : MonoBehaviour
         }
 
         ContinueStory();
-        if(!bossEmotionManager.gameOver && dialogueTrigger.battleStart)
+        if(!bossEmotionManager.gameOver && dialogueTrigger.battleStart && !bossEmotionManager.gameWin)
             BossEmotionManager.turnCounter--;
     }
 }

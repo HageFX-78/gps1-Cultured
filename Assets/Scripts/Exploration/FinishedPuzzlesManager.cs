@@ -20,7 +20,9 @@ public class FinishedPuzzlesManager : MonoBehaviour
         {
             PuzzleList.Clear();
             FinishedPuzzles.Clear();
+            PlayerPrefs.SetInt("New Game", 1);
         }
+
         foreach (Transform child in transform)
         {
             foreach (string obj in FinishedPuzzles)

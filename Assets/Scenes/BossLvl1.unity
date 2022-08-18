@@ -2194,9 +2194,10 @@ MonoBehaviour:
   phase1: 0
   phase2: 0
   gameOver: 0
+  gameWin: 0
   playerMinThreshold: 40
   playerMaxThreshold: 50
-  enemyMinSafeZone: 20
+  enemyMinSafeZone: 25
   enemyMaxSafeZone: 30
   pointerStart: 0
   pointerEnd: 15
@@ -2697,6 +2698,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3084559788141113481, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
+      propertyPath: gameWin
+      value: 
+      objectReference: {fileID: 4900000, guid: ffad0d2d3004f0d4598bcc7aac1f941e, type: 3}
     - target: {fileID: 5242088580467479385, guid: 88bd1cee84c7eab48881e0484378b431, type: 3}
       propertyPath: m_RootOrder
       value: 4

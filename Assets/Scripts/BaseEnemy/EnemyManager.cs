@@ -21,6 +21,7 @@ public class EnemyManager : MonoBehaviour
         {
             EnemyList.Clear();
             RemovedEnemy.Clear();
+            PlayerPrefs.SetInt("New Game", 1);       
         }
 
         foreach (Transform child in transform)
